@@ -853,11 +853,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+  cloudProjectId: 4bd8acf6-9a3f-473e-83af-e2697b6f6230
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: The-Black-Thing
+  organizationId: fauviant
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
