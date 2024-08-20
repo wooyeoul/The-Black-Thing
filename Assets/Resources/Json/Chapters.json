@@ -1,0 +1,290 @@
+{
+    "chapters": [
+        {
+            "id": 1,
+            "chapter": "ch1",
+            "title": "제1 장 언어",
+            "loadText": "1장에 대한 정보를 가져옵니다.",
+            "mainFilePath": "Sprites/PrograssUI/1",
+            "subLockFilePath": [
+                "Sprites/PrograssSubUI/cover_ch1_sub1_fail",
+                "Sprites/PrograssSubUI/cover_ch1_sub2_fail",
+                "Sprites/PrograssSubUI/cover_ch1_sub3_fail",
+                "Sprites/PrograssSubUI/cover_ch1_sub4_fail"
+            ],
+            "subFilePath": [
+                "Sprites/PrograssSubUI/cover_ch1_sub1_pass",
+                "Sprites/PrograssSubUI/cover_ch1_sub2_pass",
+                "Sprites/PrograssSubUI/cover_ch1_sub2_pass",
+                "Sprites/PrograssSubUI/cover_ch1_sub3_pass"
+            ]
+        },
+        {
+            "id": 1,
+            "chapter": "ch1",
+            "title": "제 1장 언어",
+            "loadText": "1장에 대한 정보를 가져옵니다.",
+            "mainFilePath": "Sprites/PrograssUI/1",
+            "subLockFilePath": [
+                "Sprites/PrograssSubUI/cover_ch1_sub1_fail",
+                "Sprites/PrograssSubUI/cover_ch1_sub2_fail",
+                "Sprites/PrograssSubUI/cover_ch1_sub3_fail",
+                "Sprites/PrograssSubUI/cover_ch1_sub4_fail"
+            ],
+            "subFilePath": [
+                "Sprites/PrograssSubUI/cover_ch1_sub1_pass",
+                "Sprites/PrograssSubUI/cover_ch1_sub2_pass",
+                "Sprites/PrograssSubUI/cover_ch1_sub3_pass",
+                "Sprites/PrograssSubUI/cover_ch1_sub4_pass"
+            ]
+        },
+        {
+            "id": 2,
+            "chapter": "ch2",
+            "title": "제 2장 결핍",
+            "loadText": "2장에 대한 정보를 가져옵니다.",
+            "mainFilePath": "Sprites/PrograssUI/2",
+            "subLockFilePath": [
+                "Sprites/PrograssSubUI/cover_ch2_sub1_fail",
+                "Sprites/PrograssSubUI/cover_ch2_sub2_fail",
+                "Sprites/PrograssSubUI/cover_ch2_sub3_fail",
+                "Sprites/PrograssSubUI/cover_ch2_sub4_fail"
+            ],
+            "subFilePath": [
+                "Sprites/PrograssSubUI/cover_ch2_sub1_pass",
+                "Sprites/PrograssSubUI/cover_ch2_sub2_pass",
+                "Sprites/PrograssSubUI/cover_ch2_sub3_pass",
+                "Sprites/PrograssSubUI/cover_ch2_sub4_pass"
+            ]
+        },
+        {
+            "id": 3,
+            "chapter": "ch3",
+            "title": "제 3장 얼굴들",
+            "loadText": "3장에 대한 정보를 가져옵니다.",
+            "mainFilePath": "Sprites/PrograssUI/3",
+            "subLockFilePath": [
+                "Sprites/PrograssSubUI/cover_ch3_sub1_fail",
+                "Sprites/PrograssSubUI/cover_ch3_sub2_fail",
+                "Sprites/PrograssSubUI/cover_ch3_sub3_fail",
+                "Sprites/PrograssSubUI/cover_ch3_sub4_fail"
+            ],
+            "subFilePath": [
+                "Sprites/PrograssSubUI/cover_ch3_sub1_pass",
+                "Sprites/PrograssSubUI/cover_ch3_sub2_pass",
+                "Sprites/PrograssSubUI/cover_ch3_sub3_pass",
+                "Sprites/PrograssSubUI/cover_ch3_sub4_pass"
+            ]
+        },
+        {
+            "id": 4,
+            "chapter": "ch4",
+            "title": "제 4장 과거",
+            "loadText": "4장에 대한 정보를 가져옵니다.",
+            "mainFilePath": "Sprites/PrograssUI/4",
+            "subLockFilePath": [
+                "Sprites/PrograssSubUI/cover_ch4_sub1_fail",
+                "Sprites/PrograssSubUI/cover_ch4_sub2_fail",
+                "Sprites/PrograssSubUI/cover_ch4_sub3_fail",
+                "Sprites/PrograssSubUI/cover_ch4_sub4_fail"
+            ],
+            "subFilePath": [
+                "Sprites/PrograssSubUI/cover_ch4_sub1_pass",
+                "Sprites/PrograssSubUI/cover_ch4_sub2_pass",
+                "Sprites/PrograssSubUI/cover_ch4_sub3_pass",
+                "Sprites/PrograssSubUI/cover_ch4_sub4_pass"
+            ]
+        },
+        {
+            "id": 5,
+            "chapter": "ch5",
+            "title": "제 5장 허망",
+            "loadText": "5장에 대한 정보를 가져옵니다.",
+            "mainFilePath": "Sprites/PrograssUI/5",
+            "subLockFilePath": [
+                "Sprites/PrograssSubUI/cover_ch5_sub1_fail",
+                "Sprites/PrograssSubUI/cover_ch5_sub2_fail",
+                "Sprites/PrograssSubUI/cover_ch5_sub3_fail",
+                "Sprites/PrograssSubUI/cover_ch5_sub4_fail"
+            ],
+            "subFilePath": [
+                "Sprites/PrograssSubUI/cover_ch5_sub1_pass",
+                "Sprites/PrograssSubUI/cover_ch5_sub2_pass",
+                "Sprites/PrograssSubUI/cover_ch5_sub3_pass",
+                "Sprites/PrograssSubUI/cover_ch5_sub4_pass"
+            ]
+        },
+        {
+            "id": 6,
+            "chapter": "ch6",
+            "title": "제 6장 우리",
+            "loadText": "6장에 대한 정보를 가져옵니다.",
+            "mainFilePath": "Sprites/PrograssUI/6",
+            "subLockFilePath": [
+                "Sprites/PrograssSubUI/cover_ch6_sub1_fail",
+                "Sprites/PrograssSubUI/cover_ch6_sub2_fail",
+                "Sprites/PrograssSubUI/cover_ch6_sub3_fail",
+                "Sprites/PrograssSubUI/cover_ch6_sub4_fail"
+            ],
+            "subFilePath": [
+                "Sprites/PrograssSubUI/cover_ch6_sub1_pass",
+                "Sprites/PrograssSubUI/cover_ch6_sub2_pass",
+                "Sprites/PrograssSubUI/cover_ch6_sub3_pass",
+                "Sprites/PrograssSubUI/cover_ch6_sub4_pass"
+            ]
+        },
+        {
+            "id": 7,
+            "chapter": "ch7",
+            "title": "제 7장 코미디",
+            "loadText": "3장에 대한 정보를 가져옵니다.",
+            "mainFilePath": "Sprites/PrograssUI/7",
+            "subLockFilePath": [
+                "Sprites/PrograssSubUI/cover_ch7_sub1_fail",
+                "Sprites/PrograssSubUI/cover_ch7_sub2_fail",
+                "Sprites/PrograssSubUI/cover_ch7_sub3_fail",
+                "Sprites/PrograssSubUI/cover_ch7_sub4_fail"
+            ],
+            "subFilePath": [
+                "Sprites/PrograssSubUI/cover_ch7_sub1_pass",
+                "Sprites/PrograssSubUI/cover_ch7_sub2_pass",
+                "Sprites/PrograssSubUI/cover_ch7_sub3_pass",
+                "Sprites/PrograssSubUI/cover_ch7_sub4_pass"
+            ]
+        },
+        {
+            "id": 8,
+            "chapter": "ch8",
+            "title": "제 8장 쌍둥이",
+            "loadText": "8장에 대한 정보를 가져옵니다.",
+            "mainFilePath": "Sprites/PrograssUI/8",
+            "subLockFilePath": [
+                "Sprites/PrograssSubUI/cover_ch8_sub1_fail",
+                "Sprites/PrograssSubUI/cover_ch8_sub2_fail",
+                "Sprites/PrograssSubUI/cover_ch8_sub3_fail",
+                "Sprites/PrograssSubUI/cover_ch8_sub4_fail"
+            ],
+            "subFilePath": [
+                "Sprites/PrograssSubUI/cover_ch8_sub1_pass",
+                "Sprites/PrograssSubUI/cover_ch8_sub2_pass",
+                "Sprites/PrograssSubUI/cover_ch8_sub3_pass",
+                "Sprites/PrograssSubUI/cover_ch8_sub4_pass"
+            ]
+        },
+        {
+            "id": 9,
+            "chapter": "ch9",
+            "title": "제 9장 사라지는 것",
+            "loadText": "9장에 대한 정보를 가져옵니다.",
+            "mainFilePath": "Sprites/PrograssUI/9",
+            "subLockFilePath": [
+                "Sprites/PrograssSubUI/cover_ch9_sub1_fail",
+                "Sprites/PrograssSubUI/cover_ch9_sub2_fail",
+                "Sprites/PrograssSubUI/cover_ch9_sub3_fail",
+                "Sprites/PrograssSubUI/cover_ch9_sub4_fail"
+            ],
+            "subFilePath": [
+                "Sprites/PrograssSubUI/cover_ch9_sub1_pass",
+                "Sprites/PrograssSubUI/cover_ch9_sub2_pass",
+                "Sprites/PrograssSubUI/cover_ch9_sub3_pass",
+                "Sprites/PrograssSubUI/cover_ch9_sub4_pass"
+            ]
+        },
+        {
+            "id": 10,
+            "chapter": "ch10",
+            "title": "제 10장 벽",
+            "loadText": "10장에 대한 정보를 가져옵니다.",
+            "mainFilePath": "Sprites/PrograssUI/10",
+            "subLockFilePath": [
+                "Sprites/PrograssSubUI/cover_ch10_sub1_fail",
+                "Sprites/PrograssSubUI/cover_ch10_sub2_fail",
+                "Sprites/PrograssSubUI/cover_ch10_sub3_fail",
+                "Sprites/PrograssSubUI/cover_ch10_sub4_fail"
+            ],
+            "subFilePath": [
+                "Sprites/PrograssSubUI/cover_ch10_sub1_pass",
+                "Sprites/PrograssSubUI/cover_ch10_sub2_pass",
+                "Sprites/PrograssSubUI/cover_ch10_sub3_pass",
+                "Sprites/PrograssSubUI/cover_ch10_sub4_pass"
+            ]
+        },
+        {
+            "id": 11,
+            "chapter": "ch11",
+            "title": "제 11장 환상",
+            "loadText": "11장에 대한 정보를 가져옵니다.",
+            "mainFilePath": "Sprites/PrograssUI/11",
+            "subLockFilePath": [
+                "Sprites/PrograssSubUI/cover_ch11_sub1_fail",
+                "Sprites/PrograssSubUI/cover_ch11_sub2_fail",
+                "Sprites/PrograssSubUI/cover_ch11_sub3_fail",
+                "Sprites/PrograssSubUI/cover_ch11_sub4_fail"
+            ],
+            "subFilePath": [
+                "Sprites/PrograssSubUI/cover_ch11_sub1_pass",
+                "Sprites/PrograssSubUI/cover_ch11_sub2_pass",
+                "Sprites/PrograssSubUI/cover_ch11_sub3_pass",
+                "Sprites/PrograssSubUI/cover_ch11_sub4_pass"
+            ]
+        },
+        {
+            "id": 12,
+            "chapter": "ch12",
+            "title": "제 12장 심연",
+            "loadText": "12장에 대한 정보를 가져옵니다.",
+            "mainFilePath": "Sprites/PrograssUI/12",
+            "subLockFilePath": [
+                "Sprites/PrograssSubUI/cover_ch5_sub1_fail",
+                "Sprites/PrograssSubUI/cover_ch5_sub2_fail",
+                "Sprites/PrograssSubUI/cover_ch5_sub3_fail",
+                "Sprites/PrograssSubUI/cover_ch5_sub4_fail"
+            ],
+            "subFilePath": [
+                "Sprites/PrograssSubUI/cover_ch5_sub1_pass",
+                "Sprites/PrograssSubUI/cover_ch5_sub2_pass",
+                "Sprites/PrograssSubUI/cover_ch5_sub3_pass",
+                "Sprites/PrograssSubUI/cover_ch5_sub4_pass"
+            ]
+        },
+        {
+            "id": 13,
+            "chapter": "ch13",
+            "title": "제 13장 남는 것들",
+            "loadText": "13장에 대한 정보를 가져옵니다.",
+            "mainFilePath": "Sprites/PrograssUI/13",
+            "subLockFilePath": [
+                "Sprites/PrograssSubUI/cover_ch5_sub1_fail",
+                "Sprites/PrograssSubUI/cover_ch5_sub2_fail",
+                "Sprites/PrograssSubUI/cover_ch5_sub3_fail",
+                "Sprites/PrograssSubUI/cover_ch5_sub4_fail"
+            ],
+            "subFilePath": [
+                "Sprites/PrograssSubUI/cover_ch5_sub1_pass",
+                "Sprites/PrograssSubUI/cover_ch5_sub2_pass",
+                "Sprites/PrograssSubUI/cover_ch5_sub3_pass",
+                "Sprites/PrograssSubUI/cover_ch5_sub4_pass"
+            ]
+        },
+        {
+            "id": 14,
+            "chapter": "ch14",
+            "title": "제 14장 검정",
+            "loadText": "14장에 대한 정보를 가져옵니다.",
+            "mainFilePath": "Sprites/PrograssUI/14",
+            "subLockFilePath": [
+                "Sprites/PrograssSubUI/cover_ch5_sub1_fail",
+                "Sprites/PrograssSubUI/cover_ch5_sub2_fail",
+                "Sprites/PrograssSubUI/cover_ch5_sub3_fail",
+                "Sprites/PrograssSubUI/cover_ch5_sub4_fail"
+            ],
+            "subFilePath": [
+                "Sprites/PrograssSubUI/cover_ch5_sub1_pass",
+                "Sprites/PrograssSubUI/cover_ch5_sub2_pass",
+                "Sprites/PrograssSubUI/cover_ch5_sub3_pass",
+                "Sprites/PrograssSubUI/cover_ch5_sub4_pass"
+            ]
+        }
+    ]
+}
+
