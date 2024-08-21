@@ -19,12 +19,12 @@ public class DragIcon : MonoBehaviour
     Sprite sprite;
     string subTitle;
 
-    public void Settings(int chapter,string title, string source,string subTitle)
+    public void Settings(int chapter, ChapterInfo info, LANGUAGE language)
     {
         this.chapter=chapter;
-        this.title=title;
-        this.sprite = Resources.Load<Sprite>(source);
-        this.subTitle=subTitle;
+        this.title= info.title[(int)language];
+        this.sprite = Resources.Load<Sprite>(info.mainFilePath);
+        this.subTitle= info.subTitle[(int)language]; //Update ¿¹Á¤
 
         titleText.text=this.title;
         subText.text=this.subTitle;
@@ -33,11 +33,11 @@ public class DragIcon : MonoBehaviour
 
     public bool isLocking()
     {
-        return lockObject!=null;
+        return lockObject.active;
     }
     public void DestoryLock()
     {
-        if(lockObject!=null)
-            Destroy(lockObject);
+        if(lockObject.active)
+            lockObject.SetActive(false);
     }
 }

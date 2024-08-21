@@ -3,286 +3,496 @@
         {
             "id": 1,
             "chapter": "ch1",
-            "title": "제1 장 언어",
-            "loadText": "1장에 대한 정보를 가져옵니다.",
-            "mainFilePath": "Sprites/PrograssUI/1",
+            "title": [    
+                "제 1장 언어",
+                "DAY 1 : Words"
+            ],
+            "loadText": [
+                "뭉치의 '눈알'은 평평하다. 그것은 얼떨결에 시각 기관의 역할을 수행하게 된 분필 자국일 뿐이기 때문이다.",
+                "Dot's 'eyeballs' are flat. They are mere chalk marks\nthat took on the role of visual organs."
+            ],
+            "subTitle": [
+                "",
+                ""
+            ],
+            "longText" :[
+                "",
+                ""
+            ],
+            "mainFilePath": "Sprites/PrograssUI/MainCovers/cover_ch1_main",
             "subLockFilePath": [
-                "Sprites/PrograssSubUI/cover_ch1_sub1_fail",
-                "Sprites/PrograssSubUI/cover_ch1_sub2_fail",
-                "Sprites/PrograssSubUI/cover_ch1_sub3_fail",
-                "Sprites/PrograssSubUI/cover_ch1_sub4_fail"
+                "Sprites/SubCovers/cover_ch1_sub1_fail",
+                "Sprites/SubCovers/cover_ch1_sub2_fail",
+                "Sprites/SubCovers/cover_ch1_sub3_fail",
+                "Sprites/SubCovers/cover_ch1_sub4_fail"
             ],
             "subFilePath": [
-                "Sprites/PrograssSubUI/cover_ch1_sub1_pass",
-                "Sprites/PrograssSubUI/cover_ch1_sub2_pass",
-                "Sprites/PrograssSubUI/cover_ch1_sub2_pass",
-                "Sprites/PrograssSubUI/cover_ch1_sub3_pass"
+                "Sprites/SubCovers/cover_ch1_sub1_pass",
+                "Sprites/SubCovers/cover_ch1_sub2_pass",
+                "Sprites/SubCovers/cover_ch1_sub2_pass",
+                "Sprites/SubCovers/cover_ch1_sub3_pass"
             ]
         },
         {
             "id": 1,
             "chapter": "ch1",
-            "title": "제 1장 언어",
-            "loadText": "1장에 대한 정보를 가져옵니다.",
-            "mainFilePath": "Sprites/PrograssUI/1",
+            "title": [    
+                "제 1장 언어",
+                "DAY 1 : Words"
+            ],
+            "loadText": [
+                "뭉치의 '눈알'은 평평하다. 그것은 얼떨결에 시각 기관의 역할을 수행하게 된 분필 자국일 뿐이기 때문이다.",
+                "Dot's 'eyeballs' are flat. They are mere chalk marks\nthat took on the role of visual organs."
+            ],
+            "subTitle": [
+                "¿▷よя▼&#ㅳ",
+                "¿▷よя▼&#ㅳ"
+            ],
+            "longText" :[
+                "그는 알 수 없는 이유로\n‘사랑해’를 부를 수 없었어.\n그 이름을 부르려고 하면,\n그 누구도 이해할 수 없는\n이상한 소리만 나왔던 거야.",
+                ""
+            ],
+            "mainFilePath": "Sprites/MainCovers/cover_ch1_main",
             "subLockFilePath": [
-                "Sprites/PrograssSubUI/cover_ch1_sub1_fail",
-                "Sprites/PrograssSubUI/cover_ch1_sub2_fail",
-                "Sprites/PrograssSubUI/cover_ch1_sub3_fail",
-                "Sprites/PrograssSubUI/cover_ch1_sub4_fail"
+                "Sprites/SubCovers/cover_ch1_sub1_fail",
+                "Sprites/SubCovers/cover_ch1_sub2_fail",
+                "Sprites/SubCovers/cover_ch1_sub3_fail",
+                "Sprites/SubCovers/cover_ch1_sub4_fail"
             ],
             "subFilePath": [
-                "Sprites/PrograssSubUI/cover_ch1_sub1_pass",
-                "Sprites/PrograssSubUI/cover_ch1_sub2_pass",
-                "Sprites/PrograssSubUI/cover_ch1_sub3_pass",
-                "Sprites/PrograssSubUI/cover_ch1_sub4_pass"
+                "Sprites/SubCovers/cover_ch1_sub1_pass",
+                "Sprites/SubCovers/cover_ch1_sub2_pass",
+                "Sprites/SubCovers/cover_ch1_sub3_pass",
+                "Sprites/SubCovers/cover_ch1_sub4_pass"
             ]
         },
         {
             "id": 2,
             "chapter": "ch2",
-            "title": "제 2장 결핍",
-            "loadText": "2장에 대한 정보를 가져옵니다.",
-            "mainFilePath": "Sprites/PrograssUI/2",
+            "title": [
+                "제 2장 결핍",
+                "DAY 2 : Holes"
+            ],
+            "loadText": [
+                "뭉치의 심장 색은 어떻게 채색되는가? 그의 몸을 반으로 가르면 알게 될 수도 있지만, 여전히 모를 수도 있다.",
+                "Dot's heart colors, but how?: Would splitting it in half\nspill the secrets, or is there more to the tale?"
+            ],
+            "subTitle": [
+                "동그라미, 동그라미",
+                "Holes, Holes"
+            ],
+            "longText" :[
+                "이제 그는 그만의 동그란 공백\n에 갇혀, 탐욕스럽게 세상의\n모든 동그라미들을 삼켰어. 그런\n그에게서 느껴지는 것은,\n공허한 연민. 비대한 욕심. \n처절한 허기.",
+                ""
+            ],
+            "mainFilePath": "Sprites/MainCovers/cover_ch2_main",
             "subLockFilePath": [
-                "Sprites/PrograssSubUI/cover_ch2_sub1_fail",
-                "Sprites/PrograssSubUI/cover_ch2_sub2_fail",
-                "Sprites/PrograssSubUI/cover_ch2_sub3_fail",
-                "Sprites/PrograssSubUI/cover_ch2_sub4_fail"
+                "Sprites/SubCovers/cover_ch2_sub1_fail",
+                "Sprites/SubCovers/cover_ch2_sub2_fail",
+                "Sprites/SubCovers/cover_ch2_sub3_fail",
+                "Sprites/SubCovers/cover_ch2_sub4_fail"
             ],
             "subFilePath": [
-                "Sprites/PrograssSubUI/cover_ch2_sub1_pass",
-                "Sprites/PrograssSubUI/cover_ch2_sub2_pass",
-                "Sprites/PrograssSubUI/cover_ch2_sub3_pass",
-                "Sprites/PrograssSubUI/cover_ch2_sub4_pass"
+                "Sprites/SubCovers/cover_ch2_sub1_pass",
+                "Sprites/SubCovers/cover_ch2_sub2_pass",
+                "Sprites/SubCovers/cover_ch2_sub3_pass",
+                "Sprites/SubCovers/cover_ch2_sub4_pass"
             ]
         },
         {
             "id": 3,
             "chapter": "ch3",
-            "title": "제 3장 얼굴들",
-            "loadText": "3장에 대한 정보를 가져옵니다.",
-            "mainFilePath": "Sprites/PrograssUI/3",
+            "title": [
+                "제 3장, 얼굴들",
+                "DAY 3 : Faces"
+            ],
+            "loadText": [
+                "숨겨진 대화를 발견하면 해당 대화의 표지 그림이 채색된다. '하루 진행도'에서 확인해 볼 것.",
+                "Once you stumble upon a hidden conversation, its cover art gets a splash of color.\nCheck it out in the \"Daily Progress\" section."
+            ],
+            "subTitle": [
+                "감춰진 얼굴들",
+                "A Thousand Faces"
+            ],
+            "longText" :[
+                "그는 보여 주기를 두려워하지\n않았어. 오히려 기대하고\n있었지. 누군가가 자신의\n모든 면들을 알아봐 주길.\n매번 보여 주는 모습이 다른\n자신이 이해받을 수 있기를.",
+                ""
+            ],
+            "mainFilePath": "Sprites/MainCovers/cover_ch3_main",
             "subLockFilePath": [
-                "Sprites/PrograssSubUI/cover_ch3_sub1_fail",
-                "Sprites/PrograssSubUI/cover_ch3_sub2_fail",
-                "Sprites/PrograssSubUI/cover_ch3_sub3_fail",
-                "Sprites/PrograssSubUI/cover_ch3_sub4_fail"
+                "Sprites/SubCovers/cover_ch3_sub1_fail",
+                "Sprites/SubCovers/cover_ch3_sub2_fail",
+                "Sprites/SubCovers/cover_ch3_sub3_fail",
+                "Sprites/SubCovers/cover_ch3_sub4_fail"
             ],
             "subFilePath": [
-                "Sprites/PrograssSubUI/cover_ch3_sub1_pass",
-                "Sprites/PrograssSubUI/cover_ch3_sub2_pass",
-                "Sprites/PrograssSubUI/cover_ch3_sub3_pass",
-                "Sprites/PrograssSubUI/cover_ch3_sub4_pass"
+                "Sprites/SubCovers/cover_ch3_sub1_pass",
+                "Sprites/SubCovers/cover_ch3_sub2_pass",
+                "Sprites/SubCovers/cover_ch3_sub3_pass",
+                "Sprites/SubCovers/cover_ch3_sub4_pass"
             ]
         },
         {
             "id": 4,
             "chapter": "ch4",
-            "title": "제 4장 과거",
-            "loadText": "4장에 대한 정보를 가져옵니다.",
-            "mainFilePath": "Sprites/PrograssUI/4",
+            "title": [
+                "제 4장, 과거",
+                "DAY 4 : The Past"
+            ],
+            "loadText": [
+                "어두워진 밤이면 달나라 송신기가 발광한다. 달에서 주고받는 대화가 궁금하다면 그들의 채널을 엿들어 보기.",
+                "When night falls, the Moon transmitter lights up.\nTune in to their channel for lunar chit-chats."
+            ],
+            "subTitle": [
+                "잿빛 달나라 이야기",
+                "Bygone Tales from the Moon"
+            ],
+            "longText" :[
+                "괜찮아. 무서웠지만 괜찮아.\n그저 본능적으로 달의 모퉁이로\n향했어. 사형 처분을 기다리게\n될 이곳만큼은 불안으로부터\n안전하기를, 날 선 공포가\n침범하지 못하기를 바라며.",
+                ""
+            ],
+            "mainFilePath": "Sprites/MainCovers/cover_ch4_main",
             "subLockFilePath": [
-                "Sprites/PrograssSubUI/cover_ch4_sub1_fail",
-                "Sprites/PrograssSubUI/cover_ch4_sub2_fail",
-                "Sprites/PrograssSubUI/cover_ch4_sub3_fail",
-                "Sprites/PrograssSubUI/cover_ch4_sub4_fail"
+                "Sprites/SubCovers/cover_ch4_sub1_fail",
+                "Sprites/SubCovers/cover_ch4_sub2_fail",
+                "Sprites/SubCovers/cover_ch4_sub3_fail",
+                "Sprites/SubCovers/cover_ch4_sub4_fail"
             ],
             "subFilePath": [
-                "Sprites/PrograssSubUI/cover_ch4_sub1_pass",
-                "Sprites/PrograssSubUI/cover_ch4_sub2_pass",
-                "Sprites/PrograssSubUI/cover_ch4_sub3_pass",
-                "Sprites/PrograssSubUI/cover_ch4_sub4_pass"
+                "Sprites/SubCovers/cover_ch4_sub1_pass",
+                "Sprites/SubCovers/cover_ch4_sub2_pass",
+                "Sprites/SubCovers/cover_ch4_sub3_pass",
+                "Sprites/SubCovers/cover_ch4_sub4_pass"
             ]
         },
         {
             "id": 5,
             "chapter": "ch5",
-            "title": "제 5장 허망",
-            "loadText": "5장에 대한 정보를 가져옵니다.",
-            "mainFilePath": "Sprites/PrograssUI/5",
+            "title": [
+                "제 5장, 허망",
+                "DAY 5 : Silence"
+            ],
+            "loadText": [
+                "뭉치가 잠든 동안 시간을 스킵할 경우, 달의 이들이 뭉치의 하루를 보며 나눈 대화를 확인할 수 있다.",
+                "Skip time while Dot is asleep,\nand you'll catch the Moon beings discussing Dot's day."
+            ],
+            "subTitle": [
+                "404 not found",
+                "404 not found"
+            ],
+            "longText" :[
+                "언제 죽을지 알 수 없다면,\n너는 어떻게 겁에 질려\n바닥을 기면서 살아가지 않는\n거야? 매순간 떼는 발걸음이\n싱크 홀을 눈앞에 둔 것만\n같은 기분이지 않겠어?",
+                ""
+            ],
+            "mainFilePath": "Sprites/MainCovers/cover_ch5_main",
             "subLockFilePath": [
-                "Sprites/PrograssSubUI/cover_ch5_sub1_fail",
-                "Sprites/PrograssSubUI/cover_ch5_sub2_fail",
-                "Sprites/PrograssSubUI/cover_ch5_sub3_fail",
-                "Sprites/PrograssSubUI/cover_ch5_sub4_fail"
+                "Sprites/SubCovers/cover_ch5_sub1_fail",
+                "Sprites/SubCovers/cover_ch5_sub2_fail",
+                "Sprites/SubCovers/cover_ch5_sub3_fail",
+                "Sprites/SubCovers/cover_ch5_sub4_fail"
             ],
             "subFilePath": [
-                "Sprites/PrograssSubUI/cover_ch5_sub1_pass",
-                "Sprites/PrograssSubUI/cover_ch5_sub2_pass",
-                "Sprites/PrograssSubUI/cover_ch5_sub3_pass",
-                "Sprites/PrograssSubUI/cover_ch5_sub4_pass"
+                "Sprites/SubCovers/cover_ch5_sub1_pass",
+                "Sprites/SubCovers/cover_ch5_sub2_pass",
+                "Sprites/SubCovers/cover_ch5_sub3_pass",
+                "Sprites/SubCovers/cover_ch5_sub4_pass"
             ]
         },
         {
             "id": 6,
             "chapter": "ch6",
-            "title": "제 6장 우리",
-            "loadText": "6장에 대한 정보를 가져옵니다.",
-            "mainFilePath": "Sprites/PrograssUI/6",
+            "title": [
+                "제 6장, 우리",
+                "DAY 6 : Us"
+            ],
+            "loadText": [
+                "뭉치는 면밀한 관찰자. 모든 답변에 귀 기울이며, 당신의 내밀한 구석을 파악하고 있을지도 모른다.",
+                "Dot is a keen observer. Dot listens to every answer,\nand delves into the depths of your innermost corners."
+            ],
+            "subTitle": [
+                "야속한 표피 너머",
+                "The Veil in Between"
+            ],
+            "longText" :[
+                "네 존재의 ‘겉표지’ 너머 존재할\n너만의 내적인 일렁임. 반짝임.\n쓰라림. 수많은 감정들의 유체\n가 자유로이 표류하는 감각.\n너는 지금 어떤 마음으로,\n어떤 생각을 하고 있을까?",
+                ""
+            ],
+            "mainFilePath": "Sprites/MainCovers/cover_ch6_main",
             "subLockFilePath": [
-                "Sprites/PrograssSubUI/cover_ch6_sub1_fail",
-                "Sprites/PrograssSubUI/cover_ch6_sub2_fail",
-                "Sprites/PrograssSubUI/cover_ch6_sub3_fail",
-                "Sprites/PrograssSubUI/cover_ch6_sub4_fail"
+                "Sprites/SubCovers/cover_ch6_sub1_fail",
+                "Sprites/SubCovers/cover_ch6_sub2_fail",
+                "Sprites/SubCovers/cover_ch6_sub3_fail",
+                "Sprites/SubCovers/cover_ch6_sub4_fail"
             ],
             "subFilePath": [
-                "Sprites/PrograssSubUI/cover_ch6_sub1_pass",
-                "Sprites/PrograssSubUI/cover_ch6_sub2_pass",
-                "Sprites/PrograssSubUI/cover_ch6_sub3_pass",
-                "Sprites/PrograssSubUI/cover_ch6_sub4_pass"
+                "Sprites/SubCovers/cover_ch6_sub1_pass",
+                "Sprites/SubCovers/cover_ch6_sub2_pass",
+                "Sprites/SubCovers/cover_ch6_sub3_pass",
+                "Sprites/SubCovers/cover_ch6_sub4_pass"
             ]
         },
         {
             "id": 7,
             "chapter": "ch7",
-            "title": "제 7장 코미디",
-            "loadText": "3장에 대한 정보를 가져옵니다.",
-            "mainFilePath": "Sprites/PrograssUI/7",
+            "title": [
+                "제 7장, 코미디",
+                "DAY 7 : Comedy"
+            ],
+            "loadText": [
+                "뭉치는 먹지 않아도 살 수 있으나, 바닥에 떨어진 조그마한 물건을 블랙홀처럼 삼켜 버리기도 한다.",
+                "Dot can survive without eating, but has a knack for swallowing tiny objects\non the floor like a miniature black hole."
+            ],
+            "subTitle": [
+                "인간과 괴물과 상처",
+                "Humans, Monsters, Scars"
+            ],
+            "longText" :[
+                "‘기분이 좋다’고 생각하면 ‘기분이\n좋아’진다는 사실 말이야!\n이전까지 그건 말도 안 되는 \n일이라고 생각했지만, 끝내 성공\n했지! 인간들이 철로 만든 새가\n하늘을 나는 일이 그런 것처럼.",
+                ""
+            ],
+            "mainFilePath": "Sprites/MainCovers/cover_ch7_main",
             "subLockFilePath": [
-                "Sprites/PrograssSubUI/cover_ch7_sub1_fail",
-                "Sprites/PrograssSubUI/cover_ch7_sub2_fail",
-                "Sprites/PrograssSubUI/cover_ch7_sub3_fail",
-                "Sprites/PrograssSubUI/cover_ch7_sub4_fail"
+                "Sprites/SubCovers/cover_ch7_sub1_fail",
+                "Sprites/SubCovers/cover_ch7_sub2_fail",
+                "Sprites/SubCovers/cover_ch7_sub3_fail",
+                "Sprites/SubCovers/cover_ch7_sub4_fail"
             ],
             "subFilePath": [
-                "Sprites/PrograssSubUI/cover_ch7_sub1_pass",
-                "Sprites/PrograssSubUI/cover_ch7_sub2_pass",
-                "Sprites/PrograssSubUI/cover_ch7_sub3_pass",
-                "Sprites/PrograssSubUI/cover_ch7_sub4_pass"
+                "Sprites/SubCovers/cover_ch7_sub1_pass",
+                "Sprites/SubCovers/cover_ch7_sub2_pass",
+                "Sprites/SubCovers/cover_ch7_sub3_pass",
+                "Sprites/SubCovers/cover_ch7_sub4_pass"
             ]
         },
         {
             "id": 8,
             "chapter": "ch8",
-            "title": "제 8장 쌍둥이",
-            "loadText": "8장에 대한 정보를 가져옵니다.",
-            "mainFilePath": "Sprites/PrograssUI/8",
+            "title": [
+                "제 8장, 쌍둥이",
+                "DAY 8 : Twin"
+            ],
+            "loadText": [
+                "뭉치를 심는다고 해서 뭉치가 자라는 건 아니다. 비가 오기 전에 꺼내주는 편이 좋을 것이다.",
+                "Planting Dot doesn't result in multiple Dots.\nIt's advisable to unearth it before the rain comes."
+            ],
+            "subTitle": [
+                "삼켜, 삼켜, 삼켜",
+                "Swallow swallow swallow"
+            ],
+            "longText" :[
+                "그 아이의 식도 안에는\n그의 쌍둥이 형이 살았어.\n어머니의 뱃속에서 함께\n자라나다 죽어 버린 형이.\n아이와 닮은 눈을 도록도록\n굴리며 식도 안에 살았어.",
+                ""
+            ],
+            "mainFilePath": "Sprites/MainCovers/cover_ch8_main",
             "subLockFilePath": [
-                "Sprites/PrograssSubUI/cover_ch8_sub1_fail",
-                "Sprites/PrograssSubUI/cover_ch8_sub2_fail",
-                "Sprites/PrograssSubUI/cover_ch8_sub3_fail",
-                "Sprites/PrograssSubUI/cover_ch8_sub4_fail"
+                "Sprites/SubCovers/cover_ch8_sub1_fail",
+                "Sprites/SubCovers/cover_ch8_sub2_fail",
+                "Sprites/SubCovers/cover_ch8_sub3_fail",
+                "Sprites/SubCovers/cover_ch8_sub4_fail"
             ],
             "subFilePath": [
-                "Sprites/PrograssSubUI/cover_ch8_sub1_pass",
-                "Sprites/PrograssSubUI/cover_ch8_sub2_pass",
-                "Sprites/PrograssSubUI/cover_ch8_sub3_pass",
-                "Sprites/PrograssSubUI/cover_ch8_sub4_pass"
+                "Sprites/SubCovers/cover_ch8_sub1_pass",
+                "Sprites/SubCovers/cover_ch8_sub2_pass",
+                "Sprites/SubCovers/cover_ch8_sub3_pass",
+                "Sprites/SubCovers/cover_ch8_sub4_pass"
             ]
         },
         {
             "id": 9,
             "chapter": "ch9",
-            "title": "제 9장 사라지는 것",
-            "loadText": "9장에 대한 정보를 가져옵니다.",
-            "mainFilePath": "Sprites/PrograssUI/9",
+            "title": [
+                "제 9장, 사라지는 것들",
+                "DAY 9 : Gone"
+            ],
+            "loadText": [
+                "내일 지구가 멸망한다면 뭉치는 물구나무 서기를 할 것이다.",
+                "If tomorrow were the end of the world, Dot would do a handstand\nas a nod to the cosmic order being flipped upside down."
+            ],
+            "subTitle": [
+                "그리울 연습",
+                "Practicing Farewell"
+            ],
+            "longText" :[
+                "셔터 속에만 남은 나날들.\n이제 나의 혼잣말은\n정말 혼자가 되었구나.",
+                ""
+            ],
+            "mainFilePath": "Sprites/MainCovers/cover_ch9_main",
             "subLockFilePath": [
-                "Sprites/PrograssSubUI/cover_ch9_sub1_fail",
-                "Sprites/PrograssSubUI/cover_ch9_sub2_fail",
-                "Sprites/PrograssSubUI/cover_ch9_sub3_fail",
-                "Sprites/PrograssSubUI/cover_ch9_sub4_fail"
+                "Sprites/SubCovers/cover_ch9_sub1_fail",
+                "Sprites/SubCovers/cover_ch9_sub2_fail",
+                "Sprites/SubCovers/cover_ch9_sub3_fail",
+                "Sprites/SubCovers/cover_ch9_sub4_fail"
             ],
             "subFilePath": [
-                "Sprites/PrograssSubUI/cover_ch9_sub1_pass",
-                "Sprites/PrograssSubUI/cover_ch9_sub2_pass",
-                "Sprites/PrograssSubUI/cover_ch9_sub3_pass",
-                "Sprites/PrograssSubUI/cover_ch9_sub4_pass"
+                "Sprites/SubCovers/cover_ch9_sub1_pass",
+                "Sprites/SubCovers/cover_ch9_sub2_pass",
+                "Sprites/SubCovers/cover_ch9_sub3_pass",
+                "Sprites/SubCovers/cover_ch9_sub4_pass"
             ]
         },
         {
             "id": 10,
             "chapter": "ch10",
-            "title": "제 10장 벽",
-            "loadText": "10장에 대한 정보를 가져옵니다.",
-            "mainFilePath": "Sprites/PrograssUI/10",
+            "title": [
+                "제 10장, 벽",
+                "DAY 10 : Walls"
+            ],
+            "loadText": [
+                "존재론적 붕괴는 뭉치의 천적. 생각의 무게에 짓눌린 뭉치는 진흙처럼 무너져 있기도 한다.",
+                "Existential dread is Dot's arch-nemesis.\nCrushed under the weight of thought, they sometimes crumbles like mud."
+            ],
+            "subTitle": [
+                "깨지기 쉬우면 깨뜨려라",
+                "Break, If Breakable"
+            ],
+            "longText" :[
+                "그것들은 뭉쳐 있던 비명처럼\n보였어. 내면의 타고 남은 재,\n떼 지은 좀벌레, 시커먼 핏덩어\n리... 어쩐지 나를 닮은.\n검디 검은 폐기물 덩어리. 역시\n파쇄해 버려야 마땅한....",
+                ""
+            ],
+            "mainFilePath": "Sprites/MainCovers/cover_ch10_main",
             "subLockFilePath": [
-                "Sprites/PrograssSubUI/cover_ch10_sub1_fail",
-                "Sprites/PrograssSubUI/cover_ch10_sub2_fail",
-                "Sprites/PrograssSubUI/cover_ch10_sub3_fail",
-                "Sprites/PrograssSubUI/cover_ch10_sub4_fail"
+                "Sprites/SubCovers/cover_ch10_sub1_fail",
+                "Sprites/SubCovers/cover_ch10_sub2_fail",
+                "Sprites/SubCovers/cover_ch10_sub3_fail",
+                "Sprites/SubCovers/cover_ch10_sub4_fail"
             ],
             "subFilePath": [
-                "Sprites/PrograssSubUI/cover_ch10_sub1_pass",
-                "Sprites/PrograssSubUI/cover_ch10_sub2_pass",
-                "Sprites/PrograssSubUI/cover_ch10_sub3_pass",
-                "Sprites/PrograssSubUI/cover_ch10_sub4_pass"
+                "Sprites/SubCovers/cover_ch10_sub1_pass",
+                "Sprites/SubCovers/cover_ch10_sub2_pass",
+                "Sprites/SubCovers/cover_ch10_sub3_pass",
+                "Sprites/SubCovers/cover_ch10_sub4_pass"
             ]
         },
         {
             "id": 11,
             "chapter": "ch11",
-            "title": "제 11장 환상",
-            "loadText": "11장에 대한 정보를 가져옵니다.",
-            "mainFilePath": "Sprites/PrograssUI/11",
+            "title": [
+                "제 11장, 환상",
+                "DAY 11 : Eyes Closed"
+            ],
+            "loadText": [
+                "유연한 몸을 가진 뭉치는 모든 게 되어 볼 수 있다. 거미, 참새, 그리고 어젯밤 집어먹은 몽당연필까지도!",
+                "With their flexible body, Dot can transform into anything.\nSpiders, sparrows, and even last night's snack of a wooden pencil!"
+            ],
+            "subTitle": [
+                "영원한 꿈의 종말",
+                "Wake Up, Morning's Coming"
+            ],
+            "longText" :[
+                "그는 정말 꿈에서 살아가고 있\n었어. 꿈의 냄새를 맡고, 꿈의\n표면을 만지면서. 그의 꿈은 영\n원히 한 자리에서 그를 기다리\n고 있는 거야. 밤이 지나도 잊히\n지 않는 무한한 꿈이 된 거야!",
+                ""
+            ],
+            "mainFilePath": "Sprites/MainCovers/cover_ch11_main",
             "subLockFilePath": [
-                "Sprites/PrograssSubUI/cover_ch11_sub1_fail",
-                "Sprites/PrograssSubUI/cover_ch11_sub2_fail",
-                "Sprites/PrograssSubUI/cover_ch11_sub3_fail",
-                "Sprites/PrograssSubUI/cover_ch11_sub4_fail"
+                "Sprites/SubCovers/cover_ch11_sub1_fail",
+                "Sprites/SubCovers/cover_ch11_sub2_fail",
+                "Sprites/SubCovers/cover_ch11_sub3_fail",
+                "Sprites/SubCovers/cover_ch11_sub4_fail"
             ],
             "subFilePath": [
-                "Sprites/PrograssSubUI/cover_ch11_sub1_pass",
-                "Sprites/PrograssSubUI/cover_ch11_sub2_pass",
-                "Sprites/PrograssSubUI/cover_ch11_sub3_pass",
-                "Sprites/PrograssSubUI/cover_ch11_sub4_pass"
+                "Sprites/SubCovers/cover_ch11_sub1_pass",
+                "Sprites/SubCovers/cover_ch11_sub2_pass",
+                "Sprites/SubCovers/cover_ch11_sub3_pass",
+                "Sprites/SubCovers/cover_ch11_sub4_pass"
             ]
         },
         {
             "id": 12,
             "chapter": "ch12",
-            "title": "제 12장 심연",
-            "loadText": "12장에 대한 정보를 가져옵니다.",
-            "mainFilePath": "Sprites/PrograssUI/12",
+            "title": [
+                "제 12장, 심연",
+                "DAY 12 : Abyss"
+            ],
+            "loadText": [
+                "달 뒤편의 이들에게도 쓰라린 흑백의 바람이 불었을까. 오늘 밤에는 송신기를 켜 그들의 이야기를 들어 보자.",
+                "Has the melancholic wind yet swept across the far side of the moon?\nTune into the moon transmitter tonight and lend an ear to their stories."
+            ],
+            "subTitle": [
+                "맨홀 구멍 속 비밀",
+                "The Secrets of a Manhole"
+            ],
+            "longText" :[
+                "그곳은 수렁 같은 암흑.\n눈을 떠도 감아도 똑같은 것이\n보이는. 죽음보다 훨씬 서럽고\n빽빽한 것들이 도사리는.\n아무것도 없는.\n그렇기에 모든 것이 있는.",
+                ""
+            ],
+            "mainFilePath": "Sprites/MainCovers/cover_ch12_main",
             "subLockFilePath": [
-                "Sprites/PrograssSubUI/cover_ch5_sub1_fail",
-                "Sprites/PrograssSubUI/cover_ch5_sub2_fail",
-                "Sprites/PrograssSubUI/cover_ch5_sub3_fail",
-                "Sprites/PrograssSubUI/cover_ch5_sub4_fail"
+                "Sprites/SubCovers/cover_ch5_sub1_fail",
+                "Sprites/SubCovers/cover_ch5_sub2_fail",
+                "Sprites/SubCovers/cover_ch5_sub3_fail",
+                "Sprites/SubCovers/cover_ch5_sub4_fail"
             ],
             "subFilePath": [
-                "Sprites/PrograssSubUI/cover_ch5_sub1_pass",
-                "Sprites/PrograssSubUI/cover_ch5_sub2_pass",
-                "Sprites/PrograssSubUI/cover_ch5_sub3_pass",
-                "Sprites/PrograssSubUI/cover_ch5_sub4_pass"
+                "Sprites/SubCovers/cover_ch5_sub1_pass",
+                "Sprites/SubCovers/cover_ch5_sub2_pass",
+                "Sprites/SubCovers/cover_ch5_sub3_pass",
+                "Sprites/SubCovers/cover_ch5_sub4_pass"
             ]
         },
         {
             "id": 13,
             "chapter": "ch13",
-            "title": "제 13장 남는 것들",
-            "loadText": "13장에 대한 정보를 가져옵니다.",
-            "mainFilePath": "Sprites/PrograssUI/13",
+            "title": [
+                "제 13장, 남는 것들",
+                "DAY 13 : What Remains"
+            ],
+            "loadText": [
+                "뭉치의 눈알은 자세히 보면 조금 짝짝이다. 레드는 이에 '동그라미를 처음 그려 봐서 그랬다'고 해명했다.",
+                "Upon closer inspection, Dot's eyes are a tad uneven.\nIn Red's defense, \"I'd never drawn a circle before.\""
+            ],
+            "subTitle": [
+                "그리고 이별이 남길 것들",
+                "Aftermath"
+            ],
+            "longText" :[
+                "둘의 인연은 먼 평행을\n달리게 될 거야.\n그렇지만 여전히\n눈부시게 아름답구나… ",
+                ""
+            ],
+            "mainFilePath": "Sprites/MainCovers/cover_ch13_main",
             "subLockFilePath": [
-                "Sprites/PrograssSubUI/cover_ch5_sub1_fail",
-                "Sprites/PrograssSubUI/cover_ch5_sub2_fail",
-                "Sprites/PrograssSubUI/cover_ch5_sub3_fail",
-                "Sprites/PrograssSubUI/cover_ch5_sub4_fail"
+                "Sprites/SubCovers/cover_ch5_sub1_fail",
+                "Sprites/SubCovers/cover_ch5_sub2_fail",
+                "Sprites/SubCovers/cover_ch5_sub3_fail",
+                "Sprites/SubCovers/cover_ch5_sub4_fail"
             ],
             "subFilePath": [
-                "Sprites/PrograssSubUI/cover_ch5_sub1_pass",
-                "Sprites/PrograssSubUI/cover_ch5_sub2_pass",
-                "Sprites/PrograssSubUI/cover_ch5_sub3_pass",
-                "Sprites/PrograssSubUI/cover_ch5_sub4_pass"
+                "Sprites/SubCovers/cover_ch5_sub1_pass",
+                "Sprites/SubCovers/cover_ch5_sub2_pass",
+                "Sprites/SubCovers/cover_ch5_sub3_pass",
+                "Sprites/SubCovers/cover_ch5_sub4_pass"
             ]
         },
         {
             "id": 14,
             "chapter": "ch14",
-            "title": "제 14장 검정",
-            "loadText": "14장에 대한 정보를 가져옵니다.",
-            "mainFilePath": "Sprites/PrograssUI/14",
+            "title": [
+                "제 14장, 검정",
+                "DAY 14 : Black"
+            ],
+            "loadText": [
+                "뭉치 몸의 컬러 코드는 #FFFFFF. 모든 빛과 색을 잡아먹은, 완벽한 '검정'이다.",
+                "#FFFFFF: Dot's body color code.\nIt is the mighty absorber of all light and color, the perfect 'black."
+            ],
+            "subTitle": [
+                "어지럽고 자유로운",
+                "Reeling, Freeing"
+            ],
+            "longText" :[
+                "dummytext",
+                ""
+            ],
+            "mainFilePath": "Sprites/MainCovers/cover_ch14_main",
             "subLockFilePath": [
-                "Sprites/PrograssSubUI/cover_ch5_sub1_fail",
-                "Sprites/PrograssSubUI/cover_ch5_sub2_fail",
-                "Sprites/PrograssSubUI/cover_ch5_sub3_fail",
-                "Sprites/PrograssSubUI/cover_ch5_sub4_fail"
+                "Sprites/SubCovers/cover_ch5_sub1_fail",
+                "Sprites/SubCovers/cover_ch5_sub2_fail",
+                "Sprites/SubCovers/cover_ch5_sub3_fail",
+                "Sprites/SubCovers/cover_ch5_sub4_fail"
             ],
             "subFilePath": [
-                "Sprites/PrograssSubUI/cover_ch5_sub1_pass",
-                "Sprites/PrograssSubUI/cover_ch5_sub2_pass",
-                "Sprites/PrograssSubUI/cover_ch5_sub3_pass",
-                "Sprites/PrograssSubUI/cover_ch5_sub4_pass"
+                "Sprites/SubCovers/cover_ch5_sub1_pass",
+                "Sprites/SubCovers/cover_ch5_sub2_pass",
+                "Sprites/SubCovers/cover_ch5_sub3_pass",
+                "Sprites/SubCovers/cover_ch5_sub4_pass"
             ]
         }
     ]

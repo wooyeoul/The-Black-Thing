@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class MenuController : MonoBehaviour
 {
-    /*Menu 변수*/
-    #region Chapter 정보를 가진 변수,오직 한개만 존재해야하고, 수정해선 안된다.
-    public static Chapters chapterList;
-    #endregion
 
     [SerializeField]
     GameObject MenuBut;
@@ -35,39 +34,32 @@ public class MenuController : MonoBehaviour
 
     [SerializeField]
     GameObject dragIcon;
-    public static Dictionary<int, GameObject> prograssUI; //prograss UI를 전체 관리할 예정 
 
     [SerializeField]
     GameObject dragScroller;
     float dragScrollWidth = 0.0f;
     #endregion
-    void Start()
-    {
-        prograssUI = new Dictionary<int, GameObject>();
-        //데이터 로드 
-        var loadedJson = Resources.Load<TextAsset>("Json/Chapters");
 
-        if (loadedJson)
-        {
-            chapterList = JsonUtility.FromJson<Chapters>(loadedJson.ToString());
-        }
-    }
 
     public void onMenu()
     {
-        if (!Icon.activeSelf)
-        {
-            TimeUI.SetActive(false);
-            //checklist의 부모
-            checkList.transform.parent.gameObject.SetActive(false);
-            Icon.transform.parent.gameObject.SetActive(true);
-            this.gameObject.GetComponent<Animator>().SetBool("isDowning", false);
-        }
-        else
-        {
-            Icon.SetActive(false);
-            this.gameObject.GetComponent<Animator>().SetBool("isDowning", true);
-        }
+        MenuDefault.SetActive(true);
+        TimeUI.SetActive(false);
+        checkList.SetActive(false);
+        
+        /* if (!Icon.activeSelf)
+         {
+             TimeUI.SetActive(false);
+             //checklist의 부모
+             checkList.transform.parent.gameObject.SetActive(false);
+             Icon.transform.parent.gameObject.SetActive(true);
+             this.gameObject.GetComponent<Animator>().SetBool("isDowning", false);
+         }
+         else
+         {
+             Icon.SetActive(false);
+             this.gameObject.GetComponent<Animator>().SetBool("isDowning", true);
+         }*/
     }
 
     public void offMenu()
@@ -95,7 +87,6 @@ public class MenuController : MonoBehaviour
         //DayProgressUI on,.,
         DayProgressUI.SetActive(true);
         MenuDefault.SetActive(false);
-
     }
 
     public void onClickHelper()
@@ -109,7 +100,6 @@ public class MenuController : MonoBehaviour
         MyPageUI.SetActive(true);
         MenuDefault.SetActive(false);
     }
-
 
     IEnumerator CloseAlter(GameObject checkList)
     {
@@ -126,6 +116,7 @@ public class MenuController : MonoBehaviour
         else
             checkList.SetActive(false);
     }
+
     public void onlyskipoff()
     {
         Default.SetActive(true);
@@ -149,7 +140,9 @@ public class MenuController : MonoBehaviour
         TimeUI.SetActive(false);
         Replay.SetActive(true);
     }
-
+//사이즈 조절(ProgrssUI)만 수행 예정
+//챕터를 전달해서, setActive 예정
+/*
     public void OnUpdatedProgress(int chapter)
     {
         dragScrollWidth = dragScroller.GetComponent<RectTransform>().rect.width; //원래위치?
@@ -200,5 +193,5 @@ public class MenuController : MonoBehaviour
         float val = (chapter * dragIcon.GetComponent<RectTransform>().rect.width) / (dragScroller.GetComponent<ScrollRect>().content.rect.width - dragScrollWidth);
         //중앙 위치 계산
         dragScroller.GetComponent<ScrollRect>().horizontalNormalizedPosition = (val / val) - 0.2f; //민감도 1로 만든다음, 0.2f를 해서 알림뜨는 문제를 해결
-    }
+    }*/
 }

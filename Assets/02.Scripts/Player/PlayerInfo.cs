@@ -15,6 +15,7 @@ public class PlayerInfo
 
     public int _alreadyEndedPhase=0; //0일때는 아직 진행 안함
     public bool _isDiaryCheck = false;
+    public LANGUAGE _language; //
 
     public PlayerInfo()
     {
@@ -26,7 +27,9 @@ public class PlayerInfo
         _acousticVolume=50.0f;
         _alreadyEndedPhase=0;
         _isDiaryCheck=false;
+        _language = LANGUAGE.KOREAN;
     }
+
     public PlayerInfo(int id,string nickname,int chapter){
         _id=id;
         _nickname=nickname;

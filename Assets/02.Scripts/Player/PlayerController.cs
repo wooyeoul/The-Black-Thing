@@ -4,6 +4,13 @@ using UnityEngine;
 using System;
 using System.Text;
 using System.IO;
+
+public enum LANGUAGE 
+{ 
+    KOREAN = 0,
+    ENGLISH
+}
+
 public class PlayerController : MonoBehaviour
 {
 
@@ -17,12 +24,13 @@ public class PlayerController : MonoBehaviour
     string nickname;
     [SerializeField]
     int currentChapter;
-
-
     public bool isDiaryCheck = false;
     bool isNextChapter = false;
     const float _passTime = 1800f; //30분을 기준으로 한다.
     // Start is called before the first frame update
+
+    [SerializeField]
+    bool isEng;
     private void Awake()
     {
         //앞으로 player을 동적으로 생성해서 관리할 예정.. 아직은 미리 초기화해서 사용한다.
@@ -40,6 +48,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         _elapsedTime += Time.deltaTime;
+
+        if(isEng)
+        {
+            _player._language = LANGUAGE.ENGLISH;
+            isEng = false;
+        }
     }
 
     public void Init()
@@ -57,6 +71,18 @@ public class PlayerController : MonoBehaviour
     {
         _player.CurrentChapter += 1;
         currentChapter = _player.CurrentChapter;
+    }
+    public void SetLanguage(string language)
+    {
+        LANGUAGE lang;
+        if(Enum.TryParse(language,true,out lang))
+        {
+            _player._language = lang;
+        }
+    }
+    public LANGUAGE getLanguage()
+    {
+        return _player._language;
     }
     //시간 설정 : (현재 시간 - watching이 진행된 시간)+60분
     public void PassWathingTime()
