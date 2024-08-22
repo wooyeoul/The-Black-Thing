@@ -21,6 +21,7 @@ public class ProgressUIController : MonoBehaviour
     [SerializeField]
     GameObject detailed_popup;
 
+
     [SerializeField]
     GameObject dragIconPrefab;
     [SerializeField]
@@ -32,13 +33,20 @@ public class ProgressUIController : MonoBehaviour
     [Tooltip("Init Rect Size(width,height)")]
     Vector2 InitScrollSize;
 
-    void Start()
+    private void Awake()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        dragIconList = new Dictionary<int,GameObject>();
+        dragIconList = new Dictionary<int, GameObject>();
         iconWidth = dragIconPrefab.GetComponent<RectTransform>().rect.width;
         InitScrollSize = new Vector2(dragScroller.GetComponent<RectTransform>().rect.width, dragScroller.GetComponent<RectTransform>().rect.height);
+    }
 
+    private void OnEnable()
+    {
+        dragScroller.GetComponent<ScrollRect>().horizontalNormalizedPosition = 0f;
+    }
+    void Start()
+    {
         /*Icon 14개를 모두 생성 및 초기화.*/
         InstantiateDragIcon();
     }
@@ -62,7 +70,14 @@ public class ProgressUIController : MonoBehaviour
             }
         }
 
-        if (curChapter < 14)
+        if(curChapter<3)
+        {
+            for (int i = 1; i <= 3; i++)
+            {
+                dragIconList[curChapter + i].SetActive(true);
+            }
+        }
+        else if(curChapter<14)
         {
             dragIconList[curChapter + 1].SetActive(true);
         }
@@ -70,7 +85,6 @@ public class ProgressUIController : MonoBehaviour
         //기본 3개는 미리 보여주는 영역이기 때문에, 플레이어 챕터로부터 -3을 빼게 된다.
         int sizeChapter = Mathf.Clamp(curChapter - 3, 0, 15);
         dragScroller.GetComponent<RectTransform>().sizeDelta = new Vector2(InitScrollSize.x + sizeChapter * iconWidth, InitScrollSize.y);
-        dragScroller.GetComponent<ScrollRect>().horizontalNormalizedPosition = 0f;
     }
 
     void InstantiateDragIcon()
@@ -128,5 +142,22 @@ public class ProgressUIController : MonoBehaviour
 
     public void canceled(){
         alter.SetActive(false);
+    }
+
+    public void exit()
+    {
+        //현재 게임 오브젝트가 DayProgress_Default이면, DayProgressUI SetActive한다.
+
+        if (detailed_popup.activeSelf)
+        {
+            detailed_popup.SetActive(false);
+            dragScroller.transform.parent.gameObject.SetActive(true);
+        }
+        else
+        {
+           //menu_default.gameObject.SetActive(true);
+            this.gameObject.SetActive(false);
+        }
+
     }
 }

@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text.RegularExpressions;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Device;
 using UnityEngine.UI;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
@@ -11,6 +13,10 @@ public class MenuController : MonoBehaviour
 
     [SerializeField]
     GameObject MenuBut;
+    [SerializeField]
+    GameObject ExitBut;
+
+
     [SerializeField]
     GameObject Icon;
 
@@ -27,47 +33,48 @@ public class MenuController : MonoBehaviour
     [SerializeField]
     GameObject Default;
     [SerializeField]
-    GameObject Replay;
-    #region Ã©ÅÍ º¯¼ö
-    [SerializeField]
     GameObject checkList;
 
     [SerializeField]
-    GameObject dragIcon;
+    GameObject Screens;
 
-    [SerializeField]
-    GameObject dragScroller;
-    float dragScrollWidth = 0.0f;
-    #endregion
+    Animator MenuButAnim;
 
+    bool isOpening = false;
+
+    private void Start()
+    {
+        MenuButAnim = GetComponent<Animator>();
+    }
 
     public void onMenu()
     {
-        MenuDefault.SetActive(true);
-        TimeUI.SetActive(false);
-        checkList.SetActive(false);
-        
-        /* if (!Icon.activeSelf)
-         {
-             TimeUI.SetActive(false);
-             //checklistÀÇ ºÎ¸ð
-             checkList.transform.parent.gameObject.SetActive(false);
-             Icon.transform.parent.gameObject.SetActive(true);
-             this.gameObject.GetComponent<Animator>().SetBool("isDowning", false);
-         }
-         else
-         {
-             Icon.SetActive(false);
-             this.gameObject.GetComponent<Animator>().SetBool("isDowning", true);
-         }*/
+        MenuBut.GetComponent<Button>().enabled = false;
+        isOpening = !isOpening;
+        MenuButAnim.SetFloat("speed", 1f);
+        if (isOpening)
+        {
+            Screens.SetActive(false);
+            TimeUI.SetActive(false);
+            checkList.SetActive(false);
+            MenuDefault.SetActive(true);
+            MenuButAnim.SetBool("isDowning", true);
+            ExitBut.GetComponent<Button>().enabled = true;
+        }
+        else
+        {
+            Screens.SetActive(true);
+            MenuDefault.transform.GetChild(1).gameObject.SetActive(false);
+            MenuButAnim.SetBool("isDowning", false);
+        }
     }
 
     public void offMenu()
     {
-        if (Icon.activeSelf)
+        if(ExitBut != null)
         {
-            this.gameObject.GetComponent<Animator>().SetBool("isDowning", true);
-            Icon.SetActive(false);
+            ExitBut.GetComponent<Button>().enabled = false;
+            onMenu();
         }
     }
 
@@ -80,25 +87,32 @@ public class MenuController : MonoBehaviour
     }
     public void MenuAniExit()
     {
-        Icon.SetActive(true);
+        MenuBut.GetComponent<Button>().enabled = true;
+        if (isOpening)
+        {
+            MenuDefault.transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else
+        {
+            TimeUI.SetActive(true);
+            checkList.SetActive(true);
+            MenuDefault.SetActive(false);
+        }
     }
     public void onDayProgressUI()
     {
         //DayProgressUI on,.,
         DayProgressUI.SetActive(true);
-        MenuDefault.SetActive(false);
     }
 
     public void onClickHelper()
     {
         Helper.SetActive(true);
-        MenuDefault.SetActive(false);
     }
 
     public void onClickMypage()
     {
         MyPageUI.SetActive(true);
-        MenuDefault.SetActive(false);
     }
 
     IEnumerator CloseAlter(GameObject checkList)
@@ -124,30 +138,30 @@ public class MenuController : MonoBehaviour
     }
     public void skipoff()
     {
-        Debug.Log("²¨");
+        Debug.Log("ï¿½ï¿½");
         Default.SetActive(false);
         TimeUI.SetActive(false);
     }
 
     public void skipon()
     {
-        Debug.Log("ÄÑ");
+        Debug.Log("ï¿½ï¿½");
         Default.SetActive(true);
         TimeUI.SetActive(true);
     }
     public void replayON()
     {
         TimeUI.SetActive(false);
-        Replay.SetActive(true);
+        //Replay.SetActive(true);
     }
-//»çÀÌÁî Á¶Àý(ProgrssUI)¸¸ ¼öÇà ¿¹Á¤
-//Ã©ÅÍ¸¦ Àü´ÞÇØ¼­, setActive ¿¹Á¤
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ProgrssUI)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//Ã©ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½, setActive ï¿½ï¿½ï¿½ï¿½
 /*
     public void OnUpdatedProgress(int chapter)
     {
-        dragScrollWidth = dragScroller.GetComponent<RectTransform>().rect.width; //¿ø·¡À§Ä¡?
-        //chapter¿¡ ¸Â´Â Dictionary »ý¼ºÀ» ¿©±â¼­ ÇÏ°í, ProgressUIController´Â ±×°É SetActiveÇÏ´Â ¿ëµµ·Î »ç¿ëÇÏÀÚ.
-        //1~4ÀÏÂ÷ =>ÇÊ¼ö 
+        dragScrollWidth = dragScroller.GetComponent<RectTransform>().rect.width; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡?
+        //chapterï¿½ï¿½ ï¿½Â´ï¿½ Dictionary ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½â¼­ ï¿½Ï°ï¿½, ProgressUIControllerï¿½ï¿½ ï¿½×°ï¿½ SetActiveï¿½Ï´ï¿½ ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+        //1~4ï¿½ï¿½ï¿½ï¿½ =>ï¿½Ê¼ï¿½ 
         for (int i = 1; i <= 3; i++)
         {
             if (prograssUI.ContainsKey(i) == false)
@@ -155,16 +169,16 @@ public class MenuController : MonoBehaviour
                 GameObject icon = Instantiate(dragIcon, dragScroller.transform.GetChild(0));
                 icon.name = chapterList.chapters[i].chapter;
                 DragIcon curIconScript = icon.GetComponent<DragIcon>();
-                curIconScript.Settings(chapterList.chapters[i].id, chapterList.chapters[i].title, chapterList.chapters[i].mainFilePath, "¼­ºê Å¸ÀÌÆ² ÁÖ¼¼¿ä");
+                curIconScript.Settings(chapterList.chapters[i].id, chapterList.chapters[i].title, chapterList.chapters[i].mainFilePath, "ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½Æ² ï¿½Ö¼ï¿½ï¿½ï¿½");
                 prograssUI[i] = icon;
                 icon.GetComponent<Button>().onClick.AddListener(DayProgressUI.GetComponent<ProgressUIController>().onClickdragIcon);
 
-                //ProgressBarÀÇ ±æÀÌ Á¶ÀýÀ» À§ÇÔ.
+                //ProgressBarï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
                 dragScroller.GetComponent<RectTransform>().sizeDelta = new Vector2(dragScroller.GetComponent<RectTransform>().rect.width, dragScroller.GetComponent<RectTransform>().rect.height);
             }
         }
 
-        //5ÀÏÂ÷~14ÀÏ±îÁö
+        //5ï¿½ï¿½ï¿½ï¿½~14ï¿½Ï±ï¿½ï¿½ï¿½
         for (int i = 4; i <= chapter + 1; i++)
         {
             if (i >= 15) continue;
@@ -173,11 +187,11 @@ public class MenuController : MonoBehaviour
                 GameObject icon = Instantiate(dragIcon, dragScroller.transform.GetChild(0));
                 icon.name = chapterList.chapters[i].chapter;
                 DragIcon curIconScript = icon.GetComponent<DragIcon>();
-                curIconScript.Settings(chapterList.chapters[i].id, chapterList.chapters[i].title, chapterList.chapters[i].mainFilePath, "¼­ºê Å¸ÀÌÆ² ÁÖ¼¼¿ä");
+                curIconScript.Settings(chapterList.chapters[i].id, chapterList.chapters[i].title, chapterList.chapters[i].mainFilePath, "ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½Æ² ï¿½Ö¼ï¿½ï¿½ï¿½");
                 prograssUI[i] = icon;
                 icon.GetComponent<Button>().onClick.AddListener(DayProgressUI.GetComponent<ProgressUIController>().onClickdragIcon);
 
-                //ProgressBarÀÇ ±æÀÌ Á¶ÀýÀ» À§ÇÔ.
+                //ProgressBarï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 
                 dragScroller.GetComponent<RectTransform>().sizeDelta = new Vector2(dragScroller.GetComponent<RectTransform>().rect.width + dragIcon.GetComponent<RectTransform>().rect.width, dragScroller.GetComponent<RectTransform>().rect.height);
             }
@@ -191,7 +205,7 @@ public class MenuController : MonoBehaviour
             }
         }
         float val = (chapter * dragIcon.GetComponent<RectTransform>().rect.width) / (dragScroller.GetComponent<ScrollRect>().content.rect.width - dragScrollWidth);
-        //Áß¾Ó À§Ä¡ °è»ê
-        dragScroller.GetComponent<ScrollRect>().horizontalNormalizedPosition = (val / val) - 0.2f; //¹Î°¨µµ 1·Î ¸¸µç´ÙÀ½, 0.2f¸¦ ÇØ¼­ ¾Ë¸²¶ß´Â ¹®Á¦¸¦ ÇØ°á
+        //ï¿½ß¾ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½
+        dragScroller.GetComponent<ScrollRect>().horizontalNormalizedPosition = (val / val) - 0.2f; //ï¿½Î°ï¿½ï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 0.2fï¿½ï¿½ ï¿½Ø¼ï¿½ ï¿½Ë¸ï¿½ï¿½ß´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø°ï¿½
     }*/
 }
