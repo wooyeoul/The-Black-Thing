@@ -25,7 +25,7 @@ public class ChapterProgressManager : MonoBehaviour
     public void PassData(ChapterInfo chapterInfo, PlayerController player)
     {
         this.title.text=chapterInfo.title[(int)player.getLanguage()];
-        this.sentence.text=chapterInfo.loadText[(int)player.getLanguage()];
+        this.sentence.text=chapterInfo.longText[(int)player.getLanguage()];
         this.player=player;
 
         //켜질 때 현재 chapter값보다 작으면

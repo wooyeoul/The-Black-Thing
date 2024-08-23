@@ -1,0 +1,46 @@
+{
+    "MenuMyPage":
+    {
+        "Settings" : ["게임 설정",""],
+        "Community" : ["커뮤니티",""],
+        "Credit" : ["만든 사람들",""]
+    },
+    "settings" :
+    {
+        "name" : ["이름","Name"],
+        "BGM" : ["배경 음악",""],
+        "SFX" : ["음향 효과",""],
+        "alert" : ["푸시 알림",""],
+        "namechanged" : ["‘<nickname>’(으)로 이름이 변경되었습니다.\n뭉치가 당신을 이 단어로 부르게 됩니다.",""],
+        "namesetting" : 
+        {
+            "title": ["이름이란 당신의 표지이자 심지.\n뭉치에게 어떠한 이름으로 불리우고 싶나요?",""],
+            "placeholder" : ["권장: 성을 제외한 본명",""],
+            "no" : ["취소하기",""],
+            "yes" : ["저장하기",""]
+        },
+        "pushoff" :
+        {
+            "title":["뭉치의 애절한 부름을 들을 수 없게 됩니다.\n정말 푸시 알림을 끌까요?",""],
+            "no": ["무심하게 꺼 버린다.",""],
+            "yes": ["마음이 약해졌다. 켜 둔다.",""]
+        }
+    },
+    "community" :
+    {
+        "instagram" : ["제작자들의 문학, 철학, 해학이\n담긴 글들을 라디오 듣듯\n감상해 보세요!",""],
+        "discord" : ["게임 <뭉치>의 Discord 커뮤니티.\n그림자 진 놀이터,\n우리만의 안식처로 초대합니다.",""],
+        "discordTip" : ["게임 플레이에 문제나\n버그가 있다면 여기로!",""],
+        "x" : ["불유쾌하고 사랑스러운\n뭉치의 상상들이\n실타래처럼 엉켜 있는 곳.",""],
+        "url" : [
+            "https://discord.gg/mfK4J9tsHK",
+            "https://www.instagram.com/moonstew_games/",
+            "https://twitter.com/moonstew_games"
+        ]
+    },
+    "credit" :
+    {
+        
+    }
+}
+

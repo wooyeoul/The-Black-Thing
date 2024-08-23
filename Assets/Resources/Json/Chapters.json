@@ -417,16 +417,16 @@
             ],
             "mainFilePath": "Sprites/MainCovers/cover_ch12_main",
             "subLockFilePath": [
-                "Sprites/SubCovers/cover_ch5_sub1_fail",
-                "Sprites/SubCovers/cover_ch5_sub2_fail",
-                "Sprites/SubCovers/cover_ch5_sub3_fail",
-                "Sprites/SubCovers/cover_ch5_sub4_fail"
+                "Sprites/SubCovers/cover_ch12_sub1_fail",
+                "Sprites/SubCovers/cover_ch12_sub2_fail",
+                "Sprites/SubCovers/cover_ch12_sub3_fail",
+                "Sprites/SubCovers/cover_ch12_sub4_fail"
             ],
             "subFilePath": [
-                "Sprites/SubCovers/cover_ch5_sub1_pass",
-                "Sprites/SubCovers/cover_ch5_sub2_pass",
-                "Sprites/SubCovers/cover_ch5_sub3_pass",
-                "Sprites/SubCovers/cover_ch5_sub4_pass"
+                "Sprites/SubCovers/cover_ch12_sub1_pass",
+                "Sprites/SubCovers/cover_ch12_sub2_pass",
+                "Sprites/SubCovers/cover_ch12_sub3_pass",
+                "Sprites/SubCovers/cover_ch12_sub4_pass"
             ]
         },
         {
@@ -450,16 +450,16 @@
             ],
             "mainFilePath": "Sprites/MainCovers/cover_ch13_main",
             "subLockFilePath": [
-                "Sprites/SubCovers/cover_ch5_sub1_fail",
-                "Sprites/SubCovers/cover_ch5_sub2_fail",
-                "Sprites/SubCovers/cover_ch5_sub3_fail",
-                "Sprites/SubCovers/cover_ch5_sub4_fail"
+                "Sprites/SubCovers/cover_ch13_sub1_fail",
+                "Sprites/SubCovers/cover_ch13_sub2_fail",
+                "Sprites/SubCovers/cover_ch13_sub3_fail",
+                "Sprites/SubCovers/cover_ch13_sub4_fail"
             ],
             "subFilePath": [
-                "Sprites/SubCovers/cover_ch5_sub1_pass",
-                "Sprites/SubCovers/cover_ch5_sub2_pass",
-                "Sprites/SubCovers/cover_ch5_sub3_pass",
-                "Sprites/SubCovers/cover_ch5_sub4_pass"
+                "Sprites/SubCovers/cover_ch13_sub1_pass",
+                "Sprites/SubCovers/cover_ch13_sub2_pass",
+                "Sprites/SubCovers/cover_ch13_sub3_pass",
+                "Sprites/SubCovers/cover_ch13_sub4_pass"
             ]
         },
         {
@@ -483,16 +483,16 @@
             ],
             "mainFilePath": "Sprites/MainCovers/cover_ch14_main",
             "subLockFilePath": [
-                "Sprites/SubCovers/cover_ch5_sub1_fail",
-                "Sprites/SubCovers/cover_ch5_sub2_fail",
-                "Sprites/SubCovers/cover_ch5_sub3_fail",
-                "Sprites/SubCovers/cover_ch5_sub4_fail"
+                "Sprites/SubCovers/cover_ch14_sub1_fail",
+                "Sprites/SubCovers/cover_ch14_sub2_fail",
+                "Sprites/SubCovers/cover_ch14_sub3_fail",
+                "Sprites/SubCovers/cover_ch14_sub4_fail"
             ],
             "subFilePath": [
-                "Sprites/SubCovers/cover_ch5_sub1_pass",
-                "Sprites/SubCovers/cover_ch5_sub2_pass",
-                "Sprites/SubCovers/cover_ch5_sub3_pass",
-                "Sprites/SubCovers/cover_ch5_sub4_pass"
+                "Sprites/SubCovers/cover_ch14_sub1_pass",
+                "Sprites/SubCovers/cover_ch14_sub2_pass",
+                "Sprites/SubCovers/cover_ch14_sub3_pass",
+                "Sprites/SubCovers/cover_ch14_sub4_pass"
             ]
         }
     ]

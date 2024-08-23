@@ -1,48 +1,68 @@
 using System;
+using System.Collections.Generic;
 
+/*Sub 성공 챕터 유무에 따라 아키텍처 타입이 달라짐*/
+
+[System.Serializable]
+public struct ArcheType
+{
+    public int sun;//해와 달 중 구분
+    public int moon; 
+    public int actively; //적극과 소극으로 구분
+    public int negative;
+}
 [System.Serializable]
 public class PlayerInfo
 {
-    public int _id; //player 구분 키 값
-    public string _nickname;
+    public int id; //player 구분 키 값
+    public string nickname;
     //player 입장 시간 - 입장한 날짜까지 전부 들고 있는다. 
-    public  DateTime _datetime;
+    public  DateTime datetime;
     //현재 진행 중인 챕터
-    public int _chapter;
+    public int chapter;
     
-    public float _bgmVolume=50f;
-    public float _acousticVolume=50f;
+    public float bgmVolume=50f;
+    public float acousticVolume=50f;
 
-    public int _alreadyEndedPhase=0; //0일때는 아직 진행 안함
-    public bool _isDiaryCheck = false;
-    public LANGUAGE _language; //
+    public int alreadyEndedPhase=0; //0일때는 아직 진행 안함
+    public bool isDiaryCheck = false;
+    public bool isPushNotificationEnabled = true;
+    public LANGUAGE language; //
+
+    public List<bool> subSuccessOrNot;
+    public ArcheType archeType;
 
     public PlayerInfo()
     {
-        _id=0;
-        _nickname="default";
-        _chapter=1;
-        _datetime = DateTime.Now;
-        _bgmVolume=50.0f;
-        _acousticVolume=50.0f;
-        _alreadyEndedPhase=0;
-        _isDiaryCheck=false;
-        _language = LANGUAGE.KOREAN;
+        if(subSuccessOrNot == null)
+        {
+            subSuccessOrNot = new List<bool>();
+        }
+        id =0;
+        nickname="default";
+        chapter=1;
+        datetime = DateTime.Now;
+        bgmVolume=50.0f;
+        acousticVolume=50.0f;
+        alreadyEndedPhase=0;
+        isDiaryCheck=false;
+        language = LANGUAGE.KOREAN;
+        isPushNotificationEnabled = true;
     }
 
     public PlayerInfo(int id,string nickname,int chapter){
-        _id=id;
-        _nickname=nickname;
-        _chapter=chapter;
+        this.id= id;
+        this.nickname= nickname;
+        this.chapter= chapter;
     }
 
-    public bool isDiaryCheck { get => _isDiaryCheck; set=>_isDiaryCheck = value;}
-    public int AlreadyEndedPhase { get=>_alreadyEndedPhase; set=>_alreadyEndedPhase = value;}
+    public bool IsDiaryCheck { get => isDiaryCheck; set=>isDiaryCheck = value;}
+    public int AlreadyEndedPhase { get=>alreadyEndedPhase; set=>alreadyEndedPhase = value;}
 
-    public float BgmVolume{ get=>_bgmVolume; set=>_bgmVolume = value; }
-    public float AcousticVolume { get=>_acousticVolume; set=>_acousticVolume=value; }
-    public int CurrentChapter { get => _chapter; set => _chapter = value; }
-    public DateTime Datetime { get => _datetime; set => _datetime = value;}
-    public string Nickname { get => _nickname; set => _nickname = value; }
-    public int Id { get => _id; set => _id = value; }
+    public float BgmVolume{ get=>bgmVolume; set=>bgmVolume = value; }
+    public float AcousticVolume { get=>acousticVolume; set=>acousticVolume=value; }
+    public int CurrentChapter { get => chapter; set => chapter = value; }
+    public DateTime Datetime { get => datetime; set => datetime = value;}
+    public string Nickname { get => nickname; set => nickname = value; }
+    public int Id { get => id; set => id = value; }
 }

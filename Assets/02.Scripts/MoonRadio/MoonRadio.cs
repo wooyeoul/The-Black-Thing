@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MoonRadio : MonoBehaviour
+public class MoonRadio : BaseObject
 {
     [SerializeField]
     GameObject MoonRadioController;
