@@ -13,12 +13,11 @@ public enum LANGUAGE
 
 public class PlayerController : MonoBehaviour
 {
-
     const string playerInfoDataFileName = "PlayerData.json";
-    public static PlayerInfo player;
+    //실제 플레이어
+    private PlayerInfo player;
     //player 접속 경과 시간
     float elapsedTime;
-
     //임시 저장을 위한 serialize..
     [SerializeField]
     string nickname;
@@ -40,8 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         //앞으로 player을 동적으로 생성해서 관리할 예정.. 아직은 미리 초기화해서 사용한다.
         gobackPage = new Stack<int>();
-        player = new PlayerInfo(0, nickname, 1);
-        //WritePlayerFile();
+        player = new PlayerInfo(nickname, 1, GamePatternState.Watching);
         readStringFromPlayerFile();
     }
 
@@ -51,17 +49,13 @@ public class PlayerController : MonoBehaviour
     {
         elapsedTime += Time.deltaTime;
 
+
+        //아래 없앨 예정, 테스트 버전
         if(isEng)
         {
             player.language = LANGUAGE.ENGLISH;
             isEng = false;
         }
-    }
-
-    public void Init()
-    {
-        player = new PlayerInfo(0, nickname, 1);
-        WritePlayerFile();
     }
 
     public float GetTime()
@@ -86,7 +80,7 @@ public class PlayerController : MonoBehaviour
 
     public void SetSEVolume(float value)
     {
-        player.acousticVolume = value;
+        player.sfxVolume = value;
     }
 
     public void SetChapter()
@@ -132,19 +126,17 @@ public class PlayerController : MonoBehaviour
             player.Datetime = dateTime;
         }
     }
+
     public int GetAlreadyEndedPhase()
     {
-        return player.AlreadyEndedPhase;
-    }
-    public void SetAlreadyEndedPhase()
-    {
-
+        return (int)player.currentPhase;
     }
 
     public void SetIsDiaryCheck(bool isCheck)
     {
         player.isDiaryCheck = isCheck;
     }
+
     public int GetChapter()
     {
         return player.CurrentChapter;

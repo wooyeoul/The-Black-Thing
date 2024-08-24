@@ -11,26 +11,32 @@ public struct ArcheType
     public int actively; //적극과 소극으로 구분
     public int negative;
 }
+
 [System.Serializable]
 public class PlayerInfo
 {
-    public int id; //player 구분 키 값
+    //player 닉네임
     public string nickname;
     //player 입장 시간 - 입장한 날짜까지 전부 들고 있는다. 
     public  DateTime datetime;
     //현재 진행 중인 챕터
     public int chapter;
-    
-    public float bgmVolume=50f;
-    public float acousticVolume=50f;
-
-    public int alreadyEndedPhase=0; //0일때는 아직 진행 안함
+    //브금 효과 크기
+    public float bgmVolume;
+    //사운드 이펙트 효과 크기
+    public float sfxVolume;
+    //다이어리 체크 유무(매일 1개씩 뜬다.)
     public bool isDiaryCheck = false;
-    public bool isPushNotificationEnabled = true;
-    public LANGUAGE language; //
-
+    //푸시 알림 유무
+    public bool isPushNotificationEnabled;
+    //현재 플레이어 언어
+    public LANGUAGE language;
+    //서브 성공유무를 체크하기 위한 부울 변수, 4*14일차, 즉 56개 나올 예정
     public List<bool> subSuccessOrNot;
+    //유서 결과를 체크하기 위한 아키텍처 타입
     public ArcheType archeType;
+    //현재 진행 pattern 상태
+    public GamePatternState currentPhase; 
 
     public PlayerInfo()
     {
@@ -38,31 +44,39 @@ public class PlayerInfo
         {
             subSuccessOrNot = new List<bool>();
         }
-        id =0;
         nickname="default";
         chapter=1;
-        datetime = DateTime.Now;
-        bgmVolume=50.0f;
-        acousticVolume=50.0f;
-        alreadyEndedPhase=0;
-        isDiaryCheck=false;
-        language = LANGUAGE.KOREAN;
-        isPushNotificationEnabled = true;
+        Init();
     }
 
-    public PlayerInfo(int id,string nickname,int chapter){
-        this.id= id;
+    public PlayerInfo(string nickname,int chapter, GamePatternState initPhase)
+    {
         this.nickname= nickname;
         this.chapter= chapter;
+        this.currentPhase = initPhase;
+
+        if (subSuccessOrNot == null)
+        {
+            subSuccessOrNot = new List<bool>();
+        }
+        Init();
+    }
+
+    void Init()
+    {
+        datetime = DateTime.Now;
+        bgmVolume = 0.5f;
+        sfxVolume = 0.5f;
+        isDiaryCheck = false;
+        language = LANGUAGE.KOREAN;
+        isPushNotificationEnabled = true;
+        currentPhase = GamePatternState.Watching;
     }
 
     public bool IsDiaryCheck { get => isDiaryCheck; set=>isDiaryCheck = value;}
-    public int AlreadyEndedPhase { get=>alreadyEndedPhase; set=>alreadyEndedPhase = value;}
-
     public float BgmVolume{ get=>bgmVolume; set=>bgmVolume = value; }
-    public float AcousticVolume { get=>acousticVolume; set=>acousticVolume=value; }
+    public float AcousticVolume { get=>sfxVolume; set=>sfxVolume=value; }
     public int CurrentChapter { get => chapter; set => chapter = value; }
     public DateTime Datetime { get => datetime; set => datetime = value;}
     public string Nickname { get => nickname; set => nickname = value; }
-    public int Id { get => id; set => id = value; }
 }
