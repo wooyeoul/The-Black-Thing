@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     bool isEng;
 
+    public delegate void NextPhaseDelegate(GamePatternState state);
+    public NextPhaseDelegate nextPhaseDelegate;
+
     /*준현아 페이지 저장할 때 idx는 이 변수 사용하면 된다.*/
     [SerializeField]
     [Tooltip("뒤로가기 구현을 위한 스택")]
@@ -42,7 +45,10 @@ public class PlayerController : MonoBehaviour
         player = new PlayerInfo(nickname, 1, GamePatternState.Watching);
         readStringFromPlayerFile();
     }
-
+    private void Start()
+    {
+        nextPhaseDelegate(player.currentPhase);
+    }
     // Update is called once per frame
     //1시간이 되었는지 체크하기 위해서 저정용도
     void Update()
@@ -56,6 +62,25 @@ public class PlayerController : MonoBehaviour
             player.language = LANGUAGE.ENGLISH;
             isEng = false;
         }
+    }
+    public void NextPhase()
+    {
+        int phase = GetAlreadyEndedPhase();
+
+        phase += 1;
+
+        if((GamePatternState)phase > GamePatternState.NextChapter)
+        {
+            player.currentPhase = GamePatternState.Watching;
+            //챕터가 증가함
+            SetChapter();
+        }
+        else
+        {
+            player.currentPhase = (GamePatternState)phase;
+        }
+
+        nextPhaseDelegate(player.currentPhase);
     }
 
     public float GetTime()

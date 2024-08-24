@@ -654,12 +654,12 @@ GameObject:
   - component: {fileID: 46626955}
   - component: {fileID: 46626954}
   m_Layer: 5
-  m_Name: check 1
+  m_Name: check1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &46626953
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1298,12 +1298,12 @@ GameObject:
   - component: {fileID: 147686896}
   - component: {fileID: 147686895}
   m_Layer: 5
-  m_Name: fly_1
+  m_Name: Watching
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &147686894
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1759,12 +1759,12 @@ GameObject:
   - component: {fileID: 215103936}
   - component: {fileID: 215103935}
   m_Layer: 5
-  m_Name: check 4
+  m_Name: check4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &215103934
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5272,6 +5272,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 574559040}
+  - component: {fileID: 574559041}
   m_Layer: 5
   m_Name: Checklist
   m_TagString: Untagged
@@ -5301,6 +5302,41 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &574559041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574559039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 420a2195818ca8c40af51b1cd391f02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkList: {fileID: 372046260}
+  skipBut: {fileID: 1007219007}
+  checklists:
+  - endedState: 0
+    preicon: {fileID: 0}
+    icon: {fileID: 147686893}
+    note: {fileID: 0}
+  - endedState: 2
+    preicon: {fileID: 147686893}
+    icon: {fileID: 2044535355}
+    note: {fileID: 46626952}
+  - endedState: 4
+    preicon: {fileID: 2044535355}
+    icon: {fileID: 1754367860}
+    note: {fileID: 1212888635}
+  - endedState: 5
+    preicon: {fileID: 1754367860}
+    icon: {fileID: 1425231910}
+    note: {fileID: 1534331620}
+  - endedState: 7
+    preicon: {fileID: 0}
+    icon: {fileID: 1425231910}
+    note: {fileID: 215103933}
 --- !u!1 &579859726
 GameObject:
   m_ObjectHideFlags: 0
@@ -10091,6 +10127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1007219008}
+  - component: {fileID: 1007219009}
   m_Layer: 5
   m_Name: TimeSkip
   m_TagString: Untagged
@@ -10105,7 +10142,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1007219007}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10121,6 +10158,62 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1007219009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007219007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1453179429}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2022455605}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: NextPhase
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1014555738
 GameObject:
   m_ObjectHideFlags: 0
@@ -13817,6 +13910,7 @@ GameObject:
   - component: {fileID: 1190237875}
   - component: {fileID: 1190237877}
   - component: {fileID: 1190237876}
+  - component: {fileID: 1190237878}
   m_Layer: 5
   m_Name: icon_checklist
   m_TagString: Untagged
@@ -13886,6 +13980,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190237874}
   m_CullTransparentMesh: 1
+--- !u!114 &1190237878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190237874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1190237876}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 574559041}
+        m_TargetAssemblyTypeName: ChecklistController, Assembly-CSharp
+        m_MethodName: OnClickCheckListIcon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1193627960
 GameObject:
   m_ObjectHideFlags: 0
@@ -14713,12 +14863,12 @@ GameObject:
   - component: {fileID: 1212888638}
   - component: {fileID: 1212888637}
   m_Layer: 5
-  m_Name: check 2
+  m_Name: check2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1212888636
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17431,7 +17581,7 @@ GameObject:
   - component: {fileID: 1425231913}
   - component: {fileID: 1425231912}
   m_Layer: 5
-  m_Name: fly_4
+  m_Name: Sleeping
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19119,12 +19269,12 @@ GameObject:
   - component: {fileID: 1534331623}
   - component: {fileID: 1534331622}
   m_Layer: 5
-  m_Name: check 3
+  m_Name: check3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1534331621
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21022,7 +21172,7 @@ GameObject:
   - component: {fileID: 1754367863}
   - component: {fileID: 1754367862}
   m_Layer: 5
-  m_Name: fly_3
+  m_Name: Writing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24457,7 +24607,7 @@ GameObject:
   - component: {fileID: 2044535358}
   - component: {fileID: 2044535357}
   m_Layer: 5
-  m_Name: fly_2
+  m_Name: Thinking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

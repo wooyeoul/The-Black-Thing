@@ -15,7 +15,9 @@ public enum GamePatternState
     MainB, // Main 다이얼로그 B 단계
     Writing, // Writing 단계
     Play, //Play 단계
-    Sleeping //Sleeping 단계
+    Sleeping, //Sleeping 단계
+    NextChapter, //Sleeping 단계가 끝나면 기다리든가, 아님 Skip을 눌러서 Watching으로 넘어갈 수 있음. 
+    End,//이 단계로 넘어가면 오류, 다음단계 0으로 이동해야함.
 };
 
 public class GameManager : MonoBehaviour
@@ -23,9 +25,9 @@ public class GameManager : MonoBehaviour
     private GameState activeState;
     private ObjectManager objectManager;
     private Dictionary<GamePatternState, GameState> states;
-    PlayerController pc;
+    private PlayerController pc;
 
-    SITime time;
+    private SITime time;
 
     GameManager()
     {
@@ -55,9 +57,10 @@ public class GameManager : MonoBehaviour
     {
         //Player 단계를 가져온다.
         pc = GameObject.FindWithTag("Player").gameObject.GetComponent<PlayerController>();
+        pc.nextPhaseDelegate += ChangeGameState;
         objectManager = GameObject.FindWithTag("ObjectManager").gameObject.GetComponent<ObjectManager>();
        
-        ChangeGameState((GamePatternState)pc.GetAlreadyEndedPhase());
+        //ChangeGameState((GamePatternState)pc.GetAlreadyEndedPhase());
         InitBackground();
     }
 
@@ -71,7 +74,6 @@ public class GameManager : MonoBehaviour
             return; 
         }
         activeState = states[patternState];
-        Debug.Log($"현재 Phase 단계 :{patternState}");
         activeState.Enter(this);
     }
 
