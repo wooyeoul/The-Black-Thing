@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -20,13 +21,9 @@ public class MypageUIController : MonoBehaviour
     GameObject nameSetting;
 
     [SerializeField]
-    [Tooltip("isPushNotificationEnabled")]
-    Button[] pushoffBut;
-
+    List<Button> pushAlert;
     [SerializeField]
-    Button pushAlertOn;
-    [SerializeField]
-    Button pushAlertOff;
+    List<Button> languageAlert;
 
     [SerializeField]
     Slider seSlider;
@@ -40,6 +37,8 @@ public class MypageUIController : MonoBehaviour
     float seVolume = 0.5f;
     int pageIdx = 0;
     bool isEnableAlert = true;
+    bool isKorean = true;
+
     PlayerController player;
 
     #region Nickname Section
@@ -63,6 +62,15 @@ public class MypageUIController : MonoBehaviour
 
     [SerializeField]
     List<string> popupPageName;
+
+    [SerializeField]
+    List<Color> colors;
+
+
+    public delegate void SettingLanguageDelegate();
+
+    public SettingLanguageDelegate SettingLanguageDel;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -87,6 +95,7 @@ public class MypageUIController : MonoBehaviour
     void Init()
     {
         isEnableAlert = player.GetisPushNotificationEnabled();
+        isKorean = player.GetLanguage() == LANGUAGE.KOREAN;
         userName = player.GetNickName();
         nameSetting.GetComponent<TMP_Text>().text = userName;
         musicVolume = player.GetMusicVolume();
@@ -101,8 +110,10 @@ public class MypageUIController : MonoBehaviour
 
         musicSlider.onValueChanged.AddListener(OnValueChangedBGM);
         musicSlider.onValueChanged.AddListener(player.SetBGMVolume);
-       // musicSlider.onValueChanged.AddListener(MusicManager.Instance.AdjustBGMVolume);  
-        
+        // musicSlider.onValueChanged.AddListener(MusicManager.Instance.AdjustBGMVolume);  
+
+        EnablePushAlertColor();
+        EnableLanguageColor();
     }
     public void OnValueChangedBGM(float value)
     {
@@ -219,6 +230,7 @@ public class MypageUIController : MonoBehaviour
     public void OnPushAlert()
     {
         isEnableAlert = true;
+        EnablePushAlertColor();
         player.SetisPushNotificationEnabled(isEnableAlert);
     }
 
@@ -230,21 +242,53 @@ public class MypageUIController : MonoBehaviour
     public void Off()
     {
         isEnableAlert = false;
+        EnablePushAlertColor();
         player.SetisPushNotificationEnabled(isEnableAlert);
         alterPopup.SetActive(false);
     }
 
     public void On()
     {
-        isEnableAlert = true;
+        isEnableAlert = true; 
+        EnablePushAlertColor();
         player.SetisPushNotificationEnabled(isEnableAlert);
         alterPopup.SetActive(false);
     }
 
+    public void SetKorean()
+    {
+        isKorean = true;
+        EnableLanguageColor();
+        player.SetLanguage(LANGUAGE.KOREAN);
+        //Setting에 해당하는 델리게이트 호출
+        //SettingLanguageDel();
+       
+    }
+
+    public void SetEnglish()
+    {
+        isKorean = false;
+        EnableLanguageColor();
+        player.SetLanguage(LANGUAGE.ENGLISH);
+        //Setting 한다.
+        //SettingLanguageDel();
+    }
     public void Exit()
     {
         this.gameObject.SetActive(false);
-
     }
 
+    void EnablePushAlertColor()
+    {
+        int Idx = Convert.ToInt32(isEnableAlert) % 2;
+        pushAlert[Idx].GetComponent<Image>().color = colors[0]; //0번이 활성화
+        pushAlert[(Idx + 1) % 2].GetComponent<Image>().color = colors[1]; //1번 비활성화
+    }
+
+    void EnableLanguageColor()
+    {
+        int Idx = Convert.ToInt32(isKorean) % 2;
+        languageAlert[Idx].GetComponent<TMP_Text>().color = colors[0]; //0번이 활성화
+        languageAlert[(Idx + 1) % 2].GetComponent<TMP_Text>().color = colors[1]; //1번 비활성화
+    }
 }

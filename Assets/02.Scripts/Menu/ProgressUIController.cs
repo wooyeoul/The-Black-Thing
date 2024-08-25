@@ -16,6 +16,7 @@ public class ProgressUIController : MonoBehaviour
     GameObject day_progress;
     #endregion
 
+
     [SerializeField]
     GameObject alter;
     [SerializeField]
@@ -39,6 +40,7 @@ public class ProgressUIController : MonoBehaviour
         dragIconList = new Dictionary<int, GameObject>();
         iconWidth = dragIconPrefab.GetComponent<RectTransform>().rect.width;
         InitScrollSize = new Vector2(dragScroller.GetComponent<RectTransform>().rect.width, dragScroller.GetComponent<RectTransform>().rect.height);
+        dragScroller.GetComponent<ScrollRect>().onValueChanged.AddListener(Scroll);
     }
 
     private void OnEnable()
@@ -99,7 +101,7 @@ public class ProgressUIController : MonoBehaviour
 
             DragIcon curIconScript = icon.GetComponent<DragIcon>();
             /*모든 상태를 업데이트 한다.*/
-            curIconScript.Settings(i,info,player.getLanguage());
+            curIconScript.Settings(i,info,player.GetLanguage());
             icon.GetComponent<Button>().onClick.AddListener(onClickdragIcon);
 
             if (i > player.GetChapter())
@@ -131,10 +133,9 @@ public class ProgressUIController : MonoBehaviour
         }
     }
 
-    public void Scroll()
+    public void Scroll(Vector2 value)
     {
-        float val=dragScroller.GetComponent<ScrollRect>().horizontalNormalizedPosition;
-        if(val>=1f)
+        if(value.x>=1f)
         {
             alter.SetActive(true);
         }

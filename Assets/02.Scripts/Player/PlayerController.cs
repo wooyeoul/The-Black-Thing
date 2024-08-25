@@ -113,6 +113,11 @@ public class PlayerController : MonoBehaviour
         player.CurrentChapter += 1;
         currentChapter = player.CurrentChapter;
     }
+    public void SetLanguage(LANGUAGE language)
+    {
+        player.language = language;
+    }
+
     public void SetLanguage(string language)
     {
         LANGUAGE lang;
@@ -121,7 +126,7 @@ public class PlayerController : MonoBehaviour
             player.language = lang;
         }
     }
-    public LANGUAGE getLanguage()
+    public LANGUAGE GetLanguage()
     {
         return player.language;
     }
