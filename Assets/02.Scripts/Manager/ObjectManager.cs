@@ -12,18 +12,31 @@ public class ObjectManager : MonoBehaviour
         pool = new ObjectPool();
     }
 
-    public void loadObject(string path)
+    public void LoadObject(string path, int chapter)
     {
         GameObject[] obj = Resources.LoadAll<GameObject>(path);
 
         foreach (GameObject obj2 in obj)
         {
             //Instantiate를 통해서 InsertMemory내 삽입
-
             GameObject newObj = Instantiate(obj2, this.transform.GetChild(0));
-            pool.InsertMemory(newObj);
 
+            if(newObj.GetComponent<BaseObject>().IsCurrentChapter(chapter))
+            {
+                newObj.SetActive(true);
+            }
+            else
+            {
+                newObj.SetActive(false);
+            }
+
+            pool.InsertMemory(newObj);
         }
     }
 
+
+    public void SettingChapter(int chapter)
+    {
+
+    }
 }

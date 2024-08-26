@@ -101,10 +101,10 @@ public class GameManager : MonoBehaviour
         }
 
         //해당 백그라운드로 변경한다.
-        //GameObject background = Resources.Load<GameObject>("Background/"+time);
-        //Instantiate<GameObject>(background, objectManager.transform);
+        GameObject background = Resources.Load<GameObject>("Background/Night");
+        Instantiate<GameObject>(background, objectManager.transform);
         //리소스 폴더에 있는 모든 오브젝트를 가져와서 풀을 모두 채운다.
         Debug.Log(time.ToString());
-        objectManager.loadObject("Night");
+        objectManager.LoadObject("Night",pc.GetChapter());
     }
 }

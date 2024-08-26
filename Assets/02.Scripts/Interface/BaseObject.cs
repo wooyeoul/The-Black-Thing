@@ -10,7 +10,7 @@ public class BaseObject : MonoBehaviour
     int id;
 
     [SerializeField]
-    int chapter;
+    List<bool> chapter;
 
     public int ID
     {
@@ -24,9 +24,10 @@ public class BaseObject : MonoBehaviour
         }
     }
 
-    bool IsCurrentChapter(int chpater)
+    public bool IsCurrentChapter(int chapter)
     {
-        return this.chapter == chapter;
+        //chapter´Â 1¾¿ Å­.
+        return this.chapter[chapter-1];
     }
     
 }

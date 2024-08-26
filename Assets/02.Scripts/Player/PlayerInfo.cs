@@ -40,10 +40,6 @@ public class PlayerInfo
 
     public PlayerInfo()
     {
-        if(subSuccessOrNot == null)
-        {
-            subSuccessOrNot = new List<bool>();
-        }
         nickname="default";
         chapter=1;
         Init();
@@ -54,11 +50,6 @@ public class PlayerInfo
         this.nickname= nickname;
         this.chapter= chapter;
         this.currentPhase = initPhase;
-
-        if (subSuccessOrNot == null)
-        {
-            subSuccessOrNot = new List<bool>();
-        }
         Init();
     }
 
@@ -71,6 +62,37 @@ public class PlayerInfo
         language = LANGUAGE.KOREAN;
         isPushNotificationEnabled = true;
         currentPhase = GamePatternState.Watching;
+
+        if (subSuccessOrNot == null)
+        {
+            subSuccessOrNot = new List<bool>();
+
+            for (int i = 0; i <= 14 * 4; i++)
+            {
+                subSuccessOrNot.Add(false);
+            }
+        }
+    }
+    
+    public void SetSubPhase(int phaseIdx)
+    {
+        subSuccessOrNot[chapter * 4 + phaseIdx] = true;
+    }
+
+    public List<bool> GetSubPhase(int Chapter)
+    {
+        List<bool> subPhase = new List<bool>();
+        
+        //4개씩 끊어서 전달한다.
+        for(int i=0;i<4;i++)
+        {
+            //0 1 2 3
+            //chapter 1, 4 5 6 7
+            //2 8 9 10 11
+            subPhase.Add(subSuccessOrNot[Chapter * 4 + i]);
+        }
+
+        return subPhase;
     }
 
     public bool IsDiaryCheck { get => isDiaryCheck; set=>isDiaryCheck = value;}

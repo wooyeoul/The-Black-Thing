@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
             isEng = false;
         }
     }
+
     public void NextPhase()
     {
         int phase = GetAlreadyEndedPhase();
@@ -82,6 +83,20 @@ public class PlayerController : MonoBehaviour
 
         nextPhaseDelegate(player.currentPhase);
     }
+
+    public void SetSubPhase(int phaseIdx)
+    {
+        if (phaseIdx < 0 || phaseIdx >= 5) return;
+        player.SetSubPhase(phaseIdx);
+    }
+
+    public List<bool> GetSubPhase(int Chapter)
+    {
+        if (Chapter < 0 || Chapter >= 15) return null;
+
+        return player.GetSubPhase(Chapter);
+    }
+
 
     public float GetTime()
     {
