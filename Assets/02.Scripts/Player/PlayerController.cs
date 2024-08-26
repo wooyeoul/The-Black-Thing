@@ -92,9 +92,9 @@ public class PlayerController : MonoBehaviour
 
     public List<bool> GetSubPhase(int Chapter)
     {
-        if (Chapter < 0 || Chapter >= 15) return null;
+        if (Chapter <= 0 || Chapter > 15) return null;
 
-        return player.GetSubPhase(Chapter);
+        return player.GetSubPhase(Chapter-1);
     }
 
 

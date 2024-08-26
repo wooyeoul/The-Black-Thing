@@ -24,6 +24,6 @@ public class ClickAnimController : BaseObject
 
     private void OnMouseDown()
     {
-        animator.SetFloat("speed", 1.0f);
+        //animator.SetFloat("speed", 1.0f);
     }
 }

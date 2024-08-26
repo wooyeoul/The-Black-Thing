@@ -26,9 +26,17 @@ public class GameManager : MonoBehaviour
     private ObjectManager objectManager;
     private Dictionary<GamePatternState, GameState> states;
     private PlayerController pc;
-
     private SITime time;
 
+    public int Chapter
+    {
+        get { return pc.GetChapter(); }
+    }
+
+    public ObjectManager ObjectManager
+    {
+        get { return objectManager; }
+    }
     GameManager()
     {
         states = new Dictionary<GamePatternState, GameState>();
@@ -60,8 +68,8 @@ public class GameManager : MonoBehaviour
         pc.nextPhaseDelegate += ChangeGameState;
         objectManager = GameObject.FindWithTag("ObjectManager").gameObject.GetComponent<ObjectManager>();
        
-        //ChangeGameState((GamePatternState)pc.GetAlreadyEndedPhase());
         InitBackground();
+        ChangeGameState((GamePatternState)pc.GetAlreadyEndedPhase());
     }
 
     public void ChangeGameState(GamePatternState patternState)

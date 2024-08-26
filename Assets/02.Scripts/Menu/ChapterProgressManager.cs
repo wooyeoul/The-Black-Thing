@@ -29,13 +29,15 @@ public class ChapterProgressManager : MonoBehaviour
         this.player=player;
 
         //켜질 때 현재 chapter값보다 작으면
-        if(chapterInfo.id<this.player.GetChapter())
+        List<bool> successPhase = this.player.GetSubPhase(chapterInfo.id);
+        //켜질 때 현재 chapter값보다 작으면
+        if (chapterInfo.id < this.player.GetChapter())
         {
-            for(int i=0;i<phaseEdUI.Count;i++) 
+            for (int i = 0; i < phaseEdUI.Count; i++)
             {
                 phaseEdUI[i].SetActive(true);
             }
-            for(int i=0;i<phaseIngUI.Count;i++) 
+            for (int i = 0; i < phaseIngUI.Count; i++)
             {
                 phaseIngUI[i].SetActive(true);
             }
@@ -43,15 +45,28 @@ public class ChapterProgressManager : MonoBehaviour
         else
         {
             //Player Phase 단계에 따라서 진행.
-            for(int i=0;i<=this.player.GetAlreadyEndedPhase();i++)
+            for (int i = 0; i <= this.player.GetAlreadyEndedPhase(); i++)
             {
-                if(phaseIngUI.Count<=i) continue;
+                if (phaseIngUI.Count <= i) continue;
                 phaseIngUI[i].SetActive(true);
             }
-            for(int i=0;i<this.player.GetAlreadyEndedPhase();i++)
+            for (int i = 0; i < this.player.GetAlreadyEndedPhase(); i++)
             {
-                if(phaseEdUI.Count<=i) continue;
+                if (phaseEdUI.Count <= i) continue;
                 phaseEdUI[i].SetActive(true);
+            }
+        }
+
+        for (int i = 0; i < successPhase.Count; i++)
+        {
+            Debug.Log(successPhase[i]);
+            if (successPhase[i])
+            {
+                subPhaseUIObject[i].SetActive(false);
+            }
+            else
+            {
+                subPhaseUIObject[i].SetActive(true);
             }
         }
 

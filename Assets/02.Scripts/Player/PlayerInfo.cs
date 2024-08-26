@@ -67,7 +67,7 @@ public class PlayerInfo
         {
             subSuccessOrNot = new List<bool>();
 
-            for (int i = 0; i <= 14 * 4; i++)
+            for (int i = 1; i <= 14 * 4; i++)
             {
                 subSuccessOrNot.Add(false);
             }

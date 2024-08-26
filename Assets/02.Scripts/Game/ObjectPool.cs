@@ -34,6 +34,17 @@ public class ObjectPool
         return _memory;
     }
 
+    public List<GameObject> GetValues()
+    {
+        List<GameObject> values = new List<GameObject>();
+
+        foreach (PoolItem value in _memory.Values)
+        {
+            values.Add(value._gameObject);
+        }
+
+        return values;
+    }
     public bool InsertMemory(GameObject gameObject)
     {
         if (_memory.ContainsKey(gameObject.name))

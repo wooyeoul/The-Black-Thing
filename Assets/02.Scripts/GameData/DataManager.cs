@@ -7,8 +7,6 @@ using UnityEngine.Rendering;
 public class DataManager : MonoBehaviour
 {
     static DataManager instance;
-
-
     #region Json에 대한 변수 
     Chapters chapterList;
 

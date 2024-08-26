@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5102501376223653287}
   - component: {fileID: 8228073994671691939}
-  - component: {fileID: 986885989461997072}
   m_Layer: 0
   m_Name: ch_books_1
   m_TagString: Untagged
@@ -85,19 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &986885989461997072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 588339431516684619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8cc16f4d00290c4a9f52492ef4cf4dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chapter: 1
 --- !u!1 &813258515736709752
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +94,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8335499497405252982}
   - component: {fileID: 7634662457887362498}
-  - component: {fileID: 4104236127885688158}
   m_Layer: 0
   m_Name: fix_lamp
   m_TagString: Untagged
@@ -183,19 +168,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4104236127885688158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813258515736709752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8cc16f4d00290c4a9f52492ef4cf4dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chapter: 1
 --- !u!1 &829918093240787497
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +178,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6313368766580199531}
   - component: {fileID: 2599592243250920926}
-  - component: {fileID: 20762947600062432}
   m_Layer: 0
   m_Name: fix_door
   m_TagString: Untagged
@@ -251,19 +222,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &20762947600062432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 829918093240787497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8cc16f4d00290c4a9f52492ef4cf4dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chapter: 1
 --- !u!1 &1298042300335510345
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bafb54f7def70ce4a851362816cee467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chapter: 1
+  chapter: 
   Type: 1
 --- !u!61 &4409545269616287699
 BoxCollider2D:
@@ -400,7 +358,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5056551169155268253}
   - component: {fileID: 9112351573911294435}
-  - component: {fileID: 157108049587392318}
   m_Layer: 0
   m_Name: fix_web
   m_TagString: Untagged
@@ -475,19 +432,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &157108049587392318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338094350633436610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8cc16f4d00290c4a9f52492ef4cf4dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chapter: 1
 --- !u!1 &1697316311531691614
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6543961962875373110
 Transform:
   m_ObjectHideFlags: 0
@@ -623,7 +567,6 @@ GameObject:
   m_Component:
   - component: {fileID: 475009000076746432}
   - component: {fileID: 6519497037835677509}
-  - component: {fileID: 2654010416843762733}
   m_Layer: 0
   m_Name: fix_camera
   m_TagString: Untagged
@@ -698,19 +641,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2654010416843762733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1814722832553056528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8cc16f4d00290c4a9f52492ef4cf4dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chapter: 1
 --- !u!1 &1864430116324566116
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,7 +780,6 @@ GameObject:
   m_Component:
   - component: {fileID: 315435954271560459}
   - component: {fileID: 1220888674427081315}
-  - component: {fileID: 7232028389442945659}
   m_Layer: 0
   m_Name: fix_laptop
   m_TagString: Untagged
@@ -925,19 +854,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7232028389442945659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3125243583337860559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8cc16f4d00290c4a9f52492ef4cf4dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chapter: 1
 --- !u!1 &3141182445485860008
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,8 +863,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7617822036553629522}
-  - component: {fileID: 1489642738204894708}
   - component: {fileID: 6527674169857577085}
+  - component: {fileID: 1489642738204894708}
   m_Layer: 0
   m_Name: fix_smallposter
   m_TagString: Untagged
@@ -971,6 +887,19 @@ Transform:
   m_Father: {fileID: 1864430117927243699}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6527674169857577085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3141182445485860008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8cc16f4d00290c4a9f52492ef4cf4dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chapter: 
 --- !u!212 &1489642738204894708
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1023,19 +952,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6527674169857577085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3141182445485860008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8cc16f4d00290c4a9f52492ef4cf4dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chapter: 1
 --- !u!1 &3386334803015791859
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,7 +963,6 @@ GameObject:
   - component: {fileID: 5557336186935325140}
   - component: {fileID: 4358774672580770536}
   - component: {fileID: 4536705692568461649}
-  - component: {fileID: 3418296516100941742}
   m_Layer: 0
   m_Name: fix_binocular
   m_TagString: Untagged
@@ -1148,19 +1063,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 2.16}
   m_EdgeRadius: 0
---- !u!114 &3418296516100941742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3386334803015791859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8cc16f4d00290c4a9f52492ef4cf4dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chapter: 1
 --- !u!1 &5530617545035779345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,7 +1198,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1626379148833463755}
   - component: {fileID: 3291999608903940456}
-  - component: {fileID: 6889529625873769676}
   m_Layer: 0
   m_Name: fix_leftplant
   m_TagString: Untagged
@@ -1371,19 +1272,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6889529625873769676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5556764890537762544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8cc16f4d00290c4a9f52492ef4cf4dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chapter: 1
 --- !u!1 &7347542766944299572
 GameObject:
   m_ObjectHideFlags: 0
@@ -1393,8 +1281,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6958483531071106396}
-  - component: {fileID: 4391116255659264088}
   - component: {fileID: 4685613572856737033}
+  - component: {fileID: 4391116255659264088}
   m_Layer: 0
   m_Name: fix_smallplant
   m_TagString: Untagged
@@ -1417,6 +1305,19 @@ Transform:
   m_Father: {fileID: 1864430117927243699}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4685613572856737033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7347542766944299572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8cc16f4d00290c4a9f52492ef4cf4dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chapter: 
 --- !u!212 &4391116255659264088
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1469,19 +1370,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4685613572856737033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7347542766944299572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8cc16f4d00290c4a9f52492ef4cf4dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chapter: 1
 --- !u!1 &8156357050610759314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1492,7 +1380,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1998317547391369546}
   - component: {fileID: 3487174528609485562}
-  - component: {fileID: 5182960924223615270}
   m_Layer: 0
   m_Name: fix_twobooks
   m_TagString: Untagged
@@ -1567,19 +1454,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5182960924223615270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8156357050610759314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8cc16f4d00290c4a9f52492ef4cf4dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chapter: 1
 --- !u!1 &9097738008359207003
 GameObject:
   m_ObjectHideFlags: 0
@@ -1677,4 +1551,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8cc16f4d00290c4a9f52492ef4cf4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chapter: 1
+  chapter: 
