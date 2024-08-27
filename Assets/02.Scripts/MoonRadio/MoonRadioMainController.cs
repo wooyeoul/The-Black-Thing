@@ -44,7 +44,7 @@ public class MoonRadioMainController : MonoBehaviour
 
     public void GoMain()
     {
-        this.transform.parent.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
     }
 
     public void BackMoonRadio()

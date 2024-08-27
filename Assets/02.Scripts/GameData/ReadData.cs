@@ -14,6 +14,13 @@ public class ReadData : MonoBehaviour
         {
             DataManager.Instance.ChapterList = JsonUtility.FromJson<Chapters>(loadedJson.ToString());
         }
+
+        loadedJson = Resources.Load<TextAsset>("Json/Setting");
+
+        if(loadedJson)
+        {
+            DataManager.Instance.Settings = JsonUtility.FromJson<LanguageInfo>(loadedJson.ToString());
+        }
     }
 
 }

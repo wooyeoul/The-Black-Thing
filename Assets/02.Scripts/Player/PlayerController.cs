@@ -28,9 +28,6 @@ public class PlayerController : MonoBehaviour
     const float passTime = 1800f; //30분을 기준으로 한다.
     // Start is called before the first frame update
 
-    [SerializeField]
-    bool isEng;
-
     public delegate void NextPhaseDelegate(GamePatternState state);
     public NextPhaseDelegate nextPhaseDelegate;
 
@@ -38,6 +35,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     [Tooltip("뒤로가기 구현을 위한 스택")]
     Stack<int> gobackPage;
+
+    [SerializeField]
+    [Tooltip("번역 매니저")]
+    TranslateManager translateManager;
+
     private void Awake()
     {
         //앞으로 player을 동적으로 생성해서 관리할 예정.. 아직은 미리 초기화해서 사용한다.
@@ -47,6 +49,8 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
+        translateManager = GameObject.FindWithTag("Translator").GetComponent<TranslateManager>();
+        translateManager.Translate(GetLanguage());
         nextPhaseDelegate(player.currentPhase);
     }
     // Update is called once per frame
@@ -54,14 +58,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         elapsedTime += Time.deltaTime;
-
-
-        //아래 없앨 예정, 테스트 버전
-        if(isEng)
-        {
-            player.language = LANGUAGE.ENGLISH;
-            isEng = false;
-        }
     }
 
     public void NextPhase()
@@ -131,6 +127,8 @@ public class PlayerController : MonoBehaviour
     public void SetLanguage(LANGUAGE language)
     {
         player.language = language;
+
+        translateManager.Translate(player.language);
     }
 
     public void SetLanguage(string language)
@@ -138,7 +136,7 @@ public class PlayerController : MonoBehaviour
         LANGUAGE lang;
         if(Enum.TryParse(language,true,out lang))
         {
-            player.language = lang;
+            SetLanguage(lang);
         }
     }
     public LANGUAGE GetLanguage()

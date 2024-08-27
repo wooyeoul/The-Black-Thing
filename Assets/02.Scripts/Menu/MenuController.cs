@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text.RegularExpressions;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Device;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class MenuController : MonoBehaviour
 {
@@ -37,14 +37,92 @@ public class MenuController : MonoBehaviour
 
     [SerializeField]
     GameObject Screens;
-
     Animator MenuButAnim;
 
     bool isOpening = false;
+    
+    TranslateManager translator;
+
+    [SerializeField]
+    TMP_Text[] menu;
+    [SerializeField]
+    TMP_Text[] mypage;
+    [SerializeField]
+    TMP_Text[] community;
+    [SerializeField]
+    TMP_Text[] credit;
+    [SerializeField]
+    TMP_Text[] progress;
+
 
     private void Start()
     {
         MenuButAnim = GetComponent<Animator>();
+        translator = GameObject.FindWithTag("Translator").GetComponent<TranslateManager>();
+
+        translator.translatorDel += Translate;
+    }
+
+    public void Translate(LANGUAGE language)
+    {
+        //번역한다.
+        Debug.Log("Menu 번역합니다.\n");
+
+        int Idx = (int)language;
+
+        //타이틀
+        menu[0].text = DataManager.Instance.Settings.menu.title[Idx];
+
+        //아이콘
+        menu[1].text = DataManager.Instance.Settings.menu.howto[Idx];
+        menu[2].text = DataManager.Instance.Settings.menu.progress[Idx];
+        menu[3].text = DataManager.Instance.Settings.menu.mypage[Idx];
+
+        //타이틀 
+        mypage[0].text = DataManager.Instance.Settings.menuMyPage.settings[Idx];
+
+        //이름
+        mypage[1].text = DataManager.Instance.Settings.settings.name[Idx];
+        //BGM
+        mypage[2].text = DataManager.Instance.Settings.settings.BGM[Idx];
+        //SFX
+        mypage[3].text = DataManager.Instance.Settings.settings.SFX[Idx];
+        //Alert
+        mypage[4].text = DataManager.Instance.Settings.settings.alert[Idx];
+        //namechanged
+        mypage[5].text = DataManager.Instance.Settings.settings.namechanged[Idx];
+        //namesetting
+        mypage[6].text = DataManager.Instance.Settings.settings.namesetting.title[Idx];
+        mypage[7].text = DataManager.Instance.Settings.settings.namesetting.placeholder[Idx];
+        mypage[8].text = DataManager.Instance.Settings.settings.namesetting.no[Idx];
+        mypage[9].text = DataManager.Instance.Settings.settings.namesetting.yes[Idx];
+        //push off
+        mypage[10].text = DataManager.Instance.Settings.settings.pushoff.title[Idx];
+        mypage[11].text = DataManager.Instance.Settings.settings.pushoff.no[Idx];
+        mypage[12].text = DataManager.Instance.Settings.settings.pushoff.yes[Idx];
+
+        //타이틀
+        community[0].text = DataManager.Instance.Settings.menuMyPage.community[Idx];
+
+        //instagram
+        community[1].text = DataManager.Instance.Settings.community.instagram[Idx];
+        //discord
+        community[2].text = DataManager.Instance.Settings.community.discord[Idx];
+        //discord tip
+        community[3].text = DataManager.Instance.Settings.community.discordTip[Idx];
+        //x
+        community[4].text = DataManager.Instance.Settings.community.x[Idx];
+
+        //타이틀
+        credit[0].text = DataManager.Instance.Settings.menuMyPage.credit[Idx];
+
+
+        //watching
+        progress[0].text = DataManager.Instance.Settings.checklist.phase1[Idx];
+        progress[1].text = DataManager.Instance.Settings.checklist.phase2[Idx];
+        progress[2].text = DataManager.Instance.Settings.checklist.phase3[Idx];
+        progress[3].text = DataManager.Instance.Settings.checklist.phase4[Idx];
+
     }
 
     public void onMenu()
@@ -138,74 +216,17 @@ public class MenuController : MonoBehaviour
     }
     public void skipoff()
     {
-        Debug.Log("��");
         Default.SetActive(false);
         TimeUI.SetActive(false);
     }
 
     public void skipon()
     {
-        Debug.Log("��");
         Default.SetActive(true);
         TimeUI.SetActive(true);
     }
     public void replayON()
     {
         TimeUI.SetActive(false);
-        //Replay.SetActive(true);
     }
-//������ ����(ProgrssUI)�� ���� ����
-//é�͸� �����ؼ�, setActive ����
-/*
-    public void OnUpdatedProgress(int chapter)
-    {
-        dragScrollWidth = dragScroller.GetComponent<RectTransform>().rect.width; //������ġ?
-        //chapter�� �´� Dictionary ������ ���⼭ �ϰ�, ProgressUIController�� �װ� SetActive�ϴ� �뵵�� �������.
-        //1~4���� =>�ʼ� 
-        for (int i = 1; i <= 3; i++)
-        {
-            if (prograssUI.ContainsKey(i) == false)
-            {
-                GameObject icon = Instantiate(dragIcon, dragScroller.transform.GetChild(0));
-                icon.name = chapterList.chapters[i].chapter;
-                DragIcon curIconScript = icon.GetComponent<DragIcon>();
-                curIconScript.Settings(chapterList.chapters[i].id, chapterList.chapters[i].title, chapterList.chapters[i].mainFilePath, "���� Ÿ��Ʋ �ּ���");
-                prograssUI[i] = icon;
-                icon.GetComponent<Button>().onClick.AddListener(DayProgressUI.GetComponent<ProgressUIController>().onClickdragIcon);
-
-                //ProgressBar�� ���� ������ ����.
-                dragScroller.GetComponent<RectTransform>().sizeDelta = new Vector2(dragScroller.GetComponent<RectTransform>().rect.width, dragScroller.GetComponent<RectTransform>().rect.height);
-            }
-        }
-
-        //5����~14�ϱ���
-        for (int i = 4; i <= chapter + 1; i++)
-        {
-            if (i >= 15) continue;
-            if (prograssUI.ContainsKey(i) == false)
-            {
-                GameObject icon = Instantiate(dragIcon, dragScroller.transform.GetChild(0));
-                icon.name = chapterList.chapters[i].chapter;
-                DragIcon curIconScript = icon.GetComponent<DragIcon>();
-                curIconScript.Settings(chapterList.chapters[i].id, chapterList.chapters[i].title, chapterList.chapters[i].mainFilePath, "���� Ÿ��Ʋ �ּ���");
-                prograssUI[i] = icon;
-                icon.GetComponent<Button>().onClick.AddListener(DayProgressUI.GetComponent<ProgressUIController>().onClickdragIcon);
-
-                //ProgressBar�� ���� ������ ����.
-
-                dragScroller.GetComponent<RectTransform>().sizeDelta = new Vector2(dragScroller.GetComponent<RectTransform>().rect.width + dragIcon.GetComponent<RectTransform>().rect.width, dragScroller.GetComponent<RectTransform>().rect.height);
-            }
-        }
-
-        foreach (var progress in prograssUI)
-        {
-            if (progress.Key <= chapter)
-            {
-                progress.Value.GetComponent<DragIcon>().DestoryLock();
-            }
-        }
-        float val = (chapter * dragIcon.GetComponent<RectTransform>().rect.width) / (dragScroller.GetComponent<ScrollRect>().content.rect.width - dragScrollWidth);
-        //�߾� ��ġ ���
-        dragScroller.GetComponent<ScrollRect>().horizontalNormalizedPosition = (val / val) - 0.2f; //�ΰ��� 1�� �������, 0.2f�� �ؼ� �˸��ߴ� ������ �ذ�
-    }*/
 }

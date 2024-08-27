@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class MypageUIController : MonoBehaviour
 {
     [SerializeField]
@@ -57,23 +59,18 @@ public class MypageUIController : MonoBehaviour
 
     [SerializeField]
     GameObject nextBut;
-
-    // Start is called before the first frame update
-
-    [SerializeField]
-    List<string> popupPageName;
-
     [SerializeField]
     List<Color> colors;
 
+    List<List<string>> popupPageName;
 
-    public delegate void SettingLanguageDelegate();
-
-    public SettingLanguageDelegate SettingLanguageDel;
+    TranslateManager translator;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        popupPageName = new List<List<string>>();
+
         Init();
     }
 
@@ -89,7 +86,12 @@ public class MypageUIController : MonoBehaviour
         }
         prevBut.SetActive(false);
         popupPage[pageIdx].SetActive(true);
-        nextBut.GetComponent<TMP_Text>().text = popupPageName[pageIdx + 1];
+
+        if(popupPageName.IsUnityNull() == false)
+        {
+            int Idx = (int)player.GetLanguage();
+            nextBut.GetComponent<TMP_Text>().text = popupPageName[pageIdx + 1][Idx];
+        }
     }
 
     void Init()
@@ -112,6 +114,25 @@ public class MypageUIController : MonoBehaviour
         musicSlider.onValueChanged.AddListener(player.SetBGMVolume);
         // musicSlider.onValueChanged.AddListener(MusicManager.Instance.AdjustBGMVolume);  
 
+
+        List<string> setting = new List<string>();
+        setting.Add(DataManager.Instance.Settings.menuMyPage.settings[0]);
+        setting.Add(DataManager.Instance.Settings.menuMyPage.settings[1]);
+
+        List<string> community = new List<string>();
+        community.Add(DataManager.Instance.Settings.menuMyPage.community[0]);
+        community.Add(DataManager.Instance.Settings.menuMyPage.community[1]);
+
+        List<string> credit = new List<string>();
+        credit.Add(DataManager.Instance.Settings.menuMyPage.credit[0]);
+        credit.Add(DataManager.Instance.Settings.menuMyPage.credit[1]);
+
+        popupPageName.Add(setting);
+        popupPageName.Add(community);
+        popupPageName.Add(credit);
+
+        int Idx = (int)player.GetLanguage();
+        nextBut.GetComponent<TMP_Text>().text = popupPageName[pageIdx + 1][Idx];
         EnablePushAlertColor();
         EnableLanguageColor();
     }
@@ -192,11 +213,19 @@ public class MypageUIController : MonoBehaviour
         if (nextBut.activeSelf)
         {
             //활성화 되어있는 경우에, 현재 페이지 앞 뒤에 대한 이름 명으로 변경
-            nextBut.GetComponent<TMP_Text>().text = popupPageName[pageIdx + 1];
+            if (popupPage.Count > 0)
+            {
+                int Idx = (int)player.GetLanguage();
+                nextBut.GetComponent<TMP_Text>().text = popupPageName[pageIdx + 1][Idx];
+            }
         }
         if (prevBut.activeSelf)
         {
-            prevBut.GetComponent<TMP_Text>().text = popupPageName[pageIdx - 1];
+            if (popupPage.Count > 0)
+            {
+                int Idx = (int)player.GetLanguage();
+                prevBut.GetComponent<TMP_Text>().text = popupPageName[pageIdx - 1][Idx];
+            }
         }
     }
 
@@ -219,11 +248,19 @@ public class MypageUIController : MonoBehaviour
 
         if (prevBut.activeSelf)
         {
-            prevBut.GetComponent<TMP_Text>().text = popupPageName[pageIdx - 1];
+            if (popupPage.Count > 0)
+            {
+                int Idx = (int)player.GetLanguage();
+                prevBut.GetComponent<TMP_Text>().text = popupPageName[pageIdx - 1][Idx];
+            }
         }
         if (nextBut.activeSelf)
         {
-            nextBut.GetComponent<TMP_Text>().text = popupPageName[pageIdx + 1];
+            if (popupPage.Count > 0)
+            {
+                int Idx = (int)player.GetLanguage();
+                nextBut.GetComponent<TMP_Text>().text = popupPageName[pageIdx + 1][Idx];
+            }
         }
     }
 
@@ -258,20 +295,15 @@ public class MypageUIController : MonoBehaviour
     public void SetKorean()
     {
         isKorean = true;
-        EnableLanguageColor();
         player.SetLanguage(LANGUAGE.KOREAN);
-        //Setting에 해당하는 델리게이트 호출
-        //SettingLanguageDel();
-       
+        EnableLanguageColor();
     }
 
     public void SetEnglish()
     {
         isKorean = false;
-        EnableLanguageColor();
         player.SetLanguage(LANGUAGE.ENGLISH);
-        //Setting 한다.
-        //SettingLanguageDel();
+        EnableLanguageColor();
     }
     public void Exit()
     {
@@ -290,5 +322,22 @@ public class MypageUIController : MonoBehaviour
         int Idx = Convert.ToInt32(isKorean) % 2;
         languageAlert[Idx].GetComponent<TMP_Text>().color = colors[0]; //0번이 활성화
         languageAlert[(Idx + 1) % 2].GetComponent<TMP_Text>().color = colors[1]; //1번 비활성화
+        
+        if (prevBut.activeSelf)
+        {
+            if (popupPage.Count > 0)
+            {
+                int LangIdx = (int)player.GetLanguage();
+                prevBut.GetComponent<TMP_Text>().text = popupPageName[pageIdx - 1][LangIdx];
+            }
+        }
+        if (nextBut.activeSelf)
+        {
+            if (popupPage.Count > 0)
+            {
+                int LangIdx = (int)player.GetLanguage();
+                nextBut.GetComponent<TMP_Text>().text = popupPageName[pageIdx + 1][LangIdx];
+            }
+        }
     }
 }

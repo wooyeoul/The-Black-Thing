@@ -14,9 +14,9 @@ public class MainMenu
 [System.Serializable]
 public class MenuMyPage
 {
-    public List<string> Settings;
-    public List<string> Community;
-    public List<string> Credit;
+    public List<string> settings;
+    public List<string> community;
+    public List<string> credit;
 }
 
 [System.Serializable]
@@ -68,25 +68,24 @@ public class RadioOn
 {
     public List<string> text;
     public List<string> earth;
-    public List<string> no;
-    public List<string> yes;
+    public List<string> moon;
+    public List<string> exit;
 }
 
 [System.Serializable]
 public class RadioOff
 {
     public List<string> text;
-    public List<string> no;
     public List<string> yes;
+    public List<string> no;
 }
 
 
 [System.Serializable]
 public class MoonRadioMain
 {
-    public List<string> title;
-    public List<string> no;
-    public List<string> yes;
+    public RadioOn radioOn;
+    public RadioOff radioOff;
 }
 [System.Serializable]
 public class MoonRadioEarth
@@ -98,10 +97,7 @@ public class MoonRadioEarth
     public List<string> yes;
     public List<string> no;
 }
-[System.Serializable]
-public class MoonRadioMoon
-{
-}
+
 [System.Serializable]
 public class Checklist
 {
@@ -126,10 +122,8 @@ public class LanguageInfo
     public MenuMyPage menuMyPage;
     public Settings settings;
     public Community community;
-    public Credit credit;
     public TimeSkip timeSkip;
     public MoonRadioMain moonRadioMain;
     public MoonRadioEarth moonRadioEarth;
-    public MoonRadioMoon moonRadioMoon;
-    public checklist checklist;
+    public Checklist checklist;
 }

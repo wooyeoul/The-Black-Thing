@@ -1,16 +1,16 @@
 {
     "menu" :
     {
-        "title" : ["메인 메뉴",""],
-        "howto" : ["달나라 쪽지",""],
-        "progress" : ["하루 진행도",""],
-        "mypage" : ["마이 페이지",""]
+        "title" : ["메인 메뉴","MAIN MENU"],
+        "howto" : ["안내 책자","GUIDE BOOK"],
+        "progress" : ["하루 진행도","PROGRESS"],
+        "mypage" : ["마이 페이지","MY PAGE"]
     },
     "menuMyPage":
     {
-        "Settings" : ["게임 설정","SETTINGS"],
-        "Community" : ["커뮤니티","COMMUNITY"],
-        "Credit" : ["만든 사람들","CREDIT"]
+        "settings" : ["게임 설정","SETTINGS"],
+        "community" : ["커뮤니티","COMMUNITY"],
+        "credit" : ["만든 사람들","CREDIT"]
     },
     "settings" :
     {
@@ -45,51 +45,49 @@
             "https://twitter.com/moonstew_games"
         ]
     },
-    "credit" :
-    {
-        
-    },
     "timeSkip" :
     {
-        "title" : ["시간은 상대적인 것. 느리게 흐르는\n이 기다림의 시간을 빨리 감아 넘길까요?",""],
-        "yes" : ["네, 좋아요.",""],
-        "no" : ["기다릴게요.",""]
+        "title" : ["시간은 상대적인 것. 느리게 흐르는\n이 기다림의 시간을 빨리 감아 넘길까요?","Time is relative. Would you like to fast-forward through the long hours of wait?"],
+        "yes" : ["네, 좋아요.","Yes, I would."],
+        "no" : ["기다릴게요.","No, I don't mind."]
     },
     "moonRadioMain" :
     {
-        "RadioOn" : 
+        "radioOn" : 
         {
-            "text" : ["달에게 보내는 편지를 적을 수도,\n달 사람들의 담소를 엿들을 수도 있습니다.\n어떤 채널로 설정할까요?",""],
-            "earth" : ["> 지구 채널 - 365.3Hz",""],
-            "moon" : ["> 달 채널 - 27.32Hz",""],
-            "exit" : ["송신기 끄기 >>",""]
+            "text" : ["달에게 보내는 편지를 적을 수도,\n달 사람들의 담소를 엿들을 수도 있습니다.\n어떤 채널로 설정할까요?","You can write letters to the Moon, or eavesdrop on the Moon Beings. Which channel?"],
+            "earth" : ["> 지구 채널 - 365.3Hz","Channel Earth - 365.3Hz"],
+            "moon" : ["> 달 채널 - 27.32Hz","Channel Moon - 27.32Hz"],
+            "exit" : ["송신기 끄기 >>","Turn Radio Off"]
         },
-        "RadioOff" : 
+        "radioOff" : 
         {
-            "text" : ["달나라 송신기는 달빛과 중력의 힘으로 작동하죠.\n창가에 놓아 두면 밤 사이 충전될 거예요.\n이제 송신기를 끌까요?",""],
-            "yes" : ["> 네, 이제 얘도 자야죠.",""],
-            "no" : ["> 아직요, 조금만 더 놀게요.",""]
+            "text" : ["달나라 송신기는 달빛과 중력의 힘으로 작동하죠.\n창가에 놓아 두면 밤 사이 충전될 거예요.\n이제 송신기를 끌까요?","The Radio is powered by moonlight and gravity. Leave it on the windowsill to charge overnight. Turn off the Moon Radio?"],
+            "yes" : ["> 네, 이제 얘도 자야죠.","Yes, it needs its rest."],
+            "no" : ["> 아직요, 조금만 더 놀게요.","No, not just yet."]
         }
     },
     "moonRadioEarth" :
     {
-        "placeholder" : ["달에게 보낼 편지를 입력해 주세요.",""],
-        "alert" : ["달까지 날기엔 편지가 무거워요!\n500자 이내로 줄이거나, 여러 장으로 나눠 보내 주세요!",""],
-        "exit" : ["채널 나가기 >>",""],
-        "popupExit" : ["소원을 빌었나요, 안부를 물었나요?\n당신의 이야기는 중력을 타고 달의 뒤편까지 전해질 거예요.",""],
-        "yes" : ["더 적을래요.",""],
-        "no" : ["네, 나갈게요.",""]
-    },
-    "moonRadioMoon" :
-    {
-
+        "placeholder" : ["달에게 보낼 편지를 입력해 주세요.","Write a letter to the Moon."],
+        "alert" : ["달까지 날기엔 편지가 무거워요!\n<b>500자 이내</b>로 줄이거나,\n여러 장으로 나눠 보내 주세요!","Too heavy to fly to the Moon! Keep it under 500 characters, or send a second letter!"],
+        "exit" : ["채널 나가기 >>","Leave Channel"],
+        "send" :["소원을 빌었나요, 안부를 물었나요?\n당신의 이야기는 중력을 타고 달의 뒤편까지 전해질 거예요.","Made a wish, asked after a friend? Your story will ride gravity on its way to the other side of the Moon."],
+        "popupExit" : ["달나라에 소원 보내기를 그만두시겠어요?\n작성하던 내용은 저장되지 않습니다.",""],
+        "yes" : ["더 적을래요.","Write more."],
+        "no" : ["네, 나갈게요.","Leave."]
     },
     "checklist" :
     {
-        "phase1" : ["인간 관찰",""],
-        "phase2" : ["자유 사색",""],
-        "phase3" : ["하루 기록",""],
-        "phase4" : ["취침 시간",""]
-    }
-}
+        "phase1" : ["인간 관찰","Observe"],
+        "phase2" : ["자유 사색","Contemplate"],
+        "phase3" : ["하루 기록","Write"],
+        "phase4" : ["취침 시간","Sleep"]
+    },
+    "alert" :
+    {
+        "moonRadio" : ["달이 뜬 밤, 저녁 여덟 시부터\n 새벽 세 시까지",""],
+        "diary" : ["뭉치에게 들켜요!\n위험합니다.",""]
+    } 
 
+}

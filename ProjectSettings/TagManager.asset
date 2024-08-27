@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - OnMenu
+  - ObjectManager
+  - Translator
+  - Mungchi
+  - optic
+  - Binocular
   layers:
   - Default
   - TransparentFX
@@ -44,4 +48,10 @@ TagManager:
     locked: 0
   - name: Objects
     uniqueID: 1580129183
+    locked: 0
+  - name: Dot
+    uniqueID: 1368664481
+    locked: 0
+  - name: Screen
+    uniqueID: 1823390695
     locked: 0

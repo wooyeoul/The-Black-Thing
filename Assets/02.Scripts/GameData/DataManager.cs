@@ -22,7 +22,20 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    //get set
+    LanguageInfo settings;
+
+    public LanguageInfo Settings
+    {
+        get
+        {
+            return settings;
+        }
+        set
+        {
+            settings = value;
+        }
+    }
+
     #endregion
     private void Awake()
     {
@@ -34,11 +47,6 @@ public class DataManager : MonoBehaviour
         {
             //¾ÀÀÌ ²¨Áö³ª?
         }
-    }
-
-    private void Start()
-    {
-        
     }
 
     public static DataManager Instance
