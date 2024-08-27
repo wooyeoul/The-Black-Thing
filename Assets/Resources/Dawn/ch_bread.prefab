@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bafb54f7def70ce4a851362816cee467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chapter: 1
+  chapter: 010101010101010100000000000000
   Type: 0
 --- !u!61 &1059398757779168270
 BoxCollider2D:
