@@ -256,6 +256,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnApplicationQuit()
+    {
+        WritePlayerFile();
+    }
+
     private void OnDestroy()
     {
         WritePlayerFile();

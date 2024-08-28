@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +27,8 @@ public class ObjectManager : MonoBehaviour
         {
             //Instantiate를 통해서 InsertMemory내 삽입
             GameObject newObj = Instantiate(obj2, this.transform.GetChild(0));
+            
+            //newObj의 clone을 제거 
             pool.InsertMemory(newObj);
         }
     }
@@ -48,6 +51,28 @@ public class ObjectManager : MonoBehaviour
                 value.SetActive(false);
             }
         }
+    }
+
+    public IWatchingInterface GetWatchingObject(EWatching type)
+    {
+        //모든 Obj를 가져와서 검사해야한다.
+        IWatchingInterface search = null;
+        List<GameObject> values = pool.GetValues();
+
+        foreach (GameObject value in values)
+        {
+            IWatchingInterface watching = value.GetComponent<IWatchingInterface>();
+
+            if(watching != null)
+            {
+                if(watching.IsCurrentPattern(type))
+                {
+                    search = watching;
+                }
+            }
+        }
+
+        return search;
     }
 
     public void Translate(LANGUAGE language)

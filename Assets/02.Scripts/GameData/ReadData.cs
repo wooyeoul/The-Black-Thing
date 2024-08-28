@@ -5,7 +5,8 @@ using UnityEngine;
 public class ReadData : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         //데이터 로드 
         var loadedJson = Resources.Load<TextAsset>("Json/Chapters");
@@ -17,9 +18,9 @@ public class ReadData : MonoBehaviour
 
         loadedJson = Resources.Load<TextAsset>("Json/Setting");
 
-        if(loadedJson)
+        if (loadedJson)
         {
-            DataManager.Instance.Settings = JsonUtility.FromJson<LanguageInfo>(loadedJson.ToString());
+            DataManager.Instance.Settings = JsonUtility.FromJson<SettingInfo>(loadedJson.ToString());
         }
     }
 

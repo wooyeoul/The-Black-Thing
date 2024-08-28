@@ -22,9 +22,9 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    LanguageInfo settings;
+    SettingInfo settings;
 
-    public LanguageInfo Settings
+    public SettingInfo Settings
     {
         get
         {

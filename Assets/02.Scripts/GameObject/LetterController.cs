@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LetterController : BaseObject, IWatchingInterface
 {
+    [SerializeField]
+    EWatching type;
 
     [SerializeField]
     GameObject alert;
@@ -15,6 +17,11 @@ public class LetterController : BaseObject, IWatchingInterface
     GameObject note;
 
     int chapter = 0;
+
+    public bool IsCurrentPattern(EWatching curPattern)
+    {
+        return curPattern == type;
+    }
 
     public void OpenWatching(int Chapter)
     {
@@ -35,5 +42,10 @@ public class LetterController : BaseObject, IWatchingInterface
                 noteUI = Instantiate(note, GameObject.Find("Canvas").transform);
             }
         }
+    }
+
+    public void CloseWatching()
+    {
+        alert.SetActive(false);
     }
 }

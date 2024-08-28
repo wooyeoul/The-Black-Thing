@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using JetBrains.Annotations;
 
 [System.Serializable]
 public class MainMenu
@@ -93,6 +94,7 @@ public class MoonRadioEarth
     public List<string> placeholder;
     public List<string> alert;
     public List<string> exit;
+    public List<string> send;
     public List<string> popupExit;
     public List<string> yes;
     public List<string> no;
@@ -116,7 +118,21 @@ public class TimeSkip
 }
 
 [System.Serializable]
-public class LanguageInfo
+public class Alert
+{
+    public List<string> moonRadio;
+    public List<string> diary;
+}
+
+[System.Serializable]
+public class WatchingPattern
+{
+    public List<string> pattern;
+}
+
+
+[System.Serializable]
+public class SettingInfo
 {
     public MainMenu menu;
     public MenuMyPage menuMyPage;
@@ -126,4 +142,6 @@ public class LanguageInfo
     public MoonRadioMain moonRadioMain;
     public MoonRadioEarth moonRadioEarth;
     public Checklist checklist;
+    public Alert alert;
+    public WatchingPattern watching;
 }

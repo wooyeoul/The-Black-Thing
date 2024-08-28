@@ -4482,6 +4482,7 @@ GameObject:
   - component: {fileID: 485187742}
   - component: {fileID: 485187744}
   - component: {fileID: 485187743}
+  - component: {fileID: 485187745}
   m_Layer: 5
   m_Name: button_yes
   m_TagString: Untagged
@@ -4548,6 +4549,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485187741}
   m_CullTransparentMesh: 1
+--- !u!114 &485187745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485187741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1453179429}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1007219009}
+        m_TargetAssemblyTypeName: TimeSkipUIController, Assembly-CSharp
+        m_MethodName: YesClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &492025230
 GameObject:
   m_ObjectHideFlags: 0
@@ -5265,26 +5322,54 @@ MonoBehaviour:
   checkList: {fileID: 372046260}
   skipBut: {fileID: 1007219007}
   checklists:
-  - endedState: 0
-    preicon: {fileID: 1425231910}
-    icon: {fileID: 147686893}
-    note: {fileID: 0}
-  - endedState: 2
-    preicon: {fileID: 147686893}
-    icon: {fileID: 2044535355}
-    note: {fileID: 46626952}
-  - endedState: 4
-    preicon: {fileID: 2044535355}
-    icon: {fileID: 1754367860}
-    note: {fileID: 1212888635}
-  - endedState: 6
-    preicon: {fileID: 1754367860}
-    icon: {fileID: 1425231910}
-    note: {fileID: 1534331620}
-  - endedState: 7
-    preicon: {fileID: 1425231910}
-    icon: {fileID: 1425231910}
-    note: {fileID: 215103933}
+  - patternState: 0
+    eChecklist: 0
+    IconObject: {fileID: 147686893}
+    noteObjects: []
+  - patternState: 1
+    eChecklist: 1
+    IconObject: {fileID: 147686893}
+    noteObjects:
+    - {fileID: 46626952}
+  - patternState: 2
+    eChecklist: 0
+    IconObject: {fileID: 2044535355}
+    noteObjects:
+    - {fileID: 46626952}
+  - patternState: 3
+    eChecklist: 1
+    IconObject: {fileID: 2044535355}
+    noteObjects:
+    - {fileID: 46626952}
+    - {fileID: 1212888635}
+  - patternState: 4
+    eChecklist: 0
+    IconObject: {fileID: 1754367860}
+    noteObjects:
+    - {fileID: 46626952}
+    - {fileID: 1212888635}
+  - patternState: 5
+    eChecklist: 1
+    IconObject: {fileID: 1754367860}
+    noteObjects:
+    - {fileID: 46626952}
+    - {fileID: 1212888635}
+    - {fileID: 1534331620}
+  - patternState: 6
+    eChecklist: 0
+    IconObject: {fileID: 1425231910}
+    noteObjects:
+    - {fileID: 46626952}
+    - {fileID: 1212888635}
+    - {fileID: 1534331620}
+  - patternState: 6
+    eChecklist: 1
+    IconObject: {fileID: 1425231910}
+    noteObjects:
+    - {fileID: 46626952}
+    - {fileID: 1212888635}
+    - {fileID: 1534331620}
+    - {fileID: 215103933}
   phase:
   - {fileID: 520383329}
   - {fileID: 938389107}
@@ -7979,7 +8064,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &853746108
@@ -8293,7 +8378,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 901168844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5543.5054, y: 652.1563, z: -80.182945}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9706,6 +9791,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1007219008}
+  - component: {fileID: 1007219010}
   - component: {fileID: 1007219009}
   m_Layer: 5
   m_Name: TimeSkip
@@ -9746,6 +9832,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1007219007}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf79101b8ff81540bb3bfc5219c6443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popup: {fileID: 1428650829}
+  playerController: {fileID: 0}
+--- !u!114 &1007219010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007219007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -9777,13 +9877,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1453179429}
+  m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2022455605}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: NextPhase
+      - m_Target: {fileID: 1007219009}
+        m_TargetAssemblyTypeName: TimeSkipUIController, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20561,6 +20661,7 @@ GameObject:
   - component: {fileID: 1834103127}
   - component: {fileID: 1834103129}
   - component: {fileID: 1834103128}
+  - component: {fileID: 1834103130}
   m_Layer: 5
   m_Name: button_no
   m_TagString: Untagged
@@ -20627,6 +20728,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834103126}
   m_CullTransparentMesh: 1
+--- !u!114 &1834103130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834103126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1834103128}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1007219009}
+        m_TargetAssemblyTypeName: TimeSkipUIController, Assembly-CSharp
+        m_MethodName: NoClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1840011990
 GameObject:
   m_ObjectHideFlags: 0

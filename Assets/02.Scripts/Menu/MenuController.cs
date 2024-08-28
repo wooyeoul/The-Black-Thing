@@ -35,8 +35,6 @@ public class MenuController : MonoBehaviour
     [SerializeField]
     GameObject checkList;
 
-    [SerializeField]
-    GameObject Screens;
     Animator MenuButAnim;
 
     bool isOpening = false;
@@ -132,7 +130,6 @@ public class MenuController : MonoBehaviour
         MenuButAnim.SetFloat("speed", 1f);
         if (isOpening)
         {
-            Screens.SetActive(false);
             TimeUI.SetActive(false);
             checkList.SetActive(false);
             MenuDefault.SetActive(true);
@@ -141,7 +138,6 @@ public class MenuController : MonoBehaviour
         }
         else
         {
-            Screens.SetActive(true);
             MenuDefault.transform.GetChild(1).gameObject.SetActive(false);
             MenuButAnim.SetBool("isDowning", false);
         }

@@ -4,20 +4,26 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+public enum EChecklist
+{
+    Icon,
+    Note
+}
+
 [System.Serializable]
 public struct checklist
 {
     [SerializeField]
-    public GamePatternState endedState;
+    public GamePatternState patternState;
 
     [SerializeField]
-    public GameObject preicon;
+    public EChecklist eChecklist;
 
     [SerializeField]
-    public GameObject icon;
+    public GameObject IconObject;
 
     [SerializeField]
-    public GameObject note;
+    public List<GameObject> noteObjects;
 }
 public class ChecklistController : MonoBehaviour
 {
@@ -33,7 +39,9 @@ public class ChecklistController : MonoBehaviour
     TranslateManager translator;
 
     [SerializeField]
-    TMP_Text[] phase; 
+    TMP_Text[] phase;
+
+    GameObject activeIcon;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,8 +49,6 @@ public class ChecklistController : MonoBehaviour
         pc.nextPhaseDelegate += NextPhase;
         translator = GameObject.FindWithTag("Translator").GetComponent<TranslateManager>();
         translator.translatorDel += Translate;
-
-        InitPhase((GamePatternState)pc.GetAlreadyEndedPhase());
     }
 
     void Translate(LANGUAGE language)
@@ -59,73 +65,45 @@ public class ChecklistController : MonoBehaviour
 
     }
     
-    private void InitPhase(GamePatternState state)
+    private void InitPhase()
     {
-        for (int idx = 0; idx < checklists.Length; idx++)
-        {
-            if (checklists[idx].note != null)
-            {
-                checklists[idx].note.SetActive(true);
-            }
-            if (checklists[idx].preicon != null)
-            {
-                checklists[idx].preicon.SetActive(false);
-            }
+        int Idx = (int)GamePatternState.NextChapter;
 
-            if (checklists[idx].endedState == state)
-            {
-                checklists[idx].icon.SetActive(true);
-                break;
-            }
+        foreach (var Object in checklists[Idx].noteObjects)
+        {
+            Object.SetActive(false);
         }
     }
 
     public void NextPhase(GamePatternState state)
     {
+        int Idx = (int)state;
 
-        if (state == GamePatternState.MainB || state == GamePatternState.MainA)
+        if(state == GamePatternState.Watching)
         {
-            //SkipBut 사라짐
-            //skipBut.SetActive(false);
-            Debug.Log("Main 상관 없는 Phase, 체크하지 않는다.");
-            return;
+            InitPhase();
         }
 
-        //reset
-        if (state == GamePatternState.Watching)
+        if (activeIcon)
         {
-            //모두 꺼야함.
-            for (int idx = 1; idx < checklists.Length; idx++)
-            {
-                checklists[idx].note.SetActive(false);
-                checklists[idx].icon.SetActive(false);
-            }
-            checklists[0].icon.SetActive(true);
-
-            return;
+            activeIcon.SetActive(false);
         }
 
-        for (int idx = 0; idx < checklists.Length; idx++)
+        activeIcon = checklists[Idx].IconObject;
+        activeIcon.SetActive(true);
+
+        foreach (var note in checklists[Idx].noteObjects)
         {
-            if (checklists[idx].preicon != null)
+            if (note.activeSelf == false)
             {
-                checklists[idx].preicon.SetActive(false);
-            }
-
-            if (checklists[idx].endedState == state)
-            {
-                if (checklists[idx].note != null)
-                {
-                    checklists[idx].note.SetActive(true);
-                }
-
-                checklists[idx].icon.SetActive(true);
-
-                break;
+                note.SetActive(true);
             }
         }
 
-        OnClickCheckListIcon();
+        if (checklists[Idx].eChecklist == EChecklist.Note)
+        {
+            OnClickCheckListIcon();
+        }
     }
 
     public void OnClickCheckListIcon()
@@ -142,6 +120,11 @@ public class ChecklistController : MonoBehaviour
     IEnumerator CloseAlter(GameObject checkList)
     {
         yield return new WaitForSeconds(2f);
+        checkList.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
         checkList.SetActive(false);
     }
 }

@@ -88,6 +88,10 @@
     {
         "moonRadio" : ["달이 뜬 밤, 저녁 여덟 시부터\n 새벽 세 시까지",""],
         "diary" : ["뭉치에게 들켜요!\n위험합니다.",""]
-    } 
+    },
+    "watching" :
+    {
+        "pattern" : ["None","None","Binocular","Letter","StayAtHome","Binocular","StayAtHome","Letter","Binocular","StayAtHome","Binocular","Letter","Letter","Binocular","StayAtHome","None"]
+    }
 
 }

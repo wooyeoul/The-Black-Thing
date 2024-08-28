@@ -67,8 +67,8 @@ public class GameManager : MonoBehaviour
         pc = GameObject.FindWithTag("Player").gameObject.GetComponent<PlayerController>();
         pc.nextPhaseDelegate += ChangeGameState;
         objectManager = GameObject.FindWithTag("ObjectManager").gameObject.GetComponent<ObjectManager>();
-       
-        InitBackground();
+        
+        InitGame();
         ChangeGameState((GamePatternState)pc.GetAlreadyEndedPhase());
     }
 
@@ -81,11 +81,16 @@ public class GameManager : MonoBehaviour
             Debug.Log("없는 패턴 입니다.");
             return; 
         }
+
+        if(activeState != null)
+        {
+            activeState.Exit(this); //미리 정리한다.
+        }
         activeState = states[patternState];
         activeState.Enter(this);
     }
 
-    private void InitBackground()
+    private void InitGame()
     {
         //배경을 업로드한다.
         Int32 hh = Int32.Parse(DateTime.Now.ToString(("HH"))); //현재 시간을 가져온다
@@ -114,5 +119,10 @@ public class GameManager : MonoBehaviour
         //리소스 폴더에 있는 모든 오브젝트를 가져와서 풀을 모두 채운다.
         Debug.Log(time.ToString());
         objectManager.LoadObject("Night",pc.GetChapter());
+        objectManager.SettingChapter(pc.GetChapter());
+        foreach (var state in states)
+        {
+            state.Value.Init();
+        }
     }
 }

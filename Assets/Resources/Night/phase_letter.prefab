@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chapter: 000001010001010001000101000100
+  type: 1
   alert: {fileID: 6984471094933603717}
   noteUI: {fileID: 0}
   note: {fileID: 2401414708491280035, guid: 8426fd0ace72e3e4daa4225765e1b798, type: 3}
@@ -145,7 +146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7690778766562765302
 Transform:
   m_ObjectHideFlags: 0
