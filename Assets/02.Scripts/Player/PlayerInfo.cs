@@ -26,7 +26,9 @@ public class PlayerInfo
     //사운드 이펙트 효과 크기
     public float sfxVolume;
     //다이어리 체크 유무(매일 1개씩 뜬다.)
-    public bool isDiaryCheck = false;
+    public bool isDiaryCheck;
+    //다이어리가 업데이트 되어있는가
+    public bool isUpdatedDiary;
     //푸시 알림 유무
     public bool isPushNotificationEnabled;
     //현재 플레이어 언어
@@ -59,6 +61,7 @@ public class PlayerInfo
         bgmVolume = 0.5f;
         sfxVolume = 0.5f;
         isDiaryCheck = false;
+        isUpdatedDiary = false;
         language = LANGUAGE.KOREAN;
         isPushNotificationEnabled = true;
         currentPhase = GamePatternState.Watching;

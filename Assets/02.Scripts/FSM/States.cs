@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum EWatching
@@ -12,7 +13,7 @@ public enum EWatching
 }
 public class Watching : GameState
 {
-    ObjectManager objectManager = null;
+    
 
     //뭉치의 외출 여부를 알아야한다.
     List<EWatching> pattern = new List<EWatching>();
@@ -110,7 +111,6 @@ public class MainB : GameState
 
     public override void Enter(GameManager manager)
     {
-
     }
     public override void Update(GameManager manager)
     {
@@ -163,13 +163,27 @@ public class Play : GameState
 
 public class Sleeping : GameState
 {
+    ISleepingInterface sleeping;
     public override void Init()
     {
     }
+
     public override void Enter(GameManager manager)
     {
+        if (objectManager == null)
+        {
+            objectManager = manager.ObjectManager;
+        }
 
+        if(sleeping == null)
+        {
+            sleeping = objectManager.GetSleepingObject();
+        }
+
+        sleeping.OpenSleeping();
+        
     }
+
     public override void Update(GameManager manager)
     {
 

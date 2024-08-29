@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public abstract class GameState
 {
+    protected ObjectManager objectManager = null;
+
     public abstract void Init();
     public abstract void Enter(GameManager manager);
     public abstract void Update(GameManager manager);

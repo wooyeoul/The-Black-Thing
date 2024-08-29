@@ -16,8 +16,7 @@ public class LetterController : BaseObject, IWatchingInterface
     [SerializeField]
     GameObject note;
 
-    int chapter = 0;
-
+    
     public bool IsCurrentPattern(EWatching curPattern)
     {
         return curPattern == type;
@@ -26,7 +25,6 @@ public class LetterController : BaseObject, IWatchingInterface
     public void OpenWatching(int Chapter)
     {
         alert.SetActive(true);
-        chapter = Chapter;
     }
 
     private void OnMouseDown()

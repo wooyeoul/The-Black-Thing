@@ -23,8 +23,6 @@ public class PlayerController : MonoBehaviour
     string nickname;
     [SerializeField]
     int currentChapter;
-    public bool isDiaryCheck = false;
-    bool isNextChapter = false;
     const float passTime = 1800f; //30분을 기준으로 한다.
     // Start is called before the first frame update
 
@@ -49,6 +47,8 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
+        Debug.Log("PlayerController");
+
         translateManager = GameObject.FindWithTag("Translator").GetComponent<TranslateManager>();
         translateManager.Translate(GetLanguage());
         nextPhaseDelegate(player.currentPhase);
@@ -178,6 +178,19 @@ public class PlayerController : MonoBehaviour
     public void SetIsDiaryCheck(bool isCheck)
     {
         player.isDiaryCheck = isCheck;
+    }
+    public bool GetIsDiaryCheck()
+    {
+        return player.IsDiaryCheck;
+    }
+
+    public void SetIsUpdatedDiary(bool isCheck)
+    {
+        player.isUpdatedDiary = isCheck;
+    }
+    public bool GetIsUpdatedDiary()
+    {
+        return player.isUpdatedDiary;
     }
 
     public int GetChapter()

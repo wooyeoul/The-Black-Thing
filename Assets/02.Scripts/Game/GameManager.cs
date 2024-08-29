@@ -1,10 +1,8 @@
+using Assets.Script.TimeEnum;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 using UnityEngine;
 using UnityEngine.Android;
-using Assets.Script.TimeEnum;
 //여기서 게임 상태 정의 
 //하나의 큰 유한 상태 머신 만들 예정
 public enum GamePatternState
@@ -114,11 +112,10 @@ public class GameManager : MonoBehaviour
         }
 
         //해당 백그라운드로 변경한다.
-        GameObject background = Resources.Load<GameObject>("Background/Night");
+        GameObject background = Resources.Load<GameObject>("Background/"+time.ToString());
         Instantiate<GameObject>(background, objectManager.transform);
         //리소스 폴더에 있는 모든 오브젝트를 가져와서 풀을 모두 채운다.
-        Debug.Log(time.ToString());
-        objectManager.LoadObject("Night",pc.GetChapter());
+        objectManager.LoadObject(time.ToString(), pc.GetChapter());
         objectManager.SettingChapter(pc.GetChapter());
         foreach (var state in states)
         {

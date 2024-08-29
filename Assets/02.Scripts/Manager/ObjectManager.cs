@@ -10,9 +10,13 @@ public class ObjectManager : MonoBehaviour
     private ObjectPool pool;
 
     TranslateManager translator;
+
+    List<GameObject>  watches;
+
     public ObjectManager()
     {
-        pool = new ObjectPool(); 
+        pool = new ObjectPool();
+        watches = new List<GameObject>();
     }
 
     private void Start()
@@ -55,24 +59,57 @@ public class ObjectManager : MonoBehaviour
 
     public IWatchingInterface GetWatchingObject(EWatching type)
     {
-        //모든 Obj를 가져와서 검사해야한다.
         IWatchingInterface search = null;
-        List<GameObject> values = pool.GetValues();
+        List<GameObject> values;
+        if (watches.Count == 0)
+        {
+            //모든 Obj를 가져와서 검사해야한다.
+            values = pool.GetValues();
+        }
+        else
+        {
+            values = watches;
+        }
 
         foreach (GameObject value in values)
         {
             IWatchingInterface watching = value.GetComponent<IWatchingInterface>();
 
-            if(watching != null)
+            if (watching != null)
             {
-                if(watching.IsCurrentPattern(type))
+                if (watching.IsCurrentPattern(type))
                 {
                     search = watching;
                 }
+
+                if(watches.Count < 2)
+                {
+                    Debug.Log(watching.ToString());
+                    watches.Add(value);
+                }
             }
+
         }
 
         return search;
+    }
+
+    public ISleepingInterface GetSleepingObject()
+    {
+        List<GameObject> values = pool.GetValues();
+
+        foreach (GameObject value in values)
+        {
+            ISleepingInterface search = value.GetComponent<ISleepingInterface>();
+
+            if (search != null)
+            {
+                return search;
+            }
+        
+        }
+
+        return null;
     }
 
     public void Translate(LANGUAGE language)

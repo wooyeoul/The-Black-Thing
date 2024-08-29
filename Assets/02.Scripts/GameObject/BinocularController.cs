@@ -15,7 +15,7 @@ public class BinocularController : BaseObject , IWatchingInterface
     [SerializeField]
     List<GameObject> watching;
     
-    int chapter; //-1∑Œ πŸ≤„¡‡æﬂ«‘.
+    int chapterIdx; //-1∑Œ πŸ≤„¡‡æﬂ«‘.
 
     GameObject watchingBackground;
     GameObject screenBackground;
@@ -56,7 +56,7 @@ public class BinocularController : BaseObject , IWatchingInterface
     public void OpenWatching(int Chapter)
     {
         alert.SetActive(true);
-        chapter = Chapter;
+        chapterIdx = Chapter;
     }
 
     private void OnMouseDown()
@@ -71,9 +71,8 @@ public class BinocularController : BaseObject , IWatchingInterface
         {
             screenBackground.SetActive(false);
 
-            Debug.Log(chapter);
             //≈¨∑Œ¡Ó~
-            phase = Instantiate(watching[Idx[chapter]], watchingBackground.transform);
+            phase = Instantiate(watching[Idx[chapterIdx]], watchingBackground.transform);
         }
     }
 
