@@ -9,6 +9,9 @@ TagManager:
   - Mungchi
   - optic
   - Binocular
+  - OnMenu
+  - SettingCloseTxt
+  - SettingInputNickname
   layers:
   - Default
   - TransparentFX
@@ -48,6 +51,9 @@ TagManager:
     locked: 0
   - name: Objects
     uniqueID: 1580129183
+    locked: 0
+  - name: Alert
+    uniqueID: 2416145717
     locked: 0
   - name: Dot
     uniqueID: 1368664481
