@@ -70,15 +70,21 @@ public class Watching : GameState
     }
 }
 
+//MainA/MainB 인터페이스 사용해서 함수 하나 연결할 수 있도록 하면 좋겠슴.
 public class MainA : GameState
 {
+    //멤버 변수 대사 
     public override void Init()
     {
+      
     }
+
     public override void Enter(GameManager manager, DotController dot = null)
     {
-
+        //대사를 로드했음 좋겠음.
     }
+
+    //현재 idx, 넘겨줬을때 대사를 주는 그러한 함수 
 
     public override void Exit(GameManager manager)
     {

@@ -9,7 +9,6 @@ public class ObjectManager : MonoBehaviour
     //모든 상태가 오브젝트들을 공유한다.
     private ObjectPool pool;
 
-
     List<GameObject>  watches;
 
     public ObjectManager()
@@ -18,10 +17,6 @@ public class ObjectManager : MonoBehaviour
         watches = new List<GameObject>();
     }
 
-    private void Start()
-    {
-        
-    }
     public void LoadObject(string path, int chapter)
     {
         GameObject[] obj = Resources.LoadAll<GameObject>(path);

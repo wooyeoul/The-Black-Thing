@@ -1,5 +1,6 @@
 {
-    "data": [
+    "data": 
+    [
       {"dotPosition": 0, "X": -1090, "Y": -277},
       {"dotPosition": 0.5, "X": -1172, "Y": -286},
       {"dotPosition": 1, "X": -772, "Y": 205},
@@ -19,5 +20,5 @@
       {"dotPosition": 11.5, "X": 1190, "Y": -497},
       {"dotPosition": 12, "X": 1190, "Y": -497},
       {"dotPosition": 13, "X": 1190, "Y": -497}
-    ]
-  }
+  ]
+}

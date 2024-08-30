@@ -55,6 +55,8 @@ public class DotController : MonoBehaviour
         states = new Dictionary<DotPatternState, DotState>();
         states.Clear();
         //states.Add(DotPatternState.Defualt, new Idle());
+
+        //animation phase -> main 
         states.Add(DotPatternState.Phase, new Phase());
         //states.Add(DotPatternState.Main, new Main());
         //states.Add(DotPatternState.Sub, new Sub());
