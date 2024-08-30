@@ -2961,6 +2961,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930e32b72a5eb924d847d00ecb33012a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fonts:
+  - {fileID: 11400000, guid: c3fac11693f8ac34a93047980ba59d17, type: 2}
+  - {fileID: 11400000, guid: 3e4430de936357f4795bccb8a89c52ea, type: 2}
 --- !u!1 &269175211
 GameObject:
   m_ObjectHideFlags: 0
@@ -19746,7 +19749,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: c3fac11693f8ac34a93047980ba59d17, type: 2}
   m_sharedMaterial: {fileID: 0}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -19810,7 +19813,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1576394961

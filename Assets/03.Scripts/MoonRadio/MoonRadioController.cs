@@ -23,7 +23,7 @@ public class MoonRadioController : MonoBehaviour
         translator.translatorDel += Translate;
     }
 
-    void Translate(LANGUAGE language)
+    void Translate(LANGUAGE language, TMP_FontAsset font)
     {
         //번역한다.
         Debug.Log("달나라 송신기를 번역합니다.\n");
@@ -45,5 +45,20 @@ public class MoonRadioController : MonoBehaviour
         earth[3].text = DataManager.Instance.Settings.moonRadioEarth.popupExit[Idx];
         earth[4].text = DataManager.Instance.Settings.moonRadioEarth.yes[Idx];
         earth[5].text = DataManager.Instance.Settings.moonRadioEarth.no[Idx];
+
+        for (int i = 0; i < radioOff.Length; i++)
+        {
+            radioOff[i].font = font;
+        }
+
+        for (int i = 0; i < radioOn.Length; i++)
+        {
+            radioOn[i].font = font;      
+        }
+
+        for(int i=0;i<earth.Length; i++)
+        {
+            earth[i].font = font;
+        }
     }
 }

@@ -51,7 +51,7 @@ public class ChecklistController : MonoBehaviour
         translator.translatorDel += Translate;
     }
 
-    void Translate(LANGUAGE language)
+    void Translate(LANGUAGE language, TMP_FontAsset font)
     {
         //번역한다.
         Debug.Log("Checklist 번역합니다.\n");
@@ -63,6 +63,11 @@ public class ChecklistController : MonoBehaviour
         phase[2].text = DataManager.Instance.Settings.checklist.phase3[Idx];
         phase[3].text = DataManager.Instance.Settings.checklist.phase4[Idx];
 
+
+        for(int i=0;i<phase.Length;i++)
+        {
+            phase[i].font = font;
+        }
     }
     
     private void InitPhase()

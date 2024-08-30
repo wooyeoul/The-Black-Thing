@@ -25,7 +25,7 @@ public class TimeSkipUIController : MonoBehaviour
 
         translator.translatorDel += Translate;
     }
-    public void Translate(LANGUAGE language)
+    public void Translate(LANGUAGE language, TMP_FontAsset font)
     {
         Debug.Log("TimeSkip 번역합니다.\n");
         int Idx = (int)language;
@@ -35,6 +35,11 @@ public class TimeSkipUIController : MonoBehaviour
         //아이콘
         text[1].text = DataManager.Instance.Settings.timeSkip.yes[Idx];
         text[2].text = DataManager.Instance.Settings.timeSkip.no[Idx];
+
+        for(int i=0; i<text.Length; i++)
+        {
+            text[i].font = font;
+        }
     }
     public void OnClick()
     {

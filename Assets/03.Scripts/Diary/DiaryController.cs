@@ -30,12 +30,13 @@ public class DiaryController : BaseObject, ISleepingInterface
         translator.translatorDel += Translate;
     }
 
-    void Translate(LANGUAGE language)
+    void Translate(LANGUAGE language, TMP_FontAsset font)
     {
         if(alert != null)
         {
             int Idx = (int)language;
             text.text = DataManager.Instance.Settings.alert.diary[Idx];
+            text.font = font;
         }
     }
     public void Init()

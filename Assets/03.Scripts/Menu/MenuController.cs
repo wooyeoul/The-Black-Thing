@@ -61,7 +61,7 @@ public class MenuController : MonoBehaviour
         translator.translatorDel += Translate;
     }
 
-    public void Translate(LANGUAGE language)
+    public void Translate(LANGUAGE language, TMP_FontAsset font)
     {
         //번역한다.
         Debug.Log("Menu 번역합니다.\n");
@@ -121,6 +121,31 @@ public class MenuController : MonoBehaviour
         progress[2].text = DataManager.Instance.Settings.checklist.phase3[Idx];
         progress[3].text = DataManager.Instance.Settings.checklist.phase4[Idx];
 
+
+        for (int i = 0; i < menu.Length; i++)
+        {
+            menu[i].font = font;
+        }
+
+        for (int i = 0; i < mypage.Length; i++)
+        {
+            mypage[i].font = font;
+        }
+
+        for(int i=0;i<community.Length; i++)
+        {
+            community[i].font = font;
+        }
+
+        for(int i=0;i<credit.Length; i++)
+        {
+            credit[i].font = font;
+        }
+
+        for(int i=0;i<progress.Length; i++)
+        {
+            progress[i].font = font;
+        }
     }
 
     public void onMenu()
