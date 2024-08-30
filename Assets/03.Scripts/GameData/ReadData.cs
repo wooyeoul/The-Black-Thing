@@ -22,6 +22,13 @@ public class ReadData : MonoBehaviour
         {
             DataManager.Instance.Settings = JsonUtility.FromJson<SettingInfo>(loadedJson.ToString());
         }
+
+        loadedJson = Resources.Load<TextAsset>("Json/PoemsData");
+
+        if (loadedJson)
+        {
+            DataManager.Instance.PoemData = JsonUtility.FromJson<PoemData>(loadedJson.ToString());
+        }
     }
 
 }

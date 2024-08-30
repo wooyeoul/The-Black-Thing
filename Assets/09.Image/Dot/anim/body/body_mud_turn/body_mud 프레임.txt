@@ -1,0 +1,9 @@
+body_mud 한정으로 몸, 눈을 일체형으로 랜더링하였습니다.
+
+고정 동작만 필요할 때: body_mud_7 배치
+
+
+
+body_default1으로부터 body_mud가 되는 동작을 구현할 때:
+
+body_default1 (고정 동작) - body_mud_1 (2프레임) - body_mud_2 (2프레임) - body_mud_3 (2프레임) - body_mud_4 (1프레임) - body_mud_5 (1프레임) - body_mud_6 (1프레임) - body_mud_7 (고정 동작)

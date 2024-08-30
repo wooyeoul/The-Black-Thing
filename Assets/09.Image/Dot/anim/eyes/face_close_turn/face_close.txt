@@ -1,0 +1,2 @@
+face_nonblink (고정 동작) - face_close_1 (2프레임) -  face_close_2 (고정동작)
+

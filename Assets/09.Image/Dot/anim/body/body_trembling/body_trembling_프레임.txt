@@ -1,0 +1,2 @@
+1프레임씩 
+ body_trembling_1 - body_trembling_2 - body_trembling_1 - body_trembling_3 무한 반복 배치

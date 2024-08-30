@@ -1156,8 +1156,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: " \uB2EC\uC774 \uB72C \uBC24, \uC800\uB141 \uC5EC\uB35F \uC2DC\uBD80\uD130\n
-    \uC0C8\uBCBD \uC138 \uC2DC \uAE4C\uC9C0"
+  m_text: " \uB2EC\uC774 \uB72C \uBC24, \uC800\uB141 \uC5EC\uB35F \uC2DC\uBD80\uD130\n\uC0C8\uBCBD
+    \uC138 \uC2DC \uAE4C\uC9C0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c3fac11693f8ac34a93047980ba59d17, type: 2}
   m_sharedMaterial: {fileID: 1188920287867902073, guid: c3fac11693f8ac34a93047980ba59d17, type: 2}
@@ -1982,6 +1982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moonRadioController: {fileID: 0}
   alert: {fileID: 161950311385091133}
+  text: {fileID: 6541651986113348884}
 --- !u!95 &7907005393560315915
 Animator:
   serializedVersion: 5

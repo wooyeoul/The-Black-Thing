@@ -1,0 +1,1 @@
+face_noblink(고정 동작) - face_eyeroll_1 (2프레임) - face_eyeroll_2 (24프레임or자유) - face_eyeroll_1 (2프레임) - face_noblink(고정 동작)

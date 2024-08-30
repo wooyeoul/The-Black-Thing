@@ -9,7 +9,6 @@ public class ObjectManager : MonoBehaviour
     //모든 상태가 오브젝트들을 공유한다.
     private ObjectPool pool;
 
-    TranslateManager translator;
 
     List<GameObject>  watches;
 
@@ -21,8 +20,7 @@ public class ObjectManager : MonoBehaviour
 
     private void Start()
     {
-        translator = GameObject.FindWithTag("Translator").GetComponent<TranslateManager>();
-        translator.translatorDel += Translate;
+        
     }
     public void LoadObject(string path, int chapter)
     {

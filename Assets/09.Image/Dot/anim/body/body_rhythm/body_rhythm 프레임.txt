@@ -1,0 +1,1 @@
+body_default1 (3프레임) - body_rhythm_1 (1프레임) - body_rhythm_2 (2프레임) - body_rhythm_3 (2프레임) - body_rhythm_4 (2프레임)  무한 반복

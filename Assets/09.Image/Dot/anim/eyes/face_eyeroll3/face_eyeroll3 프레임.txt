@@ -1,0 +1,1 @@
+face_noblink (고정 동작) - face_eyeroll3_1 (2프레임) - face_eyeroll3_2 (10프레임) - face_eyeroll3_3 (2프레임) - face_eyeroll3_4 (20프레임) - face_eyeroll3_5 (1프레임) - face_eyeroll3_6 (4프레임) - face_eyeroll3_5 (1프레임) - face_noblink (고정 동작)

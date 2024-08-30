@@ -1,0 +1,1 @@
+body_default1 (고정 동작) - body_hmm_1 (2프레임) - body_hmm_2 (1프레임) - body_hmm_3 (2프레임) - body_hmm_4 (2프레임) - body_hmm5 (고정 동작)

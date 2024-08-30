@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,31 +12,54 @@ public class Cursor : MonoBehaviour
     public bool isrelease = false;
     public bool isSuccess = false;
     public GameObject target;
+
+
+    [SerializeField]
+    GameObject systemUI;
     void Start()
     {
         isrelease = false;
-
-        var height = 2*Camera.main.orthographicSize-2; 
-        var width = height*Camera.main.aspect-2;
-
-        width=Random.Range(-(width/2),width/2);
-        height=Random.Range(-(height/2),height/2);
-        
-        this.transform.position=new Vector3(width,height);
-        //위치 랜덤으로 변경
     }
 
     private void OnEnable()
     {
-        camera = GameObject.FindWithTag("MainCamera");
+        if(camera == null)
+        {
+            camera = GameObject.FindWithTag("MainCamera");
+        }
+
+        if (systemUI == null)
+        {
+            systemUI = GameObject.Find("SystemUI");
+        }
 
         if (camera)
         {
             camera.transform.position=new Vector3(0,0,-10f);
             camera.GetComponent<ScrollManager>().StopCamera(true);
         }
+
+        var height = 2 * Camera.main.orthographicSize - 2;
+        var width = height * Camera.main.aspect - 2;
+
+        width = Random.Range(-(width / 2), width / 2);
+        height = Random.Range(-(height / 2), height / 2);
+        this.transform.position = new Vector3(width, height);
+
+        //위치 랜덤으로 변경
+        if(systemUI)
+        {
+            systemUI.SetActive(false);
+        }
     }
 
+    private void OnDisable()
+    {
+        if(systemUI)
+        {
+            systemUI.SetActive(true);
+        }
+    }
     private void Update() 
     {
         if(isSuccess == false)

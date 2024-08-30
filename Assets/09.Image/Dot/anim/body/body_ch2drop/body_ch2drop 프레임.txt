@@ -1,0 +1,4 @@
+눈과 몸 일체형입니다.
+body_ch2tremble_3,4,5에 연결됩니다.
+
+body_ch2drop_1 (1프레임) - body_ch2drop_2 (2프레임) - body_ch2drop_3 (3프레임) - body_ch2drop_4 (4프레임) - body_ch2drop_5 (1프레임) - body_ch2drop_6 (2프레임) - body_ch2drop_7 (2프레임) - body_ch2drop_8 (1프레임) - body_ch2drop_9 (2프레임) - body_ch2drop_10 (1프레임) - body_default1 + face_noblink (고정동작) 

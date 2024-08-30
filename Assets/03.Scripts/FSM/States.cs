@@ -14,7 +14,6 @@ public enum EWatching
 public class Watching : GameState
 {
     
-
     //뭉치의 외출 여부를 알아야한다.
     List<EWatching> pattern = new List<EWatching>();
     IWatchingInterface watching = null;
@@ -36,8 +35,13 @@ public class Watching : GameState
             }
         }
     }
-    public override void Enter(GameManager manager)
+    public override void Enter(GameManager manager, DotController dot = null)
     {
+        if (pattern[manager.Chapter] == EWatching.None)
+        {
+            return;
+        }
+
         if(objectManager == null)
         {
             objectManager = manager.ObjectManager;
@@ -49,13 +53,14 @@ public class Watching : GameState
         {
             watching.OpenWatching(manager.Chapter);
         }
+        else
+        {
+            //Dot뭉치 watching 표현
+            dot.ChangeState(DotPatternState.Phase, "anim_watching",1.5f);
+        }
         //Stay일 때 뭉치 등장
     }
 
-    public override void Update(GameManager manager)
-    {
-
-    }
     public override void Exit(GameManager manager)
     {
         if(watching != null)
@@ -70,14 +75,11 @@ public class MainA : GameState
     public override void Init()
     {
     }
-    public override void Enter(GameManager manager)
+    public override void Enter(GameManager manager, DotController dot = null)
     {
 
     }
-    public override void Update(GameManager manager)
-    {
 
-    }
     public override void Exit(GameManager manager)
     {
 
@@ -89,14 +91,11 @@ public class Thinking : GameState
     public override void Init()
     {
     }
-    public override void Enter(GameManager manager)
+    public override void Enter(GameManager manager, DotController dot = null)
     {
 
     }
-    public override void Update(GameManager manager)
-    {
 
-    }
     public override void Exit(GameManager manager)
     {
 
@@ -109,13 +108,10 @@ public class MainB : GameState
     {
     }
 
-    public override void Enter(GameManager manager)
+    public override void Enter(GameManager manager, DotController dot = null)
     {
     }
-    public override void Update(GameManager manager)
-    {
 
-    }
     public override void Exit(GameManager manager)
     {
 
@@ -128,14 +124,11 @@ public class Writing : GameState
     {
     }
 
-    public override void Enter(GameManager manager)
+    public override void Enter(GameManager manager, DotController dot = null)
     {
 
     }
-    public override void Update(GameManager manager)
-    {
 
-    }
     public override void Exit(GameManager manager)
     {
 
@@ -147,11 +140,7 @@ public class Play : GameState
     public override void Init()
     {
     }
-    public override void Enter(GameManager manager)
-    {
-
-    }
-    public override void Update(GameManager manager)
+    public override void Enter(GameManager manager, DotController dot = null)
     {
 
     }
@@ -168,7 +157,7 @@ public class Sleeping : GameState
     {
     }
 
-    public override void Enter(GameManager manager)
+    public override void Enter(GameManager manager, DotController dot = null)
     {
         if (objectManager == null)
         {
@@ -184,10 +173,6 @@ public class Sleeping : GameState
         
     }
 
-    public override void Update(GameManager manager)
-    {
-
-    }
     public override void Exit(GameManager manager)
     {
 

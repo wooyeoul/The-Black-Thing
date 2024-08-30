@@ -36,6 +36,20 @@ public class DataManager : MonoBehaviour
         }
     }
 
+    PoemData poemData;
+
+    public PoemData PoemData
+    {
+        get
+        {
+            return poemData;
+        }
+        set
+        {
+            poemData = value;
+        }
+    }
+
     #endregion
     private void Awake()
     {

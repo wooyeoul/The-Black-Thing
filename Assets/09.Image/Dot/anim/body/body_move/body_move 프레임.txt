@@ -1,0 +1,1 @@
+body_default1 - body_move_1 (1프레임) - body_move_2 (1프레임) - body_move_3 (2프레임) - body_move_2 (프레임) - body_move_1 (1프레임) - body_default1

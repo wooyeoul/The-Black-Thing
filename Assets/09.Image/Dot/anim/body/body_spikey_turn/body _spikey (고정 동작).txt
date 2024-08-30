@@ -1,0 +1,6 @@
+body default1 (고정 동작) - body_spikey_1 (2프레임) - body_spikey_2 (1프레임) - body_spikey_3 (고정 동작)
+
+
+body default1 으로 돌아올 때
+
+body_spikey_3 (고정 동작) - body_spikey_1 (2프레임) - body default1 (고정 동작) 

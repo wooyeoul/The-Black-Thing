@@ -1,0 +1,2 @@
+body_default1(고정 동작) - body_default2_1 (2 프레임) - body_default2_2 (2프레임) - body_default2_3 (고정 동작)
+

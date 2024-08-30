@@ -1,0 +1,4 @@
+body_draw_4, body_draw_5 에 연결됩니다.
+
+
+body_draw2_1 (2프레임) - body_draw2_2 (2프레임) - body_draw2_3 (2프레임) - body_draw2_4 (고정 동작)

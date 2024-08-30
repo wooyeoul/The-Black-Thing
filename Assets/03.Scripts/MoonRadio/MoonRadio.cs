@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,13 +11,26 @@ public class MoonRadio : MonoBehaviour
     GameObject moonRadioController;
     [SerializeField]
     GameObject alert;
+    [SerializeField]
+    TMP_Text text;
 
+    TranslateManager translator;
     Animator blinkMoonRadioAnim;
 
     private void Start()
     {
         blinkMoonRadioAnim = GetComponent<Animator>();
         moonRadioController = GameObject.Find("MoonRadio").transform.GetChild(0).gameObject;
+        translator = GameObject.FindWithTag("Translator").GetComponent<TranslateManager>();
+        translator.translatorDel += Translate;
+    }
+    void Translate(LANGUAGE language)
+    {
+        if (alert != null)
+        {
+            int Idx = (int)language;
+            text.text = DataManager.Instance.Settings.alert.diary[Idx];
+        }
     }
     private void OnMouseDown()
     {

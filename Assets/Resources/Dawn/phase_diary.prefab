@@ -129,6 +129,8 @@ MonoBehaviour:
   chapter: 010101010101010101010101010101
   light: {fileID: 2606656041480451631}
   alert: {fileID: 4650888275574701918}
+  diaryUI: {fileID: 0}
+  text: {fileID: 5924734702738358988}
 --- !u!1 &2606656041480451631
 GameObject:
   m_ObjectHideFlags: 0

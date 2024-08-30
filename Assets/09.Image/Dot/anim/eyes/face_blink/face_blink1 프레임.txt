@@ -1,0 +1,1 @@
+face_blink1 (고정 동작)  - face_blink2 (1프레임) - face_blink3 (5프레임) - face_blink2 (1프레임) - face_blink1 (고정 동작)

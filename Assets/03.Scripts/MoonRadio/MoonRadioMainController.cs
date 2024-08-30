@@ -17,10 +17,28 @@ public class MoonRadioMainController : MonoBehaviour
     [SerializeField]
     GameObject moonRadioEarth;
 
+    [SerializeField]
+    GameObject systemUI;
+
     private void OnEnable()
     {
         moonRadioOff.SetActive(false);
         moonRadioOn.SetActive(true);
+
+        //systemUI∏¶ ≤®¡ÿ¥Ÿ.
+        systemUI = GameObject.Find("SystemUI");
+        if(systemUI)
+        {
+            systemUI.SetActive(false);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if(systemUI)
+        {
+            systemUI.SetActive(true);
+        }
     }
 
     public void RadioOff()

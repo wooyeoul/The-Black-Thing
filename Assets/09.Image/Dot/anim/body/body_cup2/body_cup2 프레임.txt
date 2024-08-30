@@ -1,0 +1,8 @@
+body_cup2_1 (고정 동작)
+
+눈 깜빡 애니메이션
+body_cup2_1 (고정 동작) - body_cup2_2 (2프레임) - body_cup2_3 (6프레임) - body_cup2_2 (2프레임) - body_cup2_1 (고정 동작)
+
+
+
+body_cup2_1 지속 시간은 4~5초가 적당합니다. 

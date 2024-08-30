@@ -1,0 +1,4 @@
+face_eyeroll 소스와 동일합니다. 
+
+face_thinking_1 (face_noblink 연결동작, 2프레임)
+face_thinking_2 (고정동작)

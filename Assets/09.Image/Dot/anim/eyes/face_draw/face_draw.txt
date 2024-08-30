@@ -1,0 +1,1 @@
+face_nonblink (고정 동작) - face_draw_1 (1프레임) - face_draw_2 (10프레임) - face_draw_3 (10프레임) - face_draw_2 (2프레임) - face_draw_4 (고정 동작)

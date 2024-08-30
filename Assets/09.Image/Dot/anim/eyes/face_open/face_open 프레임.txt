@@ -1,0 +1,4 @@
+face_close_2 (고정 동작) -  face_open_1 (2프레임) - face_nonblink (고정 동작) 
+
+
+(소스 추가 없이 face_close 프레임에서 배치만 반대로 해도 무방)
