@@ -46,10 +46,11 @@ public class Watching : GameState
         {
             objectManager = manager.ObjectManager;
         }
+        objectManager.SettingChapter(manager.Chapter);
 
         watching = objectManager.GetWatchingObject(pattern[manager.Chapter]);
-
-        if(watching!=null)
+        
+        if (watching!=null)
         {
             watching.OpenWatching(manager.Chapter);
         }

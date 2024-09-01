@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DiaryPageController : MonoBehaviour
 {
@@ -10,6 +13,44 @@ public class DiaryPageController : MonoBehaviour
     float clickTime = 0.0f;
     [SerializeField]
     float minClickTime;
+
+    [SerializeField]
+    TMP_Text title;
+
+    [SerializeField]
+    TMP_Text leftPage;
+
+
+    [SerializeField]
+    TMP_Text subTitle;
+
+    [SerializeField]
+    Image []subImg;
+    [SerializeField]
+    TMP_Text []subTxt;
+
+    TranslateManager translator;
+    private void Start()
+    {
+        translator = GameObject.FindWithTag("Translator").GetComponent<TranslateManager>();
+        translator.translatorDel += Translate;
+    }
+    void Translate(LANGUAGE language, TMP_FontAsset font)
+    {
+        int Idx = (int)language;
+        
+        
+        title.font = font;
+        leftPage.font = font;
+        subTitle.font = font;
+        for(int i=0;i<subTxt.Length;i++)
+        {
+            subTxt[i].font = font;
+            //Txtº¯°æ
+        }
+
+    }
+
     public void OnEnable()
     {
         isClick = false;
