@@ -1,0 +1,22 @@
+{
+  "animations": [
+      {
+          "key": "anim_diary",
+          "value": {
+              "positions": [8]
+          }
+      },
+      {
+          "key": "anim_sleep",
+          "value": {
+              "positions": [10]
+          }
+      },
+      {
+          "key": "anim_watching",
+          "value": {
+              "positions": [1.5]
+          }
+      }
+  ]
+}

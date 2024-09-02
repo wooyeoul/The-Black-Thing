@@ -33,6 +33,9 @@ public class ScrollManager : MonoBehaviour
     [SerializeField]
     bool isScreenStatic = false;
 
+
+    Vector3 originalPos = new Vector3(0, 0, -10f);
+
     private void Start()
     {
         camera = GetComponent<Camera>();
@@ -40,6 +43,18 @@ public class ScrollManager : MonoBehaviour
 
     public void StopCamera(bool isScreenStatic)
     {
+        if (camera == null) return;
+
+        if(isScreenStatic)
+        {
+            originalPos = camera.transform.position;
+            camera.transform.position = new Vector3(0, 0, -10f);
+        }
+        else
+        {
+            camera.transform.position = originalPos;
+        }
+
         this.isScreenStatic = isScreenStatic;
     }
 

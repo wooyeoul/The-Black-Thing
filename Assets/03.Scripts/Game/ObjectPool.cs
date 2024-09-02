@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using System.IO;
 
 public class ObjectPool
 {
@@ -18,6 +20,17 @@ public class ObjectPool
     }
 
     private Dictionary<string, PoolItem> _memory = new Dictionary<string, PoolItem>();
+
+    public IEnumerator LoadFromMemoryAsync(string path, System.Action<AssetBundle> callback)
+    {
+        byte[] binary = File.ReadAllBytes(path);
+
+        AssetBundleCreateRequest req = AssetBundle.LoadFromMemoryAsync(binary);
+
+        yield return req;
+
+        callback(req.assetBundle);
+    }
     //검색 기능
     public GameObject SearchMemory(string objectName)
     {

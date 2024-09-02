@@ -72,7 +72,6 @@ public class DiaryController : BaseObject, ISleepingInterface
 
             if(playerController)
             {
-                Debug.Log("플레이어 컨트롤러 여기까지 안와");
                 //플레이어 정보도 업데이트 한다.
                 playerController.SetIsUpdatedDiary(isDiaryUpdated);
             }

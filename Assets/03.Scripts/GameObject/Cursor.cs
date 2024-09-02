@@ -35,7 +35,6 @@ public class Cursor : MonoBehaviour
 
         if (camera)
         {
-            camera.transform.position=new Vector3(0,0,-10f);
             camera.GetComponent<ScrollManager>().StopCamera(true);
         }
 

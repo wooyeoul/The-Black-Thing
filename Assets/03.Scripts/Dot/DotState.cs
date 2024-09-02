@@ -6,8 +6,8 @@ using UnityEngine;
 public class DotData
 {
     public float dotPosition;
-    public int X;
-    public int Y;
+    public float X;
+    public float Y;
 }
 
 [System.Serializable]
@@ -38,7 +38,6 @@ public abstract class DotState
         {
             Vector2 vector = new Vector2(Data.X, Data.Y);
             position.Add(Data.dotPosition, vector);
-            Debug.Log($"Dot Position: {Data.dotPosition}, X: {Data.X}, Y: {Data.Y}");
         }
     }
 

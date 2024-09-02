@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
         translateManager = GameObject.FindWithTag("Translator").GetComponent<TranslateManager>();
         translateManager.Translate(GetLanguage());
-        nextPhaseDelegate(player.currentPhase);
+        //nextPhaseDelegate(player.currentPhase);
     }
     // Update is called once per frame
     //1시간이 되었는지 체크하기 위해서 저정용도

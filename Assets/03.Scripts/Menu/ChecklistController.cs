@@ -47,8 +47,11 @@ public class ChecklistController : MonoBehaviour
     {
         pc = GameObject.FindWithTag("Player").gameObject.GetComponent<PlayerController>();
         pc.nextPhaseDelegate += NextPhase;
+
         translator = GameObject.FindWithTag("Translator").GetComponent<TranslateManager>();
         translator.translatorDel += Translate;
+
+        InitPhase((GamePatternState)pc.GetAlreadyEndedPhase());
     }
 
     void Translate(LANGUAGE language, TMP_FontAsset font)
@@ -70,23 +73,48 @@ public class ChecklistController : MonoBehaviour
         }
     }
     
-    private void InitPhase()
+    private void InitPhase(GamePatternState state)
     {
-        int Idx = (int)GamePatternState.NextChapter;
+        int Last = (int)GamePatternState.NextChapter;
 
-        foreach (var Object in checklists[Idx].noteObjects)
+        foreach (var Object in checklists[Last].noteObjects)
         {
             Object.SetActive(false);
+        }
+
+        int Idx = (int)state;
+        activeIcon = checklists[Idx].IconObject;
+        activeIcon.SetActive(true);
+
+        foreach (var note in checklists[Idx].noteObjects)
+        {
+            if (note.activeSelf == false)
+            {
+                note.SetActive(true);
+            }
         }
     }
 
     public void NextPhase(GamePatternState state)
     {
+        StartCoroutine(ChangeState(state));
+    }
+
+    //코루틴으로 한다.
+    IEnumerator ChangeState(GamePatternState state)
+    {
+        yield return new WaitForSeconds(5.5f);
+
         int Idx = (int)state;
 
-        if(state == GamePatternState.Watching)
+        if (state == GamePatternState.Watching)
         {
-            InitPhase();
+            int Last = (int)GamePatternState.NextChapter;
+
+            foreach (var Object in checklists[Last].noteObjects)
+            {
+                Object.SetActive(false);
+            }
         }
 
         if (activeIcon)
@@ -96,6 +124,7 @@ public class ChecklistController : MonoBehaviour
 
         activeIcon = checklists[Idx].IconObject;
         activeIcon.SetActive(true);
+
 
         foreach (var note in checklists[Idx].noteObjects)
         {
@@ -109,6 +138,8 @@ public class ChecklistController : MonoBehaviour
         {
             OnClickCheckListIcon();
         }
+
+        yield return null;
     }
 
     public void OnClickCheckListIcon()

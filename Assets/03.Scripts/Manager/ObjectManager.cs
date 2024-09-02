@@ -1,6 +1,11 @@
+using Assets.Script.TimeEnum;
 using Mono.Cecil.Cil;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using static ObjectPool;
 
@@ -11,10 +16,61 @@ public class ObjectManager : MonoBehaviour
 
     List<GameObject>  watches;
 
+    Dictionary<string, GameObject> mains;
+
     public ObjectManager()
     {
         pool = new ObjectPool();
+        mains = new Dictionary<string, GameObject>();
         watches = new List<GameObject>();
+    }
+
+    public void InitMainBackground(string path)
+    {
+        Action<AssetBundle> callback = LoadMainBackground;
+
+        StartCoroutine(pool.LoadFromMemoryAsync(path, callback));
+
+    }
+
+    public GameObject SetMain(string background)
+    {
+
+        if(mains.ContainsKey(background))
+        {
+
+            foreach (var w in mains)
+            {
+                w.Value.SetActive(false);
+            }
+
+            mains[background].SetActive(true);
+
+            return mains[background];
+        }
+
+        return null;
+    }
+
+    private void LoadMainBackground(AssetBundle bundle)
+    {
+        if(bundle != null)
+        {
+            GameObject[] prefab = bundle.LoadAllAssets<GameObject>();
+            
+
+            foreach(GameObject pf in prefab)
+            {
+                GameObject realObj = Instantiate(pf,this.transform);
+
+                string name = realObj.name.Substring(0, realObj.name.IndexOf("(")); 
+                realObj.name = name; //(clone)을 찾아냄.
+                mains.Add(name,realObj);
+                realObj.SetActive(false);
+            }
+
+            bundle.Unload(false);
+        }
     }
 
     public void LoadObject(string path, int chapter)
@@ -23,7 +79,7 @@ public class ObjectManager : MonoBehaviour
         foreach (GameObject obj2 in obj)
         {
             //Instantiate를 통해서 InsertMemory내 삽입
-            GameObject newObj = Instantiate(obj2, this.transform.GetChild(0));
+            GameObject newObj = Instantiate(obj2, this.transform);
             
             //newObj의 clone을 제거 
             pool.InsertMemory(newObj);

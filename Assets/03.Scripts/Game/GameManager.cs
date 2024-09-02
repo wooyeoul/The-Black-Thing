@@ -1,6 +1,8 @@
 using Assets.Script.TimeEnum;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Android;
 //여기서 게임 상태 정의 
@@ -22,10 +24,17 @@ public class GameManager : MonoBehaviour
 {
     private GameState activeState;
     private ObjectManager objectManager;
+    private ScrollManager scrollManager;
     private Dictionary<GamePatternState, GameState> states;
     private PlayerController pc;
+
     private SITime time;
 
+    [SerializeField]
+    GameObject skipPhase;
+
+    [SerializeField]
+    private DotController dot;
     public int Chapter
     {
         get { return pc.GetChapter(); }
@@ -35,6 +44,12 @@ public class GameManager : MonoBehaviour
     {
         get { return objectManager; }
     }
+
+    public ScrollManager ScrollManager
+    {
+        get { return scrollManager; }
+    }
+
     GameManager()
     {
         states = new Dictionary<GamePatternState, GameState>();
@@ -65,9 +80,8 @@ public class GameManager : MonoBehaviour
         pc = GameObject.FindWithTag("Player").gameObject.GetComponent<PlayerController>();
         pc.nextPhaseDelegate += ChangeGameState;
         objectManager = GameObject.FindWithTag("ObjectManager").gameObject.GetComponent<ObjectManager>();
-        
+        scrollManager = GameObject.FindWithTag("MainCamera").gameObject.GetComponent<ScrollManager>();
         InitGame();
-        ChangeGameState((GamePatternState)pc.GetAlreadyEndedPhase());
     }
 
     public void ChangeGameState(GamePatternState patternState)
@@ -80,16 +94,38 @@ public class GameManager : MonoBehaviour
             return; 
         }
 
-        if(activeState != null)
+        StartCoroutine(ChangeState(patternState));
+    }
+
+    public void StartMain()
+    {
+        MainDialogue mainState= (MainDialogue)activeState;
+
+        if(mainState != null)
+        {
+            mainState.StartMain(this);
+        }
+    }
+    //코루틴으로 한다.
+    IEnumerator ChangeState(GamePatternState patternState)
+    {
+        skipPhase.SetActive(true);
+        yield return new WaitForSeconds(5.0f);
+
+        skipPhase.SetActive(false);
+        if (activeState != null)
         {
             activeState.Exit(this); //미리 정리한다.
         }
         activeState = states[patternState];
-        activeState.Enter(this);
+        activeState.Enter(this, dot);
+
+        yield return null;
     }
 
     private void InitGame()
     {
+
         //배경을 업로드한다.
         Int32 hh = Int32.Parse(DateTime.Now.ToString(("HH"))); //현재 시간을 가져온다
        
@@ -121,5 +157,12 @@ public class GameManager : MonoBehaviour
         {
             state.Value.Init();
         }
+        string path = Path.Combine(Application.dataPath + "/AssetBundles/" + time.ToString());
+
+        objectManager.InitMainBackground(path);
+
+        GamePatternState patternState = (GamePatternState)pc.GetAlreadyEndedPhase();
+        activeState = states[patternState];
+        activeState.Enter(this,dot);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 public class DotController : MonoBehaviour
@@ -10,15 +11,18 @@ public class DotController : MonoBehaviour
 
     private DotState currentState; //현재 상태
     private Dictionary<DotPatternState, DotState> states;
-
     private float position;
     private string dotExpression; //CSV에 의해서 string 들어옴
     private string animKey; //CSV에 의해서 string으로 들어옴 파싱 해줘야한다.
 
-    [SerializeField] GameObject mainAlert;
+    [SerializeField] 
+    GameObject mainAlert;
 
     [SerializeField]
-    private ChapterDay chapter;
+    private int chapter;
+
+    [SerializeField]
+    private GameManager manager;
 
     [SerializeField]
     private Animator animator;
@@ -26,7 +30,7 @@ public class DotController : MonoBehaviour
     public Animator Animator
     { get { return animator; } }
 
-    public ChapterDay Chapter
+    public int Chapter
     {
         get { return chapter; }
         set { chapter = value; }
@@ -50,34 +54,43 @@ public class DotController : MonoBehaviour
         set { dotExpression = value; }
     }
 
-    void Start()
+    void Awake()
     {
-        states = new Dictionary<DotPatternState, DotState>();
-        states.Clear();
-        //states.Add(DotPatternState.Defualt, new Idle());
-
-        //animation phase -> main 
-        states.Add(DotPatternState.Phase, new Phase());
-        //states.Add(DotPatternState.Main, new Main());
-        //states.Add(DotPatternState.Sub, new Sub());
 
         animator = GetComponent<Animator>();
 
         Position = -1;
         dotExpression = "";
-        chapter = ChapterDay.C_1DAY;
-        ChangeState(DotPatternState.Defualt, "anim_mud"); //처음 default
+
+        states = new Dictionary<DotPatternState, DotState>();
+        states.Clear();
+        states.Add(DotPatternState.Defualt, new Idle());
+        states.Add(DotPatternState.Phase, new Phase());
+        states.Add(DotPatternState.Main, new Main());
+        states.Add(DotPatternState.Sub, new Sub());
+
+    }
+    void Start()
+    {
+        chapter = manager.Chapter;
     }
 
-    private void OnEnable()
+    private void OnMouseDown()
     {
-        mainAlert = GameObject.Find("Dot").transform.Find("MainAlert").gameObject;
-    }
 
-    public void TriggerMain()
+        if (mainAlert.activeSelf)
+        {
+            mainAlert.SetActive(false);
+
+            //main 배경화면을 트리거한다.
+            manager.StartMain();
+        }
+    }
+    public void TriggerMain(bool isActive)
     {
-        mainAlert.SetActive(true);
+        mainAlert.SetActive(isActive);
         /*여기서 OnClick 함수도 연결해준다.*/
+        //OutPos 가 있다면 해당 Position으로 바껴야함.
     }
     public void ChangeState(DotPatternState state = DotPatternState.Defualt, string OutAnimKey = "", float OutPos = -1, string OutExpression = "")
     {
@@ -99,7 +112,7 @@ public class DotController : MonoBehaviour
         position = OutPos; //이전 위치를 초기화함, 그렇게 하면 모든 상태로 입장했을 때 -1이 아니여서 랜덤으로 뽑지않는다.
         dotExpression = OutExpression; //Update, Main에서만 사용하기 때문에 다른 곳에서는 사용하지 않음.
         animKey = OutAnimKey;
-
+        chapter = manager.Chapter;
         //OutPos 가 있다면 해당 Position으로 바껴야함.
         currentState = states[state];
         currentState.Enter(this); //실행

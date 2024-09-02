@@ -19,13 +19,13 @@ public class Idle : DotState
     {
         IdlePos.Add(state, pos);
     }
+
     public override void Enter(DotController dot)
     {
 
         //dot의 animKey를 가져온다.
         //animKey의 저장된 List<float> Length 값 중 Random.Range 함수를 사용해서 뽑는다.
         //IdlePos[animKey][position]을 동작한다(애니메이션 상태전환).
-
         DotAnimState anim;
 
         if (Enum.TryParse(dot.AnimKey, true, out anim))
@@ -37,18 +37,17 @@ public class Idle : DotState
             {
                 int maxIdx = IdlePos[anim].Count;
 
-                dot.Position = UnityEngine.Random.Range(0, maxIdx);
+                dot.Position = IdlePos[anim][UnityEngine.Random.Range(0, maxIdx)];
             }
 
-            dot.transform.localPosition = GetCoordinate(dot.Position); //위치 업데이트
-
-            dot.Animator.SetInteger("DotAnimState", (int)anim); //애니메이션 업데이트
-
+            dot.transform.position = GetCoordinate(dot.Position); //위치 업데이트
             if (anim == DotAnimState.anim_mud)
             {
                 //챕터를 파악해서, mold를 변경시킬 때 사용.
-                dot.Animator.SetInteger("Chapter", (int)dot.Chapter);
+                dot.Animator.SetInteger("Chapter", dot.Chapter);
             }
+
+            dot.Animator.SetInteger("DotAnimState", (int)anim); //애니메이션 업데이트
         }
 
     }
@@ -84,7 +83,7 @@ public class Main : DotState
         reader.ReadJson(this, Resources.Load<TextAsset>("FSM/MainState"));
 
         //1. 꺼져있는 자식 중 Eyes를 찾아서 dotEyes에 대입해 놓는다.
-        dotEyes = GameObject.Find("Dot").transform.Find("DotEyes").gameObject;
+        dotEyes = GameObject.Find("Dot").transform.Find("Eyes").gameObject;
         dotEyesAnim = dotEyes.GetComponent<Animator>();
     }
 
@@ -92,6 +91,7 @@ public class Main : DotState
     {
         MainPos.Add(state, pos);
     }
+
     public override void Enter(DotController dot)
     {
         //2. eyes를 킨다.
@@ -179,13 +179,12 @@ public class Phase : DotState
     }
     public override void Enter(DotController dot)
     {
-        Debug.Log(2);
-
-        Debug.Log(dot.AnimKey);
-
         DotAnimState anim;
         if (Enum.TryParse(dot.AnimKey, true, out anim))
         {
+            Debug.Log($"Watching {anim}");
+            dot.Position = PhasePos[anim][0];
+            dot.transform.position = GetCoordinate(dot.Position); //위치 업데이트
             dot.Animator.SetInteger("DotAnimState", (int)anim); //애니메이션 업데이트
         }
     }

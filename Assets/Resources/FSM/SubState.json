@@ -1,0 +1,130 @@
+{
+  "animations": [
+      {
+          "key": "anim_default",
+          "value": {
+              "positions": [0, 1, 3, 5, 6, 8, 11]
+          }
+      },
+      {
+          "key": "anim_bed",
+          "value": {
+              "positions": [6, 8]
+          }
+      },
+      {
+          "key": "anim_reading",
+          "value": {
+              "positions": [0, 1, 3, 5, 6]
+          }
+      },
+      {
+          "key": "anim_writing",
+          "value": {
+              "positions": [6, 8]
+          }
+      },
+      {
+          "key": "anim_mold",
+          "value": {
+              "positions": [0.5]
+          }
+      },
+      {
+          "key": "anim_bounce",
+          "value": {
+              "positions": [0, 1, 3, 5, 6, 8, 11]
+          }
+      },
+      {
+          "key": "anim_laptop",
+          "value": {
+              "positions": [7]
+          }
+      },
+      {
+          "key": "anim_walking",
+          "value": {
+              "positions": [5, 8]
+          }
+      },
+      {
+          "key": "anim_mold2",
+          "value": {
+              "positions": [0]
+          }
+      },
+      {
+          "key": "anim_happy",
+          "value": {
+              "positions": [6, 8]
+          }
+      },
+      {
+          "key": "anim_spiderweb1",
+          "value": {
+              "positions": [10]
+          }
+      },
+      {
+          "key": "anim_spiderweb2",
+          "value": {
+              "positions": [10]
+          }
+      },
+      {
+          "key": "anim_eyesclosed",
+          "value": {
+              "positions": [0, 1, 3, 5, 6, 8, 11]
+          }
+      },
+      {
+          "key": "anim_eyescorner",
+          "value": {
+              "positions": [0, 1, 3, 5, 6, 8, 11]
+          }
+      },
+      {
+          "key": "anim_eyesdown",
+          "value": {
+              "positions": [0, 1, 3, 5, 6, 8, 11]
+          }
+      },
+      {
+          "key": "anim_eyesside",
+          "value": {
+              "positions": [0, 1, 3, 5, 6, 8, 11]
+          }
+      },
+      {
+          "key": "anim_eyesup",
+          "value": {
+              "positions": [0, 1, 3, 5, 6, 8, 11]
+          }
+      },
+      {
+          "key": "anim_sleepy_bed",
+          "value": {
+              "positions": [6, 7]
+          }
+      },
+      {
+          "key": "anim_sleepy_spiderweb",
+          "value": {
+              "positions": [10]
+          }
+      },
+      {
+          "key": "anim_mud",
+          "value": {
+              "positions": [3.5]
+          }
+      },
+      {
+          "key": "anim_eyeswide",
+          "value": {
+              "positions": [0, 1, 3, 5, 6, 8, 11]
+          }
+      }
+  ]
+}

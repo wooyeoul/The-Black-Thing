@@ -7,13 +7,16 @@ public class DoorController : MonoBehaviour
 {
 
     [SerializeField]
-    bool isDoorOpen;
+    bool isDoorOpen = true;
+    [SerializeField]
+    GameObject dot;
 
     Animator animator;
 
     private void Start()
     {
         animator = this.transform.parent.GetComponent<Animator>();
+        dot = GameObject.FindWithTag("DotController").gameObject;   
     }
 
     private void OnMouseDown()
@@ -28,11 +31,13 @@ public class DoorController : MonoBehaviour
 
         if (isDoorOpen)
         {
+            dot.SetActive(false);
             //열려있을 경우, 닫아야함
             animator.SetBool("isOpening", false);
         }
         else
         {
+            dot.SetActive(true);
             //닫아있는 경우, 열어야함
             animator.SetBool("isOpening", true);
         }

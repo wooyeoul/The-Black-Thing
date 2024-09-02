@@ -29,7 +29,6 @@ public class Watching : GameState
                 EWatching enumVal;
                 if (Enum.TryParse(strVal, true, out enumVal))
                 {
-                    Debug.Log(enumVal.ToString());
                     pattern.Add(enumVal);
                 }
             }
@@ -56,8 +55,7 @@ public class Watching : GameState
         }
         else
         {
-            //Dot뭉치 watching 표현
-            dot.ChangeState(DotPatternState.Phase, "anim_watching",1.5f);
+            dot.ChangeState(DotPatternState.Defualt, "anim_mud");
         }
         //Stay일 때 뭉치 등장
     }
@@ -72,25 +70,25 @@ public class Watching : GameState
 }
 
 //MainA/MainB 인터페이스 사용해서 함수 하나 연결할 수 있도록 하면 좋겠슴.
-public class MainA : GameState
+public class MainA : MainDialogue
 {
+    
     //멤버 변수 대사 
     public override void Init()
     {
       
     }
 
-    public override void Enter(GameManager manager, DotController dot = null)
-    {
-        //대사를 로드했음 좋겠음.
-    }
-
-    //현재 idx, 넘겨줬을때 대사를 주는 그러한 함수 
-
-    public override void Exit(GameManager manager)
+    public override string GetData(int idx)
     {
 
+        //데이터에 대한 애니메이션으로 변경한다.
+        dot.ChangeState(DotPatternState.Main); //상태값, 애니메이션 키, 위치 값
+
+        return null; //data[idx].Kor
     }
+
+
 }
 
 public class Thinking : GameState
@@ -109,20 +107,23 @@ public class Thinking : GameState
     }
 }
 
-public class MainB : GameState
+public class MainB : MainDialogue
 {
+    //데이터를 가지고 있는다.
+
     public override void Init()
     {
     }
 
-    public override void Enter(GameManager manager, DotController dot = null)
-    {
-    }
-
-    public override void Exit(GameManager manager)
+    public override string GetData(int idx)
     {
 
+        //데이터에 대한 애니메이션으로 변경한다.
+        dot.ChangeState(DotPatternState.Main); //상태값, 애니메이션 키, 위치 값
+
+        return null; //data[idx].Kor
     }
+
 }
 
 public class Writing : GameState
