@@ -8,9 +8,12 @@ using TMPro;
 public abstract class MainDialogue : GameState
 {
     //ด๋ป็
+    public PlayerController playerController;
     Dictionary<string, int> pos = new Dictionary<string, int>();
     protected GameObject background = null;
     protected DotController dot = null;
+    private LANGUAGE CurrentLanguage;
+
 
     protected int fixedPos = -1;
 
@@ -25,6 +28,7 @@ public abstract class MainDialogue : GameState
 
     public override void Enter(GameManager manager, DotController dot = null)
     {
+        playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>(); 
         if (dot)
         {
             dot.gameObject.SetActive(true);
@@ -80,7 +84,7 @@ public abstract class MainDialogue : GameState
                         Deathnote = parts[14]
                     };
 
-                    string displayedText = CurrentLanguage == LanguageType.Kor ? entry.KorText : entry.EngText;
+                    string displayedText = CurrentLanguage == playerController.GetLanguage() ? entry.KorText : entry.EngText;
                     entry.KorText = displayedText;
                     DialogueEntries.Add(entry);
                     currentDialogueList.Add(entry);
