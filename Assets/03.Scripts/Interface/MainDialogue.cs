@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 
 public abstract class MainDialogue : GameState
@@ -43,6 +45,55 @@ public abstract class MainDialogue : GameState
         //대사를 로드했음 좋겠음.
         //배경화면을 로드한다.
         //카메라를 0,0,10에서 정지시킨다.움직이지 못하게한다.
+        listclear();
+        for (int i = 1; i < lines.Length; i++)
+        {
+            string line = lines[i];
+            if (string.IsNullOrEmpty(line))
+            {
+                continue;
+            }
+            string[] parts = ParseCSVLine(line);
+            Debug.Log($"Parsed line {i}: {string.Join(", ", parts)}");
+
+            if (parts.Length >= 15)
+            {
+                int main = int.Parse(parts[0]);
+                if (main == Dial)
+                {
+                    DialogueEntry entry = new DialogueEntry
+                    {
+                        Main = main,
+                        ScriptKey = int.Parse(parts[1]),
+                        LineKey = int.Parse(parts[2]),
+                        Background = parts[3],
+                        Actor = parts[4],
+                        AnimState = parts[5],
+                        DotBody = parts[6],
+                        DotExpression = parts[7],
+                        TextType = parts[8],
+                        KorText = ApplyLineBreaks(parts[9]),
+                        EngText = ApplyLineBreaks(parts[10]),
+                        NextLineKey = parts[11],
+                        AnimScene = parts[12],
+                        AfterScript = parts[13],
+                        Deathnote = parts[14]
+                    };
+
+                    string displayedText = CurrentLanguage == LanguageType.Kor ? entry.KorText : entry.EngText;
+                    entry.KorText = displayedText;
+                    DialogueEntries.Add(entry);
+                    currentDialogueList.Add(entry);
+
+                    Debug.Log($"Added DialogueEntry: {displayedText}");
+                }
+            }
+            else
+            {
+                Debug.LogError($"Line {i} does not have enough parts: {line}");
+            }
+        }
+
 
         manager.ScrollManager.StopCamera(true);
         background = manager.ObjectManager.SetMain("main_door_open"); // 현재 배경이 어떤 값인지 변경
@@ -61,5 +112,47 @@ public abstract class MainDialogue : GameState
         {
             background.SetActive(false);
         }
+    }
+
+    void listclear()
+    {
+        DialogueEntries.Clear();
+        SubDialogueEntries.Clear();
+        currentDialogueList.Clear();
+    }
+
+    string[] ParseCSVLine(string line)
+    {
+        List<string> result = new List<string>();
+        bool inQuotes = false;
+        string value = "";
+
+        foreach (char c in line)
+        {
+            if (c == '"')
+            {
+                inQuotes = !inQuotes;
+            }
+            else if (c == ',' && !inQuotes)
+            {
+                result.Add(value.Trim());
+                value = "";
+            }
+            else
+            {
+                value += c;
+            }
+        }
+
+        if (!string.IsNullOrEmpty(value))
+        {
+            result.Add(value.Trim());
+        }
+        return result.ToArray();
+    }
+
+    string ApplyLineBreaks(string text)
+    {
+        return text.Replace(@"\n", "\n");
     }
 }
