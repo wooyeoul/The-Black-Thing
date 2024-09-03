@@ -27,6 +27,7 @@ public abstract class MainDialogue : GameState
         {
             dot.gameObject.SetActive(true);
         }
+        manager.ObjectManager.PlayThinking();
         //실제로는 뭉치가 먼저 뜬다.
         //dot State 변경 -> 클릭 시 아래 두개 고정 및 SetMain 설정.
         this.dot = dot;

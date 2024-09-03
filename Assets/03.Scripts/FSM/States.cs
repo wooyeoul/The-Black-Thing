@@ -143,6 +143,7 @@ public class Writing : GameState
 
     public override void Enter(GameManager manager, DotController dot = null)
     {
+        manager.ObjectManager.PlayThinking();
         dot.ChangeState(DotPatternState.Phase, "anim_diary");
     }
 
@@ -160,6 +161,7 @@ public class Play : GameState
     }
     public override void Enter(GameManager manager, DotController dot = null)
     {
+        manager.ObjectManager.PlayThinking();
         this.dot = dot;
         dot.TriggerPlay(true);
         dot.ChangeState(DotPatternState.Tirgger, "anim_trigger_play",18);
@@ -192,7 +194,7 @@ public class Sleeping : GameState
         {
             sleeping = objectManager.GetSleepingObject();
         }
-
+        manager.ObjectManager.PlayThinking();
         dot.ChangeState(DotPatternState.Phase, "anim_sleep");
 
         sleeping.OpenSleeping();
