@@ -147,6 +147,9 @@ public class GameManager : MonoBehaviour
             time = SITime.Night;
         }
 
+
+        //임시용
+        time = SITime.Morning;
         //해당 백그라운드로 변경한다.
         GameObject background = Resources.Load<GameObject>("Background/"+time.ToString());
         Instantiate<GameObject>(background, objectManager.transform);

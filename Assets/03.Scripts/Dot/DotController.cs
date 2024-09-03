@@ -17,6 +17,8 @@ public class DotController : MonoBehaviour
 
     [SerializeField] 
     GameObject mainAlert;
+    [SerializeField]
+    GameObject playAlert;
 
     [SerializeField]
     private int chapter;
@@ -27,8 +29,22 @@ public class DotController : MonoBehaviour
     [SerializeField]
     private Animator animator;
 
+    [SerializeField]
+    private GameObject eyes;
+
+    [SerializeField]
+    private Animator eyesAnim;
+
+    public GameObject Eyes
+    {
+        get { return eyes; }
+    }
+
     public Animator Animator
     { get { return animator; } }
+    
+    public Animator EyesAnim
+    { get { return eyesAnim; } }
 
     public int Chapter
     {
@@ -58,7 +74,7 @@ public class DotController : MonoBehaviour
     {
 
         animator = GetComponent<Animator>();
-
+        
         Position = -1;
         dotExpression = "";
 
@@ -68,7 +84,7 @@ public class DotController : MonoBehaviour
         states.Add(DotPatternState.Phase, new Phase());
         states.Add(DotPatternState.Main, new Main());
         states.Add(DotPatternState.Sub, new Sub());
-
+        states.Add(DotPatternState.Tirgger, new Trigger());
     }
     void Start()
     {
@@ -78,7 +94,6 @@ public class DotController : MonoBehaviour
 
     private void OnMouseDown()
     {
-
         if (mainAlert.activeSelf)
         {
             mainAlert.SetActive(false);
@@ -86,10 +101,22 @@ public class DotController : MonoBehaviour
             //main 배경화면을 트리거한다.
             manager.StartMain();
         }
+
+        if(playAlert.activeSelf)
+        {
+            playAlert.SetActive(false);
+            //같이 책을 읽을래? 라는 문구 뜨고 안읽는다고하면 총총총 sleep으로
+        }
     }
     public void TriggerMain(bool isActive)
     {
         mainAlert.SetActive(isActive);
+        /*여기서 OnClick 함수도 연결해준다.*/
+        //OutPos 가 있다면 해당 Position으로 바껴야함.
+    }
+    public void TriggerPlay(bool isActive)
+    {
+        playAlert.SetActive(isActive);
         /*여기서 OnClick 함수도 연결해준다.*/
         //OutPos 가 있다면 해당 Position으로 바껴야함.
     }
@@ -119,8 +146,4 @@ public class DotController : MonoBehaviour
         currentState.Enter(this); //실행
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("??????????????");
-    }
 }

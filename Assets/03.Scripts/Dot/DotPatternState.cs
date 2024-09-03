@@ -88,8 +88,10 @@ public enum DotAnimState
     body_ch_heartup,
     body_black_heart_1,
     body_black_heart_2,
-    body_black_heart_3
+    body_black_heart_3,
     //¸ùÅü
+
+    phase_sleep, /*Trigger*/
 }
 
 public enum DotPatternState

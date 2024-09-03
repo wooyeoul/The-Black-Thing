@@ -80,7 +80,8 @@ public class ObjectManager : MonoBehaviour
         {
             //Instantiate를 통해서 InsertMemory내 삽입
             GameObject newObj = Instantiate(obj2, this.transform);
-            
+            string name = newObj.name.Substring(0, newObj.name.IndexOf("("));
+            newObj.name = name; //(clone)을 찾아냄.
             //newObj의 clone을 제거 
             pool.InsertMemory(newObj);
         }
@@ -161,6 +162,15 @@ public class ObjectManager : MonoBehaviour
         return null;
     }
 
+    public void PlayThinking()
+    {
+        GameObject bookPile=pool.SearchMemory("phase_bookpile");
+
+        if(bookPile)
+        {
+            bookPile.SetActive(false);
+        }
+    }
     public void Translate(LANGUAGE language)
     {
         Debug.Log("게임 오브젝트 번역합니다.\n");

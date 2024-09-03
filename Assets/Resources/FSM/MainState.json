@@ -3,157 +3,157 @@
       {
           "key": "body_default1",
           "value": {
-              "positions": [12]
+              "positions": [14,15,16,17]
           }
       },
       {
           "key": "body_default2",
           "value": {
-              "positions": [12]
+              "positions":  [14,15,16,17]
           }
       },
       {
           "key": "body_default2_turn",
           "value": {
-              "positions": [12]
+              "positions":  [14,15,16,17]
           }
       },
       {
           "key": "body_bounce",
           "value": {
-              "positions": [12]
+              "positions":  [14,15,16,17]
           }
       },
       {
           "key": "body_move",
           "value": {
-              "positions": [12]
+              "positions":  [14,15,16,17]
           }
       },
       {
           "key": "body_rhythm",
           "value": {
-              "positions": [12]
+              "positions":  [14,15,16,17]
           }
       },
       {
           "key": "body_spikey",
           "value": {
-              "positions": [12]
+              "positions":  [14,15,16,17]
           }
       },
       {
           "key": "body_spikey_turn",
           "value": {
-              "positions": [12]
+              "positions":  [14,15,16,17]
           }
       },
       {
           "key": "body_hmm",
           "value": {
-              "positions": [12]
+              "positions":  [14,15,16,17]
           }
       },
       {
           "key": "body_hmm_turn",
           "value": {
-              "positions": [12]
+              "positions":  [14,15,16,17]
           }
       },
       {
           "key": "body_mud",
           "value": {
-              "positions": [12]
+              "positions":  [14,15,16,17]
           }
       },
       {
           "key": "body_mud_turn",
           "value": {
-              "positions": [12]
+              "positions":  [14,15,16,17]
           }
       },
       {
           "key": "body_trembling",
           "value": {
-              "positions": [12]
+              "positions":  [14,15,16,17]
           }
       },
       {
           "key": "body_ch2tremble",
           "value": {
-              "positions": [12]
+              "positions":  [14,15,16,17]
           }
       },
       {
           "key": "body_ch2drop",
           "value": {
-              "positions": [12]
+              "positions":  [14,15,16,17]
           }
       },
       {
           "key": "body_draw",
           "value": {
-              "positions": [12]
+              "positions":  [14,15,16,17]
           }
       },
       {
           "key": "body_draw2",
           "value": {
-              "positions": [12]
+              "positions":  [14,15,16,17]
           }
       },
       {
           "key": "body_cup",
           "value": {
-              "positions": [12]
+              "positions":  [14,15,16,17]
           }
       },
       {
           "key": "body_cup2",
           "value": {
-              "positions": [12]
+              "positions":  [14,15,16,17]
           }
       },
       {
           "key": "body_spiderweb_move",
           "value": {
-              "positions": [12]
+              "positions":  [14,15,16,17]
           }
       },
         {
             "key": "body_ch_heart",
             "value": {
-                "positions": [12]
+                "positions":  [14,15,16,17]
             }
         },
         {
             "key": "body_ch_heartdown",
             "value": {
-                "positions": [12]
+                "positions":  [14,15,16,17]
             }
         },
         {
             "key": "body_ch_heartup",
             "value": {
-                "positions": [12]
+                "positions":  [14,15,16,17]
             }
         },
         {
             "key": "body_black_heart_1",
             "value": {
-                "positions": [12]
+                "positions":  [14,15,16,17]
             }
         },
         {
             "key": "body_black_heart_2",
             "value": {
-                "positions": [12]
+                "positions":  [14,15,16,17]
             }
         },
         {
             "key": "body_black_heart_3",
             "value": {
-                "positions": [12]
+                "positions":  [14,15,16,17]
             }
         }
   ]

@@ -16,6 +16,11 @@ public class DoorController : MonoBehaviour
     Animator animator;
     private void OnEnable()
     {
+       if(dot == null)
+        {
+            dot = GameObject.FindWithTag("DotController").gameObject;
+        }
+
        if(isDoorOpen == false)
         {
             Collider2D[] overlappingColliders = Physics2D.OverlapBoxAll(targetCollider.bounds.center, targetCollider.bounds.size, 0);
@@ -40,7 +45,6 @@ public class DoorController : MonoBehaviour
     private void Start()
     {
         animator = this.transform.parent.GetComponent<Animator>();
-        dot = GameObject.FindWithTag("DotController").gameObject;   
     }
 
     private void OnMouseDown()

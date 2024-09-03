@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -51,6 +52,10 @@ public class Watching : GameState
         
         if (watching!=null)
         {
+            if(dot)
+            {
+                dot.gameObject.SetActive(false);
+            }
             watching.OpenWatching(manager.Chapter);
         }
         else
@@ -81,10 +86,9 @@ public class MainA : MainDialogue
 
     public override string GetData(int idx)
     {
-
-        //데이터에 대한 애니메이션으로 변경한다.
-        dot.ChangeState(DotPatternState.Main); //상태값, 애니메이션 키, 위치 값
-
+       
+        //데이터에 대한 애니메이션으로 변경한다., fixedPos 은 건드리지말길!!! 위치 값인데 항상 고정
+        dot.ChangeState(DotPatternState.Main, "body_default1", fixedPos, "face_null");
         return null; //data[idx].Kor
     }
 
@@ -96,9 +100,15 @@ public class Thinking : GameState
     public override void Init()
     {
     }
+
     public override void Enter(GameManager manager, DotController dot = null)
     {
+        //Default값 랜덤으로 사용예정
+        DotAnimState anim = (DotAnimState)UnityEngine.Random.Range(0, (int)DotAnimState.anim_eyesblink);
+        manager.ObjectManager.PlayThinking();
 
+        Debug.Log(anim.ToString());
+        dot.ChangeState(DotPatternState.Defualt, anim.ToString());
     }
 
     public override void Exit(GameManager manager)
@@ -117,10 +127,9 @@ public class MainB : MainDialogue
 
     public override string GetData(int idx)
     {
-
-        //데이터에 대한 애니메이션으로 변경한다.
-        dot.ChangeState(DotPatternState.Main); //상태값, 애니메이션 키, 위치 값
-
+        
+        //데이터에 대한 애니메이션으로 변경한다.,fixedPos 은 건드리지말길!!! 위치 값인데 항상 고정
+        dot.ChangeState(DotPatternState.Main, "body_default1", fixedPos, "face_null");
         return null; //data[idx].Kor
     }
 
@@ -134,7 +143,7 @@ public class Writing : GameState
 
     public override void Enter(GameManager manager, DotController dot = null)
     {
-
+        dot.ChangeState(DotPatternState.Phase, "anim_diary");
     }
 
     public override void Exit(GameManager manager)
@@ -145,16 +154,23 @@ public class Writing : GameState
 
 public class Play : GameState
 {
+    DotController dot =null;
     public override void Init()
     {
     }
     public override void Enter(GameManager manager, DotController dot = null)
     {
-
+        this.dot = dot;
+        dot.TriggerPlay(true);
+        dot.ChangeState(DotPatternState.Tirgger, "anim_trigger_play",18);
     }
     public override void Exit(GameManager manager)
     {
-
+        if(dot)
+        {
+            dot.TriggerPlay(false);
+        }
+        //자러가는 애니메이션 여기에 추가한다.
     }
 }
 
@@ -176,6 +192,8 @@ public class Sleeping : GameState
         {
             sleeping = objectManager.GetSleepingObject();
         }
+
+        dot.ChangeState(DotPatternState.Phase, "anim_sleep");
 
         sleeping.OpenSleeping();
         
