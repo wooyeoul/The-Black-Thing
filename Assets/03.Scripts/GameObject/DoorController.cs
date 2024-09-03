@@ -10,9 +10,33 @@ public class DoorController : MonoBehaviour
     bool isDoorOpen = true;
     [SerializeField]
     GameObject dot;
+    [SerializeField]
+    Collider2D targetCollider;
 
     Animator animator;
+    private void OnEnable()
+    {
+       if(isDoorOpen == false)
+        {
+            Collider2D[] overlappingColliders = Physics2D.OverlapBoxAll(targetCollider.bounds.center, targetCollider.bounds.size, 0);
 
+            foreach (Collider2D collider in overlappingColliders)
+            {
+                if (collider != targetCollider && collider.gameObject==dot)
+                {
+                    dot.SetActive(false);
+                }
+            }
+        }
+       else
+        {
+            if(dot)
+            {
+                dot.SetActive(true);
+            }
+        }
+    
+    }
     private void Start()
     {
         animator = this.transform.parent.GetComponent<Animator>();
@@ -31,13 +55,12 @@ public class DoorController : MonoBehaviour
 
         if (isDoorOpen)
         {
-            dot.SetActive(false);
             //열려있을 경우, 닫아야함
             animator.SetBool("isOpening", false);
         }
         else
         {
-            dot.SetActive(true);
+          
             //닫아있는 경우, 열어야함
             animator.SetBool("isOpening", true);
         }

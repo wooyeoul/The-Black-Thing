@@ -19912,7 +19912,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1499613125}
   - component: {fileID: 1499613126}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MainAlert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27480,7 +27480,7 @@ GameObject:
   - component: {fileID: 1393547376430432408}
   - component: {fileID: 2863007837819535517}
   - component: {fileID: 2863007837819535518}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dot
   m_TagString: DotController
   m_Icon: {fileID: 0}
@@ -27613,7 +27613,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8486231917458293138}
   - component: {fileID: 4044775885058242924}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayAlert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27742,7 +27742,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4737828793176628283}
   - component: {fileID: 8705487585232994934}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -73,6 +73,7 @@ public class DotController : MonoBehaviour
     void Start()
     {
         chapter = manager.Chapter;
+        animator.keepAnimatorStateOnDisable = true; //애니메이션 유지
     }
 
     private void OnMouseDown()
@@ -116,5 +117,10 @@ public class DotController : MonoBehaviour
         //OutPos 가 있다면 해당 Position으로 바껴야함.
         currentState = states[state];
         currentState.Enter(this); //실행
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("??????????????");
     }
 }

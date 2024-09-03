@@ -94,11 +94,11 @@ public enum DotAnimState
 
 public enum DotPatternState
 {
-    Defualt = 0,
-    Sub = 1,
-    Main = 2,
-    Phase = 3,
-    Tirgger = 4
+    Defualt = 1,
+    Sub = 2,
+    Main = 3,
+    Phase = 4,
+    Tirgger = 5
 }
 
 public enum DotEyes

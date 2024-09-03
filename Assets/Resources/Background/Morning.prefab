@@ -677,6 +677,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDoorOpen: 0
+  dot: {fileID: 0}
+  targetCollider: {fileID: 4726462248764432198}
 --- !u!95 &2641832793043325230
 Animator:
   serializedVersion: 5
@@ -876,6 +878,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDoorOpen: 1
+  dot: {fileID: 0}
+  targetCollider: {fileID: 0}
 --- !u!1 &5375679905758892564
 GameObject:
   m_ObjectHideFlags: 0
