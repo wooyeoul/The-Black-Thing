@@ -16,6 +16,12 @@ public class LetterController : BaseObject, IWatchingInterface
     [SerializeField]
     GameObject note;
 
+    GameObject canvas;
+
+    void Start()
+    {
+        canvas = GameObject.Find("Canvas");
+    }
     
     public bool IsCurrentPattern(EWatching curPattern)
     {
@@ -31,13 +37,14 @@ public class LetterController : BaseObject, IWatchingInterface
     {
         if(alert.activeSelf)
         {
-            if(noteUI != null)
+            alert.SetActive(false);
+            if (noteUI != null)
             {
                 noteUI.SetActive(true);
             }
             else
             {
-                noteUI = Instantiate(note, GameObject.Find("Canvas").transform);
+                noteUI = Instantiate(note, canvas.transform);
             }
         }
     }

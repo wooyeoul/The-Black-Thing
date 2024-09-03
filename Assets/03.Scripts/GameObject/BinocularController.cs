@@ -18,7 +18,6 @@ public class BinocularController : BaseObject , IWatchingInterface
     int chapterIdx; //-1∑Œ πŸ≤„¡‡æﬂ«‘.
 
     GameObject watchingBackground;
-    GameObject screenBackground;
     GameObject phase;
 
     Dictionary<int,int> Idx = new Dictionary<int,int>();
@@ -30,7 +29,6 @@ public class BinocularController : BaseObject , IWatchingInterface
     private void Start()
     {
         watchingBackground = GameObject.Find("Phase").gameObject;
-        screenBackground = GameObject.FindWithTag("ObjectManager").gameObject.transform.GetChild(0).gameObject;
         Init();
     }
 
@@ -69,8 +67,7 @@ public class BinocularController : BaseObject , IWatchingInterface
 
         if (alert.activeSelf)
         {
-            screenBackground.SetActive(false);
-
+            alert.SetActive(false);
             //≈¨∑Œ¡Ó~
             phase = Instantiate(watching[Idx[chapterIdx]], watchingBackground.transform);
         }

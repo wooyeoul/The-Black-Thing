@@ -12,6 +12,7 @@ TagManager:
   - OnMenu
   - SettingCloseTxt
   - SettingInputNickname
+  - DotController
   layers:
   - Default
   - TransparentFX
@@ -54,6 +55,9 @@ TagManager:
     locked: 0
   - name: Alert
     uniqueID: 2416145717
+    locked: 0
+  - name: Main
+    uniqueID: 4196152959
     locked: 0
   - name: Dot
     uniqueID: 1368664481
