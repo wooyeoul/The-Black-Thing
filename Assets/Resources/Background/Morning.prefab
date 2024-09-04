@@ -563,7 +563,6 @@ GameObject:
   - component: {fileID: 4726462248764432199}
   - component: {fileID: 4726462248764432198}
   - component: {fileID: 4726462248764432197}
-  - component: {fileID: 2641832793043325230}
   m_Layer: 0
   m_Name: fix_door_close
   m_TagString: Untagged
@@ -679,26 +678,6 @@ MonoBehaviour:
   isDoorOpen: 0
   dot: {fileID: 0}
   targetCollider: {fileID: 4726462248764432198}
---- !u!95 &2641832793043325230
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4726462248764432195}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 073b5f55cc9d87445b3e406686738530, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &4726462249765647381
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,7 +858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDoorOpen: 1
   dot: {fileID: 0}
-  targetCollider: {fileID: 0}
+  targetCollider: {fileID: 4726462250068791661}
 --- !u!1 &5375679905758892564
 GameObject:
   m_ObjectHideFlags: 0

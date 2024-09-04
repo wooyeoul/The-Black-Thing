@@ -16,8 +16,15 @@ public class ObjectManager : MonoBehaviour
 
     List<GameObject>  watches;
 
+
+    [SerializeField]
+    GameObject skipSleep;
+
     Dictionary<string, GameObject> mains;
 
+    public delegate void ActiveSystemUIDelegate(bool InActive);
+
+    public ActiveSystemUIDelegate activeSystemUIDelegate;
     public ObjectManager()
     {
         pool = new ObjectPool();
@@ -175,4 +182,10 @@ public class ObjectManager : MonoBehaviour
     {
         Debug.Log("게임 오브젝트 번역합니다.\n");
     }
+
+    public void SkipSleeping(bool isActive)
+    {
+        skipSleep.SetActive(isActive);
+    }
+
 }

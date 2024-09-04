@@ -156,6 +156,9 @@ public class Writing : GameState
 public class Play : GameState
 {
     DotController dot =null;
+
+    const int pos = 18;
+    const string anim = "anim_trigger_play";
     public override void Init()
     {
     }
@@ -164,7 +167,7 @@ public class Play : GameState
         manager.ObjectManager.PlayThinking();
         this.dot = dot;
         dot.TriggerPlay(true);
-        dot.ChangeState(DotPatternState.Tirgger, "anim_trigger_play",18);
+        dot.ChangeState(DotPatternState.Tirgger, anim, pos);
     }
     public override void Exit(GameManager manager)
     {
@@ -194,9 +197,10 @@ public class Sleeping : GameState
         {
             sleeping = objectManager.GetSleepingObject();
         }
-        manager.ObjectManager.PlayThinking();
-        dot.ChangeState(DotPatternState.Phase, "anim_sleep");
 
+        dot.ChangeState(DotPatternState.Tirgger, "anim_sleep", 10);
+
+        manager.ObjectManager.PlayThinking();
         sleeping.OpenSleeping();
         
     }
@@ -204,5 +208,29 @@ public class Sleeping : GameState
     public override void Exit(GameManager manager)
     {
 
+    }
+}
+
+public class NextChapter : GameState
+{
+    public override void Init()
+    {
+    }
+
+    public override void Enter(GameManager manager, DotController dot = null)
+    {
+
+        //다음 챕터로 넘어가는 달나라를 띄운다.
+        if (objectManager == null)
+        {
+            objectManager = manager.ObjectManager;
+        }
+
+        manager.ObjectManager.SkipSleeping(true);
+    }
+
+    public override void Exit(GameManager manager)
+    {
+        manager.ObjectManager.SkipSleeping(false);
     }
 }

@@ -14,33 +14,38 @@ public class DoorController : MonoBehaviour
     Collider2D targetCollider;
 
     Animator animator;
+
+    public void Awake()
+    {
+        dot = GameObject.FindWithTag("DotController");
+
+    }
     private void OnEnable()
     {
-       if(dot == null)
+        if (dot == null)
         {
-            dot = GameObject.FindWithTag("DotController").gameObject;
+            dot = GameObject.FindWithTag("DotController");
         }
 
-       if(isDoorOpen == false)
+        if (isDoorOpen == false)
         {
             Collider2D[] overlappingColliders = Physics2D.OverlapBoxAll(targetCollider.bounds.center, targetCollider.bounds.size, 0);
 
             foreach (Collider2D collider in overlappingColliders)
             {
-                if (collider != targetCollider && collider.gameObject==dot)
+                if (collider != targetCollider && collider.gameObject == dot)
                 {
                     dot.SetActive(false);
                 }
             }
         }
-       else
+        else
         {
-            if(dot)
+            if (dot)
             {
                 dot.SetActive(true);
             }
         }
-    
     }
     private void Start()
     {
@@ -64,9 +69,12 @@ public class DoorController : MonoBehaviour
         }
         else
         {
-          
+        
             //닫아있는 경우, 열어야함
             animator.SetBool("isOpening", true);
         }
+
     }
+
+
 }

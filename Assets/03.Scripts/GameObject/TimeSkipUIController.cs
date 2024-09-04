@@ -15,6 +15,10 @@ public class TimeSkipUIController : MonoBehaviour
 
     [SerializeField]
     TMP_Text[] text;
+
+    [SerializeField]
+    ObjectManager objectManager;
+
     private void Start()
     {
         if(playerController == null)
@@ -24,6 +28,13 @@ public class TimeSkipUIController : MonoBehaviour
         translator = GameObject.FindWithTag("Translator").GetComponent<TranslateManager>();
 
         translator.translatorDel += Translate;
+
+        objectManager.activeSystemUIDelegate += ControllActiveState;
+    }
+
+    public void ControllActiveState(bool InActive)
+    {
+        this.gameObject.SetActive(InActive);
     }
     public void Translate(LANGUAGE language, TMP_FontAsset font)
     {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEditor;
@@ -52,6 +53,8 @@ public class MenuController : MonoBehaviour
     [SerializeField]
     TMP_Text[] progress;
 
+    [SerializeField]
+    ObjectManager objectManager;
 
     private void Start()
     {
@@ -59,6 +62,13 @@ public class MenuController : MonoBehaviour
         translator = GameObject.FindWithTag("Translator").GetComponent<TranslateManager>();
 
         translator.translatorDel += Translate;
+
+
+        objectManager.activeSystemUIDelegate += CallbackActiveSystemUI;
+    }
+    public void CallbackActiveSystemUI(bool InActive)
+    {
+        this.gameObject.SetActive(InActive);
     }
 
     public void Translate(LANGUAGE language, TMP_FontAsset font)

@@ -28,7 +28,7 @@ public abstract class MainDialogue : GameState
 
     public override void Enter(GameManager manager, DotController dot = null)
     {
-        playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>(); 
+        playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
         if (dot)
         {
             dot.gameObject.SetActive(true);
@@ -38,7 +38,7 @@ public abstract class MainDialogue : GameState
         //dot State 변경 -> 클릭 시 아래 두개 고정 및 SetMain 설정.
         this.dot = dot;
         dot.TriggerMain(true);
-        dot.ChangeState(DotPatternState.Defualt, "anim_default"); 
+        dot.ChangeState(DotPatternState.Defualt, "anim_default");
     }
 
     //준현아 여기에 함수 만들어놓을게 파라미터랑 리턴값 등 너가 필요한대로 바꿔
@@ -46,10 +46,16 @@ public abstract class MainDialogue : GameState
 
     public void StartMain(GameManager manager)
     {
+        fixedPos = pos["main_door_open"]; //현재 배경화면이 어떤 값인지 변경해주길
+        dot.ChangeState(DotPatternState.Main, "body_default1", fixedPos, "face_null");
+        //델리게이트를 사용해서 옵저버 패턴 구현
+        //메인을 시작할때 SystemUI를 끄기 위해서는 아래 주석을 풀어주면 된다.
+        //manager.ObjectManager.activeSystemUIDelegate(false);
+
         //대사를 로드했음 좋겠음.
         //배경화면을 로드한다.
         //카메라를 0,0,10에서 정지시킨다.움직이지 못하게한다.
-        listclear();
+        /*listclear();
         for (int i = 1; i < lines.Length; i++)
         {
             string line = lines[i];
@@ -97,14 +103,11 @@ public abstract class MainDialogue : GameState
                 Debug.LogError($"Line {i} does not have enough parts: {line}");
             }
         }
-
+*/
 
         manager.ScrollManager.StopCamera(true);
         background = manager.ObjectManager.SetMain("main_door_open"); // 현재 배경이 어떤 값인지 변경
-
-        fixedPos = pos["main_door_open"]; //현재 배경화면이 어떤 값인지 변경해주길
         //배경화면이 켜질 때, 뭉치의 위치도 고장한다.
-        dot.ChangeState(DotPatternState.Main, "body_default1", fixedPos, "face_null");
         //파라미터로 배경값을 전달하면 된다.
         //Day 7을 제외하곤 모두 배경값을 Enter에서 수정하면 되고, 데이 7일때만 변경해준다.
     }
@@ -116,13 +119,15 @@ public abstract class MainDialogue : GameState
         {
             background.SetActive(false);
         }
+
+        manager.ObjectManager.activeSystemUIDelegate(true);
     }
 
     void listclear()
     {
-        DialogueEntries.Clear();
+/*        DialogueEntries.Clear();
         SubDialogueEntries.Clear();
-        currentDialogueList.Clear();
+        currentDialogueList.Clear();*/
     }
 
     string[] ParseCSVLine(string line)

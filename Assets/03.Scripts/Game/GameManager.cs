@@ -18,6 +18,9 @@ public enum GamePatternState
     Sleeping, //Sleeping 단계
     NextChapter, //Sleeping 단계가 끝나면 기다리든가, 아님 Skip을 눌러서 Watching으로 넘어갈 수 있음. 
     End,//이 단계로 넘어가면 오류, 다음단계 0으로 이동해야함.
+    /*Trigger 용도*/
+    SubA,
+    SubB
 };
 
 public class GameManager : MonoBehaviour
@@ -61,6 +64,7 @@ public class GameManager : MonoBehaviour
         states[GamePatternState.Writing] = new Writing();
         states[GamePatternState.Play] = new Play();
         states[GamePatternState.Sleeping] = new Sleeping();
+        states[GamePatternState.NextChapter] = new NextChapter();
     }
     private void Awake()
     {
@@ -109,16 +113,22 @@ public class GameManager : MonoBehaviour
     //코루틴으로 한다.
     IEnumerator ChangeState(GamePatternState patternState)
     {
-        skipPhase.SetActive(true);
-        yield return new WaitForSeconds(5.0f);
-
-        skipPhase.SetActive(false);
         if (activeState != null)
         {
             activeState.Exit(this); //미리 정리한다.
         }
+
         activeState = states[patternState];
         activeState.Enter(this, dot);
+
+        if (patternState != GamePatternState.NextChapter && patternState != GamePatternState.Watching && patternState != GamePatternState.Sleeping)
+        {
+            skipPhase.SetActive(true);
+            
+            yield return new WaitForSeconds(5.0f);
+
+            skipPhase.SetActive(false);
+        }
 
         yield return null;
     }
@@ -168,4 +178,6 @@ public class GameManager : MonoBehaviour
         activeState = states[patternState];
         activeState.Enter(this,dot);
     }
+
+
 }

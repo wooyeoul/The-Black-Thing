@@ -57,7 +57,7 @@ public enum DotAnimState
     anim_sub_light, /*Sub 53*/
 
     anim_diary,
-    anim_sleep,
+    anim_sleep, /*Trigger*/
     anim_watching,  /*Phase*/
 
     anim_trigger_play, /*Trigger*/

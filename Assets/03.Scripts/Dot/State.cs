@@ -177,7 +177,6 @@ public class Phase : DotState
         DotAnimState anim;
         if (Enum.TryParse(dot.AnimKey, true, out anim))
         {
-            Debug.Log($"Watching {anim}");
             dot.Position = PhasePos[anim][0];
             dot.transform.position = GetCoordinate(dot.Position); //위치 업데이트
             dot.Animator.SetInteger("DotAnimState", (int)anim); //애니메이션 업데이트
@@ -208,7 +207,7 @@ public class Trigger : DotState
         DotAnimState anim;
         if (Enum.TryParse(dot.AnimKey, true, out anim))
         {
-            dot.transform.position = GetCoordinate(dot.Position); //위치 업데이트
+            dot.gameObject.transform.position = GetCoordinate(dot.Position); //위치 업데이트
             dot.Animator.SetInteger("DotAnimState", (int)anim); //애니메이션 업데이트
         }
     }
@@ -216,6 +215,7 @@ public class Trigger : DotState
     public void GoSleep(DotController dot)
     {
         //잠자러 가는 애니메이션 실행.
+        dot.Position = 19;
         dot.transform.position = GetCoordinate(dot.Position); //위치 업데이트
         dot.Animator.SetInteger("DotAnimState", (int)DotAnimState.phase_sleep); //애니메이션 업데이트
     }

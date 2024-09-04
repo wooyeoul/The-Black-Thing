@@ -21,6 +21,9 @@ public class DotController : MonoBehaviour
     GameObject playAlert;
 
     [SerializeField]
+    GameObject[] play;
+
+    [SerializeField]
     private int chapter;
 
     [SerializeField]
@@ -106,6 +109,10 @@ public class DotController : MonoBehaviour
         {
             playAlert.SetActive(false);
             //같이 책을 읽을래? 라는 문구 뜨고 안읽는다고하면 총총총 sleep으로
+            for (int i = 0; i < play.Length; i++)
+            {
+                play[i].SetActive(true);
+            }
         }
     }
     public void TriggerMain(bool isActive)
@@ -120,6 +127,22 @@ public class DotController : MonoBehaviour
         /*여기서 OnClick 함수도 연결해준다.*/
         //OutPos 가 있다면 해당 Position으로 바껴야함.
     }
+
+    public void GoSleep()
+    {
+        Trigger phase= (Trigger)currentState;
+
+        if(phase!=null)
+        {
+            phase.GoSleep(this);
+        }
+    }
+
+    public void EndPlay()
+    {
+        manager.ChangeGameState(GamePatternState.Sleeping);
+    }
+
     public void ChangeState(DotPatternState state = DotPatternState.Defualt, string OutAnimKey = "", float OutPos = -1, string OutExpression = "")
     {
         if (states == null) return;
@@ -138,6 +161,8 @@ public class DotController : MonoBehaviour
 
         animator.SetInteger("DotState", (int)state); //현재 상태를 변경해준다.
         position = OutPos; //이전 위치를 초기화함, 그렇게 하면 모든 상태로 입장했을 때 -1이 아니여서 랜덤으로 뽑지않는다.
+
+        Debug.Log($"{OutAnimKey},{OutPos}");
         dotExpression = OutExpression; //Update, Main에서만 사용하기 때문에 다른 곳에서는 사용하지 않음.
         animKey = OutAnimKey;
         chapter = manager.Chapter;

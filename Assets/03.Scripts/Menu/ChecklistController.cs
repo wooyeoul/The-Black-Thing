@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -40,6 +41,8 @@ public class ChecklistController : MonoBehaviour
 
     [SerializeField]
     TMP_Text[] phase;
+    [SerializeField]
+    ObjectManager objectManager;
 
     GameObject activeIcon;
     // Start is called before the first frame update
@@ -51,9 +54,13 @@ public class ChecklistController : MonoBehaviour
         translator = GameObject.FindWithTag("Translator").GetComponent<TranslateManager>();
         translator.translatorDel += Translate;
 
+        objectManager.activeSystemUIDelegate += CallbackActiveSystemUI;
         InitPhase((GamePatternState)pc.GetAlreadyEndedPhase());
     }
-
+    public void CallbackActiveSystemUI(bool InActive)
+    {
+        this.gameObject.SetActive(InActive);
+    }
     void Translate(LANGUAGE language, TMP_FontAsset font)
     {
         //번역한다.
