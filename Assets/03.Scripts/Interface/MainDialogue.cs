@@ -9,14 +9,13 @@ using TMPro;
 public abstract class MainDialogue : GameState
 {
     //대사
-    public PlayerController playerController;
     Dictionary<string, int> pos = new Dictionary<string, int>();
     protected GameObject background = null;
     protected DotController dot = null;
-    private LANGUAGE CurrentLanguage;
-    private List<DialogueEntry> DialogueEntries = new List<DialogueEntry>();
+    protected LANGUAGE CurrentLanguage = LANGUAGE.KOREAN;
+    protected List<DialogueEntry> DialogueEntries = new List<DialogueEntry>();
     List<object> currentDialogueList = new List<object>();
-
+    GameManager manager;
 
     protected int fixedPos = -1;
 
@@ -31,7 +30,7 @@ public abstract class MainDialogue : GameState
 
     public override void Enter(GameManager manager, DotController dot = null)
     {
-        playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
+       
         if (dot)
         {
             dot.gameObject.SetActive(true);
@@ -39,6 +38,7 @@ public abstract class MainDialogue : GameState
         manager.ObjectManager.PlayThinking();
         //실제로는 뭉치가 먼저 뜬다.
         //dot State 변경 -> 클릭 시 아래 두개 고정 및 SetMain 설정.
+        this.manager = manager;
         this.dot = dot;
         dot.TriggerMain(true);
         dot.ChangeState(DotPatternState.Defualt, "anim_default");
@@ -60,7 +60,7 @@ public abstract class MainDialogue : GameState
             if (parts.Length >= 15)
             {
                 int main = int.Parse(parts[0]);
-                if (main == playerController.GetAlreadyEndedPhase())
+                if (main == (int)manager.Pattern)
                 {
                     DialogueEntry entry = new DialogueEntry
                     {
@@ -81,7 +81,7 @@ public abstract class MainDialogue : GameState
                         Deathnote = parts[14]
                     };
 
-                    string displayedText = CurrentLanguage == playerController.GetLanguage() ? entry.KorText : entry.EngText;
+                    string displayedText = CurrentLanguage == LANGUAGE.KOREAN ? entry.KorText : entry.EngText;
                     entry.KorText = displayedText;
                     DialogueEntries.Add(entry);
                     currentDialogueList.Add(entry);
@@ -96,7 +96,21 @@ public abstract class MainDialogue : GameState
         }
     }
     //준현아 여기에 함수 만들어놓을게 파라미터랑 리턴값 등 너가 필요한대로 바꿔
-    public abstract string GetData(int index);
+ 
+    public main GetData(int idx)
+    {
+        main m = new main();
+
+        m.LineKey = DialogueEntries[idx].LineKey;
+        m.Actor = DialogueEntries[idx].Actor;
+        m.TextType = DialogueEntries[idx].TextType;
+        m.Text = DialogueEntries[idx].KorText;
+        m.NextLineKey = DialogueEntries[idx].NextLineKey;
+
+        //데이터에 대한 애니메이션으로 변경한다., fixedPos 은 건드리지말길!!! 위치 값인데 항상 고정
+        dot.ChangeState(DotPatternState.Main, "body_default1", fixedPos, "face_null");
+        return m; //data[idx].Kor
+    }
 
     public void StartMain(GameManager manager, string fileName)
     {
@@ -126,6 +140,7 @@ public abstract class MainDialogue : GameState
         //배경화면이 켜질 때, 뭉치의 위치도 고장한다.
         //파라미터로 배경값을 전달하면 된다.
         //Day 7을 제외하곤 모두 배경값을 Enter에서 수정하면 되고, 데이 7일때만 변경해준다.
+
     }
     public override void Exit(GameManager manager)
     {

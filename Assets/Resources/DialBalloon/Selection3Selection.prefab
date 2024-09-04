@@ -300,7 +300,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC870\uC6A9\uD788 \uB3C5\uC11C\uD558\uB294 \uBAA8\uC2B5"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -5985080876634333599, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -453,7 +453,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6527005239950014271}
   - component: {fileID: 6527005239950014269}
-  - component: {fileID: 655872682378893000}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -510,26 +509,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &655872682378893000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6527005239950014270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87445aeec5e8a5348afd9741fad85a7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFour: 0
-  options:
-  - {fileID: 6527005240703624279}
-  - {fileID: 6527005239951607727}
-  - {fileID: 6527005240404184443}
-  actionButton: {fileID: 6527005240290878438}
-  dialogueManager: {fileID: 0}
-  selectedIndex: -1
 --- !u!1 &6527005239951607727
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,7 +577,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 56868b7e99902da4fae8c65bf5afd57c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b1ea769b8ae7544284a45bcac38894b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -652,7 +631,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 655872682378893000}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SelectManager, Assembly-CSharp
         m_MethodName: Choose
         m_Mode: 1
@@ -734,7 +713,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -5985080876634333599, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -906,7 +885,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uD3C9\uD654\uB86D\uAC8C \uC0B0\uCC45\uD558\uB294 \uBAA8\uC2B5\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -5985080876634333599, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1237,7 +1216,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 56868b7e99902da4fae8c65bf5afd57c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b1ea769b8ae7544284a45bcac38894b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1291,7 +1270,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 655872682378893000}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SelectManager, Assembly-CSharp
         m_MethodName: Choose
         m_Mode: 1
@@ -1501,7 +1480,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 56868b7e99902da4fae8c65bf5afd57c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b1ea769b8ae7544284a45bcac38894b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1555,7 +1534,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 655872682378893000}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SelectManager, Assembly-CSharp
         m_MethodName: Choose
         m_Mode: 1
@@ -1709,7 +1688,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bcf89d11801255048b854fb3b6f72888, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e98c284402986e54bb854dfae3bc55eb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1952,7 +1931,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bcf89d11801255048b854fb3b6f72888, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e98c284402986e54bb854dfae3bc55eb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

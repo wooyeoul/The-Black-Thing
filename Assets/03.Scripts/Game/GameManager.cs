@@ -32,12 +32,17 @@ public class GameManager : MonoBehaviour
     private PlayerController pc;
     private GamePatternState currentPattern;
     private SITime time;
+    [SerializeField] GameObject mainpanel;
 
     [SerializeField]
     GameObject skipPhase;
 
     [SerializeField]
     private DotController dot;
+    public GamePatternState Pattern
+    {
+        get { return currentPattern; }
+    }
     public int Chapter
     {
         get { return pc.GetChapter(); }
@@ -52,6 +57,12 @@ public class GameManager : MonoBehaviour
     {
         get { return scrollManager; }
     }
+
+    public GameState CurrentState
+    {
+        get { return activeState; }
+    }
+
 
     GameManager()
     {
@@ -108,6 +119,7 @@ public class GameManager : MonoBehaviour
         if (mainState != null)
         {
             mainState.StartMain(this, fileName);
+            mainpanel.SetActive(true);
         }
     }
     //코루틴으로 한다.
@@ -175,6 +187,7 @@ public class GameManager : MonoBehaviour
         objectManager.InitMainBackground(path);
 
         GamePatternState patternState = (GamePatternState)pc.GetAlreadyEndedPhase();
+        currentPattern = patternState;
         activeState = states[patternState];
         activeState.Enter(this,dot);
     }

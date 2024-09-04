@@ -1,5 +1,14 @@
 namespace Assets.Script.DialClass
 {
+
+    public struct main
+    {
+        public int LineKey;
+        public string Actor;
+        public string TextType;
+        public string Text;
+        public string NextLineKey;
+    } 
     [System.Serializable]
     public class DialogueEntry
     {

@@ -1,18 +1,156 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+using Assets.Script.DialClass;
 
 public class MainPanel : MonoBehaviour
 {
+    //게임매니저
+    [SerializeField]
+    GameManager gameManager;
+    MainDialogue mainDialogue;
+    [SerializeField] TextMeshProUGUI DotTextUI;
+    [SerializeField] TextMeshProUGUI PlayTextUI;
+    [SerializeField] TextMeshProUGUI InputTextUI;
+    [SerializeField] GameObject DotPanel;
+    [SerializeField] GameObject PlayPanel;
+    [SerializeField] GameObject InputPanel;
+    [SerializeField] GameObject SelectionPanel;
+    [SerializeField] GameObject Checkbox3Panel;
+    [SerializeField] GameObject Checkbox4Panel;
+    [SerializeField] GameObject Selection3Panel;
+    [SerializeField] GameObject Selection4Panel;
+    [SerializeField] Button NextButton;
+
+    public int dialogueIndex = 0;  // Current dialogue index
+    public int Day = 0;  // Current day
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        //InitializePanels();
+    }
+    void OnEnable()
+    {
+        //게임매니저 게임패턴
+        mainDialogue = (MainDialogue)gameManager.CurrentState;
+        Debug.Log(mainDialogue!=null);
     }
 
-    // Update is called once per frame
-    void Update()
+
+    void InitializePanels()
     {
-        
+        DotPanel = Instantiate(Resources.Load("DialBalloon/DotBalloon") as GameObject, transform);
+        DotTextUI = DotPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
+        DotPanel.SetActive(false);
+        DotPanel.AddComponent<CanvasGroup>();
+
+        PlayPanel = Instantiate(Resources.Load("DialBalloon/PlayerOneLineBallum") as GameObject, transform);
+        PlayTextUI = PlayPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
+        PlayPanel.SetActive(false);
+        PlayPanel.AddComponent<CanvasGroup>();
+
+        InputPanel = Instantiate(Resources.Load("DialBalloon/InputPlayerOpinion") as GameObject, transform);
+        InputTextUI = InputPanel.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        InputPanel.SetActive(false);
+        InputPanel.AddComponent<CanvasGroup>();
+
+        Checkbox3Panel = Instantiate(Resources.Load("DialBalloon/CheckBox3Selection") as GameObject, transform);
+        Checkbox3Panel.SetActive(false);
+        Checkbox3Panel.AddComponent<CanvasGroup>();
+
+        Checkbox4Panel = Instantiate(Resources.Load("DialBalloon/CheckBox4Selection") as GameObject, transform);
+        Checkbox4Panel.SetActive(false);
+        Checkbox4Panel.AddComponent<CanvasGroup>();
+
+        SelectionPanel = Instantiate(Resources.Load("DialBalloon/TwoSelectionBallum") as GameObject, transform);
+        SelectionPanel.SetActive(false);
+        SelectionPanel.AddComponent<CanvasGroup>();
+
+        Selection3Panel = Instantiate(Resources.Load("DialBalloon/Selection3Selection") as GameObject, transform);
+        Selection3Panel.SetActive(false);
+        Selection3Panel.AddComponent<CanvasGroup>();
+
+        Selection4Panel = Instantiate(Resources.Load("DialBalloon/Selection4Selection") as GameObject, transform);
+        Selection4Panel.SetActive(false);
+        Selection4Panel.AddComponent<CanvasGroup>();
     }
+    void ShowSelection(string options)
+    {
+        string[] selections = options.Split('|');
+        for (int i = 0; i < selections.Length; i++)
+        {
+            Button button = SelectionPanel.transform.GetChild(i).GetComponent<Button>();
+            TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
+            buttonText.text = selections[i];
+            int index = i;
+            button.onClick.RemoveAllListeners();
+            //button.onClick.AddListener(() => OnSelectionClicked(index));
+        }
+    }
+
+    void ShowCheckboxOptions(GameObject checkboxPanel, string options)
+    {
+        string[] selections = options.Split('|');
+        for (int i = 0; i < selections.Length; i++)
+        {
+            TextMeshProUGUI text = checkboxPanel.transform.GetChild(2).GetChild(0).GetChild(i).GetComponentInChildren<TextMeshProUGUI>();
+            text.text = selections[i];
+        }
+    }
+
+    void ShowSelectionOptions(GameObject checkboxPanel, string options)
+    {
+        string[] selections = options.Split('|');
+        for (int i = 0; i < selections.Length; i++)
+        {
+            TextMeshProUGUI text = checkboxPanel.transform.GetChild(2).GetChild(0).GetChild(i).GetComponentInChildren<TextMeshProUGUI>();
+            text.text = selections[i];
+        }
+    }
+    //public void OnSelectionClicked(int index)
+    //{
+    //    var currentEntry = mainDialogue.GetData as DialogueEntry;
+    //    if (currentEntry != null)
+    //    {
+    //        Debug.Log($"Current LineKey: {currentEntry.LineKey}");
+    //        string[] nextKeys = currentEntry.NextLineKey.Split('|');
+
+    //        if (index < nextKeys.Length && int.TryParse(nextKeys[index], out int nextLineKey))
+    //        {
+    //            Debug.Log($"Next LineKey: {nextLineKey}");
+    //            int nextIndex = DialogueDataAsset.currentDialogueList.FindIndex(entry => (entry as DialogueEntry)?.LineKey == nextLineKey);
+
+    //            if (nextIndex != -1)
+    //            {
+    //                dialogueIndex = nextIndex;
+    //            }
+    //            else
+    //            {
+    //                Debug.Log("Next LineKey not found in dialogue list. Ending dialogue.");
+    //                DialEnd();
+    //                return;
+    //            }
+    //        }
+    //        else
+    //        {
+    //            Debug.Log("Invalid NextLineKey index or parse failure. Ending dialogue.");
+    //            DialEnd();
+    //            return;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("Current entry is null. Ending dialogue.");
+    //        DialEnd();
+    //        return;
+    //    }
+
+    //    SelectionPanel.SetActive(false);
+    //    Selection3Panel.SetActive(false);
+    //    Selection4Panel.SetActive(false);
+    //    ShowNextDialogue();
+    //}
 }

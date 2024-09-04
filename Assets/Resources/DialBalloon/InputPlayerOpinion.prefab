@@ -69,8 +69,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC0DD\uAC01\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
-  m_sharedMaterial: {fileID: -5985080876634333599, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: eb1cd21ad35e93147b7830408e9cf084, type: 2}
+  m_sharedMaterial: {fileID: 4585107220543724766, guid: eb1cd21ad35e93147b7830408e9cf084, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -224,8 +224,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uB098\uB294 \uC774\uB807\uAC8C \uC0DD\uAC01\uD574."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
-  m_sharedMaterial: {fileID: -5985080876634333599, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: eb1cd21ad35e93147b7830408e9cf084, type: 2}
+  m_sharedMaterial: {fileID: 4585107220543724766, guid: eb1cd21ad35e93147b7830408e9cf084, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -359,7 +359,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -5985080876634333599, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -510,7 +510,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6296689466234708698}
-  - component: {fileID: 6296689466234708697}
+  - component: {fileID: 4770905385872444632}
   m_Layer: 0
   m_Name: Next
   m_TagString: Untagged
@@ -540,7 +540,7 @@ RectTransform:
   m_AnchoredPosition: {x: 1043, y: -244}
   m_SizeDelta: {x: 100, y: 91.609375}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &6296689466234708697
+--- !u!114 &4770905385872444632
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -596,7 +596,6 @@ GameObject:
   - component: {fileID: 6296689466344685259}
   - component: {fileID: 6296689466344685268}
   - component: {fileID: 6296689466344685269}
-  - component: {fileID: 6296689466344685270}
   m_Layer: 5
   m_Name: AnswerField
   m_TagString: Untagged
@@ -773,18 +772,6 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &6296689466344685270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6296689466344685264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11e20b5e9d8f644238c09036703acfcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6296689466388484672
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,7 +838,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 70092cbaf56b6413089a93cee9bdc47d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5fc434e93b6ded24a8f8820164e0cc41, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -927,7 +914,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cd62553d57cc940188d19c603a9197e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3807525be88e3c74ea25f666d0c022e2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1133,7 +1120,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dc67b558cae534e0d900009819a2fd25, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 612f8911ba0782946b10d6234ca34cf0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1210,7 +1197,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cd62553d57cc940188d19c603a9197e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3807525be88e3c74ea25f666d0c022e2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1286,7 +1273,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8efe4f44677a94a7c8325ef4b606e3d4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e059f93e9f12fb4da4bbc7b30d9e4f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

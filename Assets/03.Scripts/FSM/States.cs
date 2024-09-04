@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using Assets.Script.DialClass;
 
 public enum EWatching
 {
@@ -84,14 +85,6 @@ public class MainA : MainDialogue
       
     }
 
-    public override string GetData(int idx)
-    {
-       
-        //데이터에 대한 애니메이션으로 변경한다., fixedPos 은 건드리지말길!!! 위치 값인데 항상 고정
-        dot.ChangeState(DotPatternState.Main, "body_default1", fixedPos, "face_null");
-        return null; //data[idx].Kor
-    }
-
 
 }
 
@@ -123,14 +116,7 @@ public class MainB : MainDialogue
 
     public override void Init()
     {
-    }
 
-    public override string GetData(int idx)
-    {
-        
-        //데이터에 대한 애니메이션으로 변경한다.,fixedPos 은 건드리지말길!!! 위치 값인데 항상 고정
-        dot.ChangeState(DotPatternState.Main, "body_default1", fixedPos, "face_null");
-        return null; //data[idx].Kor
     }
 
 }
