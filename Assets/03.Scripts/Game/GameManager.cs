@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     private ScrollManager scrollManager;
     private Dictionary<GamePatternState, GameState> states;
     private PlayerController pc;
-
+    private GamePatternState currentPattern;
     private SITime time;
 
     [SerializeField]
@@ -104,10 +104,10 @@ public class GameManager : MonoBehaviour
     public void StartMain()
     {
         MainDialogue mainState= (MainDialogue)activeState;
-
-        if(mainState != null)
+        string fileName = "main_ch" + Chapter;
+        if (mainState != null)
         {
-            mainState.StartMain(this);
+            mainState.StartMain(this, fileName);
         }
     }
     //코루틴으로 한다.
@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
         {
             activeState.Exit(this); //미리 정리한다.
         }
-
+        currentPattern=patternState;
         activeState = states[patternState];
         activeState.Enter(this, dot);
 

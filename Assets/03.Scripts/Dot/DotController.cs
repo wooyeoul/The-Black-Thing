@@ -8,14 +8,13 @@ using UnityEngine.UIElements;
 
 public class DotController : MonoBehaviour
 {
-
     private DotState currentState; //현재 상태
     private Dictionary<DotPatternState, DotState> states;
     private float position;
     private string dotExpression; //CSV에 의해서 string 들어옴
     private string animKey; //CSV에 의해서 string으로 들어옴 파싱 해줘야한다.
 
-    [SerializeField] 
+    [SerializeField]
     GameObject mainAlert;
     [SerializeField]
     GameObject playAlert;
@@ -75,7 +74,6 @@ public class DotController : MonoBehaviour
 
     void Awake()
     {
-
         animator = GetComponent<Animator>();
         
         Position = -1;
@@ -100,7 +98,6 @@ public class DotController : MonoBehaviour
         if (mainAlert.activeSelf)
         {
             mainAlert.SetActive(false);
-
             //main 배경화면을 트리거한다.
             manager.StartMain();
         }

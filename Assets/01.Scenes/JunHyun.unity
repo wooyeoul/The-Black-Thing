@@ -6709,6 +6709,7 @@ MonoBehaviour:
   - {fileID: 938389107}
   - {fileID: 2004755608}
   - {fileID: 2114862771}
+  objectManager: {fileID: 606963712}
 --- !u!1 &579859726
 GameObject:
   m_ObjectHideFlags: 0
@@ -7097,6 +7098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee903723ccab6d459b71d63d4cd48ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skipSleep: {fileID: 0}
 --- !u!1 &611372142
 GameObject:
   m_ObjectHideFlags: 0
@@ -7374,6 +7376,7 @@ MonoBehaviour:
   - {fileID: 507558204}
   - {fileID: 968173784}
   - {fileID: 1139226965}
+  objectManager: {fileID: 606963712}
 --- !u!95 &619721726
 Animator:
   serializedVersion: 5
@@ -11533,6 +11536,7 @@ MonoBehaviour:
   - {fileID: 853746107}
   - {fileID: 1449470183}
   - {fileID: 1184317142}
+  objectManager: {fileID: 606963712}
 --- !u!114 &1007219010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27413,6 +27417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainAlert: {fileID: 1499613124}
   playAlert: {fileID: 2555626449358785279}
+  play: []
   chapter: 0
   manager: {fileID: 199268581}
   animator: {fileID: 0}
