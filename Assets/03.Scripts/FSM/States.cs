@@ -88,7 +88,7 @@ public class MainA : MainDialogue
 
 }
 
-public class Thinking : GameState
+public class Thinking : GameState, ILoadingInterface
 {
     public override void Init()
     {
@@ -121,7 +121,7 @@ public class MainB : MainDialogue
 
 }
 
-public class Writing : GameState
+public class Writing : GameState, ILoadingInterface
 {
     public override void Init()
     {
@@ -139,7 +139,7 @@ public class Writing : GameState
     }
 }
 
-public class Play : GameState
+public class Play : GameState, ILoadingInterface
 {
     DotController dot =null;
 
@@ -157,11 +157,7 @@ public class Play : GameState
     }
     public override void Exit(GameManager manager)
     {
-        if(dot)
-        {
-            dot.TriggerPlay(false);
-        }
-        //자러가는 애니메이션 여기에 추가한다.
+
     }
 }
 
@@ -184,16 +180,14 @@ public class Sleeping : GameState
             sleeping = objectManager.GetSleepingObject();
         }
 
-        dot.ChangeState(DotPatternState.Tirgger, "anim_sleep", 10);
-
         manager.ObjectManager.PlayThinking();
         sleeping.OpenSleeping();
-        
+        dot.ChangeState(DotPatternState.Tirgger, "anim_sleep", 10);
+
     }
 
     public override void Exit(GameManager manager)
     {
-
     }
 }
 

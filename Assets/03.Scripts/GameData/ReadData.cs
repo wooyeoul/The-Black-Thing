@@ -27,7 +27,11 @@ public class ReadData : MonoBehaviour
 
         if (loadedJson)
         {
-            DataManager.Instance.PoemData = JsonUtility.FromJson<PoemData>(loadedJson.ToString());
+            DataManager.Instance.PoemData = JsonUtility.FromJson<Poems>(loadedJson.ToString());
+            Debug.Log(DataManager.Instance.PoemData.poems[0].text[0].textKor);
+
+
+
         }
     }
 

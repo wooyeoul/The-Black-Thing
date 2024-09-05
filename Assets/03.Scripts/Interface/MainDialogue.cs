@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 
 
-public abstract class MainDialogue : GameState
+public abstract class MainDialogue : GameState, ILoadingInterface
 {
     //ด๋ป็
     Dictionary<string, int> pos = new Dictionary<string, int>();

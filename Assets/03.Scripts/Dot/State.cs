@@ -207,7 +207,8 @@ public class Trigger : DotState
         DotAnimState anim;
         if (Enum.TryParse(dot.AnimKey, true, out anim))
         {
-            dot.gameObject.transform.position = GetCoordinate(dot.Position); //위치 업데이트
+            dot.transform.position = GetCoordinate(dot.Position); //위치 업데이트
+            Debug.Log(dot.transform.position);
             dot.Animator.SetInteger("DotAnimState", (int)anim); //애니메이션 업데이트
         }
     }

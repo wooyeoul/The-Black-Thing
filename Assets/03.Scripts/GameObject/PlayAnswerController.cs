@@ -30,7 +30,7 @@ public class PlayAnswerController : MonoBehaviour
             //시 Canvas를 킨다.
             if(poem)
             {
-                poem.SetActive(true);
+                Instantiate(poem, GameObject.Find("Canvas").transform);
             }
         }
         else

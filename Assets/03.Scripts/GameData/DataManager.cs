@@ -36,9 +36,9 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    PoemData poemData;
+    Poems poemData;
 
-    public PoemData PoemData
+    public Poems PoemData
     {
         get
         {
