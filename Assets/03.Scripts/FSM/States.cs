@@ -99,8 +99,6 @@ public class Thinking : GameState, ILoadingInterface
         //Default값 랜덤으로 사용예정
         DotAnimState anim = (DotAnimState)UnityEngine.Random.Range(0, (int)DotAnimState.anim_eyesblink);
         manager.ObjectManager.PlayThinking();
-
-        Debug.Log(anim.ToString());
         dot.ChangeState(DotPatternState.Defualt, anim.ToString());
     }
 
@@ -150,14 +148,16 @@ public class Play : GameState, ILoadingInterface
     }
     public override void Enter(GameManager manager, DotController dot = null)
     {
-        manager.ObjectManager.PlayThinking();
         this.dot = dot;
+        manager.ObjectManager.PlayThinking();
+        manager.ScrollManager.StopCameraByPlayPhase(true);
+        //카메라 고정
         dot.TriggerPlay(true);
         dot.ChangeState(DotPatternState.Tirgger, anim, pos);
     }
     public override void Exit(GameManager manager)
     {
-
+        manager.ScrollManager.StopCameraByPlayPhase(false);
     }
 }
 
