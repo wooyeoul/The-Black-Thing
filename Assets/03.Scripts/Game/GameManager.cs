@@ -202,14 +202,14 @@ public class GameManager : MonoBehaviour
             state.Value.Init();
         }
 
-        string path = Path.Combine(Application.dataPath + "/AssetBundles/" + time.ToString());
+/*        string path = Path.Combine("/AssetBundles/" + time.ToString());
 
         objectManager.InitMainBackground(path);
 
         GamePatternState patternState = (GamePatternState)pc.GetAlreadyEndedPhase();
         currentPattern = patternState;
         activeState = states[patternState];
-        activeState.Enter(this,dot);
+        activeState.Enter(this,dot);*/
     }
 
 

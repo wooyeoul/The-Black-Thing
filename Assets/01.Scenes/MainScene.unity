@@ -2250,7 +2250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84706ed86c1c5d647a95ec27c7ca9e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainpanel: {fileID: 0}
+  mainDialoguePanel: {fileID: 0}
   skipPhase: {fileID: 8940817456850249698}
   dot: {fileID: 1393547376430432408}
 --- !u!4 &199268582
