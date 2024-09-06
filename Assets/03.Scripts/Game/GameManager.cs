@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     private PlayerController pc;
     private GamePatternState currentPattern;
     private SITime time;
-    [SerializeField] GameObject mainpanel;
+    [SerializeField] GameObject mainDialoguePanel;
 
     [SerializeField]
     GameObject skipPhase;
@@ -132,7 +132,11 @@ public class GameManager : MonoBehaviour
         if (mainState != null)
         {
             mainState.StartMain(this, fileName);
-            mainpanel.SetActive(true);
+
+            if(mainDialoguePanel != null)
+            {
+                mainDialoguePanel.SetActive(true);
+            }
         }
     }
     //코루틴으로 한다.
@@ -185,6 +189,7 @@ public class GameManager : MonoBehaviour
             time = SITime.Night;
         }
 
+        time = SITime.Morning;
 
         //해당 백그라운드로 변경한다.
         GameObject background = Resources.Load<GameObject>("Background/"+time.ToString());
@@ -196,6 +201,7 @@ public class GameManager : MonoBehaviour
         {
             state.Value.Init();
         }
+
         string path = Path.Combine(Application.dataPath + "/AssetBundles/" + time.ToString());
 
         objectManager.InitMainBackground(path);

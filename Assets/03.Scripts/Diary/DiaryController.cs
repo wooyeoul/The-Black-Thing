@@ -57,7 +57,6 @@ public class DiaryController : BaseObject, ISleepingInterface
             }
         }
 
-        diaryUI = GameObject.Find("Diary").GetComponent<DiaryUIController>();
         //클릭했거나, 업데이트가 안됐으면 아무 의미없음
     }
     public void OpenSleeping()
@@ -80,9 +79,15 @@ public class DiaryController : BaseObject, ISleepingInterface
 
     public void OnMouseUp()
     {
+        if (diaryUI == null)
+        {
+            diaryUI = GameObject.Find("Diary").GetComponent<DiaryUIController>();
+        }
+
         //클릭했을 때 현재 뭉치가 외출 중인가, Sleeping인가에 따라서 마우스 클릭을 막아야한다.
         GamePatternState CurrentPhase = (GamePatternState)playerController.GetAlreadyEndedPhase();
 
+        //인터페이스로 빼자
         if(CurrentPhase != GamePatternState.Watching && CurrentPhase != GamePatternState.Sleeping)
         {
             OpenAlert();

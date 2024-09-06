@@ -39,13 +39,6 @@ public class DoorController : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            if (dot)
-            {
-                dot.SetActive(true);
-            }
-        }
     }
     private void Start()
     {
@@ -69,7 +62,10 @@ public class DoorController : MonoBehaviour
         }
         else
         {
-        
+            if (dot)
+            {
+                dot.SetActive(true);
+            }
             //닫아있는 경우, 열어야함
             animator.SetBool("isOpening", true);
         }

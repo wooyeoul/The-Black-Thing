@@ -183,7 +183,7 @@ public class Sleeping : GameState
         manager.ObjectManager.PlayThinking();
         sleeping.OpenSleeping();
         dot.ChangeState(DotPatternState.Tirgger, "anim_sleep", 10);
-
+        dot.Dust.SetActive(true);
     }
 
     public override void Exit(GameManager manager)

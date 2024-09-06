@@ -37,6 +37,13 @@ public class DotController : MonoBehaviour
     [SerializeField]
     private Animator eyesAnim;
 
+    [SerializeField]
+    GameObject dust;
+
+    public GameObject Dust
+    {
+        get { return dust; }
+    }
     public GameObject Eyes
     {
         get { return eyes; }
