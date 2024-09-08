@@ -36,11 +36,22 @@ public class ScrollManager : MonoBehaviour
 
     Vector3 originalPos = new Vector3(0, 0, -10f);
 
-    private void Start()
+    private void Awake()
     {
         camera = GetComponent<Camera>();
     }
+    public void StopCameraByPlayPhase(bool isScreenStatic)
+    {
+        if (camera == null) return;
 
+        if (isScreenStatic)
+        {
+            originalPos = camera.transform.position;
+            camera.transform.position = new Vector3(camLimitValue.y, 0, -10f);
+        }
+
+        this.isScreenStatic = isScreenStatic;
+    }
     public void StopCamera(bool isScreenStatic)
     {
         if (camera == null) return;

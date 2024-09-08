@@ -32,8 +32,22 @@ public class ObjectManager : MonoBehaviour
         watches = new List<GameObject>();
     }
 
-    public void InitMainBackground(string path)
+    public void InitMainBackground(string InPath)
     {
+        string path = "";
+        if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            path = Application.dataPath + "/Raw/"+InPath;
+        }
+        else if (Application.platform == RuntimePlatform.Android)
+        {
+            path = "jar:file://" + Application.dataPath + "!/assets/"+InPath;
+        }
+        else
+        {
+            path = Application.dataPath + "/StreamingAssets/"+ InPath;
+        }
+
         Action<AssetBundle> callback = LoadMainBackground;
 
         StartCoroutine(pool.LoadFromMemoryAsync(path, callback));

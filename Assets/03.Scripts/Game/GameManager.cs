@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     private PlayerController pc;
     private GamePatternState currentPattern;
     private SITime time;
-    [SerializeField] GameObject mainpanel;
+    [SerializeField] GameObject mainDialoguePanel;
 
     [SerializeField]
     GameObject skipPhase;
@@ -63,6 +63,10 @@ public class GameManager : MonoBehaviour
         get { return activeState; }
     }
 
+    public string Time
+    {
+        get { return time.ToString(); }
+    }
 
     GameManager()
     {
@@ -99,6 +103,15 @@ public class GameManager : MonoBehaviour
         InitGame();
     }
 
+    public void GoSleep()
+    {
+        dot.GoSleep();
+    }
+        
+    public void NextPhase()
+    {
+        pc.NextPhase();
+    }
     public void ChangeGameState(GamePatternState patternState)
     {
         if (states == null) return;
@@ -119,7 +132,11 @@ public class GameManager : MonoBehaviour
         if (mainState != null)
         {
             mainState.StartMain(this, fileName);
-            mainpanel.SetActive(true);
+
+            if(mainDialoguePanel != null)
+            {
+                mainDialoguePanel.SetActive(true);
+            }
         }
     }
     //코루틴으로 한다.
@@ -133,7 +150,10 @@ public class GameManager : MonoBehaviour
         activeState = states[patternState];
         activeState.Enter(this, dot);
 
-        if (patternState != GamePatternState.NextChapter && patternState != GamePatternState.Watching && patternState != GamePatternState.Sleeping)
+        //C#에서 명시적 형변환은 강제, as 할지말지를 결정.. 즉, 실패 유무를 알고 싶다면, as를 사용한다.
+        ILoadingInterface loadingInterface = activeState as ILoadingInterface;
+     
+        if (loadingInterface != null)
         {
             skipPhase.SetActive(true);
             
@@ -169,9 +189,8 @@ public class GameManager : MonoBehaviour
             time = SITime.Night;
         }
 
-
-        //임시용
         time = SITime.Morning;
+
         //해당 백그라운드로 변경한다.
         GameObject background = Resources.Load<GameObject>("Background/"+time.ToString());
         Instantiate<GameObject>(background, objectManager.transform);
@@ -182,14 +201,15 @@ public class GameManager : MonoBehaviour
         {
             state.Value.Init();
         }
-        string path = Path.Combine(Application.dataPath + "/AssetBundles/" + time.ToString());
+
+/*        string path = Path.Combine("/AssetBundles/" + time.ToString());
 
         objectManager.InitMainBackground(path);
 
         GamePatternState patternState = (GamePatternState)pc.GetAlreadyEndedPhase();
         currentPattern = patternState;
         activeState = states[patternState];
-        activeState.Enter(this,dot);
+        activeState.Enter(this,dot);*/
     }
 
 

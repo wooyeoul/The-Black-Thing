@@ -37,6 +37,13 @@ public class DotController : MonoBehaviour
     [SerializeField]
     private Animator eyesAnim;
 
+    [SerializeField]
+    GameObject dust;
+
+    public GameObject Dust
+    {
+        get { return dust; }
+    }
     public GameObject Eyes
     {
         get { return eyes; }
@@ -137,14 +144,14 @@ public class DotController : MonoBehaviour
 
     public void EndPlay()
     {
-        manager.ChangeGameState(GamePatternState.Sleeping);
+        manager.NextPhase();
     }
 
     public void ChangeState(DotPatternState state = DotPatternState.Defualt, string OutAnimKey = "", float OutPos = -1, string OutExpression = "")
     {
         if (states == null) return;
 
-        if (states.ContainsKey(state) == null)
+        if (states.ContainsKey(state) == false)
         {
             return;
         }
@@ -159,7 +166,6 @@ public class DotController : MonoBehaviour
         animator.SetInteger("DotState", (int)state); //현재 상태를 변경해준다.
         position = OutPos; //이전 위치를 초기화함, 그렇게 하면 모든 상태로 입장했을 때 -1이 아니여서 랜덤으로 뽑지않는다.
 
-        Debug.Log($"{OutAnimKey},{OutPos}");
         dotExpression = OutExpression; //Update, Main에서만 사용하기 때문에 다른 곳에서는 사용하지 않음.
         animKey = OutAnimKey;
         chapter = manager.Chapter;

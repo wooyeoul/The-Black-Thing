@@ -88,7 +88,7 @@ public class MainA : MainDialogue
 
 }
 
-public class Thinking : GameState
+public class Thinking : GameState, ILoadingInterface
 {
     public override void Init()
     {
@@ -99,8 +99,6 @@ public class Thinking : GameState
         //Default값 랜덤으로 사용예정
         DotAnimState anim = (DotAnimState)UnityEngine.Random.Range(0, (int)DotAnimState.anim_eyesblink);
         manager.ObjectManager.PlayThinking();
-
-        Debug.Log(anim.ToString());
         dot.ChangeState(DotPatternState.Defualt, anim.ToString());
     }
 
@@ -121,7 +119,7 @@ public class MainB : MainDialogue
 
 }
 
-public class Writing : GameState
+public class Writing : GameState, ILoadingInterface
 {
     public override void Init()
     {
@@ -139,7 +137,7 @@ public class Writing : GameState
     }
 }
 
-public class Play : GameState
+public class Play : GameState, ILoadingInterface
 {
     DotController dot =null;
 
@@ -150,18 +148,16 @@ public class Play : GameState
     }
     public override void Enter(GameManager manager, DotController dot = null)
     {
-        manager.ObjectManager.PlayThinking();
         this.dot = dot;
+        manager.ObjectManager.PlayThinking();
+        manager.ScrollManager.StopCameraByPlayPhase(true);
+        //카메라 고정
         dot.TriggerPlay(true);
         dot.ChangeState(DotPatternState.Tirgger, anim, pos);
     }
     public override void Exit(GameManager manager)
     {
-        if(dot)
-        {
-            dot.TriggerPlay(false);
-        }
-        //자러가는 애니메이션 여기에 추가한다.
+        manager.ScrollManager.StopCameraByPlayPhase(false);
     }
 }
 
@@ -184,16 +180,14 @@ public class Sleeping : GameState
             sleeping = objectManager.GetSleepingObject();
         }
 
-        dot.ChangeState(DotPatternState.Tirgger, "anim_sleep", 10);
-
         manager.ObjectManager.PlayThinking();
         sleeping.OpenSleeping();
-        
+        dot.ChangeState(DotPatternState.Tirgger, "anim_sleep", 10);
+        dot.Dust.SetActive(true);
     }
 
     public override void Exit(GameManager manager)
     {
-
     }
 }
 
