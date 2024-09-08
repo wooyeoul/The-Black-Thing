@@ -32,7 +32,8 @@ public class GameManager : MonoBehaviour
     private PlayerController pc;
     private GamePatternState currentPattern;
     private SITime time;
-    [SerializeField] GameObject mainDialoguePanel;
+    [SerializeField] 
+    GameObject mainDialoguePanel;
 
     [SerializeField]
     GameObject skipPhase;
@@ -100,7 +101,11 @@ public class GameManager : MonoBehaviour
         pc.nextPhaseDelegate += ChangeGameState;
         objectManager = GameObject.FindWithTag("ObjectManager").gameObject.GetComponent<ObjectManager>();
         scrollManager = GameObject.FindWithTag("MainCamera").gameObject.GetComponent<ScrollManager>();
-        mainDialoguePanel.GetComponent<MainPanel>().InitializePanels();
+        
+        if(mainDialoguePanel)
+        {
+            mainDialoguePanel.GetComponent<MainPanel>().InitializePanels();
+        }
         InitGame();
 
     }
