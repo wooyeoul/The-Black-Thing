@@ -28,10 +28,6 @@ public class MainPanel : MonoBehaviour
     public int Day = 0;  // Current day
 
     // Start is called before the first frame update
-    private void Start()
-    {
-        InitializePanels();
-    }
     void OnEnable()
     {
         //게임매니저 게임패턴
@@ -40,7 +36,7 @@ public class MainPanel : MonoBehaviour
     }
 
 
-    void InitializePanels()
+    public void InitializePanels()
     {
         DotPanel = Instantiate(Resources.Load("DialBalloon/DotBalloon") as GameObject, transform);
         DotTextUI = DotPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
@@ -171,7 +167,7 @@ public class MainPanel : MonoBehaviour
 
     public void ShowNextDialogue()
     {
-        //PanelOff();
+        PanelOff();
         Debug.Log("인덱스 수: " + mainDialogue.currentDialogueList.Count);
         if (dialogueIndex >= mainDialogue.currentDialogueList.Count)
         {

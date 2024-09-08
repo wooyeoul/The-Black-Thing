@@ -100,7 +100,9 @@ public class GameManager : MonoBehaviour
         pc.nextPhaseDelegate += ChangeGameState;
         objectManager = GameObject.FindWithTag("ObjectManager").gameObject.GetComponent<ObjectManager>();
         scrollManager = GameObject.FindWithTag("MainCamera").gameObject.GetComponent<ScrollManager>();
+        mainDialoguePanel.GetComponent<MainPanel>().InitializePanels();
         InitGame();
+
     }
 
     public void GoSleep()
