@@ -30,7 +30,7 @@ public class MainPanel : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        //InitializePanels();
+        InitializePanels();
     }
     void OnEnable()
     {
@@ -110,47 +110,188 @@ public class MainPanel : MonoBehaviour
             text.text = selections[i];
         }
     }
-    //public void OnSelectionClicked(int index)
-    //{
-    //    var currentEntry = mainDialogue.GetData as DialogueEntry;
-    //    if (currentEntry != null)
-    //    {
-    //        Debug.Log($"Current LineKey: {currentEntry.LineKey}");
-    //        string[] nextKeys = currentEntry.NextLineKey.Split('|');
+    public void OnSelectionClicked(int index)
+    {
+        var currentEntry = mainDialogue.GetData(dialogueIndex);
+        if (currentEntry.NextLineKey != null)
+        {
+            Debug.Log($"Current LineKey: {currentEntry.LineKey}");
+            string[] nextKeys = currentEntry.NextLineKey.Split('|');
 
-    //        if (index < nextKeys.Length && int.TryParse(nextKeys[index], out int nextLineKey))
-    //        {
-    //            Debug.Log($"Next LineKey: {nextLineKey}");
-    //            int nextIndex = DialogueDataAsset.currentDialogueList.FindIndex(entry => (entry as DialogueEntry)?.LineKey == nextLineKey);
+            if (index < nextKeys.Length && int.TryParse(nextKeys[index], out int nextLineKey))
+            {
+                Debug.Log($"Next LineKey: {nextLineKey}");
+                int nextIndex = mainDialogue.currentDialogueList.FindIndex(entry => (entry as DialogueEntry)?.LineKey == nextLineKey);
 
-    //            if (nextIndex != -1)
-    //            {
-    //                dialogueIndex = nextIndex;
-    //            }
-    //            else
-    //            {
-    //                Debug.Log("Next LineKey not found in dialogue list. Ending dialogue.");
-    //                DialEnd();
-    //                return;
-    //            }
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("Invalid NextLineKey index or parse failure. Ending dialogue.");
-    //            DialEnd();
-    //            return;
-    //        }
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("Current entry is null. Ending dialogue.");
-    //        DialEnd();
-    //        return;
-    //    }
+                if (nextIndex != -1)
+                {
+                    dialogueIndex = nextIndex;
+                }
+                else
+                {
+                    Debug.Log("Next LineKey not found in dialogue list. Ending dialogue.");
+                    DialEnd();
+                    return;
+                }
+            }
+            else
+            {
+                Debug.Log("Invalid NextLineKey index or parse failure. Ending dialogue.");
+                DialEnd();
+                return;
+            }
+        }
+        else
+        {
+            Debug.Log("Current entry is null. Ending dialogue.");
+            DialEnd();
+            return;
+        }
 
-    //    SelectionPanel.SetActive(false);
-    //    Selection3Panel.SetActive(false);
-    //    Selection4Panel.SetActive(false);
-    //    ShowNextDialogue();
-    //}
+        SelectionPanel.SetActive(false);
+        Selection3Panel.SetActive(false);
+        Selection4Panel.SetActive(false);
+        ShowNextDialogue();
+    }
+    public void DialEnd()
+    {
+        Debug.Log("Dialogue ended.");
+        PanelOff();
+        mainDialogue.currentDialogueList.Clear();
+        dialogueIndex = 0;
+    }
+    void PanelOff()
+    {
+        GameObject[] panels = { DotPanel, PlayPanel, SelectionPanel, InputPanel, Checkbox3Panel, Checkbox4Panel, Selection3Panel, Selection4Panel };
+        foreach (GameObject panel in panels)
+        {
+            panel.SetActive(false);
+        }
+    }
+
+    public void ShowNextDialogue()
+    {
+        //PanelOff();
+        Debug.Log("인덱스 수: " + mainDialogue.currentDialogueList.Count);
+        if (dialogueIndex >= mainDialogue.currentDialogueList.Count)
+        {
+            DialEnd();
+            Debug.Log("대화 끝끝끝");
+            return;
+        }
+        string textType = mainDialogue.GetData(dialogueIndex).TextType;
+        string actor = mainDialogue.GetData(dialogueIndex).Actor;
+        string korText = mainDialogue.GetData(dialogueIndex).Text;
+
+        switch (textType)
+        {
+            case "text":
+                Debug.Log("텍스트 박스 떠야함");
+                Debug.Log("대사: " + korText);
+                if (actor == "Dot")
+                {
+                    DotPanel.SetActive(true);
+                    DotTextUI.text = $"{korText}";
+                    StartCoroutine(FadeIn(DotPanel.GetComponent<CanvasGroup>(), 0.5f, DotPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>()));
+                    RegisterNextButton(DotPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>());
+                }
+                else if (actor == "Player")
+                {
+                    PlayPanel.SetActive(true);
+                    PlayTextUI.text = $"{korText}";
+                    StartCoroutine(FadeIn(PlayPanel.GetComponent<CanvasGroup>(), 0.5f, PlayPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>()));
+                    RegisterNextButton(PlayPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>());
+                }
+                break;
+            case "selection":
+                SelectionPanel.SetActive(true);
+                StartCoroutine(FadeIn(SelectionPanel.GetComponent<CanvasGroup>(), 0.5f, SelectionPanel.transform.GetComponentInChildren<Button>()));
+                ShowSelection(korText);
+                break;
+            case "textbox":
+                InputPanel.SetActive(true);
+                InputTextUI.text = korText;
+                StartCoroutine(FadeIn(InputPanel.GetComponent<CanvasGroup>(), 0.5f, InputPanel.transform.GetChild(1).GetComponent<Button>()));
+                RegisterNextButton(InputPanel.transform.GetChild(1).GetComponent<Button>());
+                break;
+            case "checkbox3":
+                Checkbox3Panel.SetActive(true);
+                ShowCheckboxOptions(Checkbox3Panel, korText);
+                StartCoroutine(FadeIn(Checkbox3Panel.GetComponent<CanvasGroup>(), 0.5f, Checkbox3Panel.transform.GetChild(1).GetComponent<Button>()));
+                RegisterNextButton(Checkbox3Panel.transform.GetChild(1).GetComponent<Button>());
+                break;
+            case "checkbox4":
+                Checkbox4Panel.SetActive(true);
+                ShowCheckboxOptions(Checkbox4Panel, korText);
+                StartCoroutine(FadeIn(Checkbox4Panel.GetComponent<CanvasGroup>(), 0.5f, Checkbox4Panel.transform.GetChild(1).GetComponent<Button>()));
+                RegisterNextButton(Checkbox4Panel.transform.GetChild(1).GetComponent<Button>());
+                break;
+
+            case "selection3":
+                Selection3Panel.SetActive(true);
+                ShowSelectionOptions(Selection3Panel, korText);
+                StartCoroutine(FadeIn(Selection3Panel.GetComponent<CanvasGroup>(), 0.5f, Selection3Panel.transform.GetChild(1).GetComponent<Button>()));
+                break;
+
+            case "selection4":
+                Selection4Panel.SetActive(true);
+                ShowSelectionOptions(Selection4Panel, korText);
+                StartCoroutine(FadeIn(Selection4Panel.GetComponent<CanvasGroup>(), 0.5f, Selection4Panel.transform.GetChild(1).GetComponent<Button>()));
+                break;
+        }
+    }
+    IEnumerator FadeIn(CanvasGroup canvasGroup, float duration, Button button)
+    {
+        float counter = 0f;
+        button.interactable = false;
+        while (counter < duration)
+        {
+            counter += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Lerp(0, 1, counter / duration);
+            yield return null;
+        }
+        canvasGroup.alpha = 1;
+        button.interactable = true;
+    }
+
+    void RegisterNextButton(Button button)
+    {
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(NextDialogue);
+    }
+
+    void NextDialogue()
+    {
+        var currentEntry = mainDialogue.GetData(dialogueIndex);
+        if (currentEntry.NextLineKey != null)
+        {
+            if (int.TryParse(currentEntry.NextLineKey, out int nextLineKey))
+            {
+                int nextIndex = mainDialogue.currentDialogueList.FindIndex(entry => (entry as DialogueEntry)?.LineKey == nextLineKey);
+
+                if (nextIndex != -1)
+                {
+                    dialogueIndex = nextIndex;
+                }
+                else
+                {
+                    DialEnd();
+                    return;
+                }
+            }
+            else
+            {
+                Debug.Log("NextLineKey is not a valid integer. Moving to the next entry by index.");
+                dialogueIndex++;
+            }
+        }
+        else
+        {
+            Debug.Log("Current entry is null. Ending dialogue.");
+            DialEnd();
+            return;
+        }
+
+        ShowNextDialogue();
+    }
 }

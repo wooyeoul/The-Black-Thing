@@ -14,8 +14,9 @@ public abstract class MainDialogue : GameState, ILoadingInterface
     protected DotController dot = null;
     protected LANGUAGE CurrentLanguage = LANGUAGE.KOREAN;
     protected List<DialogueEntry> DialogueEntries = new List<DialogueEntry>();
-    List<object> currentDialogueList = new List<object>();
+    public List<object> currentDialogueList = new List<object>();
     GameManager manager;
+    MainPanel mainPanel;
 
     protected int fixedPos = -1;
 
@@ -30,7 +31,6 @@ public abstract class MainDialogue : GameState, ILoadingInterface
 
     public override void Enter(GameManager manager, DotController dot = null)
     {
-       
         if (dot)
         {
             dot.gameObject.SetActive(true);
@@ -99,21 +99,22 @@ public abstract class MainDialogue : GameState, ILoadingInterface
  
     public main GetData(int idx)
     {
-        main m = new main();
+        main maindata = new main();
 
-        m.LineKey = DialogueEntries[idx].LineKey;
-        m.Actor = DialogueEntries[idx].Actor;
-        m.TextType = DialogueEntries[idx].TextType;
-        m.Text = DialogueEntries[idx].KorText;
-        m.NextLineKey = DialogueEntries[idx].NextLineKey;
+        maindata.LineKey = DialogueEntries[idx].LineKey;
+        maindata.Actor = DialogueEntries[idx].Actor;
+        maindata.TextType = DialogueEntries[idx].TextType;
+        maindata.Text = DialogueEntries[idx].KorText;
+        maindata.NextLineKey = DialogueEntries[idx].NextLineKey;
 
         //데이터에 대한 애니메이션으로 변경한다., fixedPos 은 건드리지말길!!! 위치 값인데 항상 고정
         dot.ChangeState(DotPatternState.Main, DialogueEntries[idx].AnimState, fixedPos, DialogueEntries[idx].DotExpression);
-        return m; //data[idx].Kor
+        return maindata; //data[idx].Kor
     }
 
     public void StartMain(GameManager manager, string fileName)
     {
+        mainPanel = GameObject.Find("MainDialougue").GetComponent<MainPanel>();
         fixedPos = pos["main_door_open"]; //현재 배경화면이 어떤 값인지 변경해주길
         dot.ChangeState(DotPatternState.Main, "body_default1", fixedPos, "face_null");
         //델리게이트를 사용해서 옵저버 패턴 구현
@@ -134,7 +135,7 @@ public abstract class MainDialogue : GameState, ILoadingInterface
         Debug.Log(fileName);
         string[] lines = dialogueData.text.Split('\n');
         LoadData(lines);
-
+        mainPanel.ShowNextDialogue();
         manager.ScrollManager.StopCamera(true);
         background = manager.ObjectManager.SetMain("main_door_open"); // 현재 배경이 어떤 값인지 변경
         //배경화면이 켜질 때, 뭉치의 위치도 고장한다.

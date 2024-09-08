@@ -131,12 +131,12 @@ public class GameManager : MonoBehaviour
         string fileName = "main_ch" + Chapter;
         if (mainState != null)
         {
-            mainState.StartMain(this, fileName);
-
-            if(mainDialoguePanel != null)
+            if (mainDialoguePanel != null)
             {
                 mainDialoguePanel.SetActive(true);
             }
+            
+            mainState.StartMain(this, fileName);
         }
     }
     //코루틴으로 한다.
