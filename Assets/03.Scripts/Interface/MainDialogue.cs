@@ -108,7 +108,7 @@ public abstract class MainDialogue : GameState
         m.NextLineKey = DialogueEntries[idx].NextLineKey;
 
         //데이터에 대한 애니메이션으로 변경한다., fixedPos 은 건드리지말길!!! 위치 값인데 항상 고정
-        dot.ChangeState(DotPatternState.Main, "body_default1", fixedPos, "face_null");
+        dot.ChangeState(DotPatternState.Main, DialogueEntries[idx].AnimState, fixedPos, DialogueEntries[idx].DotExpression);
         return m; //data[idx].Kor
     }
 
