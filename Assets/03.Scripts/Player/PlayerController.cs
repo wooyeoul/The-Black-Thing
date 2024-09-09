@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.Text;
 using System.IO;
+using UnityEngine.Android;
 
 public enum LANGUAGE 
 { 

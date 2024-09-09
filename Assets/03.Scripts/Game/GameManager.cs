@@ -92,15 +92,17 @@ public class GameManager : MonoBehaviour
         {
             Permission.RequestUserPermission(Permission.ExternalStorageWrite);
         }
+
+        pc = GameObject.FindWithTag("Player").gameObject.GetComponent<PlayerController>();
+        pc.nextPhaseDelegate += ChangeGameState;
+        objectManager = GameObject.FindWithTag("ObjectManager").gameObject.GetComponent<ObjectManager>();
+        scrollManager = GameObject.FindWithTag("MainCamera").gameObject.GetComponent<ScrollManager>();
+
     }
 
     private void Start()
     {
         //Player 단계를 가져온다.
-        pc = GameObject.FindWithTag("Player").gameObject.GetComponent<PlayerController>();
-        pc.nextPhaseDelegate += ChangeGameState;
-        objectManager = GameObject.FindWithTag("ObjectManager").gameObject.GetComponent<ObjectManager>();
-        scrollManager = GameObject.FindWithTag("MainCamera").gameObject.GetComponent<ScrollManager>();
         
         if(mainDialoguePanel)
         {
@@ -196,7 +198,7 @@ public class GameManager : MonoBehaviour
             time = SITime.Night;
         }
 
-        time = SITime.Morning;
+        time = SITime.Night;
 
         //해당 백그라운드로 변경한다.
         GameObject background = Resources.Load<GameObject>("Background/"+time.ToString());
@@ -209,14 +211,14 @@ public class GameManager : MonoBehaviour
             state.Value.Init();
         }
 
-/*        string path = Path.Combine("/AssetBundles/" + time.ToString());
+        string path = Path.Combine("/AssetBundles/" + time.ToString());
 
         objectManager.InitMainBackground(path);
 
         GamePatternState patternState = (GamePatternState)pc.GetAlreadyEndedPhase();
         currentPattern = patternState;
         activeState = states[patternState];
-        activeState.Enter(this,dot);*/
+        activeState.Enter(this,dot);
     }
 
 

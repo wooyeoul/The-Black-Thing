@@ -164,12 +164,14 @@ public class Play : GameState, ILoadingInterface
 public class Sleeping : GameState
 {
     ISleepingInterface sleeping;
+    DotController dot;
     public override void Init()
     {
     }
 
     public override void Enter(GameManager manager, DotController dot = null)
     {
+        this.dot = null;
         if (objectManager == null)
         {
             objectManager = manager.ObjectManager;
@@ -182,12 +184,14 @@ public class Sleeping : GameState
 
         manager.ObjectManager.PlayThinking();
         sleeping.OpenSleeping();
+        this.dot = dot;
         dot.ChangeState(DotPatternState.Tirgger, "anim_sleep", 10);
         dot.Dust.SetActive(true);
     }
 
     public override void Exit(GameManager manager)
     {
+        this.dot.Dust.SetActive(false);
     }
 }
 
