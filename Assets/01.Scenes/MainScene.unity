@@ -20855,7 +20855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playPlayer: {fileID: 1725523482}
-  playDot: {fileID: 2046645039688417540}
+  playDot: {fileID: 1094932322510850395}
   answer: 1
   poem: {fileID: 8632590686858950580, guid: 2946c3a3492a48e4bac993cf918d88e9, type: 3}
 --- !u!212 &1523893602
@@ -22172,7 +22172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playPlayer: {fileID: 1725523482}
-  playDot: {fileID: 2046645039688417540}
+  playDot: {fileID: 1094932322510850395}
   answer: 0
   poem: {fileID: 8632590686858950580, guid: 2946c3a3492a48e4bac993cf918d88e9, type: 3}
 --- !u!212 &1647601948
@@ -29961,7 +29961,7 @@ Animator:
   m_GameObject: {fileID: 2046645039688417540}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 76f9a3ecd2802074bad91b9b114e7a1c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 212957134db90ef45bc4f18780ee111b, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 1
   m_ApplyRootMotion: 0
