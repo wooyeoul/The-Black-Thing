@@ -81,8 +81,9 @@ public class DotController : MonoBehaviour
 
     void Awake()
     {
+
         animator = GetComponent<Animator>();
-        
+
         Position = -1;
         dotExpression = "";
 
@@ -97,6 +98,7 @@ public class DotController : MonoBehaviour
     void Start()
     {
         chapter = manager.Chapter;
+
         animator.keepAnimatorStateOnDisable = true; //애니메이션 유지
     }
 

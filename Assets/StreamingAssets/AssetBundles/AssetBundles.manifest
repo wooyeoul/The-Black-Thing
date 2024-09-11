@@ -1,7 +1,10 @@
 ManifestFileVersion: 0
-CRC: 653383720
+CRC: 1445500833
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: morning
+      Dependencies: {}
+    Info_1:
+      Name: night
       Dependencies: {}

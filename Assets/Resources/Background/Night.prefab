@@ -579,6 +579,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDoorOpen: 1
+  dot: {fileID: 0}
+  targetCollider: {fileID: 4572266940479995424}
 --- !u!1 &1814722832553056528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1396,6 +1398,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDoorOpen: 0
+  dot: {fileID: 0}
+  targetCollider: {fileID: 3167699296711579393}
 --- !u!1 &5556764890537762544
 GameObject:
   m_ObjectHideFlags: 0
