@@ -47,7 +47,7 @@ public class Idle : DotState
                 dot.Animator.SetInteger("Chapter", dot.Chapter);
             }
 
-            dot.Animator.SetInteger("DotAnimState", (int)anim); //애니메이션 업데이트
+            dot.Animator.SetInteger(Animator.StringToHash("DotAnimState"), (int)anim); //애니메이션 업데이트
         }
 
     }
@@ -102,7 +102,7 @@ public class Main : DotState
         DotAnimState anim;
         if (Enum.TryParse(dot.AnimKey, true, out anim))
         {
-            dot.Animator.SetInteger("DotAnimState", (int)anim); //애니메이션 업데이트
+            dot.Animator.SetInteger(Animator.StringToHash("DotAnimState"), (int)anim); //애니메이션 업데이트
             dot.transform.position = GetCoordinate(dot.Position);
         }
 
@@ -141,7 +141,7 @@ public class Sub : DotState
         DotAnimState anim;
         if (Enum.TryParse(dot.AnimKey, true, out anim))
         {
-            dot.Animator.SetInteger("DotAnimState", (int)anim); //애니메이션 업데이트
+            dot.Animator.SetInteger(Animator.StringToHash("DotAnimState"), (int)anim); //애니메이션 업데이트
         }
     }
 
@@ -179,7 +179,7 @@ public class Phase : DotState
         {
             dot.Position = PhasePos[anim][0];
             dot.transform.position = GetCoordinate(dot.Position); //위치 업데이트
-            dot.Animator.SetInteger("DotAnimState", (int)anim); //애니메이션 업데이트
+            dot.Animator.SetInteger(Animator.StringToHash("DotAnimState"), (int)anim); //애니메이션 업데이트
         }
     }
 
@@ -218,7 +218,7 @@ public class Trigger : DotState
         //잠자러 가는 애니메이션 실행.
         dot.Position = 19;
         dot.transform.position = GetCoordinate(dot.Position); //위치 업데이트
-        dot.Animator.SetInteger("DotAnimState", (int)DotAnimState.phase_sleep); //애니메이션 업데이트
+        dot.Animator.SetInteger(Animator.StringToHash("DotAnimState"), (int)DotAnimState.phase_sleep); //애니메이션 업데이트
     }
 
     //상태를 나갈 때 1회 호출 -> Position -1로 변경
