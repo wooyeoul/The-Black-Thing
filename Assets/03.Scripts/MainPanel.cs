@@ -83,7 +83,7 @@ public class MainPanel : MonoBehaviour
             buttonText.text = selections[i];
             int index = i;
             button.onClick.RemoveAllListeners();
-            //button.onClick.AddListener(() => OnSelectionClicked(index));
+            button.onClick.AddListener(() => OnSelectionClicked(index));
         }
     }
 
