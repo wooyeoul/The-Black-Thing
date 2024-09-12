@@ -269,6 +269,14 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+        {
+            // 애플리케이션이 백그라운드로 전환될 때 실행할 코드
+            WritePlayerFile();
+        }
+    }
 
     private void OnApplicationQuit()
     {
@@ -277,6 +285,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
+        Debug.Log("this? OnDestroy");
         WritePlayerFile();
     }
 }

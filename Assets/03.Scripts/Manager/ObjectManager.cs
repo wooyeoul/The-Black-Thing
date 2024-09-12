@@ -96,6 +96,7 @@ public class ObjectManager : MonoBehaviour
 
     public void LoadObject(string path, int chapter)
     {
+        
         GameObject[] obj = Resources.LoadAll<GameObject>(path);
         foreach (GameObject obj2 in obj)
         {

@@ -273,5 +273,4 @@ public class GameManager : MonoBehaviour
 
         loadingProgressBar.value = 1; //모든 작업이 끝났음.
     }
-
 }
