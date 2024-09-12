@@ -3,8 +3,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Android;
+using UnityEngine.UI;
 //여기서 게임 상태 정의 
 //하나의 큰 유한 상태 머신 만들 예정
 public enum GamePatternState
@@ -40,6 +42,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private DotController dot;
+
+    [SerializeField]
+    Slider loadingProgressBar;
+
     public GamePatternState Pattern
     {
         get { return currentPattern; }
@@ -82,6 +88,7 @@ public class GameManager : MonoBehaviour
         states[GamePatternState.Sleeping] = new Sleeping();
         states[GamePatternState.NextChapter] = new NextChapter();
     }
+
     private void Awake()
     {
         if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead))
@@ -108,8 +115,26 @@ public class GameManager : MonoBehaviour
         {
             mainDialoguePanel.GetComponent<MainPanel>().InitializePanels();
         }
-        InitGame();
 
+        InitGame();
+        loadingProgressBar.onValueChanged.AddListener(OnValueChanged);
+    }
+
+    public void OnValueChanged(float value)
+    {
+        if(value >= 1f)
+        {
+            Debug.Log(value);
+            Invoke("CloseLoading",1f);
+        }
+    }
+
+    void CloseLoading()
+    {
+        if(loadingProgressBar != null)
+        {
+            loadingProgressBar.transform.parent.gameObject.SetActive(false);
+        }
     }
 
     public void GoSleep()
@@ -121,6 +146,7 @@ public class GameManager : MonoBehaviour
     {
         pc.NextPhase();
     }
+
     public void ChangeGameState(GamePatternState patternState)
     {
         if (states == null) return;
@@ -148,6 +174,7 @@ public class GameManager : MonoBehaviour
             mainState.StartMain(this, fileName);
         }
     }
+
     //코루틴으로 한다.
     IEnumerator ChangeState(GamePatternState patternState)
     {
@@ -176,10 +203,9 @@ public class GameManager : MonoBehaviour
 
     private void InitGame()
     {
-
         //배경을 업로드한다.
         Int32 hh = Int32.Parse(DateTime.Now.ToString(("HH"))); //현재 시간을 가져온다
-       
+
 
         if (hh >= (int)STime.T_DAWN && hh < (int)STime.T_MORNING) //현재시간 >= 3 && 현재시간 <7
         {
@@ -198,28 +224,54 @@ public class GameManager : MonoBehaviour
             time = SITime.Night;
         }
 
-        time = SITime.Night;
+        time = SITime.Morning;
 
-        //해당 백그라운드로 변경한다.
-        GameObject background = Resources.Load<GameObject>("Background/"+time.ToString());
-        Instantiate<GameObject>(background, objectManager.transform);
-        //리소스 폴더에 있는 모든 오브젝트를 가져와서 풀을 모두 채운다.
+        StartCoroutine(LoadDataAsync());
+    }
+
+    IEnumerator LoadDataAsync()
+    {
+        // 비동기적으로 배경 리소스를 로드
+        loadingProgressBar.value = 0;
+
+        ResourceRequest loadOperation = Resources.LoadAsync<GameObject>("Background/" + time.ToString());
+
+        while(!loadOperation.isDone)
+        {
+            loadingProgressBar.value = loadOperation.progress;
+
+            yield return null;
+        }
+
+        // 로딩이 완료되면 리소스를 가져와서 Instantiate
+        if (loadOperation.asset != null)
+        {
+            GameObject background = (GameObject)loadOperation.asset;
+            Instantiate<GameObject>(background, objectManager.transform);
+        }
+        else
+        {
+            Debug.LogError("Background not found!");
+        }
+
+        // 풀을 채우는 등 나머지 작업을 수행
         objectManager.LoadObject(time.ToString(), pc.GetChapter());
         objectManager.SettingChapter(pc.GetChapter());
+
         foreach (var state in states)
         {
             state.Value.Init();
         }
 
         string path = Path.Combine("/AssetBundles/" + time.ToString());
-
         objectManager.InitMainBackground(path);
 
         GamePatternState patternState = (GamePatternState)pc.GetAlreadyEndedPhase();
         currentPattern = patternState;
         activeState = states[patternState];
-        activeState.Enter(this,dot);
-    }
+        activeState.Enter(this, dot);
 
+        loadingProgressBar.value = 1; //모든 작업이 끝났음.
+    }
 
 }

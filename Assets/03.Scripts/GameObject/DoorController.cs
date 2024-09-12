@@ -18,8 +18,8 @@ public class DoorController : MonoBehaviour
     public void Awake()
     {
         dot = GameObject.FindWithTag("DotController");
-
     }
+
     private void OnEnable()
     {
         if (dot == null)
@@ -39,7 +39,15 @@ public class DoorController : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            if(dot.activeSelf == false)
+            {
+                dot.SetActive(true);
+            }
+        }
     }
+
     private void Start()
     {
         animator = this.transform.parent.GetComponent<Animator>();
@@ -53,24 +61,18 @@ public class DoorController : MonoBehaviour
             return;
         }
 
-        animator.SetFloat("speed", 1.0f);
+        int OpenIdx = Animator.StringToHash("isOpening");
+        animator.SetFloat(Animator.StringToHash("speed"), 1.0f);
 
         if (isDoorOpen)
         {
             //열려있을 경우, 닫아야함
-            animator.SetBool("isOpening", false);
+            animator.SetBool(OpenIdx, false);
         }
         else
         {
-            if (dot)
-            {
-                dot.SetActive(true);
-            }
             //닫아있는 경우, 열어야함
-            animator.SetBool("isOpening", true);
+            animator.SetBool(OpenIdx, true);
         }
-
     }
-
-
 }

@@ -7024,7 +7024,7 @@ RectTransform:
   - {fileID: 2027109437}
   - {fileID: 1522962764}
   - {fileID: 1286186099}
-  - {fileID: 559705773}
+  - {fileID: 2582272227051058514}
   - {fileID: 1885348013}
   m_Father: {fileID: 308071727}
   m_RootOrder: 0
@@ -10465,11 +10465,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548544044}
   m_CullTransparentMesh: 1
---- !u!224 &559705773 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2582272226533334012, guid: 2946c3a3492a48e4bac993cf918d88e9, type: 3}
-  m_PrefabInstance: {fileID: 2582272227051058513}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &560358108
 GameObject:
   m_ObjectHideFlags: 0
@@ -39359,7 +39354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2369964453149029500, guid: 3e43f46f90218c04499b8cade4afeb06, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e43f46f90218c04499b8cade4afeb06, type: 3}
@@ -39458,5 +39453,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: ReadPoem
       objectReference: {fileID: 0}
+    - target: {fileID: 8632590686858950580, guid: 2946c3a3492a48e4bac993cf918d88e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632590686858950581, guid: 2946c3a3492a48e4bac993cf918d88e9, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2946c3a3492a48e4bac993cf918d88e9, type: 3}
+--- !u!224 &2582272227051058514 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8632590686858950581, guid: 2946c3a3492a48e4bac993cf918d88e9, type: 3}
+  m_PrefabInstance: {fileID: 2582272227051058513}
+  m_PrefabAsset: {fileID: 0}
