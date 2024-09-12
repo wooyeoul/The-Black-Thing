@@ -74,4 +74,11 @@ public class DataManager : MonoBehaviour
             return instance; 
         }
     }
+
+    public MoonRadioParser moonRadioParser
+    {
+        get { return moonRadioParser; }
+
+        set { moonRadioParser = value; }
+    }
 }
