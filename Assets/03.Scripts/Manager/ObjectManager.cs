@@ -5,8 +5,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.UI;
 using static ObjectPool;
 
 public class ObjectManager : MonoBehaviour
@@ -25,6 +28,10 @@ public class ObjectManager : MonoBehaviour
     public delegate void ActiveSystemUIDelegate(bool InActive);
 
     public ActiveSystemUIDelegate activeSystemUIDelegate;
+
+    bool isObjectLoadComplete;
+    float loadProgress;
+
     public ObjectManager()
     {
         pool = new ObjectPool();
@@ -41,11 +48,11 @@ public class ObjectManager : MonoBehaviour
         }
         else if (Application.platform == RuntimePlatform.Android)
         {
-            path = "jar:file://" + Application.dataPath + "!/assets/"+InPath;
+            path = Path.Combine(Application.streamingAssetsPath, InPath);
         }
         else
         {
-            path = Application.dataPath + "/StreamingAssets/"+ InPath;
+            path = Application.dataPath + "/StreamingAssets"+ InPath;
         }
 
         Action<AssetBundle> callback = LoadMainBackground;
@@ -73,8 +80,21 @@ public class ObjectManager : MonoBehaviour
         return null;
     }
 
+    // 로드 완료 여부를 반환
+    public bool IsLoadObjectComplete()
+    {
+        return isObjectLoadComplete;
+    }
+
+    // 현재 로드 진행 상황을 반환
+    public float GetLoadProgress()
+    {
+        return loadProgress;
+    }
+
     private void LoadMainBackground(AssetBundle bundle)
     {
+
         if(bundle != null)
         {
             GameObject[] prefab = bundle.LoadAllAssets<GameObject>();
@@ -94,9 +114,56 @@ public class ObjectManager : MonoBehaviour
         }
     }
 
+    // 비동기 로드를 위한 코루틴
+    public IEnumerator LoadObjectAsync(string path, int chapter)
+    {
+        isObjectLoadComplete = false;  // 로드가 시작되므로 false로 설정
+        loadProgress = 0f;  // 진행 상황 초기화
+
+        // 동기적으로 경로에서 모든 리소스를 먼저 가져옵니다. 
+        // 이것은 경로에 어떤 오브젝트가 있는지 확인하는 단계일 뿐, 아직 오브젝트를 로드하지 않음.
+        System.Object[] allObjects = Resources.LoadAll(path, typeof(GameObject));
+        int totalObjects = allObjects.Length;
+
+        int i = 0;
+
+        foreach (GameObject obj in allObjects)
+        {
+            // 각 오브젝트를 비동기적으로 로드
+            ResourceRequest resourceRequest = Resources.LoadAsync<GameObject>(path + "/" + obj.name);
+            
+            while (!resourceRequest.isDone)
+            {
+                loadProgress = (i + resourceRequest.progress) / totalObjects;  // 진행률 업데이트
+                yield return null;
+            }
+
+            if (resourceRequest.asset != null)
+            {
+                GameObject obj2 = resourceRequest.asset as GameObject;
+
+                // Instantiate를 통해 오브젝트 생성 후 삽입
+                GameObject newObj = Instantiate(obj2, this.transform);
+
+                // "(Clone)" 제거
+                string name = newObj.name.Substring(0, newObj.name.IndexOf("("));
+                newObj.name = name;
+
+                // InsertMemory 내 삽입
+                pool.InsertMemory(newObj);
+            }
+            
+            i++;
+
+        }
+
+        SettingChapter(chapter);
+        yield return new WaitForSeconds(1f);
+        isObjectLoadComplete = true;
+    }
+
     public void LoadObject(string path, int chapter)
     {
-        
         GameObject[] obj = Resources.LoadAll<GameObject>(path);
         foreach (GameObject obj2 in obj)
         {

@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using System.IO;
+using UnityEngine.Networking;
 
 public class ObjectPool
 {
@@ -23,13 +22,24 @@ public class ObjectPool
 
     public IEnumerator LoadFromMemoryAsync(string path, System.Action<AssetBundle> callback)
     {
-        byte[] binary = File.ReadAllBytes(path);
 
-        AssetBundleCreateRequest req = AssetBundle.LoadFromMemoryAsync(binary);
+        UnityWebRequest www = UnityWebRequest.Get(path);
+        yield return www.SendWebRequest();
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.LogError(www.error);
+        }
+        else
+        {
+            byte[] binary = System.IO.File.ReadAllBytes(path);
 
-        yield return req;
+            AssetBundleCreateRequest req = AssetBundle.LoadFromMemoryAsync(binary);
 
-        callback(req.assetBundle);
+            yield return req;
+
+            callback(req.assetBundle);
+        }
+
     }
     //검색 기능
     public GameObject SearchMemory(string objectName)

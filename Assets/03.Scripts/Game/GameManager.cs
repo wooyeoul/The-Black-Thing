@@ -231,6 +231,9 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LoadDataAsync()
     {
+        float totalProgress = 0f;
+        float backgroundLoadWeight = 0.5f;  // 배경 로드가 전체 작업의 50% 차지
+        float objectLoadWeight = 0.5f;      // 오브젝트 로드가 나머지 50% 차지
         // 비동기적으로 배경 리소스를 로드
         loadingProgressBar.value = 0;
 
@@ -238,8 +241,8 @@ public class GameManager : MonoBehaviour
 
         while(!loadOperation.isDone)
         {
-            loadingProgressBar.value = loadOperation.progress;
-
+            totalProgress = loadOperation.progress * backgroundLoadWeight;
+            loadingProgressBar.value = totalProgress;
             yield return null;
         }
 
@@ -255,15 +258,14 @@ public class GameManager : MonoBehaviour
         }
 
         // 풀을 채우는 등 나머지 작업을 수행
-        objectManager.LoadObject(time.ToString(), pc.GetChapter());
-        objectManager.SettingChapter(pc.GetChapter());
+        Coroutine objectLoadCoroutine = StartCoroutine(TrackObjectLoadProgress(time.ToString(), pc.GetChapter(),objectLoadWeight));
 
         foreach (var state in states)
         {
             state.Value.Init();
         }
 
-        string path = Path.Combine("/AssetBundles/" + time.ToString());
+        string path = Path.Combine("/AssetBundles/" + time.ToString().ToLower());
         objectManager.InitMainBackground(path);
 
         GamePatternState patternState = (GamePatternState)pc.GetAlreadyEndedPhase();
@@ -271,6 +273,32 @@ public class GameManager : MonoBehaviour
         activeState = states[patternState];
         activeState.Enter(this, dot);
 
+        //코루틴이 끝날때까지 대기
+        yield return objectLoadCoroutine;
+
         loadingProgressBar.value = 1; //모든 작업이 끝났음.
+    }
+
+    IEnumerator TrackObjectLoadProgress(string path, int chapter, float weight)
+    {
+
+        float progress = 0f;
+        float previousProgress = 0f;
+
+        // objectManager의 비동기 작업 진행 상황을 추적
+        Coroutine loadObjectCoroutine = StartCoroutine(objectManager.LoadObjectAsync(time.ToString(), pc.GetChapter()));
+
+        // objectManager.LoadObjectAsync 코루틴의 진행 상황을 추적 (가정: objectManager에서 진행 상황을 제공할 수 있는 메서드를 제공한다고 가정)
+        while (!objectManager.IsLoadObjectComplete())
+        {
+            progress = objectManager.GetLoadProgress();  // 진행 상황을 가져옴
+            float totalProgress = (previousProgress + progress) * weight + loadingProgressBar.value;
+            loadingProgressBar.value = totalProgress;
+
+            yield return null;
+        }
+
+        // 코루틴이 완료되었을 때 100%로 설정
+        loadingProgressBar.value += weight;
     }
 }

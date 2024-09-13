@@ -48,8 +48,6 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        Debug.Log("PlayerController");
-
         translateManager = GameObject.FindWithTag("Translator").GetComponent<TranslateManager>();
         translateManager.Translate(GetLanguage());
         //nextPhaseDelegate(player.currentPhase);
