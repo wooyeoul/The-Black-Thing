@@ -55,7 +55,6 @@ public abstract class MainDialogue : GameState, ILoadingInterface
                 continue;
             }
             string[] parts = ParseCSVLine(line);
-            Debug.Log($"Parsed line {i}: {string.Join(", ", parts)}");
 
             if (parts.Length >= 15)
             {
@@ -86,7 +85,6 @@ public abstract class MainDialogue : GameState, ILoadingInterface
                     DialogueEntries.Add(entry);
                     currentDialogueList.Add(entry);
 
-                    Debug.Log($"Added DialogueEntry: {displayedText}");
                 }
             }
             else
@@ -111,7 +109,8 @@ public abstract class MainDialogue : GameState, ILoadingInterface
         fixedPos = pos[DialogueEntries[idx].Background];
 
         //데이터에 대한 애니메이션으로 변경한다., fixedPos 은 건드리지말길!!! 위치 값인데 항상 고정
-        dot.ChangeState(DotPatternState.Main, DialogueEntries[idx].AnimState, fixedPos, DialogueEntries[idx].DotExpression);
+        
+        dot.ChangeState(DotPatternState.Main, DialogueEntries[idx].DotBody, fixedPos, DialogueEntries[idx].DotExpression);
         return maindata; //data[idx].Kor
     }
 
@@ -133,7 +132,6 @@ public abstract class MainDialogue : GameState, ILoadingInterface
             return;
         }
 
-        Debug.Log(fileName);
         string[] lines = dialogueData.text.Split('\n');
         LoadData(lines);
         fixedPos = pos[DialogueEntries[0].Background]; //현재 배경화면이 어떤 값인지 변경해주길

@@ -102,6 +102,7 @@ public class Main : DotState
         DotAnimState anim;
         if (Enum.TryParse(dot.AnimKey, true, out anim))
         {
+            //Debug.Log(dot.AnimKey);
             dot.Animator.SetInteger(Animator.StringToHash("DotAnimState"), (int)anim); //애니메이션 업데이트
             dot.transform.position = GetCoordinate(dot.Position);
         }

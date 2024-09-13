@@ -151,13 +151,21 @@ public class ObjectManager : MonoBehaviour
 
                 // InsertMemory ³» »ðÀÔ
                 pool.InsertMemory(newObj);
+
+                if (newObj.GetComponent<BaseObject>().IsCurrentChapter(chapter))
+                {
+                    newObj.SetActive(true);
+                }
+                else
+                {
+                    newObj.SetActive(false);
+                }
             }
             
             i++;
 
         }
 
-        SettingChapter(chapter);
         yield return new WaitForSeconds(1f);
         isObjectLoadComplete = true;
     }
