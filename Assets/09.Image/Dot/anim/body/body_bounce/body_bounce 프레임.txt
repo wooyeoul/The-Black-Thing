@@ -1,1 +1,0 @@
-body_default1 - body_bounce_1 (2프레임) - body_bounce_2 (3프레임) - body_bounce_3 (1프레임) - body_bounce_4 (2프레임) - body_bounce_5 (1프레임) - body_bounce_1 (1프레임) - body_default1
