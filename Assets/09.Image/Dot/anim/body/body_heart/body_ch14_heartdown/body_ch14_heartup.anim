@@ -20,15 +20,15 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: d1671d1c61c620e41a9fdb4ce1be8db3, type: 3}
+      value: {fileID: 21300000, guid: 73127897b8ef39f4c8e80902064cf39c, type: 3}
     - time: 0.016666668
-      value: {fileID: 21300000, guid: 1f81b7738e4d1704882e09c5badbb76a, type: 3}
+      value: {fileID: 21300000, guid: dfe3fceac8b2f0c459cc79bd2576a915, type: 3}
     - time: 0.033333335
       value: {fileID: 21300000, guid: 11e33d1d166c63e4da86555dc1d6e920, type: 3}
     - time: 0.05
-      value: {fileID: 21300000, guid: dfe3fceac8b2f0c459cc79bd2576a915, type: 3}
+      value: {fileID: 21300000, guid: 1f81b7738e4d1704882e09c5badbb76a, type: 3}
     - time: 0.06666667
-      value: {fileID: 21300000, guid: 73127897b8ef39f4c8e80902064cf39c, type: 3}
+      value: {fileID: 21300000, guid: d1671d1c61c620e41a9fdb4ce1be8db3, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -48,11 +48,11 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: d1671d1c61c620e41a9fdb4ce1be8db3, type: 3}
-    - {fileID: 21300000, guid: 1f81b7738e4d1704882e09c5badbb76a, type: 3}
-    - {fileID: 21300000, guid: 11e33d1d166c63e4da86555dc1d6e920, type: 3}
-    - {fileID: 21300000, guid: dfe3fceac8b2f0c459cc79bd2576a915, type: 3}
     - {fileID: 21300000, guid: 73127897b8ef39f4c8e80902064cf39c, type: 3}
+    - {fileID: 21300000, guid: dfe3fceac8b2f0c459cc79bd2576a915, type: 3}
+    - {fileID: 21300000, guid: 11e33d1d166c63e4da86555dc1d6e920, type: 3}
+    - {fileID: 21300000, guid: 1f81b7738e4d1704882e09c5badbb76a, type: 3}
+    - {fileID: 21300000, guid: d1671d1c61c620e41a9fdb4ce1be8db3, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -63,7 +63,7 @@ AnimationClip:
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
