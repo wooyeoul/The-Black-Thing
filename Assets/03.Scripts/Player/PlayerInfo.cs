@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Assets.Script.Reward;
 
 /*Sub 성공 챕터 유무에 따라 아키텍처 타입이 달라짐*/
 
@@ -38,7 +39,9 @@ public class PlayerInfo
     //유서 결과를 체크하기 위한 아키텍처 타입
     public ArcheType archeType;
     //현재 진행 pattern 상태
-    public GamePatternState currentPhase; 
+    public GamePatternState currentPhase;
+    public List<EReward> rewardList; //플레이어가 가지고 있는 리워드
+
 
     public PlayerInfo()
     {

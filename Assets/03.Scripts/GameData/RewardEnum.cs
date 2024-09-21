@@ -1,0 +1,33 @@
+namespace Assets.Script.Reward
+{
+    public enum EReward : int
+    {
+        reward_mold,
+        reward_polysemy,
+        reward_mindtest,
+        reward_collection,
+        reward_neverland,
+        reward_black,
+        reward_smallwave,
+        reward_flamingo,
+        reward_lemon,
+        reward_monster,
+        reward_spider2,
+        reward_hurtmoon,
+        reward_dreamcatcher,
+        reward_bigwave,
+        reward_timburton,
+        reward_shootingstar,
+        reward_afterdeath,
+        reward_fossil,
+        reward_sunlight,
+        reward_photo,
+        reward_babybird,
+        reward_jellyfish,
+        reward_summer,
+        reward_opportunity,
+        reward_sleepless,
+        reward_rainbow,
+        reward_stain
+    };
+}
