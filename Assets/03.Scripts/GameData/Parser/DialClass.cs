@@ -52,8 +52,7 @@ namespace Assets.Script.DialClass
     public class ScriptList
     {
         public int ID;
-        public string ScriptType;
-        public int ScriptNumber;
+        public int GameState;
         public string ScriptKey;
         public string AnimState;
         public string DotAnim;
