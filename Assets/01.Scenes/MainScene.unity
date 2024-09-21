@@ -3717,7 +3717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fonts:
   - {fileID: 11400000, guid: c3fac11693f8ac34a93047980ba59d17, type: 2}
-  - {fileID: 11400000, guid: 3e4430de936357f4795bccb8a89c52ea, type: 2}
+  - {fileID: 11400000, guid: e0125dad6f3593e4a9b1a4688b99d091, type: 2}
 --- !u!1 &269175211
 GameObject:
   m_ObjectHideFlags: 0
@@ -26926,7 +26926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nickname: SongSuyoung
   currentChapter: 5
-  translateManager: {fileID: 268966468}
+  translateManager: {fileID: 0}
 --- !u!4 &2022455606
 Transform:
   m_ObjectHideFlags: 0
@@ -30014,7 +30014,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.021, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0.005126953, y: 0}
   m_SizeDelta: {x: -0.010132, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -30463,7 +30463,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1760591410990093839
 RectTransform:
   m_ObjectHideFlags: 0

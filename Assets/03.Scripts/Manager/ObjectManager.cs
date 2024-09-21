@@ -19,7 +19,6 @@ public class ObjectManager : MonoBehaviour
 
     List<GameObject>  watches;
 
-
     [SerializeField]
     GameObject skipSleep;
 
@@ -32,6 +31,7 @@ public class ObjectManager : MonoBehaviour
     bool isObjectLoadComplete;
     float loadProgress;
 
+    //Dictionary<현재 시간, FileID> FileID; 제공
     public ObjectManager()
     {
         pool = new ObjectPool();
@@ -39,34 +39,11 @@ public class ObjectManager : MonoBehaviour
         watches = new List<GameObject>();
     }
 
-    public void InitMainBackground(string InPath)
-    {
-        string path = "";
-        if (Application.platform == RuntimePlatform.IPhonePlayer)
-        {
-            path = Application.dataPath + "/Raw/"+InPath;
-        }
-        else if (Application.platform == RuntimePlatform.Android)
-        {
-            path = Path.Combine(Application.streamingAssetsPath, InPath);
-        }
-        else
-        {
-            path = Application.dataPath + "/StreamingAssets"+ InPath;
-        }
-
-        Action<AssetBundle> callback = LoadMainBackground;
-
-        StartCoroutine(pool.LoadFromMemoryAsync(path, callback));
-
-    }
-
     public GameObject SetMain(string background)
     {
 
         if(mains.ContainsKey(background))
         {
-
             foreach (var w in mains)
             {
                 w.Value.SetActive(false);
@@ -117,11 +94,20 @@ public class ObjectManager : MonoBehaviour
     // 비동기 로드를 위한 코루틴
     public IEnumerator LoadObjectAsync(string path, int chapter)
     {
+
+        const string MainPath = "https://drive.google.com/uc?export=download&id=1ZlmdZEtzqa7yX37gHmFfibFzSkMz73mG";
+        Action<AssetBundle> callback = LoadMainBackground;
+
+        yield return StartCoroutine(pool.LoadFromMemoryAsync(MainPath, callback));
+
         isObjectLoadComplete = false;  // 로드가 시작되므로 false로 설정
         loadProgress = 0f;  // 진행 상황 초기화
 
         // 동기적으로 경로에서 모든 리소스를 먼저 가져옵니다. 
         // 이것은 경로에 어떤 오브젝트가 있는지 확인하는 단계일 뿐, 아직 오브젝트를 로드하지 않음.
+
+        //메인 로드를 여기서 로드하자
+
         System.Object[] allObjects = Resources.LoadAll(path, typeof(GameObject));
         int totalObjects = allObjects.Length;
 

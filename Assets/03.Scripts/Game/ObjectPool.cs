@@ -23,24 +23,32 @@ public class ObjectPool
     public IEnumerator LoadFromMemoryAsync(string path, System.Action<AssetBundle> callback)
     {
 
-        UnityWebRequest www = UnityWebRequest.Get(path);
+        UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(path);
         yield return www.SendWebRequest();
-        if (www.isNetworkError || www.isHttpError)
+
+        if (www.result != UnityWebRequest.Result.Success)
         {
-            Debug.LogError(www.error);
+            Debug.LogError($"Failed to download AssetBundle: {www.error}");
         }
         else
         {
-            byte[] binary = System.IO.File.ReadAllBytes(path);
+            // AssetBundle을 다운로드한 후 가져오기
+            AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(www);
 
-            AssetBundleCreateRequest req = AssetBundle.LoadFromMemoryAsync(binary);
-
-            yield return req;
-
-            callback(req.assetBundle);
+            // 콜백 호출
+            if (bundle != null)
+            {
+                Debug.Log("AssetBundle successfully downloaded and loaded!");
+                callback?.Invoke(bundle);
+            }
+            else
+            {
+                Debug.LogError("Failed to load AssetBundle.");
+                callback?.Invoke(null);
+            }
         }
-
     }
+    
     //검색 기능
     public GameObject SearchMemory(string objectName)
     {
