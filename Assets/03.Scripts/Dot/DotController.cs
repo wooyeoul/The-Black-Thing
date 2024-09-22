@@ -1,6 +1,7 @@
 using Assets.Script.TimeEnum;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Script.DialClass;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -39,6 +40,12 @@ public class DotController : MonoBehaviour
 
     [SerializeField]
     GameObject dust;
+
+    [SerializeField]
+    ScriptListParser parser;
+
+    [SerializeField]
+    List<ScriptList> ScriptLists;
 
     public GameObject Dust
     {
@@ -100,6 +107,7 @@ public class DotController : MonoBehaviour
         chapter = manager.Chapter;
 
         animator.keepAnimatorStateOnDisable = true; //애니메이션 유지
+        ScriptLists = parser.scripts;
     }
 
     private void OnMouseDown()

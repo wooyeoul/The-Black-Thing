@@ -8,7 +8,8 @@ using System;
 
 public class ScriptListParser : MonoBehaviour
 {
-    [SerializeField] List<ScriptList> ScriptLists;
+    [SerializeField] 
+    protected List<ScriptList> ScriptLists;
     void Start()
     {
         TextAsset dialogueData = Resources.Load<TextAsset>("CSV/ScriptList");
@@ -49,6 +50,12 @@ public class ScriptListParser : MonoBehaviour
                 ScriptLists.Add(entry);
             }
         }
+    }
+
+    public List<ScriptList> scripts
+    {
+        get { return ScriptLists; }
+        set { ScriptLists = value; }
     }
 
     string[] ParseCSVLine(string line)
