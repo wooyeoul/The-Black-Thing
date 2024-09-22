@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+
 [System.Serializable]
 public class ChapterInfo
 {
@@ -14,6 +15,7 @@ public class ChapterInfo
     public string mainFilePath;
     public string[] subLockFilePath;
     public string[] subFilePath;
+    public string[] reward;
 }
 
 

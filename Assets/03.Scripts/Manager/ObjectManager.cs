@@ -11,6 +11,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using static ObjectPool;
+using Assets.Script.Reward;
 
 public class ObjectManager : MonoBehaviour
 {
@@ -25,8 +26,9 @@ public class ObjectManager : MonoBehaviour
     Dictionary<string, GameObject> mains;
 
     public delegate void ActiveSystemUIDelegate(bool InActive);
-
+    public delegate void SuccessSubDialDelegate(int chapter, string subTitle);
     public ActiveSystemUIDelegate activeSystemUIDelegate;
+    public SuccessSubDialDelegate successSubDialDelegate;
 
     bool isObjectLoadComplete;
     float loadProgress;
@@ -37,6 +39,29 @@ public class ObjectManager : MonoBehaviour
         pool = new ObjectPool();
         mains = new Dictionary<string, GameObject>();
         watches = new List<GameObject>();
+
+        successSubDialDelegate += SuccessSubDial;
+    }
+
+    void SuccessSubDial(int chapter,string subTitle)
+    {
+        string reward = subTitle.Substring(subTitle.IndexOf('_'));
+
+        EReward eReward;
+
+        if(Enum.TryParse<EReward>(reward,true,out eReward))
+        {
+            for(int i=0;i< DataManager.Instance.ChapterList.chapters[chapter].reward.Length; i++)
+            {
+
+                string tmp = DataManager.Instance.ChapterList.chapters[chapter].reward[i];
+                
+                if(tmp.Contains(reward))
+                {
+                    //È£Ãâ
+                }
+            }
+        }
     }
 
     public GameObject SetMain(string background)
