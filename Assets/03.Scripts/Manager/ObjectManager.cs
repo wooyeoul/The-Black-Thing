@@ -26,13 +26,16 @@ public class ObjectManager : MonoBehaviour
     Dictionary<string, GameObject> mains;
 
     public delegate void ActiveSystemUIDelegate(bool InActive);
-    public delegate void SuccessSubDialDelegate(int chapter, string subTitle);
+    public delegate void SuccessSubDialDelegate(int phase, string subTitle);
     public ActiveSystemUIDelegate activeSystemUIDelegate;
     public SuccessSubDialDelegate successSubDialDelegate;
 
     bool isObjectLoadComplete;
     float loadProgress;
 
+    string currentTime;
+
+    PlayerController pc;
     //Dictionary<현재 시간, FileID> FileID; 제공
     public ObjectManager()
     {
@@ -43,25 +46,42 @@ public class ObjectManager : MonoBehaviour
         successSubDialDelegate += SuccessSubDial;
     }
 
-    void SuccessSubDial(int chapter,string subTitle)
+    private void Start()
     {
+        pc = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
+
+    void SuccessSubDial(int phases, string subTitle)
+    {
+        //Player의 subSuccessOrNot을 가져와서 해당 idx true 시킨다.
+
+        int chapter = pc.GetChapter();
+        pc.SetSubPhase(phases); //몇번째 성공 phase인지 0,1,2,3전달 
+
         string reward = subTitle.Substring(subTitle.IndexOf('_'));
+        string path = "Reward/" + currentTime + "/reward_"+reward;
 
         EReward eReward;
 
         if(Enum.TryParse<EReward>(reward,true,out eReward))
         {
-            for(int i=0;i< DataManager.Instance.ChapterList.chapters[chapter].reward.Length; i++)
+            for (int i = 0; i < DataManager.Instance.ChapterList.chapters[chapter].reward.Length; i++)
             {
 
                 string tmp = DataManager.Instance.ChapterList.chapters[chapter].reward[i];
-                
-                if(tmp.Contains(reward))
+
+                if (tmp.Contains(reward))
                 {
-                    //호출
+                    //호출 Resource에서 해당 Time부분에 있는 reward 업로드
+                    GameObject rewardObj = Resources.Load<GameObject>(path);
+                    GameObject realObj = Instantiate(rewardObj, this.transform);
                 }
             }
+
+            //플레이어 컨트롤러에 어떤 보상을 받았는지 리스트 추가.
+            pc.AddReward(eReward);
         }
+        //실패하면 보상없음
     }
 
     public GameObject SetMain(string background)
@@ -135,7 +155,7 @@ public class ObjectManager : MonoBehaviour
 
         System.Object[] allObjects = Resources.LoadAll(path, typeof(GameObject));
         int totalObjects = allObjects.Length;
-
+        currentTime = path;
         int i = 0;
 
         foreach (GameObject obj in allObjects)

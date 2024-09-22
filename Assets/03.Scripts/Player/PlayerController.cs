@@ -5,6 +5,7 @@ using System;
 using System.Text;
 using System.IO;
 using UnityEngine.Android;
+using Assets.Script.Reward;
 
 public enum LANGUAGE 
 { 
@@ -65,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
         phase += 1;
 
-        if((GamePatternState)phase > GamePatternState.NextChapter)
+        if ((GamePatternState)phase > GamePatternState.NextChapter)
         {
             player.currentPhase = GamePatternState.Watching;
             //챕터가 증가함
@@ -89,7 +90,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Chapter <= 0 || Chapter > 15) return null;
 
-        return player.GetSubPhase(Chapter-1);
+        return player.GetSubPhase(Chapter - 1);
     }
 
 
@@ -133,7 +134,7 @@ public class PlayerController : MonoBehaviour
     public void SetLanguage(string language)
     {
         LANGUAGE lang;
-        if(Enum.TryParse(language,true,out lang))
+        if (Enum.TryParse(language, true, out lang))
         {
             SetLanguage(lang);
         }
@@ -195,6 +196,16 @@ public class PlayerController : MonoBehaviour
     public int GetChapter()
     {
         return player.CurrentChapter;
+    }
+
+    public void AddReward(EReward InRewardName)
+    {
+        player.rewardList.Add(InRewardName);
+    }
+
+    public List<EReward> GetRewards()
+    {
+        return player.rewardList;
     }
 
     public string GetNickName()
