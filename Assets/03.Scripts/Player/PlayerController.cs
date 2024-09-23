@@ -294,7 +294,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        Debug.Log("this? OnDestroy");
         WritePlayerFile();
     }
 }

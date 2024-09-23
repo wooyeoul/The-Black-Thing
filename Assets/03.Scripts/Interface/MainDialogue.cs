@@ -4,6 +4,7 @@ using UnityEngine;
 using Assets.Script.DialClass;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 
 public abstract class MainDialogue : GameState, ILoadingInterface
@@ -19,7 +20,7 @@ public abstract class MainDialogue : GameState, ILoadingInterface
     MainPanel mainPanel;
 
     protected int fixedPos = -1;
-
+    
     public MainDialogue()
     {
         pos.Add("main_bed", 14);
@@ -41,7 +42,7 @@ public abstract class MainDialogue : GameState, ILoadingInterface
         this.manager = manager;
         this.dot = dot;
         dot.TriggerMain(true);
-        dot.ChangeState(DotPatternState.Defualt, "anim_default");
+        //dot 한테 chapterList 에서 해당 위치랑 애니메이션이 변함.
     }
 
     public void LoadData(string[] lines)

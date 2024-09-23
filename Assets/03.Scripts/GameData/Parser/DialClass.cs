@@ -52,7 +52,7 @@ namespace Assets.Script.DialClass
     public class ScriptList
     {
         public int ID;
-        public int GameState;
+        public GamePatternState GameState;
         public string ScriptKey;
         public string AnimState;
         public string DotAnim;

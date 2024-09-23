@@ -121,7 +121,6 @@ public class GameManager : MonoBehaviour
     {
         if(value >= 1f)
         {
-            Debug.Log(value);
             Invoke("CloseLoading",1f);
         }
     }

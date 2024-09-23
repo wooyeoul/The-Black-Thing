@@ -45,7 +45,9 @@ public class DotController : MonoBehaviour
     ScriptListParser parser;
 
     [SerializeField]
-    List<ScriptList> ScriptLists;
+    List<List<ScriptList>> mainScriptLists;
+    [SerializeField]
+    List<Dictionary<GamePatternState,List<ScriptList>>> subScriptLists; //List chapter Dictionary<gamestate,List<ScriptList>>> 
 
     public GameObject Dust
     {
@@ -90,24 +92,40 @@ public class DotController : MonoBehaviour
     {
 
         animator = GetComponent<Animator>();
-
         Position = -1;
         dotExpression = "";
 
         states = new Dictionary<DotPatternState, DotState>();
         states.Clear();
-        states.Add(DotPatternState.Defualt, new Idle());
+        states.Add(DotPatternState.Default, new Idle());
         states.Add(DotPatternState.Phase, new Phase());
         states.Add(DotPatternState.Main, new Main());
         states.Add(DotPatternState.Sub, new Sub());
         states.Add(DotPatternState.Tirgger, new Trigger());
+        ScriptListParser scriptListParser = new ScriptListParser();
+        mainScriptLists = new List<List<ScriptList>>();
+        subScriptLists = new List<Dictionary<GamePatternState, List<ScriptList>>>();
+
+        scriptListParser.Load(mainScriptLists, subScriptLists);
     }
     void Start()
     {
         chapter = manager.Chapter;
 
         animator.keepAnimatorStateOnDisable = true; //애니메이션 유지
-        ScriptLists = parser.scripts;
+    }
+
+    public ScriptList GetMainScriptList(int index)
+    {
+        return mainScriptLists[chapter - 1][index];
+    }
+
+    public ScriptList GetSubScriptList(GamePatternState State)
+    {
+        if (subScriptLists[chapter - 1][State].Count == 0)
+            return null;
+
+        return subScriptLists[chapter - 1][State][0];
     }
 
     private void OnMouseDown()
@@ -157,7 +175,7 @@ public class DotController : MonoBehaviour
         manager.NextPhase();
     }
 
-    public void ChangeState(DotPatternState state = DotPatternState.Defualt, string OutAnimKey = "", float OutPos = -1, string OutExpression = "")
+    public void ChangeState(DotPatternState state = DotPatternState.Default, string OutAnimKey = "", float OutPos = -1, string OutExpression = "")
     {
         if (states == null) return;
 

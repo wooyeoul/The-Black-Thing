@@ -48,7 +48,7 @@ public class ObjectManager : MonoBehaviour
 
     private void Start()
     {
-        pc = GameObject.Find("Player").GetComponent<PlayerController>();
+        pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
 
     void SuccessSubDial(int phases, string subTitle)

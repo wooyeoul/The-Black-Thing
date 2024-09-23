@@ -30635,7 +30635,6 @@ GameObject:
   - component: {fileID: 2046645039688417658}
   - component: {fileID: 2921298288689103228}
   - component: {fileID: 2921298288689103229}
-  - component: {fileID: 2921298288689103230}
   m_Layer: 6
   m_Name: Dot
   m_TagString: DotController
@@ -30802,19 +30801,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &2921298288689103230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046645039688417540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b5095c45fe7a2e4ca02b2358fd5fcdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ScriptLists: []
 --- !u!1 &3190399642701286173
 GameObject:
   m_ObjectHideFlags: 0
