@@ -69,14 +69,11 @@ public class Watching : GameState
     {
         ScriptList script = dot.GetSubScriptList(GamePatternState.Watching);
 
-        Debug.Log(1);
         if (script != null)
         {
-            Debug.Log(2);
             DotPatternState dotPattern;
             if (Enum.TryParse(script.AnimState, true, out dotPattern))
             {
-                Debug.Log(3);
                 dot.ChangeState(dotPattern, script.DotAnim, script.DotPosition);
             }
         }
