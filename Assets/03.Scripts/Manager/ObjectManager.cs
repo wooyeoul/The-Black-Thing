@@ -26,9 +26,8 @@ public class ObjectManager : MonoBehaviour
     Dictionary<string, GameObject> mains;
 
     public delegate void ActiveSystemUIDelegate(bool InActive);
-    public delegate void SuccessSubDialDelegate(int phase, string subTitle);
+
     public ActiveSystemUIDelegate activeSystemUIDelegate;
-    public SuccessSubDialDelegate successSubDialDelegate;
 
     bool isObjectLoadComplete;
     float loadProgress;
@@ -42,13 +41,12 @@ public class ObjectManager : MonoBehaviour
         pool = new ObjectPool();
         mains = new Dictionary<string, GameObject>();
         watches = new List<GameObject>();
-
-        successSubDialDelegate += SuccessSubDial;
     }
 
     private void Start()
     {
         pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        pc.successSubDialDelegate += SuccessSubDial;
     }
 
     void SuccessSubDial(int phases, string subTitle)
@@ -56,30 +54,28 @@ public class ObjectManager : MonoBehaviour
         //Player의 subSuccessOrNot을 가져와서 해당 idx true 시킨다.
 
         int chapter = pc.GetChapter();
-        pc.SetSubPhase(phases); //몇번째 성공 phase인지 0,1,2,3전달 
 
-        string reward = subTitle.Substring(subTitle.IndexOf('_'));
-        string path = "Reward/" + currentTime + "/reward_"+reward;
-
+        string reward = "reward"+subTitle.Substring(subTitle.IndexOf('_'));
+    
         EReward eReward;
 
         if(Enum.TryParse<EReward>(reward,true,out eReward))
         {
+            
             for (int i = 0; i < DataManager.Instance.ChapterList.chapters[chapter].reward.Length; i++)
             {
-
                 string tmp = DataManager.Instance.ChapterList.chapters[chapter].reward[i];
 
                 if (tmp.Contains(reward))
                 {
-                    //호출 Resource에서 해당 Time부분에 있는 reward 업로드
-                    GameObject rewardObj = Resources.Load<GameObject>(path);
-                    GameObject realObj = Instantiate(rewardObj, this.transform);
+                    string path = "Reward/" + currentTime + "/"+reward;
+
+                     //호출 Resource에서 해당 Time부분에 있는 reward 업로드
+                     GameObject rewardObj = Resources.Load<GameObject>(path);
+                     GameObject realObj = Instantiate(rewardObj, this.transform);
+                     pool.InsertMemory(realObj);
                 }
             }
-
-            //플레이어 컨트롤러에 어떤 보상을 받았는지 리스트 추가.
-            pc.AddReward(eReward);
         }
         //실패하면 보상없음
     }

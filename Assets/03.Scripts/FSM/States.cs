@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Assets.Script.DialClass;
 using System.IO;
-
+using System.Threading.Tasks;
 public enum EWatching
 {
     Binocular,
@@ -14,13 +14,14 @@ public enum EWatching
     StayAtHome,
     None
 }
-public class Watching : GameState
+public class Watching : GameState, IResetStateInterface
 {
-    
+
+    const GamePatternState state = GamePatternState.Watching;
+
     //뭉치의 외출 여부를 알아야한다.
     List<EWatching> pattern = new List<EWatching>();
     IWatchingInterface watching = null;
-
     public override void Init()
     {
         if (pattern.Count <= 0)
@@ -36,13 +37,15 @@ public class Watching : GameState
                 }
             }
         }
+
     }
+
     public override void Enter(GameManager manager, DotController dot = null)
     {
 
         if (pattern[manager.Chapter] == EWatching.None)
         {
-            Watch(manager, dot);
+            manager.ShowSubDial();
             return;
         }
 
@@ -65,20 +68,6 @@ public class Watching : GameState
         //Stay일 때 뭉치 등장
     }
 
-    public void Watch(GameManager manager, DotController dot = null)
-    {
-        ScriptList script = dot.GetSubScriptList(GamePatternState.Watching);
-
-        if (script != null)
-        {
-            DotPatternState dotPattern;
-            if (Enum.TryParse(script.AnimState, true, out dotPattern))
-            {
-                dot.ChangeState(dotPattern, script.DotAnim, script.DotPosition);
-            }
-        }
-    }
-
     public override void Exit(GameManager manager)
     {
         if(watching != null)
@@ -86,12 +75,17 @@ public class Watching : GameState
             watching.CloseWatching();
         }
     }
+
+    public void ResetState(GameManager manager, DotController dot = null)
+    {
+        //watching은 어떤작업하는지 잘모르겠네..?
+    }
 }
 
 //MainA/MainB 인터페이스 사용해서 함수 하나 연결할 수 있도록 하면 좋겠슴.
 public class MainA : MainDialogue
 {
-    
+
     //멤버 변수 대사 
     public override void Init()
     {
@@ -110,28 +104,22 @@ public class MainA : MainDialogue
 
 public class Thinking : GameState, ILoadingInterface
 {
+    const GamePatternState state = GamePatternState.Thinking;   
+
     public override void Init()
     {
     }
 
     public override void Enter(GameManager manager, DotController dot = null)
     {
-        ScriptList script = dot.GetSubScriptList(GamePatternState.Watching);
+        //Default값 랜덤으로 사용예정
+        Think(manager,dot);
+    }
 
-        if (script != null)
-        {
-            DotPatternState dotPattern;
-            if (Enum.TryParse(script.AnimState, true, out dotPattern))
-            {
-                dot.ChangeState(dotPattern, script.DotAnim, script.DotPosition);
-            }
-            //sub 끝나고, Think 수행
-        }
-        else
-        {
-            Think(manager,dot);
-        }
-
+    public void ResetState(GameManager manager, DotController dot = null)
+    {
+        DotAnimState anim = (DotAnimState)UnityEngine.Random.Range(0, (int)DotAnimState.anim_eyesblink);
+        dot.ChangeState(DotPatternState.Default, anim.ToString());
     }
 
     public void Think(GameManager manager, DotController dot = null)
@@ -140,6 +128,8 @@ public class Thinking : GameState, ILoadingInterface
         DotAnimState anim = (DotAnimState)UnityEngine.Random.Range(0, (int)DotAnimState.anim_eyesblink);
         manager.ObjectManager.PlayThinking();
         dot.ChangeState(DotPatternState.Default, anim.ToString());
+
+        manager.ShowSubDial();
     }
 
     public override void Exit(GameManager manager)
@@ -164,9 +154,10 @@ public class MainB : MainDialogue
 
         base.Enter(manager, dot);
     }
+
 }
 
-public class Writing : GameState, ILoadingInterface
+public class Writing : GameState, ILoadingInterface, IResetStateInterface
 {
     public override void Init()
     {
@@ -174,21 +165,7 @@ public class Writing : GameState, ILoadingInterface
 
     public override void Enter(GameManager manager, DotController dot = null)
     {
-        ScriptList script = dot.GetSubScriptList(GamePatternState.Watching);
-
-        if (script != null)
-        {
-            DotPatternState dotPattern;
-            if (Enum.TryParse(script.AnimState, true, out dotPattern))
-            {
-                dot.ChangeState(dotPattern, script.DotAnim, script.DotPosition);
-            }
-            //sub가 끝나고, Write 함수 호출
-        }
-        else
-        {
-            Write(manager, dot);
-        }
+        Write(manager, dot);
     }
 
     public void Write(GameManager manager, DotController dot = null)
@@ -196,10 +173,15 @@ public class Writing : GameState, ILoadingInterface
         manager.ObjectManager.PlayThinking();
         dot.ChangeState(DotPatternState.Phase, "anim_diary");
     }
-
+   
     public override void Exit(GameManager manager)
     {
 
+    }
+
+    public void ResetState(GameManager manager, DotController dot = null)
+    {
+        dot.ChangeState(DotPatternState.Phase, "anim_diary");
     }
 }
 
@@ -227,7 +209,7 @@ public class Play : GameState, ILoadingInterface
     }
 }
 
-public class Sleeping : GameState
+public class Sleeping : GameState, IResetStateInterface
 {
     ISleepingInterface sleeping;
     DotController dot;
@@ -235,27 +217,12 @@ public class Sleeping : GameState
     {
     }
 
-
     public override void Enter(GameManager manager, DotController dot = null)
     {
 
-        ScriptList script = dot.GetSubScriptList(GamePatternState.Watching);
-
-        if (script != null)
-        {
-            DotPatternState dotPattern;
-            if (Enum.TryParse(script.AnimState, true, out dotPattern))
-            {
-                dot.ChangeState(dotPattern, script.DotAnim, script.DotPosition);
-            }
-            //sub가 끝나면 Sleeping에 대한 동작을 수행하겠지...
-        }
-        else
-        {
-            Sleep(manager, dot);
-        }
+        Sleep(manager, dot);
+        
     }
-
     public void Sleep(GameManager manager, DotController dot)
     {
         this.dot = null;
@@ -276,9 +243,16 @@ public class Sleeping : GameState
         dot.ChangeState(DotPatternState.Tirgger, "anim_sleep", 10);
         dot.Dust.SetActive(true);
     }
+
     public override void Exit(GameManager manager)
     {
         this.dot.Dust.SetActive(false);
+    }
+
+    public void ResetState(GameManager manager, DotController dot = null)
+    {
+        dot.ChangeState(DotPatternState.Tirgger, "anim_sleep", 10);
+        dot.Dust.SetActive(true);
     }
 }
 
@@ -299,7 +273,6 @@ public class NextChapter : GameState
 
         manager.ObjectManager.SkipSleeping(true);
     }
-
     public override void Exit(GameManager manager)
     {
         manager.ObjectManager.SkipSleeping(false);

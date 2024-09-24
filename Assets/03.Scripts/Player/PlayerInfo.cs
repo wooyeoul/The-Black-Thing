@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Assets.Script.Reward;
 
 /*Sub 성공 챕터 유무에 따라 아키텍처 타입이 달라짐*/
@@ -68,7 +69,7 @@ public class PlayerInfo
         language = LANGUAGE.KOREAN;
         isPushNotificationEnabled = true;
         currentPhase = GamePatternState.Watching;
-
+        
         if (subSuccessOrNot == null)
         {
             subSuccessOrNot = new List<bool>();
@@ -78,11 +79,16 @@ public class PlayerInfo
                 subSuccessOrNot.Add(false);
             }
         }
+
+        if (rewardList == null)
+        {
+            rewardList = new List<EReward>();
+        }
     }
     
     public void SetSubPhase(int phaseIdx)
     {
-        subSuccessOrNot[chapter * 4 + phaseIdx] = true;
+        subSuccessOrNot[(chapter-1) * 4 + phaseIdx] = true;
     }
 
     public List<bool> GetSubPhase(int Chapter)

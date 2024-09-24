@@ -5,6 +5,8 @@ using Assets.Script.DialClass;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 
 public class DotController : MonoBehaviour
@@ -19,6 +21,8 @@ public class DotController : MonoBehaviour
     GameObject mainAlert;
     [SerializeField]
     GameObject playAlert;
+    [SerializeField]
+    GameObject subAlert;
 
     [SerializeField]
     GameObject[] play;
@@ -28,6 +32,9 @@ public class DotController : MonoBehaviour
 
     [SerializeField]
     private GameManager manager;
+
+    [SerializeField]
+    private PlayerController pc;
 
     [SerializeField]
     private Animator animator;
@@ -88,6 +95,8 @@ public class DotController : MonoBehaviour
         set { dotExpression = value; }
     }
 
+    GamePatternState tmpState;
+
     void Awake()
     {
 
@@ -102,6 +111,7 @@ public class DotController : MonoBehaviour
         states.Add(DotPatternState.Main, new Main());
         states.Add(DotPatternState.Sub, new Sub());
         states.Add(DotPatternState.Tirgger, new Trigger());
+        
         ScriptListParser scriptListParser = new ScriptListParser();
         mainScriptLists = new List<List<ScriptList>>();
         subScriptLists = new List<Dictionary<GamePatternState, List<ScriptList>>>();
@@ -120,12 +130,18 @@ public class DotController : MonoBehaviour
         return mainScriptLists[chapter - 1][index];
     }
 
+    public int GetSubScriptListCount(GamePatternState State) 
+    {
+        return subScriptLists[chapter - 1][State].Count;
+    }
     public ScriptList GetSubScriptList(GamePatternState State)
     {
         if (subScriptLists[chapter - 1][State].Count == 0)
             return null;
-
-        return subScriptLists[chapter - 1][State][0];
+        
+        ScriptList tmp = subScriptLists[chapter - 1][State][0];
+        tmpState = State;
+        return tmp;
     }
 
     private void OnMouseDown()
@@ -146,7 +162,26 @@ public class DotController : MonoBehaviour
                 play[i].SetActive(true);
             }
         }
+
+        if(subAlert.activeSelf)
+        {
+            //int phase, string subTitle
+            ScriptList tmp = GetSubScriptList(tmpState);
+            pc.successSubDialDelegate((int)tmpState,tmp.ScriptKey);
+            subScriptLists[chapter - 1][tmpState].RemoveAt(0);
+            TriggerSub(false);
+            //sub trigger 해줘 
+            //누르는 순간 보상이 들어올 때 여기에서 보상 추가
+            //완료는 준현이 대화가 끝났을 때 보상 추가
+         
+        }
     }
+
+    public void TriggerSub(bool isActive)
+    {
+       subAlert.SetActive(isActive);
+    }
+
     public void TriggerMain(bool isActive)
     {
         mainAlert.SetActive(isActive);
@@ -179,10 +214,12 @@ public class DotController : MonoBehaviour
     {
         if (states == null) return;
 
+
         if (states.ContainsKey(state) == false)
         {
             return;
         }
+
 
         if (currentState != null)
         {

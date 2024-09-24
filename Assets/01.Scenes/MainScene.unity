@@ -18052,8 +18052,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297682453}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.73, y: 0.69, z: 0}
-  m_LocalScale: {x: 0.49847385, y: 0.4653244, z: 1}
+  m_LocalPosition: {x: 2.73, y: 0.85, z: 0}
+  m_LocalScale: {x: 1.23, y: 1.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2046645039688417541}
@@ -28602,7 +28602,7 @@ Transform:
   m_GameObject: {fileID: 1094932321553057318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.73, y: 0.69, z: 0}
-  m_LocalScale: {x: 0.49847385, y: 0.4653244, z: 1}
+  m_LocalScale: {x: 1.23, y: 1.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2046645039688417541}
@@ -30761,11 +30761,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainAlert: {fileID: 1094932321553057318}
   playAlert: {fileID: 3190399642701286173}
+  subAlert: {fileID: 1297682453}
   play:
   - {fileID: 1725523482}
   - {fileID: 1094932322510850395}
   chapter: 0
   manager: {fileID: 199268581}
+  pc: {fileID: 2022455605}
   animator: {fileID: 2921298288689103229}
   eyes: {fileID: 4247061019833211656}
   eyesAnim: {fileID: 8638433984340231061}
