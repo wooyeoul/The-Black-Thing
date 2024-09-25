@@ -108,6 +108,7 @@ public class Thinking : GameState, ILoadingInterface
 
     public override void Init()
     {
+
     }
 
     public override void Enter(GameManager manager, DotController dot = null)

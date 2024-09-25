@@ -165,15 +165,16 @@ public class DotController : MonoBehaviour
 
         if(subAlert.activeSelf)
         {
+            Debug.Log("서브 시작");
             //int phase, string subTitle
             ScriptList tmp = GetSubScriptList(tmpState);
-            pc.successSubDialDelegate((int)tmpState,tmp.ScriptKey);
+            //pc.successSubDialDelegate((int)tmpState,tmp.ScriptKey);
             subScriptLists[chapter - 1][tmpState].RemoveAt(0);
             TriggerSub(false);
             //sub trigger 해줘 
             //누르는 순간 보상이 들어올 때 여기에서 보상 추가
             //완료는 준현이 대화가 끝났을 때 보상 추가
-         
+            
         }
     }
 
