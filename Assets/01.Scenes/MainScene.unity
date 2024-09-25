@@ -30686,6 +30686,8 @@ MonoBehaviour:
   eyes: {fileID: 4247061019833211656}
   eyesAnim: {fileID: 8638433984340231061}
   dust: {fileID: 1094932321745963600}
+  parser: {fileID: 2921298288689103230}
+  ScriptLists: []
 --- !u!212 &2046645039688417659
 SpriteRenderer:
   m_ObjectHideFlags: 0
