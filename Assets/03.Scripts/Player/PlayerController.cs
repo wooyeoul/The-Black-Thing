@@ -5,6 +5,7 @@ using System;
 using System.Text;
 using System.IO;
 using UnityEngine.Android;
+using Assets.Script.Reward;
 
 public enum LANGUAGE 
 { 
@@ -39,6 +40,10 @@ public class PlayerController : MonoBehaviour
     [Tooltip("번역 매니저")]
     TranslateManager translateManager;
 
+    public delegate void SuccessSubDialDelegate(int phase, string subTitle);
+    public SuccessSubDialDelegate successSubDialDelegate;
+
+
     private void Awake()
     {
         //앞으로 player을 동적으로 생성해서 관리할 예정.. 아직은 미리 초기화해서 사용한다.
@@ -51,6 +56,8 @@ public class PlayerController : MonoBehaviour
         translateManager = GameObject.FindWithTag("Translator").GetComponent<TranslateManager>();
         translateManager.Translate(GetLanguage());
         //nextPhaseDelegate(player.currentPhase);
+
+        successSubDialDelegate += SuccessSubDial;
     }
     // Update is called once per frame
     //1시간이 되었는지 체크하기 위해서 저정용도
@@ -58,14 +65,28 @@ public class PlayerController : MonoBehaviour
     {
         elapsedTime += Time.deltaTime;
     }
+    int PhaseIdx = 0;
+    void SuccessSubDial(int phase, string subTitle)
+    {
+        string reward = "reward" + subTitle.Substring(subTitle.IndexOf('_'));
 
+        EReward eReward;
+
+        //배열 변수에 넣는다.
+        if (Enum.TryParse<EReward>(reward, true, out eReward))
+        {
+            //플레이어 컨트롤러에 어떤 보상을 받았는지 리스트 추가.
+            AddReward(eReward);
+        }
+        SetSubPhase(PhaseIdx++);
+    }
     public void NextPhase()
     {
         int phase = GetAlreadyEndedPhase();
 
         phase += 1;
 
-        if((GamePatternState)phase > GamePatternState.NextChapter)
+        if ((GamePatternState)phase > GamePatternState.NextChapter)
         {
             player.currentPhase = GamePatternState.Watching;
             //챕터가 증가함
@@ -81,7 +102,9 @@ public class PlayerController : MonoBehaviour
 
     public void SetSubPhase(int phaseIdx)
     {
-        if (phaseIdx < 0 || phaseIdx >= 5) return;
+        if (phaseIdx < 0 || phaseIdx >= 4) return;
+
+        Debug.Log(GetChapter() * 4 + phaseIdx);
         player.SetSubPhase(phaseIdx);
     }
 
@@ -89,7 +112,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Chapter <= 0 || Chapter > 15) return null;
 
-        return player.GetSubPhase(Chapter-1);
+        return player.GetSubPhase(Chapter - 1);
     }
 
 
@@ -133,7 +156,7 @@ public class PlayerController : MonoBehaviour
     public void SetLanguage(string language)
     {
         LANGUAGE lang;
-        if(Enum.TryParse(language,true,out lang))
+        if (Enum.TryParse(language, true, out lang))
         {
             SetLanguage(lang);
         }
@@ -197,6 +220,16 @@ public class PlayerController : MonoBehaviour
         return player.CurrentChapter;
     }
 
+    public void AddReward(EReward InRewardName)
+    {
+        player.rewardList.Add(InRewardName);
+    }
+
+    public List<EReward> GetRewards()
+    {
+        return player.rewardList;
+    }
+
     public string GetNickName()
     {
         return player.Nickname;
@@ -244,6 +277,7 @@ public class PlayerController : MonoBehaviour
             WritePlayerFile();
         }
     }
+
     string pathForDocumentsFile(string filename)
     {
         if (Application.platform == RuntimePlatform.IPhonePlayer)
@@ -283,7 +317,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        Debug.Log("this? OnDestroy");
         WritePlayerFile();
     }
 }

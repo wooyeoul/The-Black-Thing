@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class GameState
 {
     protected ObjectManager objectManager = null;
-
+    
     public abstract void Init();
     public abstract void Enter(GameManager manager,DotController dot = null);
     public abstract void Exit(GameManager manager);

@@ -114,12 +114,10 @@ public class MainPanel : MonoBehaviour
         var currentEntry = mainDialogue.GetData(dialogueIndex);
         if (currentEntry.NextLineKey != null)
         {
-            Debug.Log($"Current LineKey: {currentEntry.LineKey}");
             string[] nextKeys = currentEntry.NextLineKey.Split('|');
 
             if (index < nextKeys.Length && int.TryParse(nextKeys[index], out int nextLineKey))
             {
-                Debug.Log($"Next LineKey: {nextLineKey}");
                 int nextIndex = mainDialogue.currentDialogueList.FindIndex(entry => (entry as DialogueEntry)?.LineKey == nextLineKey);
 
                 if (nextIndex != -1)
@@ -154,7 +152,6 @@ public class MainPanel : MonoBehaviour
     }
     public void DialEnd()
     {
-        Debug.Log("Dialogue ended.");
         PanelOff();
         mainDialogue.currentDialogueList.Clear();
         dialogueIndex = 0;
@@ -171,11 +168,9 @@ public class MainPanel : MonoBehaviour
     public void ShowNextDialogue()
     {
         PanelOff();
-        Debug.Log("인덱스 수: " + mainDialogue.currentDialogueList.Count);
         if (dialogueIndex >= mainDialogue.currentDialogueList.Count)
         {
             DialEnd();
-            Debug.Log("대화 끝끝끝");
             return;
         }
         string textType = mainDialogue.GetData(dialogueIndex).TextType;
@@ -185,8 +180,6 @@ public class MainPanel : MonoBehaviour
         switch (textType)
         {
             case "text":
-                Debug.Log("텍스트 박스 떠야함");
-                Debug.Log("대사: " + korText);
                 if (actor == "Dot")
                 {
                     if (korText.Contains("<nickname>"))

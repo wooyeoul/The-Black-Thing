@@ -1,3 +1,4 @@
+using Assets.Script.DialClass;
 using Assets.Script.TimeEnum;
 using System;
 using System.Collections;
@@ -121,7 +122,6 @@ public class GameManager : MonoBehaviour
     {
         if(value >= 1f)
         {
-            Debug.Log(value);
             Invoke("CloseLoading",1f);
         }
     }
@@ -295,4 +295,49 @@ public class GameManager : MonoBehaviour
         // 코루틴이 완료되었을 때 100%로 설정
         loadingProgressBar.value += weight;
     }
+
+
+    //준현아 서브 끝나고 나서 showSubDial 을 바로 호출하면, 알아서 n분 대기 후 또 등장할거야 
+    //서브가 있든 없든 호출 ㄱㄱ 없으면, Interface상에 걸려서 이전 했던 행동 하고 끝낼겨
+    public void ShowSubDial()
+    {
+        StartCoroutine(SubDialog(dot));
+    }
+
+
+    IEnumerator SubDialog(DotController dot = null)
+    {
+        if (dot.GetSubScriptListCount(Pattern) == 0)
+        {   
+            //sub가 끝나면 Sleeping에 대한 동작을 수행하겠지...
+            //현재 패턴에 대해 더이상 없으면... 
+            IResetStateInterface resetState = CurrentState as IResetStateInterface;
+
+            if (resetState != null)
+            {
+                resetState.ResetState(this, dot);
+            }
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(5f);
+
+        //playercontroller SetSubPhase 호출
+        // Task.Delay를 사용하여 10분 대기 (600,000 밀리초 = 10분)
+        //await Task.Delay(TimeSpan.FromMinutes(10));
+
+        // 10분 후에 호출되는 작업
+        ScriptList script = dot.GetSubScriptList(Pattern); //현재 몇번째 서브 진행중인지 체크
+
+        DotPatternState dotPattern;
+        if (Enum.TryParse(script.AnimState, true, out dotPattern))
+        {
+
+            dot.ChangeState(dotPattern, script.DotAnim, script.DotPosition);
+            dot.TriggerSub(true);
+        }
+        
+    }
+
 }
+

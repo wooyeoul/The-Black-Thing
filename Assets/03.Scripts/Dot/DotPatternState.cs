@@ -96,7 +96,7 @@ public enum DotAnimState
 
 public enum DotPatternState
 {
-    Defualt = 1,
+    Default = 1,
     Sub = 2,
     Main = 3,
     Phase = 4,

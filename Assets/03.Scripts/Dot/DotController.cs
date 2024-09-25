@@ -5,6 +5,8 @@ using Assets.Script.DialClass;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 
 public class DotController : MonoBehaviour
@@ -19,6 +21,8 @@ public class DotController : MonoBehaviour
     GameObject mainAlert;
     [SerializeField]
     GameObject playAlert;
+    [SerializeField]
+    GameObject subAlert;
 
     [SerializeField]
     GameObject[] play;
@@ -28,6 +32,9 @@ public class DotController : MonoBehaviour
 
     [SerializeField]
     private GameManager manager;
+
+    [SerializeField]
+    private PlayerController pc;
 
     [SerializeField]
     private Animator animator;
@@ -45,7 +52,9 @@ public class DotController : MonoBehaviour
     ScriptListParser parser;
 
     [SerializeField]
-    List<ScriptList> ScriptLists;
+    List<List<ScriptList>> mainScriptLists;
+    [SerializeField]
+    List<Dictionary<GamePatternState,List<ScriptList>>> subScriptLists; //List chapter Dictionary<gamestate,List<ScriptList>>> 
 
     public GameObject Dust
     {
@@ -86,28 +95,53 @@ public class DotController : MonoBehaviour
         set { dotExpression = value; }
     }
 
+    GamePatternState tmpState;
+
     void Awake()
     {
 
         animator = GetComponent<Animator>();
-
         Position = -1;
         dotExpression = "";
 
         states = new Dictionary<DotPatternState, DotState>();
         states.Clear();
-        states.Add(DotPatternState.Defualt, new Idle());
+        states.Add(DotPatternState.Default, new Idle());
         states.Add(DotPatternState.Phase, new Phase());
         states.Add(DotPatternState.Main, new Main());
         states.Add(DotPatternState.Sub, new Sub());
         states.Add(DotPatternState.Tirgger, new Trigger());
+        
+        ScriptListParser scriptListParser = new ScriptListParser();
+        mainScriptLists = new List<List<ScriptList>>();
+        subScriptLists = new List<Dictionary<GamePatternState, List<ScriptList>>>();
+
+        scriptListParser.Load(mainScriptLists, subScriptLists);
     }
     void Start()
     {
         chapter = manager.Chapter;
 
         animator.keepAnimatorStateOnDisable = true; //애니메이션 유지
-        ScriptLists = parser.scripts;
+    }
+
+    public ScriptList GetMainScriptList(int index)
+    {
+        return mainScriptLists[chapter - 1][index];
+    }
+
+    public int GetSubScriptListCount(GamePatternState State) 
+    {
+        return subScriptLists[chapter - 1][State].Count;
+    }
+    public ScriptList GetSubScriptList(GamePatternState State)
+    {
+        if (subScriptLists[chapter - 1][State].Count == 0)
+            return null;
+        
+        ScriptList tmp = subScriptLists[chapter - 1][State][0];
+        tmpState = State;
+        return tmp;
     }
 
     private void OnMouseDown()
@@ -128,7 +162,26 @@ public class DotController : MonoBehaviour
                 play[i].SetActive(true);
             }
         }
+
+        if(subAlert.activeSelf)
+        {
+            //int phase, string subTitle
+            ScriptList tmp = GetSubScriptList(tmpState);
+            pc.successSubDialDelegate((int)tmpState,tmp.ScriptKey);
+            subScriptLists[chapter - 1][tmpState].RemoveAt(0);
+            TriggerSub(false);
+            //sub trigger 해줘 
+            //누르는 순간 보상이 들어올 때 여기에서 보상 추가
+            //완료는 준현이 대화가 끝났을 때 보상 추가
+         
+        }
     }
+
+    public void TriggerSub(bool isActive)
+    {
+       subAlert.SetActive(isActive);
+    }
+
     public void TriggerMain(bool isActive)
     {
         mainAlert.SetActive(isActive);
@@ -157,14 +210,16 @@ public class DotController : MonoBehaviour
         manager.NextPhase();
     }
 
-    public void ChangeState(DotPatternState state = DotPatternState.Defualt, string OutAnimKey = "", float OutPos = -1, string OutExpression = "")
+    public void ChangeState(DotPatternState state = DotPatternState.Default, string OutAnimKey = "", float OutPos = -1, string OutExpression = "")
     {
         if (states == null) return;
+
 
         if (states.ContainsKey(state) == false)
         {
             return;
         }
+
 
         if (currentState != null)
         {
