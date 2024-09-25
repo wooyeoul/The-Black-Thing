@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: watching
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: b04831fce60dff746a1841d12b8c4ab7, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 7a4b6d50da977a749aef9e86360ed8d2, type: 3}
+  - {fileID: 21300000, guid: 685fd4e1db0f7ac43b81cdd95fb14a00, type: 3}
+  - {fileID: 21300000, guid: 3e7712525c6c62b4aa56077c0f5778c2, type: 3}
+  - {fileID: 21300000, guid: e0994252bdee606409d07079f10ea412, type: 3}
+  - {fileID: 21300000, guid: 708160036dacc3941962869ef62bdc15, type: 3}
+  - {fileID: 21300000, guid: 32f15f23503805349acb3aaae7bb9164, type: 3}
+  - {fileID: 21300000, guid: 6389f563d6971844f91475b5d4b810b8, type: 3}
+  - {fileID: 21300000, guid: 0ce3262487bf4f847b80e9eb3288f371, type: 3}
+  - {fileID: 21300000, guid: ceca4f5579b11144595885b0a6860e66, type: 3}
+  - {fileID: 21300000, guid: 13d674c6c6201f049b7d8ab3547548da, type: 3}
+  - {fileID: 21300000, guid: d36e08076f4b5664c81e437a4e189159, type: 3}
+  - {fileID: 21300000, guid: f3e72757c3763914db10c76656fe0e9a, type: 3}
+  - {fileID: 21300000, guid: 6388b4771df03d24ca060073751006af, type: 3}
+  - {fileID: 21300000, guid: b36d44596dedb764fb9ca345bccd25be, type: 3}
+  - {fileID: 21300000, guid: aacc721ae5d8ae04b91ab3749d3ff8b7, type: 3}
+  - {fileID: 21300000, guid: ae79ea2cf6e272c4993dd7020d7ea461, type: 3}
+  - {fileID: 21300000, guid: dddd675c1ce0d0840ac5cd3d087b4310, type: 3}
+  - {fileID: 21300000, guid: e8472e9c43cf27c4a9f212b5bcbbee65, type: 3}
+  - {fileID: 21300000, guid: 090f451de041fd84aa68699444390ec1, type: 3}
+  - {fileID: 21300000, guid: 917e525e1ddf9524e9444f1c62a5f9ff, type: 3}
+  - {fileID: 21300000, guid: 00989f7e49d15754aa86a6d1d918a308, type: 3}
+  - {fileID: 21300000, guid: 7158255fcd5167f499fbe66d337d6070, type: 3}
+  - {fileID: 21300000, guid: 274f5daf4770ba44ab89c1451a75157a, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - ch10_bag1
+  - ch2_leaf8
+  - background_note
+  - ch2_leaf2
+  - ch2_leaf1
+  - ch2_bg
+  - ch2_leaf6
+  - ch2_leaf5
+  - ch8_bg
+  - ch5_box1
+  - ch5_bg
+  - ch13_bg
+  - ch8_book2
+  - ch10_bag2
+  - ch5_box2
+  - ch10_bg
+  - ch2_leaf7
+  - ch2_leaf4
+  - ch13_rock
+  - ch2_leaf9
+  - Rectangle 1065_1596_1833
+  - ch8_book1
+  - ch2_leaf3
+  m_RenderDataMap: {}
+  m_Tag: watching
+  m_IsVariant: 0

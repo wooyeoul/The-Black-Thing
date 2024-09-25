@@ -26110,6 +26110,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 8133282678141846305, guid: 7d082580c38bcf4409627fd0731965d2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8133282678141846311, guid: 7d082580c38bcf4409627fd0731965d2, type: 3}
       propertyPath: pc
       value: 

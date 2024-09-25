@@ -1,0 +1,202 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: evening
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 50
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: fb98e1e79b0e77d449beb1707cd826b4, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: f530c73030e2cb847b3efad621706c3b, type: 3}
+  - {fileID: 21300000, guid: 406584702f383164d8dd42cbeaf5779e, type: 3}
+  - {fileID: 21300000, guid: 20356890ac133cd409eba6623e5d6746, type: 3}
+  - {fileID: 21300000, guid: ba98199081ebbf14a8d2e6b005b3d9ec, type: 3}
+  - {fileID: 21300000, guid: 7bb593a0361da2340adc0c6a60aebba0, type: 3}
+  - {fileID: 21300000, guid: 2a6335b0ef67eee4c85aed042d03b277, type: 3}
+  - {fileID: 21300000, guid: 3a6346e06cdf2f94f95e200fe508a02f, type: 3}
+  - {fileID: 21300000, guid: 1c678d0116cd6c445a99b6f85e0fdb03, type: 3}
+  - {fileID: 21300000, guid: 2ccb54214e1d500439d633c92d87fb64, type: 3}
+  - {fileID: 21300000, guid: 6a07bf21e88696a46bfea72503557245, type: 3}
+  - {fileID: 21300000, guid: 49c05d419cfcde14882fbab3c302fb9a, type: 3}
+  - {fileID: 21300000, guid: 498b7451416a4ff43919feca1fd0893d, type: 3}
+  - {fileID: 21300000, guid: d84eb2121e5fa1b43b9b397e6c9a6aac, type: 3}
+  - {fileID: 21300000, guid: 11868622640f83143badcc87f039c9da, type: 3}
+  - {fileID: 21300000, guid: 92ae8f4285fb3dd468db2ef2bf5664b8, type: 3}
+  - {fileID: 21300000, guid: 4554e272f60acc843a4b614a72d56db8, type: 3}
+  - {fileID: 21300000, guid: 0bb730d2f5ade9f439dd8a7d2eaffb6c, type: 3}
+  - {fileID: 21300000, guid: 26226de26995c3a42b23824ba60400e8, type: 3}
+  - {fileID: 21300000, guid: d676051396733554ebee82fa643d8e7a, type: 3}
+  - {fileID: 21300000, guid: 35427733bedbc1f4ab9a01ffa9d0f8c0, type: 3}
+  - {fileID: 21300000, guid: c3198e04818cb224e917e0430bde3946, type: 3}
+  - {fileID: 21300000, guid: e89a49052c737894a9c1b8f3bed12c75, type: 3}
+  - {fileID: 21300000, guid: 23caf125edf140a49a545995f51561e2, type: 3}
+  - {fileID: 21300000, guid: 3c671b35de9db474abea5054058b25a5, type: 3}
+  - {fileID: 21300000, guid: 28000b45c9c20a541889afd136b683d9, type: 3}
+  - {fileID: 21300000, guid: 47521b953ab17db4a86f273357e44c16, type: 3}
+  - {fileID: 21300000, guid: a09af0c50f7f09e48bc4f2b901427d09, type: 3}
+  - {fileID: 21300000, guid: 947173f5ee6dcc84a92420ff89730a4b, type: 3}
+  - {fileID: 21300000, guid: b0cc6df5a5159f645ae99f3384c20c04, type: 3}
+  - {fileID: 21300000, guid: d412cd1613f1d8a4eaa6ff42aee80572, type: 3}
+  - {fileID: 21300000, guid: e9e65026b3673944692777682c0d4a1b, type: 3}
+  - {fileID: 21300000, guid: 6c81e756daf62124a887955b2d809879, type: 3}
+  - {fileID: 21300000, guid: 401c6c569fac03347aaf900e57ca386c, type: 3}
+  - {fileID: 21300000, guid: 9c8579b6e01fc4c40b39645e90173e54, type: 3}
+  - {fileID: 21300000, guid: 1ca1d9b643207374ebd722e7574fa7b0, type: 3}
+  - {fileID: 21300000, guid: 1630620736850614a8386168a28986f0, type: 3}
+  - {fileID: 21300000, guid: 74711707f95b04e479afc38e34089182, type: 3}
+  - {fileID: 21300000, guid: 6a05ac17cd6e0094793aef7a033bfd5d, type: 3}
+  - {fileID: 21300000, guid: 2e67ee67a2bbd6549a2f12e3f33559e8, type: 3}
+  - {fileID: 21300000, guid: dfabf1c71696bd04ca855b85de25c0d8, type: 3}
+  - {fileID: 21300000, guid: e3fa9d286f26c8642b0f5053037ac99b, type: 3}
+  - {fileID: 21300000, guid: 79b79d88e87c8ad4fae265b591dc6378, type: 3}
+  - {fileID: 21300000, guid: fb3c7998109964546981d33cbad6e999, type: 3}
+  - {fileID: 21300000, guid: 3bc1eca81db92bc49a1a1a5863964392, type: 3}
+  - {fileID: 21300000, guid: 489288d804d9b584a9d8142f1f9ab686, type: 3}
+  - {fileID: 21300000, guid: bc9779f81132f904b982e59bb0236a9e, type: 3}
+  - {fileID: 21300000, guid: 2dc3d80903ac7d44db0257b3cab9707f, type: 3}
+  - {fileID: 21300000, guid: 6161e629ad1b7e744ac4bb2c58efa3ec, type: 3}
+  - {fileID: 21300000, guid: bbd1c4a91d44bc44f8a0095efcccbd0b, type: 3}
+  - {fileID: 21300000, guid: 9e0a4ca920ff8d443a5c2350b4fcc820, type: 3}
+  - {fileID: 21300000, guid: a8cb15b919064ff40a9a3fc2cff4e91b, type: 3}
+  - {fileID: 21300000, guid: c3b27a1a209e87d4188fd7a994b1c362, type: 3}
+  - {fileID: 21300000, guid: edc6937a899007f439dffbde70effc4c, type: 3}
+  - {fileID: 21300000, guid: e8a0b72bc0a9dc64a8e02b248dedaaa6, type: 3}
+  - {fileID: 21300000, guid: 8d969bbbec257d04da72ffd60c669852, type: 3}
+  - {fileID: 21300000, guid: 569f9edb7624a3d44b82f2b059cf41d5, type: 3}
+  - {fileID: 21300000, guid: 3b7c2c1c8db1cc74db37ede9e5828f7a, type: 3}
+  - {fileID: 21300000, guid: d6fc494cb3b7c0c439dea6da3f812da2, type: 3}
+  - {fileID: 21300000, guid: acf93f8c9219f5146804557206bca910, type: 3}
+  - {fileID: 21300000, guid: bf180a0d2a1fff241b1390976aedbe23, type: 3}
+  - {fileID: 21300000, guid: 2d83284db238a2d4d9b4ca69c259b5b4, type: 3}
+  - {fileID: 21300000, guid: 8822a57d284b7d44cbfb1d03dccdfed4, type: 3}
+  - {fileID: 21300000, guid: e5a8f89dce1cecf4faa2899388e76537, type: 3}
+  - {fileID: 21300000, guid: 11545f9d207cf184ca9e6a4ae66eab00, type: 3}
+  - {fileID: 21300000, guid: 789628adb69bd544c8fb458f7e9a7cb4, type: 3}
+  - {fileID: 21300000, guid: 1565c92ec6296364a8a862bcb69a544f, type: 3}
+  - {fileID: 21300000, guid: e4df053ef6649204eb74b2af844a4ee2, type: 3}
+  - {fileID: 21300000, guid: 65dca1aedebc84b49ab9692d838f8bc5, type: 3}
+  - {fileID: 21300000, guid: 4f45dece6492fb74b86ceed536d48ac9, type: 3}
+  - {fileID: 21300000, guid: df6d810f63a9c754ca0ad0fd5d7ca22d, type: 3}
+  - {fileID: 21300000, guid: c3ade24f401f5114cbf767a9bcfdff62, type: 3}
+  - {fileID: 21300000, guid: 84ccf85f072b5464fbc1fa2abea18d4a, type: 3}
+  - {fileID: 21300000, guid: b77392ff230e23147b95db3fd5842111, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - fix_leftplant
+  - ch_poster_1
+  - fix_binocular
+  - ch_books_8
+  - background
+  - ch_poster_4
+  - deathnote_sunset (2)
+  - ch_clothes_3
+  - reward_polysemy
+  - reward_dreamcatcher
+  - fix_moonradio
+  - fix_door_open
+  - fix_cap
+  - ch_clothes_2
+  - fix_smallplant
+  - reward_rainbow
+  - reward_fossil
+  - ch_clothes_7
+  - reward_black
+  - fix_radio
+  - reward_mindtest
+  - ch_books_10
+  - reward_lemon
+  - reward_opportunity
+  - ch_cupdot
+  - reward_collection
+  - ch_cup
+  - fix_twobooks
+  - ch_books_7
+  - reward_flamingo
+  - ch_books_13
+  - ch_bread
+  - reward_shootingstar
+  - fix_camera
+  - fix_rightplant
+  - reward_jellyfish
+  - reward_monster
+  - fix_web
+  - reward_spider2
+  - ch_books_2
+  - reward_timburton
+  - ch_books_12
+  - ch_poster_2
+  - ch_books_11
+  - reward_mold
+  - ch_books_9
+  - reward_afterdeath
+  - ch_poster_3
+  - reward_babybird
+  - ch_books_5
+  - fix_laptop
+  - ch_books_14
+  - fix_smallposter
+  - reward_summer
+  - phase_bookpile
+  - ch_books_1
+  - phase_diary
+  - reward_neverland
+  - ch_clothes_5
+  - ch_books_4
+  - fix_door_close
+  - reward_smallwave
+  - reward_bigwave
+  - fix_hourglass
+  - ch_books_6
+  - reward_sleepless
+  - phase_letter
+  - reward_hurtmoon
+  - ch_clothes_6
+  - ch_clothes_1
+  - ch_clothes_4
+  - reward_photo
+  - ch_books_3
+  m_RenderDataMap: {}
+  m_Tag: evening
+  m_IsVariant: 0
