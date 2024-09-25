@@ -301,6 +301,7 @@ public class GameManager : MonoBehaviour
     //서브가 있든 없든 호출 ㄱㄱ 없으면, Interface상에 걸려서 이전 했던 행동 하고 끝낼겨
     public void ShowSubDial()
     {
+        Debug.Log("showsubdial");
         StartCoroutine(SubDialog(dot));
     }
 
