@@ -221,7 +221,7 @@ public class GameManager : MonoBehaviour
             time = SITime.Night;
         }
 
-        time = SITime.Morning;
+        time = SITime.Night;
 
         StartCoroutine(LoadDataAsync());
     }

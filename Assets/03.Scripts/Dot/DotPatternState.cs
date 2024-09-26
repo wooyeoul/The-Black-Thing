@@ -50,8 +50,7 @@ public enum DotAnimState
     anim_sub_heart, //46
     anim_sub_hurt1, //47
     anim_sub_hurt2, //48
-    anim_sub_letter, //49
-    anim_move, //50
+    anim_move = 50, //50
     anim_idle, //51
     anim_sub_ch_heart, //52
     anim_sub_light, /*Sub 53*/
