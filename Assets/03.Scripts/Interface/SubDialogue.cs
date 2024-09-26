@@ -1,9 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Script.DialClass;
+using UnityEngine.UI;
+using TMPro;
+using System;
 
 public class SubDialogue : MonoBehaviour
 {
+
+    Dictionary<string, int> pos = new Dictionary<string, int>();
+    protected GameObject background = null;
+    protected DotController dot = null;
+    protected LANGUAGE CurrentLanguage = LANGUAGE.KOREAN;
+
+    [SerializeField]    
+    protected List<SubDialogueEntry> SubDialogueEntries = new List<SubDialogueEntry>();
+
+    public List<object> currentDialogueList = new List<object>();
+    GameManager manager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +30,115 @@ public class SubDialogue : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void LoadSubDialogue(string[] lines)
+    {
+        listclear();
+        for (int i = 1; i < lines.Length; i++)
+        {
+            string line = lines[i];
+            if (string.IsNullOrEmpty(line))
+            {
+                continue;
+            }
+            string[] parts = ParseCSVLine(line);
+            Debug.Log($"Parsed line {i}: {string.Join(", ", parts)}");
+
+            if (parts.Length >= 13)
+            {
+                int sub = int.Parse(parts[0]);
+                if (sub == 1) //****************테스트용으로 1을 넣어놨음**************** (서브 트리거 작동을 아직 모름)
+                {
+                    SubDialogueEntry entry = new SubDialogueEntry
+                    {
+                        Sub = sub,
+                        ScriptKey = int.Parse(parts[1]),
+                        LineKey = int.Parse(parts[2]),
+                        Color = parts[3],
+                        Actor = parts[4],
+                        DotAnim = parts[5],
+                        TextType = parts[6],
+                        KorText = ApplyLineBreaks(parts[7]),
+                        EngText = ApplyLineBreaks(parts[8]),
+                        NextLineKey = parts[9],
+                        Deathnote = parts[10],
+                        AfterScript = parts[11],
+                        Exeption = parts[12]
+                    };
+
+                    string displayedText = CurrentLanguage == LANGUAGE.KOREAN ? entry.KorText : entry.EngText;
+                    entry.KorText = displayedText;
+                    SubDialogueEntries.Add(entry);
+                    currentDialogueList.Add(entry);
+
+                    Debug.Log($"Added SubDialogueEntry: {displayedText}");
+                }
+            }
+            else
+            {
+                Debug.LogError($"Line {i} does not have enough parts: {line}");
+            }
+        }
+        Debug.Log("현재 인덱스 숫자: " + currentDialogueList.Count);
+    }
+
+    string[] ParseCSVLine(string line)
+    {
+        List<string> result = new List<string>();
+        bool inQuotes = false;
+        string value = "";
+
+        foreach (char c in line)
+        {
+            if (c == '"')
+            {
+                inQuotes = !inQuotes;
+            }
+            else if (c == ',' && !inQuotes)
+            {
+                result.Add(value.Trim());
+                value = "";
+            }
+            else
+            {
+                value += c;
+            }
+        }
+
+        if (!string.IsNullOrEmpty(value))
+        {
+            result.Add(value.Trim());
+        }
+        return result.ToArray();
+    }
+
+    string ApplyLineBreaks(string text)
+    {
+        return text.Replace(@"\n", "\n");
+    }
+
+    public void listclear()
+    {
+        SubDialogueEntries.Clear();
+        currentDialogueList.Clear();
+    }
+
+    public void StartSub(string fileName)
+    {
+        //mainPanel = GameObject.Find("MainDialougue").GetComponent<MainPanel>(); -> 서브 패널로 변경
+        TextAsset dialogueData = Resources.Load<TextAsset>("CSV/" + fileName);
+
+        if (dialogueData == null)
+        {
+            Debug.LogError("Dialogue file not found in Resources folder.");
+            return;
+        }
+
+        string[] lines = dialogueData.text.Split('\n');
+        LoadSubDialogue(lines);
+
+        //mainPanel.ShowNextDialogue(); -> 서브 패널로 변경
+        manager.ScrollManager.StopCamera(true);
     }
 }

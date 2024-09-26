@@ -37,7 +37,6 @@ namespace Assets.Script.DialClass
         public int LineKey;
         public string Color;
         public string Actor;
-        public string AnimState;
         public string DotAnim;
         public string TextType;
         public string KorText;
@@ -45,6 +44,7 @@ namespace Assets.Script.DialClass
         public string NextLineKey;
         public string Deathnote;
         public string AfterScript;
+        public string Exeption;
     }
 
     [System.Serializable]
