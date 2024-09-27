@@ -50,6 +50,18 @@ public class DataManager : MonoBehaviour
         }
     }
 
+    MoonRadioParser moonRadioParser;
+    public MoonRadioParser MoonRadioParser
+    {
+        get 
+        { 
+            return moonRadioParser; 
+        }
+        set
+        {
+            moonRadioParser = value;
+        }
+    }
     #endregion
     private void Awake()
     {
@@ -73,12 +85,5 @@ public class DataManager : MonoBehaviour
             }
             return instance; 
         }
-    }
-
-    public MoonRadioParser moonRadioParser
-    {
-        get { return moonRadioParser; }
-
-        set { moonRadioParser = value; }
     }
 }

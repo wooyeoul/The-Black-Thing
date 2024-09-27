@@ -13,7 +13,7 @@ public enum LANGUAGE
     ENGLISH
 }
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IPlayerInterface
 {
     const string playerInfoDataFileName = "PlayerData.json";
     //실제 플레이어

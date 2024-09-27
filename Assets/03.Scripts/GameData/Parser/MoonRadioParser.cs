@@ -9,52 +9,110 @@ using UnityEngine.XR;
 using Unity.VisualScripting;
 using System;
 
-public class MoonRadioParser : MonoBehaviour
+public class MoonRadioParser
 {
-    [SerializeField] PlayerController playerController;
-    [SerializeField] List<MoonRadidDial> MoonRadios;
-    [SerializeField] public List<object> currentDialogueList = new List<object>();
-    private LANGUAGE CurrentLanguage;
-    // Start is called before the first frame update
-    void Start()
+
+    //[SerializeField] List<MoonRadioDial> MoonRadios;
+
+    Dictionary<int, Dictionary<int, List<MoonRadioDial>>> MoonRadios;
+    LANGUAGE curLanguage = LANGUAGE.KOREAN;
+
+    public MoonRadioParser()
     {
-        TextAsset dialogueData = Resources.Load<TextAsset>("Dial/moonradio");
-        CurrentLanguage = playerController.GetLanguage();
+        MoonRadios = new Dictionary<int, Dictionary<int, List<MoonRadioDial>>>();
+        //LoadMoonRadio();
+    }
+
+    public List<MoonRadioDial> GetMoonRadioDial(int chapter, int number, LANGUAGE lan)
+    {
+        ChangeLanguage(chapter, lan); //바꾼 후 전달
+
+        return MoonRadios[chapter][number];
+    }
+
+    public void LoadMoonRadio()
+    {
+        TextAsset dialogueData = Resources.Load<TextAsset>("CSV/moonradio");
+
         if (dialogueData == null)
         {
             Debug.LogError("Dialogue file not found in Resources folder.");
             return;
         }
-        Debug.Log("Dialogue file loaded successfully.");
+
         string[] lines = dialogueData.text.Split('\n');
         LoadMoonRadioDial(lines);
     }
 
-    public void LoadMoonRadioDial(string[] lines)
+
+    //Change Korean -> English or English -> Korean
+    public void ChangeLanguage(int chapter, LANGUAGE language)
     {
+        if(curLanguage != language)
+        {
+            foreach (var Dial in MoonRadios[chapter])
+            {
+                foreach(var List in Dial.Value)
+                {
+                    string displayedText = curLanguage == LANGUAGE.KOREAN ? List.KorText : List.EngText;
+                    List.KorText = displayedText;
+                }
+            }
+            curLanguage = language;
+        }
+    }
+
+    void LoadMoonRadioDial(string[] lines)
+    {
+        int chapter = 0;
+        int number = 0;
+
+        //실제론 [ID][MoonNumber][entry]
         for (int i = 1; i < lines.Length; i++)
         {
             string line = lines[i];
+
             if (string.IsNullOrEmpty(line))
             {
                 continue;
             }
+
             string[] parts = ParseCSVLine(line);
             //Debug.Log($"Parsed line {i}: {string.Join(", ", parts)}");
 
             if (parts.Length >= 5)
             {
-                MoonRadidDial entry = new MoonRadidDial
+
+                int ID = int.Parse(parts[0]);
+                int MoonNumber = int.Parse(parts[1]);
+                string Actor = parts[2];
+
+                EMoonChacter eMoonChacter;
+
+                if (Enum.TryParse(Actor, true, out eMoonChacter))
                 {
-                    ID = int.Parse(parts[0]),
-                    MoonNumber = int.Parse(parts[1]),
-                    Actor = parts[2],
-                    KorText = ApplyLineBreaks(parts[3]),
-                    EngText = ApplyLineBreaks(parts[4]),
-                };
-                string displayedText = CurrentLanguage == playerController.GetLanguage() ? entry.KorText : entry.EngText;
-                entry.KorText = displayedText;
-                MoonRadios.Add(entry);
+                    MoonRadioDial entry = new MoonRadioDial
+                    {
+                        Actor = eMoonChacter,
+                        KorText = ApplyLineBreaks(parts[3]),
+                        EngText = ApplyLineBreaks(parts[4]),
+                    };
+
+                    if (chapter != ID)
+                    {
+                        MoonRadios[ID] = new Dictionary<int, List<MoonRadioDial>>();
+                        chapter = ID;
+                    }
+
+                    if (number != MoonNumber)
+                    {
+                        //새로운 Dictionary
+                        MoonRadios[ID][MoonNumber] = new List<MoonRadioDial>();
+                        number = MoonNumber;
+                    }
+
+                    MoonRadios[ID][MoonNumber].Add(entry);
+                }
             }
         }
     }

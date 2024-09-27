@@ -33,6 +33,7 @@ public enum DotAnimState
     anim_sub_birdnest, //29
     anim_sub_caterpillar1, //30
     anim_sub_caterpillar2, //31
+
     anim_sub_deadbug1, //32
     anim_sub_deadbug2, //33
     anim_sub_dottoflamingo, //34
