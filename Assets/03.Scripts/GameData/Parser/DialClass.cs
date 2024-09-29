@@ -37,6 +37,7 @@ namespace Assets.Script.DialClass
         public int LineKey;
         public string Color;
         public string Actor;
+        public string AnimState;
         public string DotAnim;
         public string TextType;
         public string KorText;
@@ -44,7 +45,6 @@ namespace Assets.Script.DialClass
         public string NextLineKey;
         public string Deathnote;
         public string AfterScript;
-        public string Exeption;
     }
 
     [System.Serializable]
@@ -61,11 +61,9 @@ namespace Assets.Script.DialClass
 
     [System.Serializable]
 
-    public class MoonRadidDial
+    public class MoonRadioDial
     {
-        public int ID;
-        public int MoonNumber;
-        public string Actor;
+        public EMoonChacter Actor;
         public string KorText;
         public string EngText;
     }

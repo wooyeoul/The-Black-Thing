@@ -11,6 +11,8 @@ public class ReadData : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(LoadResourceCoroutine());
+        DataManager.Instance.MoonRadioParser = new MoonRadioParser();
+        DataManager.Instance.MoonRadioParser.LoadMoonRadio();
     }
 
     private IEnumerator LoadResourceCoroutine()

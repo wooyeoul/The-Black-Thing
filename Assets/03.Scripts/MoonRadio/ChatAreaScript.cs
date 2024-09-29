@@ -4,16 +4,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ChatAreaScript : MonoBehaviour
+public class ChatAreaScript : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField]
     TMP_Text CharacterText;
     bool isFirst = false;
-    ChatInterface parent;
-    public void SettingText(string text)
+    IChatInterface parent;
+    public void SettingText(string text, IChatInterface parent)
     {
         CharacterText.text = text;
-        parent = GameObject.Find("Content").GetComponent<ChatInterface>();
+        this.parent = parent;
     }
 
     public void OnPointerDown(PointerEventData eventData)

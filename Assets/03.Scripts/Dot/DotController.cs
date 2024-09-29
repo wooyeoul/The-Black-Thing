@@ -56,8 +56,6 @@ public class DotController : MonoBehaviour
     [SerializeField]
     List<Dictionary<GamePatternState,List<ScriptList>>> subScriptLists; //List chapter Dictionary<gamestate,List<ScriptList>>> 
 
-    [SerializeField]
-    GameObject subDialogue;
     public GameObject Dust
     {
         get { return dust; }
@@ -119,9 +117,6 @@ public class DotController : MonoBehaviour
         subScriptLists = new List<Dictionary<GamePatternState, List<ScriptList>>>();
 
         scriptListParser.Load(mainScriptLists, subScriptLists);
-
-        subDialogue = GameObject.Find("SubDialougue");
-        subDialogue.SetActive(false);
     }
     void Start()
     {
@@ -171,9 +166,6 @@ public class DotController : MonoBehaviour
         if(subAlert.activeSelf)
         {
             Debug.Log("서브 시작");
-            subDialogue.SetActive(true);   
-            string fileName = "sub_ch" + Chapter;
-            subDialogue.GetComponent<SubDialogue>().StartSub(fileName);
             //int phase, string subTitle
             ScriptList tmp = GetSubScriptList(tmpState);
             //pc.successSubDialDelegate((int)tmpState,tmp.ScriptKey);
