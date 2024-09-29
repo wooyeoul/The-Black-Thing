@@ -55,7 +55,8 @@ public class DotController : MonoBehaviour
     List<List<ScriptList>> mainScriptLists;
     [SerializeField]
     List<Dictionary<GamePatternState,List<ScriptList>>> subScriptLists; //List chapter Dictionary<gamestate,List<ScriptList>>> 
-
+    [SerializeField]
+    GameObject subDialogue;
     public GameObject Dust
     {
         get { return dust; }
@@ -117,6 +118,9 @@ public class DotController : MonoBehaviour
         subScriptLists = new List<Dictionary<GamePatternState, List<ScriptList>>>();
 
         scriptListParser.Load(mainScriptLists, subScriptLists);
+
+        subDialogue = GameObject.Find("SubDialougue");
+        subDialogue.SetActive(false);
     }
     void Start()
     {
@@ -163,9 +167,12 @@ public class DotController : MonoBehaviour
             }
         }
 
-        if(subAlert.activeSelf)
+        if (subAlert.activeSelf)
         {
             Debug.Log("서브 시작");
+            subDialogue.SetActive(true);
+            string fileName = "sub_ch" + Chapter;
+            subDialogue.GetComponent<SubDialogue>().StartSub(fileName);
             //int phase, string subTitle
             ScriptList tmp = GetSubScriptList(tmpState);
             //pc.successSubDialDelegate((int)tmpState,tmp.ScriptKey);
@@ -174,7 +181,7 @@ public class DotController : MonoBehaviour
             //sub trigger 해줘 
             //누르는 순간 보상이 들어올 때 여기에서 보상 추가
             //완료는 준현이 대화가 끝났을 때 보상 추가
-            
+
         }
     }
 
