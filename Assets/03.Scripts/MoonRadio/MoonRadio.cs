@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Device;
 using UnityEngine.EventSystems;
 
 public class MoonRadio : MonoBehaviour
@@ -13,12 +14,15 @@ public class MoonRadio : MonoBehaviour
     GameObject alert;
     [SerializeField]
     TMP_Text text;
+    [SerializeField]
+    GameObject screen;
 
     TranslateManager translator;
     Animator blinkMoonRadioAnim;
 
     private void Start()
     {
+        screen = GameObject.Find("Screen");
         blinkMoonRadioAnim = GetComponent<Animator>();
         moonRadioController = GameObject.Find("MoonRadio").transform.GetChild(0).gameObject;
         translator = GameObject.FindWithTag("Translator").GetComponent<TranslateManager>();
@@ -54,6 +58,7 @@ public class MoonRadio : MonoBehaviour
             //π„¿œ ∂ß speed 1, π„¿Ã æ∆¥œ∏È 0
             blinkMoonRadioAnim.SetFloat("speed", 0f);
             moonRadioController.SetActive(true);
+            screen.SetActive(false);
         }
     }
 

@@ -23,6 +23,8 @@ public class PlayerInfo
     public  DateTime datetime;
     //현재 진행 중인 챕터
     public int chapter;
+    //현재 본 MoonRadioIdx
+    public int moonRadioIdx;
     //브금 효과 크기
     public float bgmVolume;
     //사운드 이펙트 효과 크기
@@ -42,7 +44,6 @@ public class PlayerInfo
     //현재 진행 pattern 상태
     public GamePatternState currentPhase;
     public List<EReward> rewardList; //플레이어가 가지고 있는 리워드
-
 
     public PlayerInfo()
     {
@@ -69,7 +70,8 @@ public class PlayerInfo
         language = LANGUAGE.KOREAN;
         isPushNotificationEnabled = true;
         currentPhase = GamePatternState.Watching;
-        
+        moonRadioIdx = 1;
+
         if (subSuccessOrNot == null)
         {
             subSuccessOrNot = new List<bool>();
@@ -111,6 +113,7 @@ public class PlayerInfo
     public float BgmVolume{ get=>bgmVolume; set=>bgmVolume = value; }
     public float AcousticVolume { get=>sfxVolume; set=>sfxVolume=value; }
     public int CurrentChapter { get => chapter; set => chapter = value; }
-    public DateTime Datetime { get => datetime; set => datetime = value;}
+    public DateTime Datetime { get => datetime; set => datetime = value; }
     public string Nickname { get => nickname; set => nickname = value; }
+    public int MoonRadioIdx { get=> moonRadioIdx; set => moonRadioIdx = value;}
 }

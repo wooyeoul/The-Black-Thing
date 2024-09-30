@@ -161,6 +161,17 @@ public class PlayerController : MonoBehaviour, IPlayerInterface
             SetLanguage(lang);
         }
     }
+
+    public void SetMoonRadioIdx(int Idx)
+    {
+        player.MoonRadioIdx = Idx;
+    }
+
+    public int GetMoonRadioIdx()
+    {
+        return player.MoonRadioIdx;
+    }
+
     public LANGUAGE GetLanguage()
     {
         return player.language;

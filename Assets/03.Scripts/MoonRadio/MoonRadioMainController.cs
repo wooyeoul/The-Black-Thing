@@ -18,7 +18,17 @@ public class MoonRadioMainController : MonoBehaviour
     GameObject moonRadioEarth;
 
     [SerializeField]
-    GameObject systemUI;
+    GameObject systemUI; //이거 델리게이트로 대체할 예정
+    
+    IPlayerInterface player;
+
+    [SerializeField]
+    GameObject popupUI;
+
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player").GetComponent<IPlayerInterface>();
+    }
 
     private void OnEnable()
     {
@@ -52,7 +62,19 @@ public class MoonRadioMainController : MonoBehaviour
 
     public void GoMoon()
     {
-        moonRadioMoon.SetActive(true);
+        if(player.GetMoonRadioIdx() <= 2)
+        {
+            moonRadioMoon.SetActive(true);
+        }
+        else
+        {
+            popupUI.SetActive(true);
+        }
+    }
+
+    public void ClosePopup()
+    {
+        popupUI.SetActive(false);
     }
 
     public void GoEarth()
