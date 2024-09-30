@@ -31,10 +31,6 @@ public class SubPanel : MonoBehaviour
     public int dialogueIndex = 0;  // Current dialogue index
     public int Day = 0;  // Current day
 
-    private void Start()
-    {
-        InitializePanels();
-    }
     void OnEnable()
     {
         pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
@@ -48,7 +44,7 @@ public class SubPanel : MonoBehaviour
         {
             GameObject instantiatedDot = Instantiate(dotObjects[i], parentTransform);
             instantiatedDot.SetActive(false);
-            instantiatedDot.AddComponent<CanvasGroup>();
+            //instantiatedDot.AddComponent<CanvasGroup>();
             dotObjects[i] = instantiatedDot;
         }
 
@@ -56,13 +52,13 @@ public class SubPanel : MonoBehaviour
         { 
             GameObject instantiatedPrTb = Instantiate(prTbObjects[i], parentTransform);
             instantiatedPrTb.SetActive(false);
-            instantiatedPrTb.AddComponent<CanvasGroup>();
+            //instantiatedPrTb.AddComponent<CanvasGroup>();
             prTbObjects[i] = instantiatedPrTb;
         }
 
         GameObject instantiatedSubTwoSelection = Instantiate(SubTwoSelection, parentTransform);
         instantiatedSubTwoSelection.SetActive(false);
-        instantiatedSubTwoSelection.AddComponent<CanvasGroup>();
+        //instantiatedSubTwoSelection.AddComponent<CanvasGroup>();
         SubTwoSelection = instantiatedSubTwoSelection;
     }
 
@@ -90,7 +86,7 @@ public class SubPanel : MonoBehaviour
 
             if (index < nextKeys.Length && int.TryParse(nextKeys[index], out int nextLineKey))
             {
-                int nextIndex = sub.currentDialogueList.FindIndex(entry => (entry as DialogueEntry)?.LineKey == nextLineKey);
+                int nextIndex = sub.currentDialogueList.FindIndex(entry => (entry as SubDialogueEntry)?.LineKey == nextLineKey);
 
                 if (nextIndex != -1)
                 {
@@ -117,7 +113,7 @@ public class SubPanel : MonoBehaviour
             return;
         }
 
-        //ShowNextDialogue();
+        ShowNextDialogue();
     }
 
     public void DialEnd()
@@ -136,6 +132,7 @@ public class SubPanel : MonoBehaviour
                 go.SetActive(false);
             }
         }
+        SubTwoSelection.SetActive(false);
     }
 
     public void ShowNextDialogue()
@@ -173,20 +170,89 @@ public class SubPanel : MonoBehaviour
                         List<GameObject> blackDots = dotObjects.FindAll(dot => dot.name.Contains("Black"));
 
                         // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
-                        GameObject selectedDot = blackDots.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "L" : "R"));
+                        GameObject selectedDot = blackDots.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_L" : "_R"));
 
                         if (selectedDot != null)
                         {
+                            Debug.Log("켜진 패널" + selectedDot);
                             selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                            DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+                            DotTextUI.text = $"{korText}";
+                            StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
+                            RegisterNextButton(selectedDot.transform.GetComponent<Button>());
                         }
                     }
                     else if (color == 1)
                     {
+                        if (gameManager.Time == "Dawn")
+                        {
+                            List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Dawn"));
 
+                            // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_L" : "_R"));
+
+                            if (selectedDot != null)
+                            {
+                                Debug.Log("켜진 패널" + selectedDot);
+                                selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                                DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+                                DotTextUI.text = $"{korText}";
+                                StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
+                                RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                            }
+                        }
+                        if (gameManager.Time == "Morning")
+                        {
+                            List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Mor"));
+
+                            // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_L" : "_R"));
+
+                            if (selectedDot != null)
+                            {
+                                Debug.Log("켜진 패널" + selectedDot);
+                                selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                                DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+                                DotTextUI.text = $"{korText}";
+                                StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
+                                RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                            }
+                        }
+                        if (gameManager.Time == "Evening")
+                        {
+                            List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Eve"));
+
+                            // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_L" : "_R"));
+
+                            if (selectedDot != null)
+                            {
+                                Debug.Log("켜진 패널" + selectedDot);
+                                selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                                DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+                                DotTextUI.text = $"{korText}";
+                                StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
+                                RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                            }
+                        }
+                        if (gameManager.Time == "Night")
+                        {
+                            List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Nig"));
+
+                            // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_L" : "_R"));
+
+                            if (selectedDot != null)
+                            {
+                                Debug.Log("켜진 패널" + selectedDot);
+                                selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                                DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+                                DotTextUI.text = $"{korText}";
+                                StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
+                                RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                            }
+                        }
                     }
-                    DotTextUI.text = $"{korText}";
-                    //StartCoroutine(FadeIn(DotPanel.GetComponent<CanvasGroup>(), 0.5f, DotPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>())); -> 페이드 인 나중에 추가
-                    //RegisterNextButton(DotPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>()); -> 버튼 등록은 나중에
                 }
                 else if (actor == "Player")
                 {
@@ -196,22 +262,186 @@ public class SubPanel : MonoBehaviour
                         List<GameObject> blackDots = dotObjects.FindAll(dot => dot.name.Contains("Black"));
 
                         // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
-                        GameObject selectedDot = blackDots.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "R" : "L"));
+                        GameObject selectedDot = blackDots.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
 
                         if (selectedDot != null)
                         {
+                            Debug.Log("켜진 패널" + selectedDot);
                             selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                            PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+                            PlayTextUI.text = $"{korText}";
+                            StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
+                            RegisterNextButton(selectedDot.transform.GetComponent<Button>());
                         }
                     }
                     else if (color == 1)
                     {
+                        if (gameManager.Time == "Dawn")
+                        {
+                            List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Dawn"));
 
+                            // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
+
+                            if (selectedDot != null)
+                            {
+                                Debug.Log("켜진 패널" + selectedDot);
+                                selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                                PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+                                PlayTextUI.text = $"{korText}";
+                                StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
+                                RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                            }
+                        }
+                        if (gameManager.Time == "Morning")
+                        {
+                            List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Mor"));
+
+                            // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
+
+                            if (selectedDot != null)
+                            {
+                                Debug.Log("켜진 패널" + selectedDot);
+                                selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                                PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+                                PlayTextUI.text = $"{korText}";
+                                StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
+                                RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                            }
+                        }
+                        if (gameManager.Time == "Evening")
+                        {
+                            List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Eve"));
+
+                            // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
+
+                            if (selectedDot != null)
+                            {
+                                Debug.Log("켜진 패널" + selectedDot);
+                                selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                                PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+                                PlayTextUI.text = $"{korText}";
+                                StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
+                                RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                            }
+                        }
+                        if (gameManager.Time == "Night")
+                        {
+                            List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Nig"));
+
+                            // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
+
+                            if (selectedDot != null)
+                            {
+                                Debug.Log("켜진 패널" + selectedDot);
+                                selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                                PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+                                PlayTextUI.text = $"{korText}";
+                                StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
+                                RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                            }
+                        }
                     }
-                    PlayTextUI.text = $"{korText}";
-                    //StartCoroutine(FadeIn(PlayPanel.GetComponent<CanvasGroup>(), 0.5f, PlayPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>())); -> 페이드 인 나중에 추가
-                    //RegisterNextButton(DotPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>()); -> 버튼 등록은 나중에
-
                 }
+                break;
+         //=============================================================================================================================================================
+           
+            case "textbox":
+                if (color == 0) //Black
+                {
+                    // "Black"이 포함된 오브젝트만 가져옴
+                    List<GameObject> blackDots = prTbObjects.FindAll(dot => dot.name.Contains("Black"));
+
+                    // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                    GameObject selectedDot = blackDots.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
+
+                    if (selectedDot != null)
+                    {
+                        selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                        PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+                        PlayTextUI.text = $"{korText}";
+                        StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
+                        RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                    }
+                }
+                else if (color == 1)
+                {
+                    if (gameManager.Time == "Dawn")
+                    {
+                        List<GameObject> Temp = prTbObjects.FindAll(dot => dot.name.Contains("Dawn"));
+
+                        // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                        GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
+
+                        if (selectedDot != null)
+                        {
+                            selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                            PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+                            PlayTextUI.text = $"{korText}";
+                            StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
+                            RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                        }
+                    }
+                    if (gameManager.Time == "Morning")
+                    {
+                        List<GameObject> Temp = prTbObjects.FindAll(dot => dot.name.Contains("Mor"));
+
+                        // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                        GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
+
+                        if (selectedDot != null)
+                        {
+                            selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                            PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+                            PlayTextUI.text = $"{korText}";
+                            StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
+                            RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                        }
+                    }
+                    if (gameManager.Time == "Evening")
+                    {
+                        List<GameObject> Temp = prTbObjects.FindAll(dot => dot.name.Contains("Eve"));
+
+                        // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                        GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
+
+                        if (selectedDot != null)
+                        {
+                            selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                            PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+                            PlayTextUI.text = $"{korText}";
+                            StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
+                            RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                        }
+                    }
+                    if (gameManager.Time == "Night")
+                    {
+                        List<GameObject> Temp = prTbObjects.FindAll(dot => dot.name.Contains("Nig"));
+
+                        // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                        GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
+
+                        if (selectedDot != null)
+                        {
+                            selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                            PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+                            PlayTextUI.text = $"{korText}";
+                            StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
+                            RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                        }
+                    }
+                }
+                break;
+
+         //=============================================================================================================================================================
+            
+            case "selection":
+                SubTwoSelection.SetActive(true);
+                StartCoroutine(FadeIn(SubTwoSelection.GetComponent<CanvasGroup>(), 0.5f, SubTwoSelection.transform.GetComponentInChildren<Button>()));
+                ShowSelection(korText);
                 break;
         }
 
@@ -234,7 +464,41 @@ public class SubPanel : MonoBehaviour
     void RegisterNextButton(Button button)
     {
         button.onClick.RemoveAllListeners();
-        //button.onClick.AddListener(NextDialogue); -> NextDialougue 함수 만들어야함
-    } 
+        button.onClick.AddListener(NextDialogue);
+    }
 
+    void NextDialogue()
+    {
+        var currentEntry = sub.GetData(dialogueIndex);
+        if (currentEntry.NextLineKey != null)
+        {
+            if (int.TryParse(currentEntry.NextLineKey, out int nextLineKey))
+            {
+                int nextIndex = sub.currentDialogueList.FindIndex(entry => (entry as SubDialogueEntry)?.LineKey == nextLineKey);
+
+                if (nextIndex != -1)
+                {
+                    dialogueIndex = nextIndex;
+                }
+                else
+                {
+                    DialEnd();
+                    return;
+                }
+            }
+            else
+            {
+                Debug.Log("NextLineKey is not a valid integer. Moving to the next entry by index.");
+                dialogueIndex++;
+            }
+        }
+        else
+        {
+            Debug.Log("Current entry is null. Ending dialogue.");
+            DialEnd();
+            return;
+        }
+
+        ShowNextDialogue();
+    }
 }

@@ -57,6 +57,8 @@ public class DotController : MonoBehaviour
     List<Dictionary<GamePatternState,List<ScriptList>>> subScriptLists; //List chapter Dictionary<gamestate,List<ScriptList>>> 
     [SerializeField]
     GameObject subDialogue;
+    [SerializeField]
+    GameObject subPanel;
     public GameObject Dust
     {
         get { return dust; }
@@ -120,6 +122,8 @@ public class DotController : MonoBehaviour
         scriptListParser.Load(mainScriptLists, subScriptLists);
 
         subDialogue = GameObject.Find("SubDialougue");
+        subPanel = GameObject.Find("SubPanel");
+        subPanel.GetComponent<SubPanel>().InitializePanels();
         subDialogue.SetActive(false);
     }
     void Start()

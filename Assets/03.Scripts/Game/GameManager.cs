@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
     GameObject skipPhase;
 
     [SerializeField]
+    GameObject subDialoguePanel;
+
+    [SerializeField]
     private DotController dot;
 
     [SerializeField]
@@ -102,7 +105,7 @@ public class GameManager : MonoBehaviour
         pc.nextPhaseDelegate += ChangeGameState;
         objectManager = GameObject.FindWithTag("ObjectManager").gameObject.GetComponent<ObjectManager>();
         scrollManager = GameObject.FindWithTag("MainCamera").gameObject.GetComponent<ScrollManager>();
-
+        
     }
 
     private void Start()

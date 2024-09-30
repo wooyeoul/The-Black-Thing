@@ -20,6 +20,7 @@ public class SubDialogue : MonoBehaviour
     public List<object> currentDialogueList = new List<object>();
     GameManager manager;
 
+
     public void LoadSubDialogue(string[] lines)
     {
         listclear();
@@ -114,7 +115,8 @@ public class SubDialogue : MonoBehaviour
 
     public void StartSub(string fileName)
     {
-        //mainPanel = GameObject.Find("MainDialougue").GetComponent<MainPanel>(); -> 서브 패널로 변경
+        SubPanel subPanel = this.transform.GetChild(0).GetComponent<SubPanel>();
+        
         TextAsset dialogueData = Resources.Load<TextAsset>("CSV/" + fileName);
 
         if (dialogueData == null)
@@ -126,7 +128,7 @@ public class SubDialogue : MonoBehaviour
         string[] lines = dialogueData.text.Split('\n');
         LoadSubDialogue(lines);
 
-        //mainPanel.ShowNextDialogue(); -> 서브 패널로 변경
+        subPanel.ShowNextDialogue();
         //manager.ScrollManager.StopCamera(true); -> 계속 오류 발생
     }
 

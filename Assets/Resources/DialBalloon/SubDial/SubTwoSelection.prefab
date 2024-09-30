@@ -466,13 +466,14 @@ GameObject:
   m_Component:
   - component: {fileID: 10573294726750583}
   - component: {fileID: 7049312530067409482}
+  - component: {fileID: 4819977693991193721}
   m_Layer: 5
   m_Name: SubTwoSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &10573294726750583
 RectTransform:
   m_ObjectHideFlags: 0
@@ -521,6 +522,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!225 &4819977693991193721
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342935953083513367}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5923663004968475617
 GameObject:
   m_ObjectHideFlags: 0
