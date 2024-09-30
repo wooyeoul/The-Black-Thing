@@ -5,6 +5,10 @@ using TMPro;
 using UnityEngine.UI;
 using Assets.Script.DialClass;
 
+/* "말풍선 위치를 어떻게 해야하나 뭉치 위치를 가져와서 if pos.x < 0 이면 뭉치 기준 오른쪽 상단????? 
+ pos.x > 0 이면 뭉치 기준 왼쪽 상단
+ !! Dot은 스프라이트라 캔버스가 아니고 Panel UI는 캔버스 기준이라 위치를 통일시켜줘야 함 !!*/
+
 public class SubPanel : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
@@ -27,14 +31,18 @@ public class SubPanel : MonoBehaviour
     public int dialogueIndex = 0;  // Current dialogue index
     public int Day = 0;  // Current day
 
+    private void Start()
+    {
+        InitializePanels();
+    }
     void OnEnable()
     {
         pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        InitializePanels();
     }
 
     public void InitializePanels()
     {
+        Debug.Log("서브 패널 초기화");
         Transform parentTransform = this.transform;
         for (int i = 0; i < dotObjects.Count; i++)
         {
@@ -141,6 +149,7 @@ public class SubPanel : MonoBehaviour
         string textType = sub.GetData(dialogueIndex).TextType;
         string actor = sub.GetData(dialogueIndex).Actor;
         string korText = sub.GetData(dialogueIndex).Text;
+        int color = sub.GetData(dialogueIndex).Color;
 
         switch (textType)
         {
@@ -158,15 +167,50 @@ public class SubPanel : MonoBehaviour
                     // if 컬러가 검은 색이면 dotObjects의 B를 가져오고 아니면 각 시간에 맞는 말풍선을
                     // AND if Dotcontroller.transform 으로 x좌표가 음수면 L 를 아니면 R을 플레이어는 그 반대로
                     //각 조건에 맞는 말풍선 켜지게끔
+                    if (color == 0) // Black
+                    {
+                        // "Black"이 포함된 오브젝트만 가져옴
+                        List<GameObject> blackDots = dotObjects.FindAll(dot => dot.name.Contains("Black"));
+
+                        // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                        GameObject selectedDot = blackDots.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "L" : "R"));
+
+                        if (selectedDot != null)
+                        {
+                            selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                        }
+                    }
+                    else if (color == 1)
+                    {
+
+                    }
                     DotTextUI.text = $"{korText}";
                     //StartCoroutine(FadeIn(DotPanel.GetComponent<CanvasGroup>(), 0.5f, DotPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>())); -> 페이드 인 나중에 추가
                     //RegisterNextButton(DotPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>()); -> 버튼 등록은 나중에
                 }
                 else if (actor == "Player")
                 {
+                    if (color == 0) //Black
+                    {
+                        // "Black"이 포함된 오브젝트만 가져옴
+                        List<GameObject> blackDots = dotObjects.FindAll(dot => dot.name.Contains("Black"));
+
+                        // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                        GameObject selectedDot = blackDots.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "R" : "L"));
+
+                        if (selectedDot != null)
+                        {
+                            selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                        }
+                    }
+                    else if (color == 1)
+                    {
+
+                    }
                     PlayTextUI.text = $"{korText}";
                     //StartCoroutine(FadeIn(PlayPanel.GetComponent<CanvasGroup>(), 0.5f, PlayPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>())); -> 페이드 인 나중에 추가
                     //RegisterNextButton(DotPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>()); -> 버튼 등록은 나중에
+
                 }
                 break;
         }

@@ -13,7 +13,7 @@ namespace Assets.Script.DialClass
     public struct sub
     {
         public int LineKey;
-        public string Color;
+        public int Color;
         public string Actor;
         public string TextType;
         public string Text;
@@ -45,7 +45,7 @@ namespace Assets.Script.DialClass
         public int Sub;
         public int ScriptKey;
         public int LineKey;
-        public string Color;
+        public int Color;
         public string Actor;
         public string DotAnim;
         public string TextType;

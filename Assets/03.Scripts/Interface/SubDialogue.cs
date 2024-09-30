@@ -43,7 +43,7 @@ public class SubDialogue : MonoBehaviour
                         Sub = sub,
                         ScriptKey = int.Parse(parts[1]),
                         LineKey = int.Parse(parts[2]),
-                        Color = parts[3],
+                        Color = int.Parse(parts[3]),
                         Actor = parts[4],
                         DotAnim = parts[5],
                         TextType = parts[6],
