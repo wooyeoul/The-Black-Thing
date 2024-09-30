@@ -12,21 +12,18 @@ using System;
 public class MoonRadioParser
 {
 
-    //[SerializeField] List<MoonRadioDial> MoonRadios;
-
+    
     Dictionary<int, Dictionary<int, List<MoonRadioDial>>> MoonRadios;
     LANGUAGE curLanguage = LANGUAGE.KOREAN;
 
     public MoonRadioParser()
     {
         MoonRadios = new Dictionary<int, Dictionary<int, List<MoonRadioDial>>>();
-        //LoadMoonRadio();
     }
 
     public List<MoonRadioDial> GetMoonRadioDial(int chapter, int number, LANGUAGE lan)
     {
         ChangeLanguage(chapter, lan); //¹Ù²Û ÈÄ Àü´Þ
-
         return MoonRadios[chapter][number];
     }
 
@@ -43,7 +40,6 @@ public class MoonRadioParser
         string[] lines = dialogueData.text.Split('\n');
         LoadMoonRadioDial(lines);
     }
-
 
     //Change Korean -> English or English -> Korean
     public void ChangeLanguage(int chapter, LANGUAGE language)

@@ -302,6 +302,7 @@ public class ObjectManager : MonoBehaviour
 
     public void SkipSleeping(bool isActive)
     {
+        pc.SetMoonRadioIdx(1); //한 phase가 지나면 1로 리셋
         skipSleep.SetActive(isActive);
     }
 

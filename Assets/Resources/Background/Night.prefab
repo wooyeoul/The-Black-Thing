@@ -1227,6 +1227,7 @@ MonoBehaviour:
   moonRadioController: {fileID: 0}
   alert: {fileID: 0}
   text: {fileID: 0}
+  screen: {fileID: 1864430117927243698}
 --- !u!95 &904936160015903036
 Animator:
   serializedVersion: 5

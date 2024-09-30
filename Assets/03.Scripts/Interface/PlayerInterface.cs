@@ -8,4 +8,6 @@ public interface IPlayerInterface
 {
     public abstract int GetChapter();
     public abstract LANGUAGE GetLanguage();
+    public abstract void SetMoonRadioIdx(int Idx);
+    public abstract int GetMoonRadioIdx();
 }
