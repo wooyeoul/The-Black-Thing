@@ -28,6 +28,10 @@ public class SubPanel : MonoBehaviour
 
     [SerializeField] private GameObject SubTwoSelection;
 
+    [SerializeField] private Camera mainCamera;
+
+    [SerializeField] private Canvas canvas;
+
     public int dialogueIndex = 0;  // Current dialogue index
     public int Day = 0;  // Current day
 
@@ -175,7 +179,7 @@ public class SubPanel : MonoBehaviour
                         if (selectedDot != null)
                         {
                             Debug.Log("켜진 패널" + selectedDot);
-                            selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                            LocationSet(selectedDot); // 선택한 오브젝트를 활성화
                             DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             DotTextUI.text = $"{korText}";
                             StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
@@ -194,7 +198,7 @@ public class SubPanel : MonoBehaviour
                             if (selectedDot != null)
                             {
                                 Debug.Log("켜진 패널" + selectedDot);
-                                selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                                LocationSet(selectedDot); // 선택한 오브젝트를 활성화
                                 DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 DotTextUI.text = $"{korText}";
                                 StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
@@ -211,7 +215,7 @@ public class SubPanel : MonoBehaviour
                             if (selectedDot != null)
                             {
                                 Debug.Log("켜진 패널" + selectedDot);
-                                selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                                LocationSet(selectedDot); // 선택한 오브젝트를 활성화
                                 DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 DotTextUI.text = $"{korText}";
                                 StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
@@ -228,7 +232,7 @@ public class SubPanel : MonoBehaviour
                             if (selectedDot != null)
                             {
                                 Debug.Log("켜진 패널" + selectedDot);
-                                selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                                LocationSet(selectedDot); // 선택한 오브젝트를 활성화
                                 DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 DotTextUI.text = $"{korText}";
                                 StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
@@ -245,7 +249,7 @@ public class SubPanel : MonoBehaviour
                             if (selectedDot != null)
                             {
                                 Debug.Log("켜진 패널" + selectedDot);
-                                selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                                LocationSet(selectedDot); // 선택한 오브젝트를 활성화
                                 DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 DotTextUI.text = $"{korText}";
                                 StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
@@ -267,7 +271,7 @@ public class SubPanel : MonoBehaviour
                         if (selectedDot != null)
                         {
                             Debug.Log("켜진 패널" + selectedDot);
-                            selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                            LocationSet(selectedDot); // 선택한 오브젝트를 활성화
                             PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             PlayTextUI.text = $"{korText}";
                             StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
@@ -286,7 +290,7 @@ public class SubPanel : MonoBehaviour
                             if (selectedDot != null)
                             {
                                 Debug.Log("켜진 패널" + selectedDot);
-                                selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                                LocationSet(selectedDot); // 선택한 오브젝트를 활성화
                                 PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 PlayTextUI.text = $"{korText}";
                                 StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
@@ -303,7 +307,7 @@ public class SubPanel : MonoBehaviour
                             if (selectedDot != null)
                             {
                                 Debug.Log("켜진 패널" + selectedDot);
-                                selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                                LocationSet(selectedDot); // 선택한 오브젝트를 활성화
                                 PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 PlayTextUI.text = $"{korText}";
                                 StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
@@ -320,7 +324,7 @@ public class SubPanel : MonoBehaviour
                             if (selectedDot != null)
                             {
                                 Debug.Log("켜진 패널" + selectedDot);
-                                selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                                LocationSet(selectedDot); // 선택한 오브젝트를 활성화
                                 PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 PlayTextUI.text = $"{korText}";
                                 StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
@@ -337,7 +341,7 @@ public class SubPanel : MonoBehaviour
                             if (selectedDot != null)
                             {
                                 Debug.Log("켜진 패널" + selectedDot);
-                                selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                                LocationSet(selectedDot); // 선택한 오브젝트를 활성화
                                 PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 PlayTextUI.text = $"{korText}";
                                 StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
@@ -360,7 +364,7 @@ public class SubPanel : MonoBehaviour
 
                     if (selectedDot != null)
                     {
-                        selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                        LocationSet(selectedDot); // 선택한 오브젝트를 활성화
                         PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                         PlayTextUI.text = $"{korText}";
                         StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
@@ -378,7 +382,7 @@ public class SubPanel : MonoBehaviour
 
                         if (selectedDot != null)
                         {
-                            selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                            LocationSet(selectedDot); // 선택한 오브젝트를 활성화
                             PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             PlayTextUI.text = $"{korText}";
                             StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
@@ -394,7 +398,7 @@ public class SubPanel : MonoBehaviour
 
                         if (selectedDot != null)
                         {
-                            selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                            LocationSet(selectedDot); // 선택한 오브젝트를 활성화
                             PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             PlayTextUI.text = $"{korText}";
                             StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
@@ -410,7 +414,7 @@ public class SubPanel : MonoBehaviour
 
                         if (selectedDot != null)
                         {
-                            selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                            LocationSet(selectedDot); // 선택한 오브젝트를 활성화
                             PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             PlayTextUI.text = $"{korText}";
                             StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
@@ -426,7 +430,7 @@ public class SubPanel : MonoBehaviour
 
                         if (selectedDot != null)
                         {
-                            selectedDot.SetActive(true); // 선택한 오브젝트를 활성화
+                            LocationSet(selectedDot); // 선택한 오브젝트를 활성화
                             PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             PlayTextUI.text = $"{korText}";
                             StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
@@ -501,4 +505,33 @@ public class SubPanel : MonoBehaviour
 
         ShowNextDialogue();
     }
+
+    public void LocationSet(GameObject dotbub)
+    {
+        Debug.Log("서브 말풍선 위치 설정");
+        Debug.Log(dot.transform.position);
+        Vector2 screenPos = Camera.main.WorldToScreenPoint(dot.transform.position);
+        RectTransform speechBubbleUI = dotbub.GetComponent<RectTransform>();
+        //RectTransformUtility.ScreenPointToLocalPointInRectangle(
+        //    canvas.transform as RectTransform,
+        //    screenPos,
+        //    canvas.worldCamera,
+        //    out canvasPos);
+       
+        // 3. dot의 x 좌표에 따라 말풍선을 왼쪽 또는 오른쪽에 배치
+        if (dot.transform.position.x < 0)
+        {
+            // 말풍선을 dot의 오른쪽에 배치
+            speechBubbleUI.transform.position = screenPos;
+        }
+        else
+        {
+            // 말풍선을 dot의 왼쪽에 배치
+            speechBubbleUI.transform.position = screenPos - new Vector2(1100, -210);
+        }
+
+        // 4. 말풍선을 활성화하여 표시
+        speechBubbleUI.gameObject.SetActive(true);
+    }
+
 }

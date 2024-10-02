@@ -17,6 +17,9 @@ public class SubDialogue : MonoBehaviour
     [SerializeField]
     protected List<SubDialogueEntry> SubDialogueEntries = new List<SubDialogueEntry>();
 
+    [SerializeField]
+    protected ScrollManager scroll;
+
     public List<object> currentDialogueList = new List<object>();
     GameManager manager;
 
@@ -124,12 +127,13 @@ public class SubDialogue : MonoBehaviour
             Debug.LogError("Dialogue file not found in Resources folder.");
             return;
         }
-
+        scroll.stopscroll(); //임시 방편
         string[] lines = dialogueData.text.Split('\n');
         LoadSubDialogue(lines);
-
+        
         subPanel.ShowNextDialogue();
-        manager.ScrollManager.StopCamera(true);
+        //manager.ScrollManager.StopCamera(true); -> 자꾸 오류 발생함
+        
     }
 
     public sub GetData(int idx)

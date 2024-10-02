@@ -166,6 +166,7 @@ public class ScrollManager : MonoBehaviour
     }
     public void stopscroll()
     {
+        this.transform.position = originalPos;
         isScreenStatic = true;
     }
 }
