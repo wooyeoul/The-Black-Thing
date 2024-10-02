@@ -13,7 +13,7 @@ public class SubPanel : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
     [SerializeField] private PlayerController pc;
-    [SerializeField] private DotController dot;
+    [SerializeField] private DotController dotcontroller;
     [SerializeField] private SubDialogue sub;
 
     [SerializeField] private TextMeshProUGUI DotTextUI;
@@ -164,7 +164,7 @@ public class SubPanel : MonoBehaviour
                             korText = korText.Replace("<nickname>", pc.GetNickName());
                         }
                     }
-
+                    Debug.Log("L인지 R인지: " + dotcontroller.transform.position.x);
                     // if 컬러가 검은 색이면 dotObjects의 B를 가져오고 아니면 각 시간에 맞는 말풍선을
                     // AND if Dotcontroller.transform 으로 x좌표가 음수면 L 를 아니면 R을 플레이어는 그 반대로
                     //각 조건에 맞는 말풍선 켜지게끔
@@ -174,7 +174,7 @@ public class SubPanel : MonoBehaviour
                         List<GameObject> blackDots = dotObjects.FindAll(dot => dot.name.Contains("Black"));
 
                         // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
-                        GameObject selectedDot = blackDots.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_L" : "_R"));
+                        GameObject selectedDot = blackDots.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_L" : "_R"));
 
                         if (selectedDot != null)
                         {
@@ -193,7 +193,7 @@ public class SubPanel : MonoBehaviour
                             List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Dawn"));
 
                             // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
-                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_L" : "_R"));
+                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_L" : "_R"));
 
                             if (selectedDot != null)
                             {
@@ -210,7 +210,7 @@ public class SubPanel : MonoBehaviour
                             List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Mor"));
 
                             // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
-                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_L" : "_R"));
+                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_L" : "_R"));
 
                             if (selectedDot != null)
                             {
@@ -227,7 +227,7 @@ public class SubPanel : MonoBehaviour
                             List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Eve"));
 
                             // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
-                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_L" : "_R"));
+                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_L" : "_R"));
 
                             if (selectedDot != null)
                             {
@@ -244,7 +244,7 @@ public class SubPanel : MonoBehaviour
                             List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Nig"));
 
                             // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
-                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_L" : "_R"));
+                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_L" : "_R"));
 
                             if (selectedDot != null)
                             {
@@ -266,7 +266,7 @@ public class SubPanel : MonoBehaviour
                         List<GameObject> blackDots = dotObjects.FindAll(dot => dot.name.Contains("Black"));
 
                         // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
-                        GameObject selectedDot = blackDots.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
+                        GameObject selectedDot = blackDots.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));
 
                         if (selectedDot != null)
                         {
@@ -285,7 +285,7 @@ public class SubPanel : MonoBehaviour
                             List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Dawn"));
 
                             // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
-                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
+                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));
 
                             if (selectedDot != null)
                             {
@@ -302,7 +302,7 @@ public class SubPanel : MonoBehaviour
                             List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Mor"));
 
                             // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
-                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
+                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));
 
                             if (selectedDot != null)
                             {
@@ -319,7 +319,7 @@ public class SubPanel : MonoBehaviour
                             List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Eve"));
 
                             // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
-                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
+                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));
 
                             if (selectedDot != null)
                             {
@@ -336,7 +336,7 @@ public class SubPanel : MonoBehaviour
                             List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Nig"));
 
                             // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
-                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
+                            GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));
 
                             if (selectedDot != null)
                             {
@@ -351,8 +351,9 @@ public class SubPanel : MonoBehaviour
                     }
                 }
                 break;
-         //=============================================================================================================================================================
-           
+
+            //=============================================================================================================================================================
+
             case "textbox":
                 if (color == 0) //Black
                 {
@@ -360,7 +361,7 @@ public class SubPanel : MonoBehaviour
                     List<GameObject> blackDots = prTbObjects.FindAll(dot => dot.name.Contains("Black"));
 
                     // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
-                    GameObject selectedDot = blackDots.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
+                    GameObject selectedDot = blackDots.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));
 
                     if (selectedDot != null)
                     {
@@ -378,7 +379,7 @@ public class SubPanel : MonoBehaviour
                         List<GameObject> Temp = prTbObjects.FindAll(dot => dot.name.Contains("Dawn"));
 
                         // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
-                        GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
+                        GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));
 
                         if (selectedDot != null)
                         {
@@ -394,7 +395,7 @@ public class SubPanel : MonoBehaviour
                         List<GameObject> Temp = prTbObjects.FindAll(dot => dot.name.Contains("Mor"));
 
                         // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
-                        GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
+                        GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));
 
                         if (selectedDot != null)
                         {
@@ -410,7 +411,7 @@ public class SubPanel : MonoBehaviour
                         List<GameObject> Temp = prTbObjects.FindAll(dot => dot.name.Contains("Eve"));
 
                         // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
-                        GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
+                        GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));
 
                         if (selectedDot != null)
                         {
@@ -426,7 +427,7 @@ public class SubPanel : MonoBehaviour
                         List<GameObject> Temp = prTbObjects.FindAll(dot => dot.name.Contains("Nig"));
 
                         // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
-                        GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dot.transform.position.x < 0 ? "_R" : "_L"));
+                        GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));
 
                         if (selectedDot != null)
                         {
@@ -509,29 +510,31 @@ public class SubPanel : MonoBehaviour
     public void LocationSet(GameObject dotbub)
     {
         Debug.Log("서브 말풍선 위치 설정");
-        Debug.Log(dot.transform.position);
-        Vector2 screenPos = Camera.main.WorldToScreenPoint(dot.transform.position);
+        Debug.Log(dotcontroller.transform.position);
+        Vector2 screenPos = Camera.main.WorldToScreenPoint(dotcontroller.transform.position);
         RectTransform speechBubbleUI = dotbub.GetComponent<RectTransform>();
-        //RectTransformUtility.ScreenPointToLocalPointInRectangle(
-        //    canvas.transform as RectTransform,
-        //    screenPos,
-        //    canvas.worldCamera,
-        //    out canvasPos);
-       
-        // 3. dot의 x 좌표에 따라 말풍선을 왼쪽 또는 오른쪽에 배치
-        if (dot.transform.position.x < 0)
+        Debug.Log(screenPos);
+
+        if (dotcontroller.transform.position.x < 0)
         {
+            Debug.Log("1");
             // 말풍선을 dot의 오른쪽에 배치
-            speechBubbleUI.transform.position = screenPos;
+            speechBubbleUI.transform.position = screenPos - new Vector2(-100, -210);
         }
         else
         {
+            Debug.Log("2");
             // 말풍선을 dot의 왼쪽에 배치
             speechBubbleUI.transform.position = screenPos - new Vector2(1100, -210);
         }
 
         // 4. 말풍선을 활성화하여 표시
         speechBubbleUI.gameObject.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        PanelOff();
     }
 
 }

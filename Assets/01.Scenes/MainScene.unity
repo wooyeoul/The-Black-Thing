@@ -5254,6 +5254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainDialoguePanel: {fileID: 8899152122286662226}
   skipPhase: {fileID: 8940817456850249698}
+  subDialoguePanel: {fileID: 0}
   dot: {fileID: 2046645039688417658}
   loadingProgressBar: {fileID: 1760591409901623052}
 --- !u!4 &199268582
@@ -30349,6 +30350,8 @@ MonoBehaviour:
   - {fileID: 4100195127551045945, guid: 4f01882b349f50c47a4c37d62cc9ddba, type: 3}
   - {fileID: 4100195127551045945, guid: a2128ad18d7f7d845b01bc7d52747ecb, type: 3}
   SubTwoSelection: {fileID: 5342935953083513367, guid: 673970fc22d578d40b9e29a4d4a2bc2c, type: 3}
+  mainCamera: {fileID: 1526469516}
+  canvas: {fileID: 1193627963}
   dialogueIndex: 0
   Day: 0
 --- !u!1 &1110076821
@@ -49182,6 +49185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SubDialogueEntries: []
+  scroll: {fileID: 1526469518}
 --- !u!1 &1723573533
 GameObject:
   m_ObjectHideFlags: 0
@@ -61962,6 +61966,7 @@ MonoBehaviour:
   eyesAnim: {fileID: 8638433984340231061}
   dust: {fileID: 1094932321745963600}
   subDialogue: {fileID: 0}
+  subPanel: {fileID: 0}
 --- !u!212 &2046645039688417659
 SpriteRenderer:
   m_ObjectHideFlags: 0
