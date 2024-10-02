@@ -129,7 +129,7 @@ public class SubDialogue : MonoBehaviour
         LoadSubDialogue(lines);
 
         subPanel.ShowNextDialogue();
-        //manager.ScrollManager.StopCamera(true); -> 계속 오류 발생
+        manager.ScrollManager.StopCamera(true);
     }
 
     public sub GetData(int idx)

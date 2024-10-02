@@ -164,4 +164,8 @@ public class ScrollManager : MonoBehaviour
 
         transform.position = Vector3.Lerp(currentPosition, targetPosition, scollSpd);
     }
+    public void stopscroll()
+    {
+        isScreenStatic = true;
+    }
 }
