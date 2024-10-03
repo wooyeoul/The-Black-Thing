@@ -261,6 +261,8 @@ public class PlayerController : MonoBehaviour, IPlayerInterface
     public void WritePlayerFile()
     {
         //PlayerInfo 클래스 내에 플레이어 정보를 Json 형태로 포멧팅 된 문자열 생성
+        //만약 player nextchapter라면, 변경
+        player.currentPhase = player.currentPhase == GamePatternState.NextChapter ? GamePatternState.Watching : player.currentPhase;
         string jsonData = JsonUtility.ToJson(player);
         string path = pathForDocumentsFile(playerInfoDataFileName);
         File.WriteAllText(path, jsonData);
