@@ -32,11 +32,15 @@ public class GameManager : MonoBehaviour
     private PlayerController pc;
     private GamePatternState currentPattern;
     private SITime time;
+
+    public delegate void OnVideoEndedDelegate();
+
+    OnVideoEndedDelegate onVideoEnded;
     [SerializeField] 
     GameObject mainDialoguePanel;
 
     [SerializeField]
-    GameObject skipPhase;
+    VideoPlayerController videoController;
 
     [SerializeField]
     GameObject subDialoguePanel;
@@ -105,7 +109,7 @@ public class GameManager : MonoBehaviour
         pc.nextPhaseDelegate += ChangeGameState;
         objectManager = GameObject.FindWithTag("ObjectManager").gameObject.GetComponent<ObjectManager>();
         scrollManager = GameObject.FindWithTag("MainCamera").gameObject.GetComponent<ScrollManager>();
-        
+        onVideoEnded += OnVideoCompleted;
     }
 
     private void Start()
@@ -129,6 +133,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void OnVideoCompleted()
+    {
+        //정리
+        if(currentPattern == GamePatternState.Play)
+        {
+            videoController.CloseVideo(EVideoIdx.SkipSleeping,true);
+        }
+        else
+        {
+            videoController.CloseVideo(EVideoIdx.SkipPhase,false);
+        }
+    }
     void CloseLoading()
     {
         if(loadingProgressBar != null)
@@ -156,8 +172,21 @@ public class GameManager : MonoBehaviour
             Debug.Log("없는 패턴 입니다.");
             return; 
         }
+        if (activeState != null)
+        {
+            activeState.Exit(this); //미리 정리한다.
+        }
+        currentPattern = patternState;
+        activeState = states[patternState];
+        activeState.Enter(this, dot);
 
-        StartCoroutine(ChangeState(patternState));
+        //C#에서 명시적 형변환은 강제, as 할지말지를 결정.. 즉, 실패 유무를 알고 싶다면, as를 사용한다.
+        ILoadingInterface loadingInterface = activeState as ILoadingInterface;
+
+        if (loadingInterface != null)
+        {
+            videoController.ShowVideo();
+        }
     }
 
     public void StartMain()
@@ -173,32 +202,6 @@ public class GameManager : MonoBehaviour
             
             mainState.StartMain(this, fileName);
         }
-    }
-
-    //코루틴으로 한다.
-    IEnumerator ChangeState(GamePatternState patternState)
-    {
-        if (activeState != null)
-        {
-            activeState.Exit(this); //미리 정리한다.
-        }
-        currentPattern=patternState;
-        activeState = states[patternState];
-        activeState.Enter(this, dot);
-
-        //C#에서 명시적 형변환은 강제, as 할지말지를 결정.. 즉, 실패 유무를 알고 싶다면, as를 사용한다.
-        ILoadingInterface loadingInterface = activeState as ILoadingInterface;
-     
-        if (loadingInterface != null)
-        {
-            skipPhase.SetActive(true);
-            
-            yield return new WaitForSeconds(5.0f);
-
-            skipPhase.SetActive(false);
-        }
-
-        yield return null;
     }
 
     private void InitGame()
@@ -225,7 +228,7 @@ public class GameManager : MonoBehaviour
         }
 
         time = SITime.Night;
-
+        OnVideoCompleted(); //미리 데이터 로드
         StartCoroutine(LoadDataAsync());
     }
 
