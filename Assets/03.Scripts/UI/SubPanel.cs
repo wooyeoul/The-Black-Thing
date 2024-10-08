@@ -26,7 +26,7 @@ public class SubPanel : MonoBehaviour
     // 리스트로 묶은 PR_TB 게임 오브젝트들
     [SerializeField] private List<GameObject> prTbObjects = new List<GameObject>();
 
-    [SerializeField] private GameObject SubTwoSelection;
+    [SerializeField] private List<GameObject> Sels = new List<GameObject>();
 
     [SerializeField] private Camera mainCamera;
 
@@ -60,19 +60,22 @@ public class SubPanel : MonoBehaviour
             prTbObjects[i] = instantiatedPrTb;
         }
 
-        GameObject instantiatedSubTwoSelection = Instantiate(SubTwoSelection, parentTransform);
-        instantiatedSubTwoSelection.SetActive(false);
-        //instantiatedSubTwoSelection.AddComponent<CanvasGroup>();
-        SubTwoSelection = instantiatedSubTwoSelection;
+        for (int i = 0; i < Sels.Count; i++)
+        {
+            GameObject instantiatedSels = Instantiate(Sels[i], parentTransform);
+            instantiatedSels.SetActive(false);
+            //instantiatedSels.AddComponent<CanvasGroup>();
+            Sels[i] = instantiatedSels;
+        }
     }
 
 
-    void ShowSelection(string options)
+    void ShowSelection(string options, GameObject Sel)
     {
         string[] selections = options.Split('|');
         for (int i = 0; i < selections.Length; i++)
         {
-            Button button = SubTwoSelection.transform.GetChild(i).GetComponent<Button>();
+            Button button = Sel.transform.GetChild(i).GetComponent<Button>();
             TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
             buttonText.text = selections[i];
             int index = i;
@@ -128,7 +131,7 @@ public class SubPanel : MonoBehaviour
     }
     void PanelOff()
     {
-        List<GameObject>[] panels = { dotObjects, prTbObjects };
+        List<GameObject>[] panels = { dotObjects, prTbObjects, Sels };
         foreach (List<GameObject> panel in panels)
         {
             foreach (GameObject go in panel)
@@ -136,7 +139,6 @@ public class SubPanel : MonoBehaviour
                 go.SetActive(false);
             }
         }
-        SubTwoSelection.SetActive(false);
     }
 
     public void ShowNextDialogue()
@@ -444,9 +446,80 @@ public class SubPanel : MonoBehaviour
          //=============================================================================================================================================================
             
             case "selection": //얘도 플레이어 기준
-                SubTwoSelection.SetActive(true);
-                StartCoroutine(FadeIn(SubTwoSelection.GetComponent<CanvasGroup>(), 0.5f, SubTwoSelection.transform.GetComponentInChildren<Button>()));
-                ShowSelection(korText);
+                if (color == 0) //Black
+                {
+                    // "Black"이 포함된 오브젝트만 가져옴
+                    List<GameObject> blackDots = Sels.FindAll(dot => dot.name.Contains("Black"));
+
+                    // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                    GameObject selectedDot = blackDots.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));
+
+                    if (selectedDot != null)
+                    {
+                        selectedDot.SetActive(true);
+                        StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponentInChildren<Button>()));
+                        ShowSelection(korText, selectedDot);
+                    }
+                }
+                else if (color == 1)
+                {
+                    if (gameManager.Time == "Dawn")
+                    {
+                        List<GameObject> Temp = Sels.FindAll(dot => dot.name.Contains("Dawn"));
+
+                        // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                        GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));
+
+                        if (selectedDot != null)
+                        {
+                            selectedDot.SetActive(true);
+                            StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponentInChildren<Button>()));
+                            ShowSelection(korText, selectedDot);
+                        }
+                    }
+                    if (gameManager.Time == "Morning")
+                    {
+                        List<GameObject> Temp = Sels.FindAll(dot => dot.name.Contains("Mor"));
+
+                        // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                        GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));
+
+                        if (selectedDot != null)
+                        {
+                            selectedDot.SetActive(true);
+                            StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponentInChildren<Button>()));
+                            ShowSelection(korText,selectedDot);
+                        }
+                    }
+                    if (gameManager.Time == "Evening")
+                    {
+                        List<GameObject> Temp = Sels.FindAll(dot => dot.name.Contains("Eve"));
+
+                        // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                        GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));
+
+                        if (selectedDot != null)
+                        {
+                            selectedDot.SetActive(true);
+                            StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponentInChildren<Button>()));
+                            ShowSelection(korText, selectedDot);
+                        }
+                    }
+                    if (gameManager.Time == "Night")
+                    {
+                        List<GameObject> Temp = Sels.FindAll(dot => dot.name.Contains("Nig"));
+
+                        // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
+                        GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));
+
+                        if (selectedDot != null)
+                        {
+                            selectedDot.SetActive(true);
+                            StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponentInChildren<Button>()));
+                            ShowSelection(korText, selectedDot);
+                        }
+                    }
+                }
                 break;
         }
 
@@ -535,9 +608,10 @@ public class SubPanel : MonoBehaviour
     public void PlayerLocationSet(GameObject dotbub)
     {
         RectTransform rectTransform = dotbub.GetComponent<RectTransform>();
-
+       
         if (dotcontroller.transform.position.x < 0)
         {
+            
             // 왼쪽 하단에 배치
             rectTransform.anchorMin = new Vector2(0, 0);
             rectTransform.anchorMax = new Vector2(0, 0); 
@@ -555,6 +629,8 @@ public class SubPanel : MonoBehaviour
 
         rectTransform.gameObject.SetActive(true);
     }
+
+
 
     private void OnDisable()
     {
