@@ -42,6 +42,10 @@ public class MoonChatClickController : MonoBehaviour, IChatInterface
     public void OnEnable()
     {
         curIdx = 0;
+        if (pc != null)
+        {
+            Init(pc.GetChapter(), pc.GetMoonRadioIdx(), pc.GetLanguage());
+        }
     }
 
     public void Start()
@@ -49,7 +53,7 @@ public class MoonChatClickController : MonoBehaviour, IChatInterface
         radioScript = new List<GameObject>();
 
         pc = GameObject.FindWithTag("Player").GetComponent<IPlayerInterface>();
-        if(pc != null)
+                if(pc != null)
         {
             Init(pc.GetChapter(), pc.GetMoonRadioIdx() ,pc.GetLanguage());
         }
@@ -62,6 +66,7 @@ public class MoonChatClickController : MonoBehaviour, IChatInterface
         {
             Destroy(radioScript[i]);
         }
+        radioScript.Clear();
 
         //MoonRadio를 읽기 전에 실제 언어로 리셋시켜야함.
         List<MoonRadioDial> Dial = DataManager.Instance.MoonRadioParser.GetMoonRadioDial(chapter, number, lan);
