@@ -19389,6 +19389,7 @@ MonoBehaviour:
   moonRadioMoon: {fileID: 1216939243}
   moonRadioEarth: {fileID: 1240117533}
   systemUI: {fileID: 0}
+  screen: {fileID: 0}
   popupUI: {fileID: 0}
 --- !u!1 &749599001
 GameObject:
@@ -30345,7 +30346,6 @@ MonoBehaviour:
   - {fileID: 5342935953083513367, guid: 673970fc22d578d40b9e29a4d4a2bc2c, type: 3}
   - {fileID: 5342935953083513367, guid: 4a36bf86508334341b426884527a3451, type: 3}
   - {fileID: 5342935953083513367, guid: 86a8ae608ed2ab6468a4ef8be79427ec, type: 3}
-  SubTwoSelection: {fileID: 5342935953083513367, guid: 673970fc22d578d40b9e29a4d4a2bc2c, type: 3}
   mainCamera: {fileID: 1526469516}
   canvas: {fileID: 1193627963}
   dialogueIndex: 0
@@ -43684,6 +43684,7 @@ MonoBehaviour:
   moonRadioMoon: {fileID: 532015202}
   moonRadioEarth: {fileID: 962116757}
   systemUI: {fileID: 0}
+  screen: {fileID: 606963710}
   popupUI: {fileID: 1337521961}
 --- !u!1 &1503305164
 GameObject:

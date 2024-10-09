@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Device;
 
 public class MoonRadioMainController : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class MoonRadioMainController : MonoBehaviour
 
     [SerializeField]
     GameObject systemUI; //이거 델리게이트로 대체할 예정
-    
+    [SerializeField]
+    GameObject screen;
     IPlayerInterface player;
 
     [SerializeField]
@@ -55,6 +57,7 @@ public class MoonRadioMainController : MonoBehaviour
     {
         if (moonRadioOff.activeSelf == false)
         {
+            screen.SetActive(true);
             moonRadioOn.SetActive(false);
             moonRadioOff.SetActive(true);
         }
