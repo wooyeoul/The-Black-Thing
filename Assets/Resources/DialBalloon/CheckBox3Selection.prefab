@@ -645,7 +645,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6527005239951607722}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2329454215104711207}
+        m_TargetAssemblyTypeName: SelectionController, Assembly-CSharp
+        m_MethodName: Choose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6527005239993962251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,7 +1284,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6527005240404184438}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2329454215104711207}
+        m_TargetAssemblyTypeName: SelectionController, Assembly-CSharp
+        m_MethodName: Choose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6527005240540372493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1524,7 +1548,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6527005240703624274}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2329454215104711207}
+        m_TargetAssemblyTypeName: SelectionController, Assembly-CSharp
+        m_MethodName: Choose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6527005240753362114
 GameObject:
   m_ObjectHideFlags: 0

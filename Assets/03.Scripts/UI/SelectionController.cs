@@ -17,7 +17,7 @@ public class SelectionController : MonoBehaviour
     public void Choose()
     {
         GameObject option = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-
+        Debug.Log(option);
         if (option.transform.GetChild(0).gameObject.activeSelf)
         {
             option.transform.GetChild(0).gameObject.SetActive(false);
