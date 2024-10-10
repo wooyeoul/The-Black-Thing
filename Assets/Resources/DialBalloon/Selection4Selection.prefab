@@ -806,7 +806,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 68ecdfefed80f4d12880a64ea30e0f91, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a596e431321c9664b8ea08abbbd3d566, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -938,7 +938,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5847861894344499825}
         m_TargetAssemblyTypeName: SelectManager, Assembly-CSharp
         m_MethodName: Choose
         m_Mode: 1
@@ -1157,7 +1157,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 68ecdfefed80f4d12880a64ea30e0f91, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a596e431321c9664b8ea08abbbd3d566, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1774,7 +1774,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5847861894344499825}
         m_TargetAssemblyTypeName: SelectManager, Assembly-CSharp
         m_MethodName: Choose
         m_Mode: 1
@@ -1908,7 +1908,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5847861894344499825}
         m_TargetAssemblyTypeName: SelectManager, Assembly-CSharp
         m_MethodName: Choose
         m_Mode: 1
@@ -2171,7 +2171,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5847861894344499825}
         m_TargetAssemblyTypeName: SelectManager, Assembly-CSharp
         m_MethodName: Choose
         m_Mode: 1
@@ -2286,7 +2286,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 68ecdfefed80f4d12880a64ea30e0f91, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a596e431321c9664b8ea08abbbd3d566, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2588,7 +2588,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 68ecdfefed80f4d12880a64ea30e0f91, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a596e431321c9664b8ea08abbbd3d566, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
