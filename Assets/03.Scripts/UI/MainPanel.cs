@@ -155,6 +155,7 @@ public class MainPanel : MonoBehaviour
         PanelOff();
         mainDialogue.currentDialogueList.Clear();
         dialogueIndex = 0;
+        mainDialogue.Exit(gameManager);
     }
     void PanelOff()
     {

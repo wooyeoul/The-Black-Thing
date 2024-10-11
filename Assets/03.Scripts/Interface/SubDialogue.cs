@@ -21,6 +21,8 @@ public class SubDialogue : MonoBehaviour
     protected ScrollManager scroll;
 
     public List<object> currentDialogueList = new List<object>();
+    public GameObject SystemUI;
+    public SubPanel SubPanel;
     GameManager manager;
 
 
@@ -119,7 +121,7 @@ public class SubDialogue : MonoBehaviour
     public void StartSub(string fileName)
     {
         SubPanel subPanel = this.transform.GetChild(0).GetComponent<SubPanel>();
-        
+        SystemUI = GameObject.Find("SystemUI");
         TextAsset dialogueData = Resources.Load<TextAsset>("CSV/" + fileName);
 
         if (dialogueData == null)
@@ -133,6 +135,7 @@ public class SubDialogue : MonoBehaviour
         
         subPanel.ShowNextDialogue();
         //manager.ScrollManager.StopCamera(true); -> 자꾸 오류 발생함
+        SystemUI.SetActive(false);
         
     }
 
@@ -150,5 +153,12 @@ public class SubDialogue : MonoBehaviour
         subdata.NextLineKey = SubDialogueEntries[idx].NextLineKey;
 
         return subdata;
+    }
+
+    public void Subexit()
+    {
+        SubPanel = this.transform.GetChild(0).GetComponent<SubPanel>();
+        SystemUI.SetActive(true);
+        SubPanel.DialEnd();
     }
 }

@@ -21,7 +21,7 @@ Main,ScriptKey,LineKey,Background,Actor,AnimState,DotAnim,DotExpression,TextType
 1,1,20,main_door_open,Player,Main,body_default1,face_noblink,selection,"(부끄럽다. 웃음으로 넘긴다.)|나만큼 이해심 깊은 사람도 없어, 하하.","(This is embarrassing. Laugh and brush it off.)|I mean, I <i>am</i> the most understanding person I know.",21|21,,,
 1,1,21,main_door_open,Player,Main,body_default1,face_noblink,text,대부분의 인간에겐 아주 중요한 문장일 거야.,It’s probably an important\nphrase for most people.,22,,,passive|active
 1,1,22,main_door_open,Player,Main,body_default1,face_blink,text,‘사랑해’는…,‘I love you’ is…,23,,,
-1,1,23,main_door_open,Player,Main,body_default1,face_noblink,selection,"낭만의 결정체, 사랑의 증표거든.|사랑을 표현하는 가장 투명한 수단이거든.","the essence of romance, the evidence of love.|the most transparent way to express love.",24,,,
+1,1,23,main_door_open,Player,Main,body_default1,face_noblink,selection,"낭만의 결정체, 사랑의 증표거든.|사랑을 표현하는 가장 투명한 수단이거든.","the essence of romance, the evidence of love.|the most transparent way to express love.",24|24,,,
 1,1,24,main_door_open,Player,Main,body_default1,face_noblink,text,사랑해. 사랑해. 이보다 사랑의 마음을\n잘 상징할 수 있는 문장은 없으니까.,I love you. I love you. No other phrase\ncould better represent the feeling of love.,25,,,sun|moon
 1,1,25,main_door_open,Dot,Main,body_default1,face_blink,text,그럼… 그렇다면 ‘사랑’이란 건 뭔데?,Then… then what is ‘love?’,26,,,
 1,1,26,main_door_open,Player,Main,body_default1,face_blink,text,사랑은…,Love is…,27,,,

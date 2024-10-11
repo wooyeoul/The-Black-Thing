@@ -16,6 +16,7 @@ public abstract class MainDialogue : GameState, ILoadingInterface
     protected LANGUAGE CurrentLanguage = LANGUAGE.KOREAN;
     protected List<DialogueEntry> DialogueEntries = new List<DialogueEntry>();
     public List<object> currentDialogueList = new List<object>();
+    public GameObject SystemUI;
     GameManager manager;
     MainPanel mainPanel;
 
@@ -43,6 +44,7 @@ public abstract class MainDialogue : GameState, ILoadingInterface
         this.dot = dot;
         dot.TriggerMain(true);
         //dot 한테 chapterList 에서 해당 위치랑 애니메이션이 변함.
+        SystemUI = GameObject.Find("SystemUI");
     }
 
     public void LoadData(string[] lines)
@@ -145,7 +147,7 @@ public abstract class MainDialogue : GameState, ILoadingInterface
         //배경화면이 켜질 때, 뭉치의 위치도 고장한다.
         //파라미터로 배경값을 전달하면 된다.
         //Day 7을 제외하곤 모두 배경값을 Enter에서 수정하면 되고, 데이 7일때만 변경해준다.
-
+        SystemUI.SetActive(false);
     }
     public override void Exit(GameManager manager)
     {
@@ -155,8 +157,10 @@ public abstract class MainDialogue : GameState, ILoadingInterface
         {
             background.SetActive(false);
         }
-
         manager.ObjectManager.activeSystemUIDelegate(true);
+        SystemUI.SetActive(true);
+
+        // Dot change state 가 들어와야할거 같음 -> 메인이 꺼졌는데도 큼직만한 뭉치 얼굴이 남아있음
     }
 
     void listclear()
