@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1072.6494, y: 0}
+  m_AnchoredPosition: {x: 1076.1394, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5339118561187244789
@@ -194,7 +194,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 272.5, y: 0}
+  m_AnchoredPosition: {x: 269.01, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5339118561613237752
@@ -226,7 +226,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 94563538fc3a4d846883693abbf135ff, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -262,18 +262,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 100
-    m_Right: 100
-    m_Top: 60
-    m_Bottom: 60
+    m_Left: 110
+    m_Right: 110
+    m_Top: 80
+    m_Bottom: 80
   m_ChildAlignment: 4
   m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
-  m_ChildScaleWidth: 1
-  m_ChildScaleHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
 --- !u!1 &5339118561982015991
 GameObject:
@@ -343,8 +343,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "~\u266B\u266E\u266D\u2669\u266B&?"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aba2ed9910d92024aa11ad6d086829ab, type: 2}
-  m_sharedMaterial: {fileID: 1161878357215438418, guid: aba2ed9910d92024aa11ad6d086829ab, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dd5a97841aedbd045875ad90eacbb027, type: 2}
+  m_sharedMaterial: {fileID: -6725150163497687133, guid: dd5a97841aedbd045875ad90eacbb027, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
