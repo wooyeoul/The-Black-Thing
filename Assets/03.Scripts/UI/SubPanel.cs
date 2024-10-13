@@ -32,6 +32,7 @@ public class SubPanel : MonoBehaviour
 
     [SerializeField] private Canvas canvas;
 
+    [SerializeField] public SubDialogue subDialogue;
     public int dialogueIndex = 0;  // Current dialogue index
     public int Day = 0;  // Current day
 
@@ -128,6 +129,7 @@ public class SubPanel : MonoBehaviour
         PanelOff();
         sub.currentDialogueList.Clear();
         dialogueIndex = 0;
+        subDialogue.Subexit();
     }
     void PanelOff()
     {

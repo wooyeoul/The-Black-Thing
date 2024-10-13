@@ -169,4 +169,8 @@ public class ScrollManager : MonoBehaviour
         this.transform.position = originalPos;
         isScreenStatic = true;
     }
+    public void scrollable()
+    {
+        isScreenStatic = false;
+    }
 }

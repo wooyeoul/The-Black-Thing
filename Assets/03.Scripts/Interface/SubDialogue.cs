@@ -8,7 +8,7 @@ using System;
 
 public class SubDialogue : MonoBehaviour
 {
-
+    public int subseq = 1;
     Dictionary<string, int> pos = new Dictionary<string, int>();
     protected GameObject background = null;
     protected DotController dot = null;
@@ -42,7 +42,7 @@ public class SubDialogue : MonoBehaviour
             if (parts.Length >= 13)
             {
                 int sub = int.Parse(parts[0]);
-                if (sub == 1) //****************테스트용으로 1을 넣어놨음**************** (서브 트리거 작동을 아직 모름)
+                if (sub == subseq) //****************테스트용으로 1을 넣어놨음**************** (서브 트리거 작동을 아직 모름)
                 {
                     SubDialogueEntry entry = new SubDialogueEntry
                     {
@@ -159,6 +159,12 @@ public class SubDialogue : MonoBehaviour
     {
         SubPanel = this.transform.GetChild(0).GetComponent<SubPanel>();
         SystemUI.SetActive(true);
-        SubPanel.DialEnd();
+        scroll.scrollable();
+        subseq += 1;
+        if (subseq>4)
+        {
+            subseq = 1;
+        }
+        Debug.Log("끝났을때 서브 번호: " + subseq);
     }
 }
