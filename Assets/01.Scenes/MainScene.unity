@@ -30332,6 +30332,17 @@ MonoBehaviour:
   - {fileID: 8937402363559452973, guid: 91226937677533943a7ed2c4c5caf36f, type: 3}
   - {fileID: 8937402363559452973, guid: 0995a192614fe0d42940396f9f02006c, type: 3}
   - {fileID: 8937402363559452973, guid: 5b435c14d54e8514ab59bfbaf7f0a6c1, type: 3}
+  prObjects:
+  - {fileID: 8937402363559452973, guid: 473f272a11094d541ac566d476f71d56, type: 3}
+  - {fileID: 8937402363559452973, guid: 98ae939575af9f64fb00c4c73e1a5c38, type: 3}
+  - {fileID: 8937402363559452973, guid: 045ad908d1547ec4389ce6dc7e8eb274, type: 3}
+  - {fileID: 8937402363559452973, guid: 11087c1e2fa4ba844bd9cba56bd1fb4d, type: 3}
+  - {fileID: 8937402363559452973, guid: 41fc00c1daa023943bbf33b2c8bd68bb, type: 3}
+  - {fileID: 8937402363559452973, guid: ed504d21fe80c1c40bfc3a6be3fd39a9, type: 3}
+  - {fileID: 8937402363559452973, guid: d2fc7d3c065788244b52b2d6341a510a, type: 3}
+  - {fileID: 8937402363559452973, guid: a3f2a48015a70514a91684d73daaeedb, type: 3}
+  - {fileID: 8937402363559452973, guid: 60c3e5af42a76ae46895d443af78e4b3, type: 3}
+  - {fileID: 8937402363559452973, guid: 62ff220217e0ee848aec01ae4e90b6f7, type: 3}
   prTbObjects:
   - {fileID: 4100195127551045945, guid: c1190d7ae2aba9f48802b2f83168d402, type: 3}
   - {fileID: 4100195127551045945, guid: fc93e460a41a3b54892ed21cb3671a85, type: 3}
@@ -30356,6 +30367,7 @@ MonoBehaviour:
   - {fileID: 5342935953083513367, guid: 86a8ae608ed2ab6468a4ef8be79427ec, type: 3}
   mainCamera: {fileID: 1526469516}
   canvas: {fileID: 1193627963}
+  subDialogue: {fileID: 0}
   dialogueIndex: 0
   Day: 0
 --- !u!1 &1110076821
@@ -49400,6 +49412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43118b2200c38214faf12bae9e7bfd21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  subseq: 1
   SubDialogueEntries: []
   scroll: {fileID: 1526469518}
   SystemUI: {fileID: 0}

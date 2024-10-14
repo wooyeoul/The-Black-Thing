@@ -389,8 +389,8 @@ MonoBehaviour:
   m_text: "\uC0AC\uC2E4 \uB09C,,, \uC798 \uBAA8\uB974\uACA0\uAE34 \uD55C\uB514...
     \uC774\uB807\uAC8C \n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: eb1cd21ad35e93147b7830408e9cf084, type: 2}
-  m_sharedMaterial: {fileID: 4585107220543724766, guid: eb1cd21ad35e93147b7830408e9cf084, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 343fc763440445743a47d6f03dfabec8, type: 2}
+  m_sharedMaterial: {fileID: 3461481825257306333, guid: 343fc763440445743a47d6f03dfabec8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -685,8 +685,8 @@ MonoBehaviour:
   m_text: "\uC120\uD0DD\uD574 1\uBC88\uC774\uC57C 2\uBC88\uC774\uC57C \uD55C\uBC88
     \uB9D0\uD574\uBD10."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: eb1cd21ad35e93147b7830408e9cf084, type: 2}
-  m_sharedMaterial: {fileID: 4585107220543724766, guid: eb1cd21ad35e93147b7830408e9cf084, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 343fc763440445743a47d6f03dfabec8, type: 2}
+  m_sharedMaterial: {fileID: 3461481825257306333, guid: 343fc763440445743a47d6f03dfabec8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -907,8 +907,8 @@ RectTransform:
   m_Father: {fileID: 686401876110969273}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}

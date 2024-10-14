@@ -23,6 +23,8 @@ public class SubPanel : MonoBehaviour
     // 리스트로 묶은 Dot 게임 오브젝트들
     [SerializeField] private List<GameObject> dotObjects = new List<GameObject>();
 
+    [SerializeField] private List<GameObject> prObjects = new List<GameObject>();
+
     // 리스트로 묶은 PR_TB 게임 오브젝트들
     [SerializeField] private List<GameObject> prTbObjects = new List<GameObject>();
 
@@ -67,6 +69,14 @@ public class SubPanel : MonoBehaviour
             instantiatedSels.SetActive(false);
             //instantiatedSels.AddComponent<CanvasGroup>();
             Sels[i] = instantiatedSels;
+        }
+
+        for (int i = 0; i < prObjects.Count; i++)
+        {
+            GameObject instantiatedDot = Instantiate(prObjects[i], parentTransform);
+            instantiatedDot.SetActive(false);
+            //instantiatedDot.AddComponent<CanvasGroup>();
+            prObjects[i] = instantiatedDot;
         }
     }
 
@@ -133,7 +143,7 @@ public class SubPanel : MonoBehaviour
     }
     void PanelOff()
     {
-        List<GameObject>[] panels = { dotObjects, prTbObjects, Sels };
+        List<GameObject>[] panels = { dotObjects, prTbObjects, Sels, prObjects };
         foreach (List<GameObject> panel in panels)
         {
             foreach (GameObject go in panel)
@@ -267,7 +277,7 @@ public class SubPanel : MonoBehaviour
                     if (color == 0) //Black
                     {
                         // "Black"이 포함된 오브젝트만 가져옴
-                        List<GameObject> blackDots = dotObjects.FindAll(dot => dot.name.Contains("Black"));
+                        List<GameObject> blackDots = prObjects.FindAll(dot => dot.name.Contains("Black"));
 
                         // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
                         GameObject selectedDot = blackDots.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));
@@ -286,7 +296,7 @@ public class SubPanel : MonoBehaviour
                     {
                         if (gameManager.Time == "Dawn")
                         {
-                            List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Dawn"));
+                            List<GameObject> Temp = prObjects.FindAll(dot => dot.name.Contains("Dawn"));
 
                             // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
                             GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));
@@ -303,7 +313,7 @@ public class SubPanel : MonoBehaviour
                         }
                         if (gameManager.Time == "Morning")
                         {
-                            List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Mor"));
+                            List<GameObject> Temp = prObjects.FindAll(dot => dot.name.Contains("Mor"));
 
                             // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
                             GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));
@@ -320,7 +330,7 @@ public class SubPanel : MonoBehaviour
                         }
                         if (gameManager.Time == "Evening")
                         {
-                            List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Eve"));
+                            List<GameObject> Temp = prObjects.FindAll(dot => dot.name.Contains("Eve"));
 
                             // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
                             GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));
@@ -337,7 +347,7 @@ public class SubPanel : MonoBehaviour
                         }
                         if (gameManager.Time == "Night")
                         {
-                            List<GameObject> Temp = dotObjects.FindAll(dot => dot.name.Contains("Nig"));
+                            List<GameObject> Temp = prObjects.FindAll(dot => dot.name.Contains("Nig"));
 
                             // Dot의 x 좌표가 음수이면 "L" 포함된 오브젝트를, 양수이면 "R" 포함된 오브젝트를 선택
                             GameObject selectedDot = Temp.Find(dot => dot.name.Contains(dotcontroller.transform.position.x < 0 ? "_R" : "_L"));

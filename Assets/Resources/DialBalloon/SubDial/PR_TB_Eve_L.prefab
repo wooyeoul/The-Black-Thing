@@ -642,7 +642,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4608440718539319941
 RectTransform:
   m_ObjectHideFlags: 0
@@ -968,7 +968,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: eb1cd21ad35e93147b7830408e9cf084, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 4585107220543724766, guid: eb1cd21ad35e93147b7830408e9cf084, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1262,7 +1262,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC0DD\uAC01\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: eb1cd21ad35e93147b7830408e9cf084, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 4585107220543724766, guid: eb1cd21ad35e93147b7830408e9cf084, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
