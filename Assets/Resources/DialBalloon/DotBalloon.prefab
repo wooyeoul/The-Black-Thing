@@ -38,7 +38,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 120, y: 0}
+  m_AnchoredPosition: {x: 150, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &8191282493246755756
@@ -199,7 +199,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uADF8\uB807\uAD6C\uB098."
+  m_text: "\uCC45\uC740 \uC544\uC8FC \uC624\uB798\uB418\uACE0 \uD22C\uBA85\uD55C
+    \uB9C8\uBC95 \uAC19\uC544,\\n\uB0A0 \uBD99\uC7A1\uACE0 \uADF8 \uC548\uC73C\uB85C
+    \uC18D\uC808\uC5C6\uC774 \uB04C\uC5B4\uB2F9\uAE30\uC9C0."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5c3a811db9d859443bb965aaf474cb38, type: 2}
   m_sharedMaterial: {fileID: -4252666411373407831, guid: 5c3a811db9d859443bb965aaf474cb38, type: 2}
@@ -226,8 +228,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -361,10 +363,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 120
-    m_Right: 120
-    m_Top: 90
-    m_Bottom: 100
+    m_Left: 150
+    m_Right: 140
+    m_Top: 120
+    m_Bottom: 120
   m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
