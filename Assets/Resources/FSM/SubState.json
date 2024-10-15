@@ -117,7 +117,7 @@
       {
           "key": "anim_mud",
           "value": {
-              "positions": [3.5]
+              "positions": [3.5, 5]
           }
       },
       {
