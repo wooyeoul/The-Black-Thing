@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 //여기서 게임 상태 정의 
 //하나의 큰 유한 상태 머신 만들 예정
 public enum GamePatternState
@@ -344,6 +345,11 @@ public class GameManager : MonoBehaviour
             dot.TriggerSub(true);
         }
         
+    }
+
+    public void SceneTutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
     }
 
 }

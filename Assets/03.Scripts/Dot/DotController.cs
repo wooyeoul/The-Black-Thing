@@ -191,20 +191,30 @@ public class DotController : MonoBehaviour
 
     public void TriggerSub(bool isActive)
     {
-       subAlert.SetActive(isActive);
+        alertOff();
+        subAlert.SetActive(isActive);
     }
 
     public void TriggerMain(bool isActive)
     {
+        alertOff();
         mainAlert.SetActive(isActive);
         /*여기서 OnClick 함수도 연결해준다.*/
         //OutPos 가 있다면 해당 Position으로 바껴야함.
     }
     public void TriggerPlay(bool isActive)
     {
+        alertOff();
         playAlert.SetActive(isActive);
         /*여기서 OnClick 함수도 연결해준다.*/
         //OutPos 가 있다면 해당 Position으로 바껴야함.
+    }
+
+    public void alertOff()
+    {
+        subAlert.SetActive(false);
+        mainAlert.SetActive(false);
+        playAlert.SetActive(false);
     }
 
     public void GoSleep()
