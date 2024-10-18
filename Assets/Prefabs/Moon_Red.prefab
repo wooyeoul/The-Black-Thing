@@ -198,7 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -264,6 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5098432455722081770}
   - component: {fileID: 5098432455722081771}
+  - component: {fileID: 8111839411177631729}
   m_Layer: 5
   m_Name: Moon_Red
   m_TagString: Untagged
@@ -318,6 +319,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &8111839411177631729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5098432455722081781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aebe7364d2dc6f14a91dbd115c84bec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterText: {fileID: 5098432455012925728}
 --- !u!1 &5098432456019097399
 GameObject:
   m_ObjectHideFlags: 0
