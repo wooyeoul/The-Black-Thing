@@ -19,6 +19,7 @@ public class SubPanel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI DotTextUI;
     [SerializeField] private TextMeshProUGUI PlayTextUI;
     [SerializeField] private TextMeshProUGUI InputTextUI;
+    [SerializeField] private TextMeshProUGUI Textinput;
 
     // 리스트로 묶은 Dot 게임 오브젝트들
     [SerializeField] private List<GameObject> dotObjects = new List<GameObject>();
@@ -379,9 +380,12 @@ public class SubPanel : MonoBehaviour
 
                     if (selectedDot != null)
                     {
+                        
                         PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                         PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                         PlayTextUI.text = $"{korText}";
+                        Textinput = selectedDot.transform.GetChild(3).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
+                        Textinput.text = "";
                         StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
                         RegisterNextButton(selectedDot.transform.GetComponent<Button>());
                     }
@@ -400,6 +404,8 @@ public class SubPanel : MonoBehaviour
                             PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                             PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             PlayTextUI.text = $"{korText}";
+                            Textinput = selectedDot.transform.GetChild(3).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
+                            Textinput.text = "";
                             StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
                             RegisterNextButton(selectedDot.transform.GetComponent<Button>());
                         }
@@ -416,6 +422,8 @@ public class SubPanel : MonoBehaviour
                             PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                             PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             PlayTextUI.text = $"{korText}";
+                            Textinput = selectedDot.transform.GetChild(3).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
+                            Textinput.text = "";
                             StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
                             RegisterNextButton(selectedDot.transform.GetComponent<Button>());
                         }
@@ -432,6 +440,8 @@ public class SubPanel : MonoBehaviour
                             PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                             PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             PlayTextUI.text = $"{korText}";
+                            Textinput = selectedDot.transform.GetChild(3).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
+                            Textinput.text = "";
                             StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
                             RegisterNextButton(selectedDot.transform.GetComponent<Button>());
                         }
@@ -448,6 +458,8 @@ public class SubPanel : MonoBehaviour
                             PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                             PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             PlayTextUI.text = $"{korText}";
+                            Textinput = selectedDot.transform.GetChild(3).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
+                            Textinput.text = "";
                             StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
                             RegisterNextButton(selectedDot.transform.GetComponent<Button>());
                         }

@@ -26,6 +26,7 @@ public class MainPanel : MonoBehaviour
     [SerializeField] GameObject Selection3Panel;
     [SerializeField] GameObject Selection4Panel;
     [SerializeField] Button NextButton;
+    [SerializeField] private TextMeshProUGUI Textinput;
 
     public int dialogueIndex = 0;  // Current dialogue index
     public int Day = 0;  // Current day
@@ -212,6 +213,8 @@ public class MainPanel : MonoBehaviour
             case "textbox":
                 InputPanel.SetActive(true);
                 InputTextUI.text = korText;
+                Textinput = InputPanel.transform.GetChild(2).GetChild(1).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
+                Textinput.text = "";
                 StartCoroutine(FadeIn(InputPanel.GetComponent<CanvasGroup>(), 0.5f, InputPanel.transform.GetChild(1).GetComponent<Button>()));
                 RegisterNextButton(InputPanel.transform.GetChild(1).GetComponent<Button>());
                 break;
