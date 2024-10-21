@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Assets.Script.DialClass;
-
+using UnityEngine.EventSystems;
 /* "말풍선 위치를 어떻게 해야하나 뭉치 위치를 가져와서 if pos.x < 0 이면 뭉치 기준 오른쪽 상단????? 
  pos.x > 0 이면 뭉치 기준 왼쪽 상단
  !! Dot은 스프라이트라 캔버스가 아니고 Panel UI는 캔버스 기준이라 위치를 통일시켜줘야 함 !!*/
@@ -19,8 +19,7 @@ public class SubPanel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI DotTextUI;
     [SerializeField] private TextMeshProUGUI PlayTextUI;
     [SerializeField] private TextMeshProUGUI InputTextUI;
-    [SerializeField] private TextMeshProUGUI Textinput;
-
+    [SerializeField] private TMP_InputField Textinput;
     // 리스트로 묶은 Dot 게임 오브젝트들
     [SerializeField] private List<GameObject> dotObjects = new List<GameObject>();
 
@@ -384,8 +383,7 @@ public class SubPanel : MonoBehaviour
                         PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                         PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                         PlayTextUI.text = $"{korText}";
-                        Textinput = selectedDot.transform.GetChild(3).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
-                        Textinput.text = "";
+                        Resetinputfield(selectedDot);
                         StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
                         RegisterNextButton(selectedDot.transform.GetComponent<Button>());
                     }
@@ -404,8 +402,7 @@ public class SubPanel : MonoBehaviour
                             PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                             PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             PlayTextUI.text = $"{korText}";
-                            Textinput = selectedDot.transform.GetChild(3).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
-                            Textinput.text = "";
+                            Resetinputfield(selectedDot);
                             StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
                             RegisterNextButton(selectedDot.transform.GetComponent<Button>());
                         }
@@ -422,8 +419,7 @@ public class SubPanel : MonoBehaviour
                             PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                             PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             PlayTextUI.text = $"{korText}";
-                            Textinput = selectedDot.transform.GetChild(3).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
-                            Textinput.text = "";
+                            Resetinputfield(selectedDot);
                             StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
                             RegisterNextButton(selectedDot.transform.GetComponent<Button>());
                         }
@@ -440,8 +436,7 @@ public class SubPanel : MonoBehaviour
                             PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                             PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             PlayTextUI.text = $"{korText}";
-                            Textinput = selectedDot.transform.GetChild(3).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
-                            Textinput.text = "";
+                            Resetinputfield(selectedDot);
                             StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
                             RegisterNextButton(selectedDot.transform.GetComponent<Button>());
                         }
@@ -458,8 +453,7 @@ public class SubPanel : MonoBehaviour
                             PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                             PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             PlayTextUI.text = $"{korText}";
-                            Textinput = selectedDot.transform.GetChild(3).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
-                            Textinput.text = "";
+                            Resetinputfield(selectedDot);
                             StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
                             RegisterNextButton(selectedDot.transform.GetComponent<Button>());
                         }
@@ -659,6 +653,15 @@ public class SubPanel : MonoBehaviour
     private void OnDisable()
     {
         PanelOff();
+    }
+
+    public void Resetinputfield(GameObject field)
+    {
+        TextMeshProUGUI inputfield = field.transform.GetChild(3).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
+        Textinput = field.transform.GetChild(3).GetComponent<TMP_InputField>();
+        Textinput.text = "";
+        inputfield.text = "";
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
 }

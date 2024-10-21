@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Assets.Script.DialClass;
+using UnityEngine.EventSystems;
 
 public class MainPanel : MonoBehaviour
 {
@@ -26,7 +27,8 @@ public class MainPanel : MonoBehaviour
     [SerializeField] GameObject Selection3Panel;
     [SerializeField] GameObject Selection4Panel;
     [SerializeField] Button NextButton;
-    [SerializeField] private TextMeshProUGUI Textinput;
+    [SerializeField] private TMP_InputField Textinput;
+    
 
     public int dialogueIndex = 0;  // Current dialogue index
     public int Day = 0;  // Current day
@@ -213,8 +215,7 @@ public class MainPanel : MonoBehaviour
             case "textbox":
                 InputPanel.SetActive(true);
                 InputTextUI.text = korText;
-                Textinput = InputPanel.transform.GetChild(2).GetChild(1).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
-                Textinput.text = "";
+                Resetinputfield(InputPanel);
                 StartCoroutine(FadeIn(InputPanel.GetComponent<CanvasGroup>(), 0.5f, InputPanel.transform.GetChild(1).GetComponent<Button>()));
                 RegisterNextButton(InputPanel.transform.GetChild(1).GetComponent<Button>());
                 break;
@@ -297,5 +298,14 @@ public class MainPanel : MonoBehaviour
         }
 
         ShowNextDialogue();
+    }
+
+    public void Resetinputfield(GameObject field)
+    {
+        TextMeshProUGUI inputfield = field.transform.GetChild(2).GetChild(1).GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
+        Textinput = field.transform.GetChild(2).GetChild(1).GetComponent<TMP_InputField>();
+        Textinput.text = "";
+        inputfield.text = "";
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }

@@ -10542,7 +10542,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &406888226
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30321,6 +30321,7 @@ MonoBehaviour:
   DotTextUI: {fileID: 0}
   PlayTextUI: {fileID: 0}
   InputTextUI: {fileID: 0}
+  Textinput: {fileID: 0}
   dotObjects:
   - {fileID: 8937402363559452973, guid: dd4be58e4a195ed41a69b900231b4898, type: 3}
   - {fileID: 8937402363559452973, guid: ae27804424807584daec402b93308d51, type: 3}
@@ -35894,7 +35895,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -37756,7 +37757,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.00061035156, y: 0}
-  m_SizeDelta: {x: -1461.2987, y: -783.93115}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1315430425
 MonoBehaviour:
@@ -46594,6 +46595,7 @@ MonoBehaviour:
   Selection3Panel: {fileID: 0}
   Selection4Panel: {fileID: 0}
   NextButton: {fileID: 0}
+  Textinput: {fileID: 0}
   dialogueIndex: 0
   Day: 0
 --- !u!1 &1592872502
@@ -62886,6 +62888,7 @@ MonoBehaviour:
   Selection3Panel: {fileID: 0}
   Selection4Panel: {fileID: 0}
   NextButton: {fileID: 0}
+  Textinput: {fileID: 0}
   dialogueIndex: 0
   Day: 0
 --- !u!224 &8899152122286662229
