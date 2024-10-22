@@ -98,10 +98,10 @@ public class SubPanel : MonoBehaviour
     public void OnSelectionClicked(int index)
     {
         var currentEntry = sub.GetData(dialogueIndex);
+
         if (currentEntry.NextLineKey != null)
         {
             string[] nextKeys = currentEntry.NextLineKey.Split('|');
-
             if (index < nextKeys.Length && int.TryParse(nextKeys[index], out int nextLineKey))
             {
                 int nextIndex = sub.currentDialogueList.FindIndex(entry => (entry as SubDialogueEntry)?.LineKey == nextLineKey);
@@ -161,10 +161,12 @@ public class SubPanel : MonoBehaviour
             DialEnd();
             return;
         }
-        string textType = sub.GetData(dialogueIndex).TextType;
-        string actor = sub.GetData(dialogueIndex).Actor;
-        string korText = sub.GetData(dialogueIndex).Text;
-        int color = sub.GetData(dialogueIndex).Color;
+        sub nextDial = sub.GetData(dialogueIndex);
+
+        string textType = nextDial.TextType;
+        string actor = nextDial.Actor;
+        string korText = nextDial.Text;
+        int color = nextDial.Color;
 
         switch (textType)
         {
@@ -568,6 +570,7 @@ public class SubPanel : MonoBehaviour
         var currentEntry = sub.GetData(dialogueIndex);
         if (currentEntry.NextLineKey != null)
         {
+            dotcontroller.ChangeState(DotPatternState.Sub, currentEntry.DotAnim);
             if (int.TryParse(currentEntry.NextLineKey, out int nextLineKey))
             {
                 int nextIndex = sub.currentDialogueList.FindIndex(entry => (entry as SubDialogueEntry)?.LineKey == nextLineKey);

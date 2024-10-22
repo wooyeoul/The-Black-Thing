@@ -177,9 +177,12 @@ public class MainPanel : MonoBehaviour
             DialEnd();
             return;
         }
-        string textType = mainDialogue.GetData(dialogueIndex).TextType;
-        string actor = mainDialogue.GetData(dialogueIndex).Actor;
-        string korText = mainDialogue.GetData(dialogueIndex).Text;
+
+        main mainDial = mainDialogue.GetData(dialogueIndex);
+
+        string textType = mainDial.TextType;
+        string actor = mainDial.Actor;
+        string korText = mainDial.Text;
 
         switch (textType)
         {

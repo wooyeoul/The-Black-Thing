@@ -228,7 +228,6 @@ public class GameManager : MonoBehaviour
             time = SITime.Night;
         }
 
-        time = SITime.Night;
         OnVideoCompleted(); //미리 데이터 로드
         StartCoroutine(LoadDataAsync());
     }
@@ -338,6 +337,8 @@ public class GameManager : MonoBehaviour
         ScriptList script = dot.GetSubScriptList(Pattern); //현재 몇번째 서브 진행중인지 체크
 
         DotPatternState dotPattern;
+
+        Debug.Log(script.AnimState + " Sub 진행중");
         if (Enum.TryParse(script.AnimState, true, out dotPattern))
         {
 

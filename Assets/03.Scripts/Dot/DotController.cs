@@ -173,7 +173,6 @@ public class DotController : MonoBehaviour
 
         if (subAlert.activeSelf)
         {
-            Debug.Log("서브 시작");
             subDialogue.SetActive(true);
             string fileName = "sub_ch" + Chapter;
             subDialogue.GetComponent<SubDialogue>().StartSub(fileName);
