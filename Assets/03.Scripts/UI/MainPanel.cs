@@ -28,6 +28,7 @@ public class MainPanel : MonoBehaviour
     [SerializeField] GameObject Selection4Panel;
     [SerializeField] Button NextButton;
     [SerializeField] private TMP_InputField Textinput;
+    [SerializeField] GameObject MainClick;
     
 
     public int dialogueIndex = 0;  // Current dialogue index
@@ -38,7 +39,8 @@ public class MainPanel : MonoBehaviour
     {
         //게임매니저 게임패턴
         mainDialogue = (MainDialogue)gameManager.CurrentState;
-        pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();   
+        pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        MainClick = GameObject.Find("MainClick");
     }
 
 
@@ -167,6 +169,7 @@ public class MainPanel : MonoBehaviour
         {
             panel.SetActive(false);
         }
+        MainClick.SetActive(false);
     }
 
     public void ShowNextDialogue()
@@ -189,6 +192,7 @@ public class MainPanel : MonoBehaviour
             case "text":
                 if (actor == "Dot")
                 {
+                    MainClick.SetActive(true);
                     if (korText.Contains("<nickname>"))
                     {
                         if(pc)
@@ -199,8 +203,8 @@ public class MainPanel : MonoBehaviour
 
                     DotPanel.SetActive(true);
                     DotTextUI.text = $"{korText}";
-                    StartCoroutine(FadeIn(DotPanel.GetComponent<CanvasGroup>(), 0.5f, DotPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>()));
-                    RegisterNextButton(DotPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>());
+                    StartCoroutine(FadeIn(DotPanel.GetComponent<CanvasGroup>(), 0.5f, MainClick.GetComponent<Button>()));
+                    RegisterNextButton(MainClick.GetComponent<Button>());
                 }
                 else if (actor == "Player")
                 {
