@@ -30368,8 +30368,8 @@ MonoBehaviour:
   - {fileID: 5342935953083513367, guid: 86a8ae608ed2ab6468a4ef8be79427ec, type: 3}
   mainCamera: {fileID: 1526469516}
   canvas: {fileID: 1193627963}
-  subDialogue: {fileID: 0}
-  SubClick: {fileID: 0}
+  subDialogue: {fileID: 1720718690}
+  subClick: {fileID: 1109418667}
   dialogueIndex: 0
   Day: 0
 --- !u!1 &1110076821
