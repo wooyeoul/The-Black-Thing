@@ -34,18 +34,22 @@ public class SubPanel : MonoBehaviour
 
     [SerializeField] private Canvas canvas;
 
-    [SerializeField] public SubDialogue subDialogue;
-
     [SerializeField] 
     private GameObject subClick;
 
     public int dialogueIndex = 0;  // Current dialogue index
     public int Day = 0;  // Current day
-
+    
     void OnEnable()
     {
         pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        //subClick = GameObject.Find("SubClick");
+    }
+
+    private void Start()
+    {
         subClick = GameObject.Find("SubClick");
+        Debug.Log("¼­ºê: " + subClick);
     }
 
     public void InitializePanels()
@@ -144,7 +148,7 @@ public class SubPanel : MonoBehaviour
         PanelOff();
         sub.currentDialogueList.Clear();
         dialogueIndex = 0;
-        subDialogue.Subexit();
+        sub.Subexit();
     }
     void PanelOff()
     {
@@ -156,7 +160,8 @@ public class SubPanel : MonoBehaviour
                 go.SetActive(false);
             }
         }
-        subClick.SetActive(false);
+        if (subClick)
+            subClick.SetActive(false);
     }
 
     public void ShowNextDialogue()

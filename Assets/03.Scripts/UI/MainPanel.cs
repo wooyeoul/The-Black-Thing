@@ -169,7 +169,8 @@ public class MainPanel : MonoBehaviour
         {
             panel.SetActive(false);
         }
-        MainClick.SetActive(false);
+        if (MainClick)
+            MainClick.SetActive(false);
     }
 
     public void ShowNextDialogue()
