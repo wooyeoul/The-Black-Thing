@@ -5017,7 +5017,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 199268582}
-  - component: {fileID: 199268581}
+  - component: {fileID: 199268583}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -5025,23 +5025,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &199268581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 199268580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84706ed86c1c5d647a95ec27c7ca9e54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainDialoguePanel: {fileID: 8899152122286662226}
-  videoController: {fileID: 866035066}
-  subDialoguePanel: {fileID: 0}
-  dot: {fileID: 2046645039688417658}
-  loadingProgressBar: {fileID: 1760591409901623052}
 --- !u!4 &199268582
 Transform:
   m_ObjectHideFlags: 0
@@ -5057,6 +5040,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &199268583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199268580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3502de74aeca524383118a18ddbd18b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dot: {fileID: 0}
+  mainDialoguePanel: {fileID: 0}
+  videoController: {fileID: 0}
+  subDialoguePanel: {fileID: 0}
+  loadingProgressBar: {fileID: 0}
 --- !u!1 &201689321
 GameObject:
   m_ObjectHideFlags: 0
@@ -22659,7 +22659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3f5156328e32d42a717758b651d781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 199268581}
+  gameManager: {fileID: 0}
   path:
   - 1h9ThOUORapLcvDycnK7uPGuql5cfA_oq
   - 1fJoIePkzMH01rUqjrhQVbOvmpZpXT3CW
@@ -30314,13 +30314,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7367bfcc5c303b40ad6b61c759e1865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 199268581}
+  gameManager: {fileID: 0}
   pc: {fileID: 2022455605}
   dotcontroller: {fileID: 2046645039688417658}
   sub: {fileID: 1720718690}
   DotTextUI: {fileID: 0}
   PlayTextUI: {fileID: 0}
   InputTextUI: {fileID: 0}
+  Textinput: {fileID: 0}
   dotObjects:
   - {fileID: 8937402363559452973, guid: dd4be58e4a195ed41a69b900231b4898, type: 3}
   - {fileID: 8937402363559452973, guid: ae27804424807584daec402b93308d51, type: 3}
@@ -30367,7 +30368,7 @@ MonoBehaviour:
   - {fileID: 5342935953083513367, guid: 86a8ae608ed2ab6468a4ef8be79427ec, type: 3}
   mainCamera: {fileID: 1526469516}
   canvas: {fileID: 1193627963}
-  subDialogue: {fileID: 0}
+  subClick: {fileID: 0}
   dialogueIndex: 0
   Day: 0
 --- !u!1 &1110076821
@@ -46540,7 +46541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84baaf5423de022468074395054648b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 199268581}
+  gameManager: {fileID: 0}
   pc: {fileID: 0}
   DotTextUI: {fileID: 0}
   PlayTextUI: {fileID: 0}
@@ -46554,6 +46555,8 @@ MonoBehaviour:
   Selection3Panel: {fileID: 0}
   Selection4Panel: {fileID: 0}
   NextButton: {fileID: 0}
+  Textinput: {fileID: 0}
+  MainClick: {fileID: 0}
   dialogueIndex: 0
   Day: 0
 --- !u!1 &1592872502
@@ -54930,7 +54933,7 @@ PrefabInstance:
     - target: {fileID: 8133282678141846311, guid: 7d082580c38bcf4409627fd0731965d2, type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 199268581}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d082580c38bcf4409627fd0731965d2, type: 3}
 --- !u!1 &1937256257
@@ -62101,7 +62104,7 @@ MonoBehaviour:
   - {fileID: 1725523482}
   - {fileID: 1094932322510850395}
   chapter: 0
-  manager: {fileID: 199268581}
+  manager: {fileID: 0}
   pc: {fileID: 2022455605}
   animator: {fileID: 2921298288689103229}
   eyes: {fileID: 4247061019833211656}
@@ -62832,7 +62835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84baaf5423de022468074395054648b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 199268581}
+  gameManager: {fileID: 0}
   pc: {fileID: 0}
   DotTextUI: {fileID: 0}
   PlayTextUI: {fileID: 0}
@@ -62846,6 +62849,8 @@ MonoBehaviour:
   Selection3Panel: {fileID: 0}
   Selection4Panel: {fileID: 0}
   NextButton: {fileID: 0}
+  Textinput: {fileID: 0}
+  MainClick: {fileID: 0}
   dialogueIndex: 0
   Day: 0
 --- !u!224 &8899152122286662229
