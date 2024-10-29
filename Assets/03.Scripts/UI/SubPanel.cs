@@ -617,9 +617,20 @@ public class SubPanel : MonoBehaviour
     {
         Debug.Log("서브 말풍선 위치 설정");
         Debug.Log(dotcontroller.transform.position);
+
         Vector2 screenPos = Camera.main.WorldToScreenPoint(dotcontroller.transform.position);
+        Vector2 dotacnchorPos;
+        RectTransform canvasrect = canvas.GetComponent<RectTransform>();
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            canvasrect,
+            new Vector2(dotcontroller.transform.position.x * Screen.width, dotcontroller.transform.position.y * Screen.height),
+            Camera.main,
+            out dotacnchorPos
+        );
         RectTransform speechBubbleUI = dotbub.GetComponent<RectTransform>();
         Debug.Log(screenPos);
+        Debug.Log("앵커드 포지션: " + dotacnchorPos);
 
         if (dotcontroller.transform.position.x < 0)
         {
@@ -647,8 +658,8 @@ public class SubPanel : MonoBehaviour
             
             // 왼쪽 하단에 배치
             rectTransform.anchorMin = new Vector2(0, 0);
-            rectTransform.anchorMax = new Vector2(0, 0); 
-            rectTransform.pivot = new Vector2(0, 0);    
+            rectTransform.anchorMax = new Vector2(0, 0);
+            rectTransform.pivot = new Vector2(0, 0);
             rectTransform.anchoredPosition = new Vector2(50, -400); 
         }
     
