@@ -5052,11 +5052,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3502de74aeca524383118a18ddbd18b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dot: {fileID: 0}
-  mainDialoguePanel: {fileID: 0}
+  dot: {fileID: 2046645039688417658}
+  pc: {fileID: 0}
+  mainDialoguePanel: {fileID: 8899152122286662226}
   videoController: {fileID: 0}
   subDialoguePanel: {fileID: 0}
-  loadingProgressBar: {fileID: 0}
+  loadingProgressBar: {fileID: 1760591409901623052}
 --- !u!1 &201689321
 GameObject:
   m_ObjectHideFlags: 0
@@ -62104,7 +62105,7 @@ MonoBehaviour:
   - {fileID: 1725523482}
   - {fileID: 1094932322510850395}
   chapter: 0
-  manager: {fileID: 0}
+  manager: {fileID: 199268583}
   pc: {fileID: 2022455605}
   animator: {fileID: 2921298288689103229}
   eyes: {fileID: 4247061019833211656}

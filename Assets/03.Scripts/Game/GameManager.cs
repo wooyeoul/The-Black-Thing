@@ -61,23 +61,23 @@ public class GameManager : MonoBehaviour
         get { return currentPattern; }
     }
     private Dictionary<GamePatternState, GameState> states;
-    private PlayerController pc;
+    public PlayerController pc;
 
 
     public delegate void OnVideoEndedDelegate();
 
     OnVideoEndedDelegate onVideoEnded;
     [SerializeField]
-    GameObject mainDialoguePanel;
+    public GameObject mainDialoguePanel;
 
     [SerializeField]
-    VideoPlayerController videoController;
+    public VideoPlayerController videoController;
 
     [SerializeField]
-    GameObject subDialoguePanel;
+    public GameObject subDialoguePanel;
 
     [SerializeField]
-    Slider loadingProgressBar;
+    public Slider loadingProgressBar;
 
     public int Chapter
     {
