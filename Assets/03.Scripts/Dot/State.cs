@@ -232,3 +232,30 @@ public class Trigger : DotState
     {
     }
 }
+
+public class DotTutorial : DotState
+{
+    public override void Init(DotAnimState state, List<float> pos)
+    {
+
+    }
+
+    public override void Enter(DotController dot)
+    {
+        Debug.Log("뭉치 컨트롤");
+        dot.transform.position = GetCoordinate(dot.Position);
+        Debug.Log(dot.Position);
+        dot.Animator.SetInteger(Animator.StringToHash("DotAnimState"), (int)DotAnimState.anim_default);
+        Debug.Log("튜토 애니" + dot.AnimKey);//애니메이션 업데이트
+
+    }
+    public override void Exit(DotController dot)
+    {
+
+    }
+
+    public override void Read()
+    {
+
+    }
+}

@@ -179,7 +179,5 @@ public class TutorialManager : GameManager
 
         // 코루틴이 완료되었을 때 100%로 설정
         loadingProgressBar.value += weight;
-    }
-       
-        
+    }   
 }

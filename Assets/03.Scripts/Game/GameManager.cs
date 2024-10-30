@@ -353,5 +353,9 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    public void Delay(string function, float delay)
+    {
+        Invoke(function, delay);
+    }
 }
 

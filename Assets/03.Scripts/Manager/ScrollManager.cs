@@ -186,13 +186,12 @@ public class ScrollManager : MonoBehaviour
 
         while (elapsedTime < duration)
         {
-            // 시간에 따라 카메라 위치를 보간하여 이동
             transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
-            yield return null; // 한 프레임 대기
+            yield return null; 
         }
-
-        // 이동을 정확히 목표 위치로 마무리
+        
         transform.position = targetPosition;
+
     }
 }

@@ -114,7 +114,8 @@ public class DotController : MonoBehaviour
         states.Add(DotPatternState.Main, new Main());
         states.Add(DotPatternState.Sub, new Sub());
         states.Add(DotPatternState.Tirgger, new Trigger());
-        
+        states.Add(DotPatternState.Tutorial, new DotTutorial());
+
         ScriptListParser scriptListParser = new ScriptListParser();
         mainScriptLists = new List<List<ScriptList>>();
         subScriptLists = new List<Dictionary<GamePatternState, List<ScriptList>>>();

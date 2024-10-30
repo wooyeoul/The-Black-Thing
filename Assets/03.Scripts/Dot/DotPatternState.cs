@@ -100,7 +100,8 @@ public enum DotPatternState
     Sub = 2,
     Main = 3,
     Phase = 4,
-    Tirgger = 5
+    Tirgger = 5,
+    Tutorial = 6
 }
 
 public enum DotEyes
