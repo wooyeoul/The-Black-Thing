@@ -50,7 +50,7 @@ public class DoorController : MonoBehaviour
 
     private void Start()
     {
-        animator = this.transform.parent.GetComponent<Animator>();
+       
     }
 
     private void OnMouseDown()
@@ -61,18 +61,30 @@ public class DoorController : MonoBehaviour
             return;
         }
 
-        int OpenIdx = Animator.StringToHash("isOpening");
-        animator.SetFloat(Animator.StringToHash("speed"), 1.0f);
 
         if (isDoorOpen)
         {
             //열려있을 경우, 닫아야함
-            animator.SetBool(OpenIdx, false);
+            close();
         }
         else
         {
             //닫아있는 경우, 열어야함
-            animator.SetBool(OpenIdx, true);
+            open();
         }
+    }
+    public void close()
+    {
+        int OpenIdx = Animator.StringToHash("isOpening");
+        animator = this.transform.parent.GetComponent<Animator>();
+        animator.SetFloat(Animator.StringToHash("speed"), 1.0f);
+        animator.SetBool(OpenIdx, false);
+    }
+    public void open()
+    {
+        int OpenIdx = Animator.StringToHash("isOpening");
+        animator = this.transform.parent.GetComponent<Animator>();
+        animator.SetFloat(Animator.StringToHash("speed"), 1.0f);
+        animator.SetBool(OpenIdx, true);
     }
 }

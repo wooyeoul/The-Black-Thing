@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour, IPlayerInterface
     [SerializeField]
     string nickname;
     [SerializeField]
-    int currentChapter;
+    private int currentChapter;
     const float passTime = 1800f; //30분을 기준으로 한다.
     // Start is called before the first frame update
 
@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour, IPlayerInterface
         //nextPhaseDelegate(player.currentPhase);
 
         successSubDialDelegate += SuccessSubDial;
+        currentChapter = GetChapter();
     }
     // Update is called once per frame
     //1시간이 되었는지 체크하기 위해서 저정용도

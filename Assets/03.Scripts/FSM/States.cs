@@ -279,3 +279,4 @@ public class NextChapter : GameState
         manager.ObjectManager.SkipSleeping(false);
     }
 }
+

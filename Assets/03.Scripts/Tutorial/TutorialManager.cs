@@ -27,7 +27,7 @@ public class TutorialManager : GameManager
         get { return Tutostate; }
     }
 
-   
+
     TutorialManager()
     {
         states = new Dictionary<TutorialState, GameState>();
@@ -47,7 +47,7 @@ public class TutorialManager : GameManager
         }
 
         pc = GameObject.FindWithTag("Player").gameObject.GetComponent<PlayerController>();
-        pc.nextPhaseDelegate += ChangeGameState;
+        //pc.nextPhaseDelegate += ChangeGameState;
         objectManager = GameObject.FindWithTag("ObjectManager").gameObject.GetComponent<ObjectManager>();
         scrollManager = GameObject.FindWithTag("MainCamera").gameObject.GetComponent<ScrollManager>();
     }
@@ -64,7 +64,7 @@ public class TutorialManager : GameManager
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void ChangeGameState(TutorialState patternState)
@@ -180,4 +180,6 @@ public class TutorialManager : GameManager
         // 코루틴이 완료되었을 때 100%로 설정
         loadingProgressBar.value += weight;
     }
+       
+        
 }
