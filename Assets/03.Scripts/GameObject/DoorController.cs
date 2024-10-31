@@ -35,15 +35,23 @@ public class DoorController : MonoBehaviour
             {
                 if (collider != targetCollider && collider.gameObject == dot)
                 {
-                    dot.SetActive(false);
+                    SpriteRenderer dotRenderer = dot.GetComponent<SpriteRenderer>();
+                    Color color = dotRenderer.color;
+                    color.a = 0f; 
+                    dotRenderer.color = color;
+                    dot.GetComponent<BoxCollider2D>().enabled = false;
                 }
             }
         }
         else
         {
-            if(dot.activeSelf == false)
+            if (dot.GetComponent<BoxCollider2D>().enabled == false)
             {
-                dot.SetActive(true);
+                SpriteRenderer dotRenderer = dot.GetComponent<SpriteRenderer>();
+                Color color = dotRenderer.color;
+                color.a = 255f;
+                dotRenderer.color = color;
+                dot.GetComponent<BoxCollider2D>().enabled = true;
             }
         }
     }

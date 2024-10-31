@@ -166,7 +166,7 @@ public class ScrollManager : MonoBehaviour
     }
     public void stopscroll()
     {
-        this.transform.position = originalPos;
+        //this.transform.position = originalPos; //임시방편이라 없애야됨
         isScreenStatic = true;
     }
     public void scrollable()

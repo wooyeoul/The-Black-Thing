@@ -56,9 +56,9 @@ public class DotController : MonoBehaviour
     [SerializeField]
     List<Dictionary<GamePatternState,List<ScriptList>>> subScriptLists; //List chapter Dictionary<gamestate,List<ScriptList>>> 
     [SerializeField]
-    GameObject subDialogue;
+    public GameObject subDialogue;
     [SerializeField]
-    GameObject subPanel;
+    public GameObject subPanel;
     public GameObject Dust
     {
         get { return dust; }

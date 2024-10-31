@@ -5037,10 +5037,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84706ed86c1c5d647a95ec27c7ca9e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dot: {fileID: 2046645039688417658}
+  pc: {fileID: 0}
   mainDialoguePanel: {fileID: 8899152122286662226}
   videoController: {fileID: 866035066}
-  subDialoguePanel: {fileID: 0}
-  dot: {fileID: 2046645039688417658}
+  subDialoguePanel: {fileID: 1720718688}
   loadingProgressBar: {fileID: 1760591409901623052}
 --- !u!4 &199268582
 Transform:

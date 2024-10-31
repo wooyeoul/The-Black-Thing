@@ -44,10 +44,11 @@ namespace Assets.Script.DialClass
     public class SubDialogueEntry
     {
         public int Sub;
-        public int ScriptKey;
+        public string ScriptNumber;
         public int LineKey;
         public int Color;
         public string Actor;
+        public string AnimState;
         public string DotAnim;
         public string TextType;
         public string KorText;

@@ -47,18 +47,19 @@ public class SubDialogue : MonoBehaviour
                     SubDialogueEntry entry = new SubDialogueEntry
                     {
                         Sub = sub,
-                        ScriptKey = int.Parse(parts[1]),
+                        ScriptNumber = parts[1],
                         LineKey = int.Parse(parts[2]),
                         Color = int.Parse(parts[3]),
                         Actor = parts[4],
-                        DotAnim = parts[5],
-                        TextType = parts[6],
-                        KorText = ApplyLineBreaks(parts[7]),
-                        EngText = ApplyLineBreaks(parts[8]),
-                        NextLineKey = parts[9],
-                        Deathnote = parts[10],
-                        AfterScript = parts[11],
-                        Exeption = parts[12]
+                        AnimState = parts[5],
+                        DotAnim = parts[6],
+                        TextType = parts[7],
+                        KorText = ApplyLineBreaks(parts[8]),
+                        EngText = ApplyLineBreaks(parts[9]),
+                        NextLineKey = parts[10],
+                        Deathnote = parts[11],
+                        AfterScript = parts[12],
+                        Exeption = parts[13]
                     };
 
                     string displayedText = CurrentLanguage == LANGUAGE.KOREAN ? entry.KorText : entry.EngText;
@@ -121,7 +122,8 @@ public class SubDialogue : MonoBehaviour
     public void StartSub(string fileName)
     {
         SubPanel subPanel = this.transform.GetChild(0).GetComponent<SubPanel>();
-        SystemUI = GameObject.Find("SystemUI");
+        if (SystemUI)
+            SystemUI = GameObject.Find("SystemUI");
         TextAsset dialogueData = Resources.Load<TextAsset>("CSV/" + fileName);
 
         if (dialogueData == null)
@@ -135,7 +137,8 @@ public class SubDialogue : MonoBehaviour
         
         subPanel.ShowNextDialogue();
         //manager.ScrollManager.StopCamera(true); -> 자꾸 오류 발생함
-        SystemUI.SetActive(false);
+        if (SystemUI)
+            SystemUI.SetActive(false);
         
     }
 
@@ -160,7 +163,8 @@ public class SubDialogue : MonoBehaviour
     public void Subexit()
     {
         SubPanel = this.transform.GetChild(0).GetComponent<SubPanel>();
-        SystemUI.SetActive(true);
+        if (!SystemUI)
+            SystemUI.SetActive(true);
         scroll.scrollable();
         subseq += 1;
         if (subseq>4)

@@ -8,6 +8,7 @@ namespace Tutorial
 {
     public class Sub : GameState
     {
+        private GameObject subdial;
         const int pos = 3;
         const string anim = "anim_default";
         public Sub()
@@ -30,6 +31,7 @@ namespace Tutorial
             manager.ScrollManager.MoveCamera(new Vector3((float)5.70, 0, -10), 2);
             manager.ScrollManager.stopscroll();
             InvokeHelper.Instance.InvokeAfterDelay(substart, 2f);
+            subdial = manager.subDialoguePanel;
         }
 
         public override void Exit(GameManager manager)
@@ -38,7 +40,11 @@ namespace Tutorial
         }
         public void substart()
         {
-            Debug.Log("아 모르겠다");
+
+            Debug.Log("튜토리얼 대화 시작");
+            subdial.SetActive(true);
+            subdial.GetComponent<SubDialogue>().StartSub("tutorial_sub");
+            
         }
     }
     public class Main: MainDialogue
