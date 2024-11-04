@@ -145,7 +145,7 @@ public class SubDialogue : MonoBehaviour
     public sub GetData(int idx)
     {
         sub subdata = new sub();
-
+        subdata.ScriptNumber = SubDialogueEntries[idx].ScriptNumber;
         subdata.LineKey = SubDialogueEntries[idx].LineKey;
         subdata.Actor = SubDialogueEntries[idx].Actor;
         subdata.TextType = SubDialogueEntries[idx].TextType;

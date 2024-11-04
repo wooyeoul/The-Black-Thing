@@ -12,6 +12,7 @@ namespace Assets.Script.DialClass
 
     public struct sub
     {
+        public string ScriptNumber;
         public int LineKey;
         public int Color;
         public string Actor;
