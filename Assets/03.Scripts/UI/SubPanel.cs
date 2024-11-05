@@ -5,9 +5,11 @@ using TMPro;
 using UnityEngine.UI;
 using Assets.Script.DialClass;
 using UnityEngine.EventSystems;
+using System.Reflection;
+using System;
 /* "말풍선 위치를 어떻게 해야하나 뭉치 위치를 가져와서 if pos.x < 0 이면 뭉치 기준 오른쪽 상단????? 
- pos.x > 0 이면 뭉치 기준 왼쪽 상단
- !! Dot은 스프라이트라 캔버스가 아니고 Panel UI는 캔버스 기준이라 위치를 통일시켜줘야 함 !!*/
+pos.x > 0 이면 뭉치 기준 왼쪽 상단
+!! Dot은 스프라이트라 캔버스가 아니고 Panel UI는 캔버스 기준이라 위치를 통일시켜줘야 함 !!*/
 
 public class SubPanel : MonoBehaviour
 {
@@ -15,7 +17,6 @@ public class SubPanel : MonoBehaviour
     [SerializeField] private PlayerController pc;
     [SerializeField] private DotController dotcontroller;
     [SerializeField] private SubDialogue sub;
-    
     [SerializeField] private TextMeshProUGUI DotTextUI;
     [SerializeField] private TextMeshProUGUI PlayTextUI;
     [SerializeField] private TextMeshProUGUI InputTextUI;
@@ -34,12 +35,12 @@ public class SubPanel : MonoBehaviour
 
     [SerializeField] private Canvas canvas;
 
-    [SerializeField] 
+    [SerializeField]
     private GameObject subClick;
 
     public int dialogueIndex = 0;  // Current dialogue index
     public int Day = 0;  // Current day
-    
+
     void OnEnable()
     {
         pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
@@ -65,7 +66,7 @@ public class SubPanel : MonoBehaviour
         }
 
         for (int i = 0; i < prTbObjects.Count; i++)
-        { 
+        {
             GameObject instantiatedPrTb = Instantiate(prTbObjects[i], parentTransform);
             instantiatedPrTb.SetActive(false);
             //instantiatedPrTb.AddComponent<CanvasGroup>();
@@ -178,6 +179,7 @@ public class SubPanel : MonoBehaviour
         string actor = nextDial.Actor;
         string korText = nextDial.Text;
         int color = nextDial.Color;
+        int determine; //dot인지 player인지 구분 dot:0 , pl:1
 
         switch (textType)
         {
@@ -185,6 +187,7 @@ public class SubPanel : MonoBehaviour
 
                 if (actor == "Dot")
                 {
+                    determine = 0;
                     subClick.SetActive(true);
                     if (korText.Contains("<nickname>"))
                     {
@@ -207,9 +210,10 @@ public class SubPanel : MonoBehaviour
 
                         if (selectedDot != null)
                         {
+                            DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             DotTextUI.text = $"{korText}";
                             if (scriptnumber.Contains("tutorial"))
-                                TutoConditon();
+                                TutoConditon(selectedDot, scriptnumber, determine);
                             dotballoon(selectedDot);
                         }
                     }
@@ -224,9 +228,10 @@ public class SubPanel : MonoBehaviour
 
                             if (selectedDot != null)
                             {
+                                DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 DotTextUI.text = $"{korText}";
                                 if (scriptnumber.Contains("tutorial"))
-                                    TutoConditon();
+                                    TutoConditon(selectedDot, scriptnumber, determine);
                                 dotballoon(selectedDot);
                             }
                         }
@@ -239,9 +244,10 @@ public class SubPanel : MonoBehaviour
 
                             if (selectedDot != null)
                             {
+                                DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 DotTextUI.text = $"{korText}";
                                 if (scriptnumber.Contains("tutorial"))
-                                    TutoConditon();
+                                    TutoConditon(selectedDot, scriptnumber, determine);
                                 dotballoon(selectedDot);
                             }
                         }
@@ -254,9 +260,10 @@ public class SubPanel : MonoBehaviour
 
                             if (selectedDot != null)
                             {
+                                DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 DotTextUI.text = $"{korText}";
                                 if (scriptnumber.Contains("tutorial"))
-                                    TutoConditon();
+                                    TutoConditon(selectedDot, scriptnumber, determine);
                                 dotballoon(selectedDot);
                             }
                         }
@@ -269,9 +276,10 @@ public class SubPanel : MonoBehaviour
 
                             if (selectedDot != null)
                             {
+                                DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 DotTextUI.text = $"{korText}";
                                 if (scriptnumber.Contains("tutorial"))
-                                    TutoConditon();
+                                    TutoConditon(selectedDot, scriptnumber, determine);
                                 dotballoon(selectedDot);
                             }
                         }
@@ -279,6 +287,7 @@ public class SubPanel : MonoBehaviour
                 }
                 else if (actor == "Player")
                 {
+                    determine = 1;
                     if (color == 0) //Black
                     {
                         // "Black"이 포함된 오브젝트만 가져옴
@@ -289,12 +298,11 @@ public class SubPanel : MonoBehaviour
 
                         if (selectedDot != null)
                         {
-                            Debug.Log("켜진 패널" + selectedDot);
-                            PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                             PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             PlayTextUI.text = $"{korText}";
-                            StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
-                            RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                            if (scriptnumber.Contains("tutorial"))
+                                TutoConditon(selectedDot, scriptnumber, determine);
+                            playerballoon(selectedDot);
                         }
                     }
                     else if (color == 1)
@@ -308,12 +316,11 @@ public class SubPanel : MonoBehaviour
 
                             if (selectedDot != null)
                             {
-                                Debug.Log("켜진 패널" + selectedDot);
-                                PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                                 PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 PlayTextUI.text = $"{korText}";
-                                StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
-                                RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                                if (scriptnumber.Contains("tutorial"))
+                                    TutoConditon(selectedDot, scriptnumber, determine);
+                                playerballoon(selectedDot);
                             }
                         }
                         if (gameManager.Time == "Morning")
@@ -325,12 +332,11 @@ public class SubPanel : MonoBehaviour
 
                             if (selectedDot != null)
                             {
-                                Debug.Log("켜진 패널" + selectedDot);
-                                PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                                 PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 PlayTextUI.text = $"{korText}";
-                                StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
-                                RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                                if (scriptnumber.Contains("tutorial"))
+                                    TutoConditon(selectedDot, scriptnumber, determine);
+                                playerballoon(selectedDot);
                             }
                         }
                         if (gameManager.Time == "Evening")
@@ -342,12 +348,11 @@ public class SubPanel : MonoBehaviour
 
                             if (selectedDot != null)
                             {
-                                Debug.Log("켜진 패널" + selectedDot);
-                                PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                                 PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 PlayTextUI.text = $"{korText}";
-                                StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
-                                RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                                if (scriptnumber.Contains("tutorial"))
+                                    TutoConditon(selectedDot, scriptnumber, determine);
+                                playerballoon(selectedDot);
                             }
                         }
                         if (gameManager.Time == "Night")
@@ -359,12 +364,11 @@ public class SubPanel : MonoBehaviour
 
                             if (selectedDot != null)
                             {
-                                Debug.Log("켜진 패널" + selectedDot);
-                                PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                                 PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 PlayTextUI.text = $"{korText}";
-                                StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
-                                RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                                if (scriptnumber.Contains("tutorial"))
+                                    TutoConditon(selectedDot, scriptnumber, determine);
+                                playerballoon(selectedDot);
                             }
                         }
                     }
@@ -374,6 +378,7 @@ public class SubPanel : MonoBehaviour
             //=============================================================================================================================================================
 
             case "textbox": //얘는 플레이어 기준
+                determine = 1;
                 if (color == 0) //Black
                 {
                     // "Black"이 포함된 오브젝트만 가져옴
@@ -384,13 +389,12 @@ public class SubPanel : MonoBehaviour
 
                     if (selectedDot != null)
                     {
-                        
-                        PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                         PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                         PlayTextUI.text = $"{korText}";
                         Resetinputfield(selectedDot);
-                        StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
-                        RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                        if (scriptnumber.Contains("tutorial"))
+                            TutoConditon(selectedDot, scriptnumber, determine);
+                        playerballoon(selectedDot);
                     }
                 }
                 else if (color == 1)
@@ -404,12 +408,12 @@ public class SubPanel : MonoBehaviour
 
                         if (selectedDot != null)
                         {
-                            PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                             PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             PlayTextUI.text = $"{korText}";
                             Resetinputfield(selectedDot);
-                            StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
-                            RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                            if (scriptnumber.Contains("tutorial"))
+                                TutoConditon(selectedDot, scriptnumber, determine);
+                            playerballoon(selectedDot);
                         }
                     }
                     if (gameManager.Time == "Morning")
@@ -421,12 +425,12 @@ public class SubPanel : MonoBehaviour
 
                         if (selectedDot != null)
                         {
-                            PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                             PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             PlayTextUI.text = $"{korText}";
                             Resetinputfield(selectedDot);
-                            StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
-                            RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                            if (scriptnumber.Contains("tutorial"))
+                                TutoConditon(selectedDot, scriptnumber, determine);
+                            playerballoon(selectedDot);
                         }
                     }
                     if (gameManager.Time == "Evening")
@@ -438,12 +442,12 @@ public class SubPanel : MonoBehaviour
 
                         if (selectedDot != null)
                         {
-                            PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                             PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             PlayTextUI.text = $"{korText}";
                             Resetinputfield(selectedDot);
-                            StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
-                            RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                            if (scriptnumber.Contains("tutorial"))
+                                TutoConditon(selectedDot, scriptnumber, determine);
+                            playerballoon(selectedDot);
                         }
                     }
                     if (gameManager.Time == "Night")
@@ -455,19 +459,19 @@ public class SubPanel : MonoBehaviour
 
                         if (selectedDot != null)
                         {
-                            PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
                             PlayTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             PlayTextUI.text = $"{korText}";
                             Resetinputfield(selectedDot);
-                            StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
-                            RegisterNextButton(selectedDot.transform.GetComponent<Button>());
+                            if (scriptnumber.Contains("tutorial"))
+                                TutoConditon(selectedDot, scriptnumber, determine);
+                            playerballoon(selectedDot);
                         }
                     }
                 }
                 break;
 
-         //=============================================================================================================================================================
-            
+            //=============================================================================================================================================================
+
             case "selection": //얘도 플레이어 기준
                 if (color == 0) //Black
                 {
@@ -511,7 +515,7 @@ public class SubPanel : MonoBehaviour
                         {
                             selectedDot.SetActive(true);
                             StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponentInChildren<Button>()));
-                            ShowSelection(korText,selectedDot);
+                            ShowSelection(korText, selectedDot);
                         }
                     }
                     if (gameManager.Time == "Evening")
@@ -643,23 +647,23 @@ public class SubPanel : MonoBehaviour
     public void PlayerLocationSet(GameObject dotbub)
     {
         RectTransform rectTransform = dotbub.GetComponent<RectTransform>();
-       
+
         if (dotcontroller.transform.position.x < 0)
         {
-            
+
             // 왼쪽 하단에 배치
             rectTransform.anchorMin = new Vector2(0, 0);
             rectTransform.anchorMax = new Vector2(0, 0);
             rectTransform.pivot = new Vector2(0, 0);
-            rectTransform.anchoredPosition = new Vector2(50, -400); 
+            rectTransform.anchoredPosition = new Vector2(50, -400);
         }
-    
+
         else
         {
-            rectTransform.anchorMin = new Vector2(1, 0); 
-            rectTransform.anchorMax = new Vector2(1, 0); 
-            rectTransform.pivot = new Vector2(1, 0);     
-            rectTransform.anchoredPosition = new Vector2(-50, -400); 
+            rectTransform.anchorMin = new Vector2(1, 0);
+            rectTransform.anchorMax = new Vector2(1, 0);
+            rectTransform.pivot = new Vector2(1, 0);
+            rectTransform.anchoredPosition = new Vector2(-50, -400);
         }
 
         rectTransform.gameObject.SetActive(true);
@@ -684,14 +688,45 @@ public class SubPanel : MonoBehaviour
     public void dotballoon(GameObject selectedDot)
     {
         LocationSet(selectedDot); // 선택한 오브젝트를 활성화
-        DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
         StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, subClick.GetComponent<Button>()));
         RegisterNextButton(subClick.GetComponent<Button>());
     }
 
-    public void TutoConditon()
+    public void playerballoon(GameObject selectedDot)
     {
-
+        PlayerLocationSet(selectedDot); // 선택한 오브젝트를 활성화
+        StartCoroutine(FadeIn(selectedDot.GetComponent<CanvasGroup>(), 0.5f, selectedDot.transform.GetComponent<Button>()));
+        RegisterNextButton(selectedDot.transform.GetComponent<Button>());
     }
-        
+
+    public void TutoConditon(GameObject selectedDot, string scriptnumber, int determine)
+    {
+        // SubTuto 인스턴스 가져오기
+        SubTuto subTuto = gameManager.gameObject.GetComponent<SubTuto>();
+
+        if (subTuto == null)
+        {
+            Debug.LogError("SubTuto 컴포넌트를 찾을 수 없습니다.");
+            return;
+        }
+
+        // SubTuto 타입 가져오기
+        Type type = subTuto.GetType();
+
+        // 메서드 정보 가져오기
+        MethodInfo method = type.GetMethod(scriptnumber, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+
+        // 메서드 존재 여부 확인 후 호출
+        if (method != null)
+        {
+            // 매개변수를 전달하여 메서드 실행
+            method.Invoke(subTuto, new object[] { selectedDot, determine });
+            Debug.Log($"{scriptnumber} 메서드가 실행되었습니다.");
+        }
+        else
+        {
+            Debug.LogError($"'{scriptnumber}' 메서드를 찾을 수 없습니다.");
+        }
+    }
+
 }
