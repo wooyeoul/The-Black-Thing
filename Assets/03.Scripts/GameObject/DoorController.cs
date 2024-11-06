@@ -14,10 +14,12 @@ public class DoorController : MonoBehaviour
     Collider2D targetCollider;
 
     Animator animator;
+    BoxCollider2D doorCollider;
 
     public void Awake()
     {
         dot = GameObject.FindWithTag("DotController");
+        doorCollider = this.GetComponent<BoxCollider2D>();
     }
 
     private void OnEnable()
@@ -94,5 +96,35 @@ public class DoorController : MonoBehaviour
         animator = this.transform.parent.GetComponent<Animator>();
         animator.SetFloat(Animator.StringToHash("speed"), 1.0f);
         animator.SetBool(OpenIdx, true);
+    }
+
+    public void Touch()
+    {
+        if (isDoorOpen)
+        {
+            //열려있을 경우, 닫아야함
+            close();
+        }
+        else
+        {
+            //닫아있는 경우, 열어야함
+            open();
+        }
+    }
+
+    public void DisableTouch()
+    {
+        if (doorCollider != null)
+        {
+            doorCollider.enabled = false; // 문에 대한 터치/클릭 비활성화
+        }
+    }
+
+    public void EnableTouch()
+    {
+        if (doorCollider != null)
+        {
+            doorCollider.enabled = true; // 문에 대한 터치/클릭 활성화
+        }
     }
 }

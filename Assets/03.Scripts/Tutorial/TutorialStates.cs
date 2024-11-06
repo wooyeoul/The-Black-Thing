@@ -27,6 +27,7 @@ namespace Tutorial
             dot.ChangeState(DotPatternState.Default, anim, pos);
             GameObject door = GameObject.Find("fix_door");
             Debug.Log(door);
+            door.transform.GetChild(1).GetComponent<DoorController>().DisableTouch();
             door.transform.GetChild(1).GetComponent<DoorController>().close();
             manager.ScrollManager.MoveCamera(new Vector3((float)5.70, 0, -10), 2);
             manager.ScrollManager.stopscroll();

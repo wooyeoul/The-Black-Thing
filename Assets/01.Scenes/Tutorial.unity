@@ -5085,6 +5085,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subPanel: {fileID: 1483283895}
+  touch: {fileID: 0}
+  prefabPath: TouchGuide
+  guide1: {x: -810, y: -145, z: 0}
+  guide2: {x: -1095, y: -195, z: 0}
 --- !u!1 &201689321
 GameObject:
   m_ObjectHideFlags: 0

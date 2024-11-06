@@ -213,8 +213,12 @@ public class SubPanel : MonoBehaviour
                             DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                             DotTextUI.text = $"{korText}";
                             if (scriptnumber.Contains("tutorial"))
+                            {
+                                subClick.SetActive(false);
                                 TutoConditon(selectedDot, scriptnumber, determine);
-                            dotballoon(selectedDot);
+                            } 
+                            else
+                                dotballoon(selectedDot);
                         }
                     }
                     else if (color == 1)
@@ -231,8 +235,12 @@ public class SubPanel : MonoBehaviour
                                 DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 DotTextUI.text = $"{korText}";
                                 if (scriptnumber.Contains("tutorial"))
+                                {
+                                    subClick.SetActive(false);
                                     TutoConditon(selectedDot, scriptnumber, determine);
-                                dotballoon(selectedDot);
+                                }
+                                else
+                                    dotballoon(selectedDot);
                             }
                         }
                         if (gameManager.Time == "Morning")
@@ -247,8 +255,12 @@ public class SubPanel : MonoBehaviour
                                 DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 DotTextUI.text = $"{korText}";
                                 if (scriptnumber.Contains("tutorial"))
+                                {
+                                    subClick.SetActive(false);
                                     TutoConditon(selectedDot, scriptnumber, determine);
-                                dotballoon(selectedDot);
+                                }
+                                else
+                                    dotballoon(selectedDot);
                             }
                         }
                         if (gameManager.Time == "Evening")
@@ -263,8 +275,12 @@ public class SubPanel : MonoBehaviour
                                 DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 DotTextUI.text = $"{korText}";
                                 if (scriptnumber.Contains("tutorial"))
+                                {
+                                    subClick.SetActive(false);
                                     TutoConditon(selectedDot, scriptnumber, determine);
-                                dotballoon(selectedDot);
+                                }
+                                else
+                                    dotballoon(selectedDot);
                             }
                         }
                         if (gameManager.Time == "Night")
@@ -279,8 +295,12 @@ public class SubPanel : MonoBehaviour
                                 DotTextUI = selectedDot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
                                 DotTextUI.text = $"{korText}";
                                 if (scriptnumber.Contains("tutorial"))
+                                {
+                                    subClick.SetActive(false);
                                     TutoConditon(selectedDot, scriptnumber, determine);
-                                dotballoon(selectedDot);
+                                }
+                                else
+                                    dotballoon(selectedDot);
                             }
                         }
                     }
@@ -302,7 +322,8 @@ public class SubPanel : MonoBehaviour
                             PlayTextUI.text = $"{korText}";
                             if (scriptnumber.Contains("tutorial"))
                                 TutoConditon(selectedDot, scriptnumber, determine);
-                            playerballoon(selectedDot);
+                            else
+                                playerballoon(selectedDot);
                         }
                     }
                     else if (color == 1)
@@ -320,7 +341,8 @@ public class SubPanel : MonoBehaviour
                                 PlayTextUI.text = $"{korText}";
                                 if (scriptnumber.Contains("tutorial"))
                                     TutoConditon(selectedDot, scriptnumber, determine);
-                                playerballoon(selectedDot);
+                                else
+                                    playerballoon(selectedDot);
                             }
                         }
                         if (gameManager.Time == "Morning")
@@ -336,7 +358,8 @@ public class SubPanel : MonoBehaviour
                                 PlayTextUI.text = $"{korText}";
                                 if (scriptnumber.Contains("tutorial"))
                                     TutoConditon(selectedDot, scriptnumber, determine);
-                                playerballoon(selectedDot);
+                                else
+                                    playerballoon(selectedDot);
                             }
                         }
                         if (gameManager.Time == "Evening")
@@ -352,7 +375,8 @@ public class SubPanel : MonoBehaviour
                                 PlayTextUI.text = $"{korText}";
                                 if (scriptnumber.Contains("tutorial"))
                                     TutoConditon(selectedDot, scriptnumber, determine);
-                                playerballoon(selectedDot);
+                                else
+                                    playerballoon(selectedDot);
                             }
                         }
                         if (gameManager.Time == "Night")
@@ -368,7 +392,8 @@ public class SubPanel : MonoBehaviour
                                 PlayTextUI.text = $"{korText}";
                                 if (scriptnumber.Contains("tutorial"))
                                     TutoConditon(selectedDot, scriptnumber, determine);
-                                playerballoon(selectedDot);
+                                else
+                                    playerballoon(selectedDot);
                             }
                         }
                     }
@@ -394,7 +419,8 @@ public class SubPanel : MonoBehaviour
                         Resetinputfield(selectedDot);
                         if (scriptnumber.Contains("tutorial"))
                             TutoConditon(selectedDot, scriptnumber, determine);
-                        playerballoon(selectedDot);
+                        else
+                            playerballoon(selectedDot);
                     }
                 }
                 else if (color == 1)
@@ -413,7 +439,8 @@ public class SubPanel : MonoBehaviour
                             Resetinputfield(selectedDot);
                             if (scriptnumber.Contains("tutorial"))
                                 TutoConditon(selectedDot, scriptnumber, determine);
-                            playerballoon(selectedDot);
+                            else
+                                playerballoon(selectedDot);
                         }
                     }
                     if (gameManager.Time == "Morning")
@@ -430,7 +457,8 @@ public class SubPanel : MonoBehaviour
                             Resetinputfield(selectedDot);
                             if (scriptnumber.Contains("tutorial"))
                                 TutoConditon(selectedDot, scriptnumber, determine);
-                            playerballoon(selectedDot);
+                            else
+                                playerballoon(selectedDot);
                         }
                     }
                     if (gameManager.Time == "Evening")
@@ -447,7 +475,8 @@ public class SubPanel : MonoBehaviour
                             Resetinputfield(selectedDot);
                             if (scriptnumber.Contains("tutorial"))
                                 TutoConditon(selectedDot, scriptnumber, determine);
-                            playerballoon(selectedDot);
+                            else
+                                playerballoon(selectedDot);
                         }
                     }
                     if (gameManager.Time == "Night")
@@ -464,7 +493,8 @@ public class SubPanel : MonoBehaviour
                             Resetinputfield(selectedDot);
                             if (scriptnumber.Contains("tutorial"))
                                 TutoConditon(selectedDot, scriptnumber, determine);
-                            playerballoon(selectedDot);
+                            else
+                                playerballoon(selectedDot);
                         }
                     }
                 }
@@ -706,8 +736,16 @@ public class SubPanel : MonoBehaviour
 
         if (subTuto == null)
         {
-            Debug.LogError("SubTuto 컴포넌트를 찾을 수 없습니다.");
-            return;
+            Debug.Log("SubTuto 컴포넌트를 찾을 수 없습니다.");
+            subClick.SetActive(true);
+            if (determine == 0)
+            {
+                dotballoon(selectedDot);
+            }
+            else
+            {
+                playerballoon(selectedDot);
+            }
         }
 
         // SubTuto 타입 가져오기
@@ -725,8 +763,22 @@ public class SubPanel : MonoBehaviour
         }
         else
         {
-            Debug.LogError($"'{scriptnumber}' 메서드를 찾을 수 없습니다.");
+            Debug.Log($"'{scriptnumber}' 메서드를 찾을 수 없습니다.");
+            subClick.SetActive(true);
+            if (determine == 0)
+            {
+                dotballoon(selectedDot);
+            }
+            else
+            {
+                playerballoon(selectedDot);
+            }
         }
     }
+    public void clickon()
+    {
+        subClick.SetActive (true);
+    }
+
 
 }
