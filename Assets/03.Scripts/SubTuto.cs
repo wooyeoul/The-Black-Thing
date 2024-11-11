@@ -29,5 +29,23 @@ public class SubTuto : MonoBehaviour
         }
         touch.tuto2(selectedDot, determine);
     }
-    
+
+    public void tutorial_3(GameObject selectedDot, int determine)
+    {
+        GameObject touchguide = Resources.Load<GameObject>(prefabPath);
+        if (touchguide != null)
+        {
+            // 인스턴스화 및 활성화
+            GameObject instance = Instantiate(touchguide, subPanel.gameObject.transform);
+            instance.transform.localPosition = guide2;
+            instance.SetActive(true);
+            touch = instance.GetComponent<TouchGuide>();
+        }
+        else
+        {
+            Debug.LogError("프리팹을 찾을 수 없습니다!");
+        }
+        touch.tuto3(selectedDot, determine);
+    }
+
 }
